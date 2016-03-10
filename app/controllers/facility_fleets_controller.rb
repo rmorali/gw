@@ -35,7 +35,7 @@ class FacilityFleetsController < ApplicationController
     @planet = @facility.planet
     @unit = Unit.find(params[:unit][:id])
     @quantity = params[:unit][:quantity].to_i
-    unless params[:unit][:quantity].empty? || params[:unit][:id].empty? || current_squad.ready?
+    unless params[:unit][:quantity].to_i <= 0 || params[:unit][:id].empty? || current_squad.ready?
       @facility.produce! @unit, @quantity, @planet, @squad
     end
     redirect_to :back
