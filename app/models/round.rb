@@ -102,6 +102,7 @@ class Round < ActiveRecord::Base
     ActiveRecord::Base.connection.execute("TRUNCATE squads")
     ActiveRecord::Base.connection.execute("TRUNCATE tradeports")
     ActiveRecord::Base.connection.execute("TRUNCATE rounds")
+    User.create(:email => 'setup@xws.com', :password => '123456')
   end
 
   def create_test_squads quantity
@@ -113,7 +114,7 @@ class Round < ActiveRecord::Base
 
     if quantity == 4
       mand_user = User.create(:email => 'mand@mand.com', :password => '123456')
-      mand_squad = Squad.create(:name => 'Mandalorian', :color => 'EE82EE', :user => mand_user, :faction => 'mandalorian', :home_planet => Planet.find(15), :credits => 1000, :goal => Goal.get_goal)
+      mand_squad = Squad.create(:name => 'Mandalorian', :color => 'EE82EE', :user => mand_user, :faction => 'pirate', :home_planet => Planet.find(15), :credits => 1000, :goal => Goal.get_goal)
       merc_user = User.create(:email => 'merc@merc.com', :password => '123456')
       merc_squad = Squad.create(:name => 'Mercenary', :color => 'FFFF00', :user => merc_user, :faction => 'mercenary', :home_planet => Planet.find(20), :credits => 1000, :goal => Goal.get_goal)
     end

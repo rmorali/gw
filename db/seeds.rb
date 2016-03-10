@@ -135,7 +135,7 @@ Setting.create(:initial_factories => 3600,
                :maximum_facilities => 4,
                :air_domination_unit => 'CapitalShip',
                :ground_domination_unit => 'Facility',
-               :builder_unit => 'Trooper')
+               :builder_unit => 'LightTransport')
 
 User.create(:email => 'setup@xws.com', :password => '123456')
 

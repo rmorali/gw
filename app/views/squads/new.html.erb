@@ -5,8 +5,6 @@
 <% end %>
 <div class="fleet">
 <h2>Novo Esquadrão</h2>
-<span style=color:#FFFF00;font-size:14px>Seu Objetivo: <%= @goal.id %> - <%= @goal.description %></span>
-<br>
 <table>
 <%= simple_form_for [@squad] do |f| %>
 <tr>
@@ -36,12 +34,12 @@
 </table>
 <% end %>
 <br>
-- Tabela de cores:<br>
-<span style=color:#FF0000>FF0000 - Vermelho</span><br>
-<span style=color:#00FF00>00FF00 - Verde</span><br>
-<span style=color:#FFFF00>FFFF00 - Amarelo</span><br>
-<span style=color:#66CCFF>66CCFF - Roxo</span><br>
-<span style=color:#FFFFFF>FFFFFF - Branco</span><br>
-<span style=color:#EE82EE>EE82EE - Magenta</span><br>
+- Cores de Esquadrão:<br>
+<span style=color:#FF0000>Vermelho</span><br>
+<span style=color:#00FF00>Verde</span><br>
+<span style=color:#FFFF00>Amarelo</span><br>
+<span style=color:#66CCFF>Roxo</span><br>
+<span style=color:#FFFFFF>Branco</span><br>
+<span style=color:#EE82EE>Magenta</span><br>
 
 </div>

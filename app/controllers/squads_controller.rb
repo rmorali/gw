@@ -2,7 +2,7 @@ class SquadsController < ApplicationController
 
   def new
     @squad = Squad.new
-    @colors = %w[FF0000 00FF00 FFFF00 66CCFF FFFFFF EE82EE]
+    @colors = %w[Vermelho Verde Amarelo Roxo Branco Magenta]
     @planets = Planet.where(:tradeport => nil)
     @goal = Goal.get_goal
   end
@@ -11,8 +11,24 @@ class SquadsController < ApplicationController
     squad = Squad.create(params[:squad])
     current_user.squad = squad
     squad.credits = Setting.getInstance.initial_credits
+    case params[:squad][:color]
+      when 'Vermelho'
+        color = 'FF0000'
+      when 'Verde'
+        color = '00FF00'
+      when 'Amarelo'
+        color = 'FFFF00'
+      when 'Roxo'
+        color = '66CCFF'
+      when 'Branco'
+        color = 'FFFFFF'
+      when 'Magenta'
+        color = 'EE82EE'
+    end
+    squad.color = color
     squad.save!
-    redirect_to :controller => 'generic_units', :action => 'ships', :id => squad.id 
+    #redirect_to :controller => 'generic_units', :action => 'ships', :id => squad.id
+    redirect_to :fleets 
   end
 
   def ready
