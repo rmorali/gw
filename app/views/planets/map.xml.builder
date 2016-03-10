@@ -26,16 +26,18 @@ xml.planetas do
         planet.generic_fleets.each_with_index do |fleet, index|                   
           unless fleet.moving && fleet.squad == @current_squad
             if @round.move && fleet.squad != @current_squad
-              xml.corfleet fleet.squad.color
-              case fleet.generic_unit.type
-              when 'Facility'
-                xml.fleet fleet.name
-              when 'CapitalShip'
-                xml.fleet fleet.show
-              when 'Warrior'
-                xml.fleet fleet.name
-              else
-                xml.fleet fleet.name
+              if fleet.round < @round.number
+                xml.corfleet fleet.squad.color
+                case fleet.generic_unit.type
+                when 'Facility'
+                  xml.fleet fleet.name
+                when 'CapitalShip'
+                  xml.fleet fleet.show
+                when 'Warrior'
+                  xml.fleet fleet.name
+                else
+                  xml.fleet fleet.name
+                end
               end
             else
               xml.corfleet fleet.squad.color
