@@ -92,7 +92,7 @@ class GenericFleet < ActiveRecord::Base
       "#{quantity} #{name}"
     when 'Facility'
       unless moving?
-        "#{name} (#{balance.to_i})"
+        "#{name} - #{balance.to_i}"
       else
         "#{generic_unit.description}"
       end
