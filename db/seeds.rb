@@ -141,7 +141,7 @@ Setting.create(:initial_factories => 3600,
                :tradeports => true,
                :maximum_facilities => 4,
                :air_domination_unit => 'CapitalShip',
-               :ground_domination_unit => 'Trooper',
+               :ground_domination_unit => 'Facility',
                :builder_unit => 'Trooper')
 
 User.create(:email => 'setup@xws.com', :password => '123456')
@@ -156,19 +156,19 @@ mand_merc = ['pirate','mercenary']
 all = ['empire','rebel','mercenary','pirate']
 none = ['nenhuma']
 
-Facility.create(:name => 'Ind.Complex', :price => 1200, :description => 'Comboio(3 Bulk Freighter, 2 Cargo Ferry)' ).factions = imp_reb
-Facility.create(:name => 'Space Colony', :price => 1200, :description => 'Comboio(3 Bulk Freighter, 2 Cargo Ferry)' ).factions = all
-Facility.create(:name => 'Cargo Facility II', :price => 2400, :description => 'Comboio(3 Bulk Freighter, Mod.Conveyor)' ).factions = merc
-Facility.create(:name => 'Platforms', :price => 2400, :description => 'Comboio(4 Bulk Freighter, 2 Mod. Action)' ).factions = all
-Facility.create(:name => 'DeepSpace Facility', :price => 2400, :description => 'Comboio(4 Bulk Freighter, 2 Mod.Action)' ).factions = all
-Facility.create(:name => 'Asteroid Hangar', :price => 3600, :description => 'Comboio(4 Bulk Freighter, 2 Xyitiar Transp)' ).factions = all
-Facility.create(:name => 'Rebel Platform', :price => 3600, :description => 'Comboio(4 Bulk Freighter, 2 Reb Med Transp)' ).factions = reb
-Facility.create(:name => 'Golan I', :price => 3600, :description => 'Comboio(4 Bulk Freighter, 2 Mod Action)' ).factions = all
-Facility.create(:name => 'Golan II', :price => 4800, :description => 'Comboio(4 Bulk Freighter, 2 Container Transp)' ).factions = all
-Facility.create(:name => 'Imp Research Ship', :price => 4800, :description => 'Comboio(4 Bulk Freighter, 2 Star Galleon)' ).factions = imp
-Facility.create(:name => 'Pirate S.Yard', :price => 4800, :description => 'Comboio(3 Bulk Freighter, 2 Xyitiar Transp)' ).factions = mand_merc
-Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(4 Bulk Freighter, 1 Suprosa)' ).factions = all
-Facility.create(:name => 'Shipyard', :price => 6000, :description => 'Comboio(4 Bulk Freighter, 1 Suprosa)' ).factions = all
+Facility.create(:name => 'Ind.Complex', :price => 1200, :description => 'Comboio(6 Bulk Freighter)' ).factions = imp_reb
+Facility.create(:name => 'Space Colony', :price => 1200, :description => 'Comboio(6 Cargo Ferry)' ).factions = all
+Facility.create(:name => 'Cargo Facility II', :price => 2400, :description => 'Comboio(6 Mod.Conveyor)' ).factions = merc
+Facility.create(:name => 'Platforms', :price => 2400, :description => 'Comboio(6 Mod.Action Transp)' ).factions = all
+Facility.create(:name => 'DeepSpace Facility', :price => 2400, :description => 'Comboio(6 Mod.Action Transp)' ).factions = all
+Facility.create(:name => 'Asteroid Hangar', :price => 3600, :description => 'Comboio(6 Xyitiar Transp)' ).factions = all
+Facility.create(:name => 'Rebel Platform', :price => 3600, :description => 'Comboio(6 Reb Med Transp)' ).factions = reb
+Facility.create(:name => 'Golan I', :price => 3600, :description => 'Comboio(6 Mod Action Transp)' ).factions = all
+Facility.create(:name => 'Golan II', :price => 4800, :description => 'Comboio(6 Container Transp)' ).factions = all
+Facility.create(:name => 'Imp Research Ship', :price => 4800, :description => 'Comboio(6 Star Galleon)' ).factions = imp
+Facility.create(:name => 'Pirate S.Yard', :price => 4800, :description => 'Comboio(6 Xyitiar Transp)' ).factions = mand_merc
+Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(6 Xyitiar Transp)' ).factions = all
+Facility.create(:name => 'Shipyard', :price => 6000, :description => 'Comboio(6 Xyitiar Transp)' ).factions = all
 
 Unit.create(:name => '__________Capital Ships__________').factions = all
 CapitalShip.create(:name => 'Corellian Gunship', :price => 300, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 100, :light_loading_capacity => 1000 ).factions = all
@@ -203,7 +203,7 @@ LightTransport.create(:name => 'YT-2000', :price => 175, :heavy_loading_capacity
 LightTransport.create(:name => 'YT-2400', :price => 125, :heavy_loading_capacity => 4, :light_loading_capacity => 200 ).factions = mand
 LightTransport.create(:name => 'Millenium Falcon', :price => 150, :heavy_loading_capacity => 4, :light_loading_capacity => 200 ).factions = merc_reb
 LightTransport.create(:name => 'Assault Transport', :price => 100, :heavy_loading_capacity => 4, :light_loading_capacity => 200 ).factions = all
-LightTransport.create(:name => 'Escort Transport', :price => 100, :heavy_loading_capacity => 4, :light_loading_capacity => 200 ).factions = all
+LightTransport.create(:name => 'Escort Transport', :price => 100, :heavy_loading_capacity => 4, :light_loading_capacity => 200 ).factions = reb
 LightTransport.create(:name => 'Assault Shuttle', :price => 100, :heavy_loading_capacity => 4, :light_loading_capacity => 200 ).factions = imp
 LightTransport.create(:name => 'System Pat Craft', :price => 150, :heavy_loading_capacity => 4, :light_loading_capacity => 200 ).factions = imp
 
@@ -248,12 +248,12 @@ Armament.create(:name => 'Flare', :acronym => 'FLR', :price => 10, :hyperdrive =
 
 Unit.create(:name => '_____Capital Ship Skills________').factions = all
 Skill.create(:name => 'Sensor Array', :acronym => 'SAR', :price => 150, :hyperdrive => false, :description => 'Detecta Unidades Inimigas'  ).factions = all
-Skill.create(:name => 'Anti-Trooper Bombs', :acronym => 'ATB', :price => 150, :hyperdrive => false, :description => 'Bombardeia Exercitos'  ).factions = all
+#Skill.create(:name => 'Anti-Trooper Bombs', :acronym => 'ATB', :price => 150, :hyperdrive => false, :description => 'Bombardeia Exercitos'  ).factions = all
 Skill.create(:name => 'Long Range Engine', :acronym => 'ENG', :price => 300, :hyperdrive => false, :description => 'Permite Hyperspace em todo o Setor'  ).factions = all
 Skill.create(:name => 'Gravity Generator', :acronym => 'INT', :price => 600, :hyperdrive => false, :description => 'Bloqueia Fugas - Interdictor'  ).factions = all
 
-Unit.create(:name => '____________Tropas______________').factions = all
-Trooper.create(:name => 'BF2 Trooper', :price => 1, :hyperdrive => false ).factions = all
+#Unit.create(:name => '____________Tropas______________').factions = all
+#Trooper.create(:name => 'BF2 Trooper', :price => 1, :hyperdrive => false ).factions = all
 
 #Unit.create(:name => '__________Guerreiros_____________').factions = all
 #Warrior.create(:name => 'Mestre Yoda', :price => 30, :description => 'Jedi' ).factions = reb
