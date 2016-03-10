@@ -4,7 +4,8 @@ class GenericFleetsController < ApplicationController
     @round = Round.getInstance
     @squad = current_squad
     @all_squads = Squad.all
-    @inactive = FacilityFleet.where(:squad => @squad, :producing_unit_id => nil).count + FacilityFleet.where(:squad => @squad, :producing_unit2_id => nil).count
+    @inactive = FacilityFleet.select { |facility| facility.squad == current_squad && facility.balance > 0 }
+    @inactive_count = @inactive.count
     if @round.move?
       @round_phase = 'Estrategia'
       @tip = "Realize movimentos, configuracao de fabricas, compra/venda de naves e nomeacao de capital ships."
@@ -14,15 +15,7 @@ class GenericFleetsController < ApplicationController
     end
     @small_fleet = nil
     total = 0 
-    @planets.each do |planet|
-      @all_squads.each do |squad|
-        planet.generic_fleets.where(:squad => squad).each do |qtd|
-          total += qtd.quantity * qtd.generic_unit.price
-        end
-        @small_fleet = true if total < 200 and total != 0
-        total = 0
-      end
-    end
+    
   end
 
   def move

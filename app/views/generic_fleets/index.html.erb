@@ -4,11 +4,14 @@ document.title = "Menu principal"
 <div class="alert">
   <h3> Alertas </h3>
   <span style=text-decoration:blink>
-  <% unless @inactive == 0 %>
-    <li>Há <%= @inactive %> slots de fábrica não ativados</li>
-  <% end %>
-  <% if @small_fleet == true %>
-    <li>Há alguma frota inferior a 200 créditos</li>
+  <% unless @inactive.empty? || @round.attack? %>
+    <li>Há <%= @inactive.count %> fábricas com pontos disponíveis:</li>
+    <% @inactive.each do |facility| %>
+      <li><%= facility.planet %> :  
+      <span style=text-decoration:blink;color:#<%= facility.squad.color %>>
+      <%= facility.show %></li>
+      </span>
+    <% end %>
   <% end %>
   <% if @round.attack? %>
     <li>Revise os resultados de todos os combates</li>
