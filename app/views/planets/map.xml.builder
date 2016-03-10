@@ -3,21 +3,22 @@ if @current_squad
 xml.planetas do
   @planets.each do |planet|
     counter = 0
+    @planet_info = (planet.credits).to_s
     xml.planeta do
       xml.nome planet.name.gsub(" ","")
       xml.planet_id planet.id      
       if planet.owner_visible_to?(@current_squad)
-        xml.espaco planet.description + " - " + (planet.credits).to_s
+        xml.espaco @planet_info
         xml.corespaco planet.squad.color
       else
-        xml.espaco planet.description + " - " + (planet.credits).to_s
+        xml.espaco @planet_info
         xml.corespaco ' '
       end
       if planet.ground_owner_visible_to?(@current_squad)
-        xml.terra planet.description + " - " + (planet.credits).to_s
+        xml.terra @planet_info
         xml.corterra planet.ground_squad.color
       else
-        xml.terra planet.description + " - " + (planet.credits).to_s
+        xml.terra @planet_info
         xml.corterra ' '
       end
       xml.squad_id @current_squad.id
