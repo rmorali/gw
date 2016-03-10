@@ -112,11 +112,13 @@ Route.create(:vector_a => brr_station, :vector_b => tatooine, :distance => 1)
 #Goal.create(:description => 'Dominar, mesmo que parcialmente no ar ou terra, o Quadrante Leste e o planeta Haruun Kal')
 #Goal.create(:description => 'Dominar, mesmo que parcialmente no ar ou terra, o Quadrante Sul e o planeta Mustafar')
 #Goal.create(:description => 'Dominar, mesmo que parcialmente no ar ou terra, o Quadrante Oeste e o planeta Corellia')
-Goal.create(:description => 'Dominar, mesmo que parcialmente, o Quadrante Norte e o planeta Geonosis')
-Goal.create(:description => 'Dominar, mesmo que parcialmente, o Quadrante Sul e a Death Star')
-Goal.create(:description => 'Dominar, mesmo que parcialmente, o Quadrante Oeste e o planeta Corellia')
-Goal.create(:description => 'Dominar, mesmo que parcialmente, o Quadrante Leste e o planeta Haruun Kal')
-Goal.create(:description => 'Dominar, completamente, os 4 planetas com Income Especial')
+Goal.create(:description => 'Dominar o Quadrante Norte e o planeta Dagobah')
+Goal.create(:description => 'Dominar o Quadrante Norte e o planeta Kamino')
+Goal.create(:description => 'Dominar o Quadrante Sul e o planeta Mygeeto')
+Goal.create(:description => 'Dominar o Quadrante Sul e o planeta Polis Massa')
+Goal.create(:description => 'Dominar o Quadrante Oeste e o planeta Nal Hutta')
+Goal.create(:description => 'Dominar o Quadrante Leste e o planeta Hoth')
+Goal.create(:description => 'Dominar os 4 planetas com Income Especial')
 
 Setting.create(:initial_factories => 3600,
                :initial_fighters => 0,
