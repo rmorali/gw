@@ -1,0 +1,273 @@
+a:link {
+    background: none repeat scroll 0 0 rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(100, 120, 160, 0.60);
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    font-family: 'Open Sans';
+    font-size: 10px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 20px;
+    margin-left: 2px;
+    padding: 2px;
+    text-decoration: none;
+    transition: all 0.4s ease-in-out 0s;
+}
+
+body {
+    background-image: url(/images/star_background.gif);
+    background-attachment: fixed;
+    background-color: black;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+    font-family: 'Open Sans',sans-serif;
+    font-weight: bold;
+}
+
+a:visited {
+    background: none repeat scroll 0 0 rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(100, 120, 160, 0.60);
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    font-family: 'Open Sans';
+    font-size: 10px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 12px;
+    margin-left: 2px;
+    padding: 2px;
+    text-decoration: none;
+    transition: all 0.4s ease-in-out 0s;
+}
+
+a:hover {
+    background: none repeat scroll 0 0 rgba(20, 10, 10, 0.8);
+    color: white;
+    font-weight: bolder;
+    font-size: 10px;
+    text-decoration: none;
+    border-color: rgba(180, 20, 20, 0.8);
+    padding: 2px;
+}
+
+a:active {
+    box-shadow: 0 0px 6px 1px rgba(180, 20, 20, 0.8) inset;
+    position: relative;
+    top: 2px;
+}
+
+div.squad_info:hover {
+    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60) ;
+    background-color: rgba(17,10,10,0.95);
+}
+div.squad_info {
+    position:fixed;
+    border: 0 outset gray;
+    border-radius: 14px 14px 14px 14px;
+    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
+    margin: -5px 1px 12px;
+    padding: 5px 5px 8px 8px;
+    width: auto;
+    height: auto;
+    background-color: rgba(17,10,10,0.95);
+    transition: all ease-in-out 0.3s;
+    z-index: -1;
+}
+
+div.planet_content {
+    white-space: nowrap;
+    border: 0 outset gray;
+    border-radius: 6px;
+    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
+    margin: 10px 5px 10px;
+    padding: 5px 5px 8px 8px;
+    width: auto;
+    height: auto;
+    background-color: rgba(17,10,10,0.7);
+    transition: all ease-in-out 0.36s;
+    z-index: -10;
+}
+div.planet_content:hover {
+    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
+    background-color: rgba(17,10,10,0.7);
+    z-index:-10;
+}
+div.goal_content {
+    border: 0 outset gray;
+    border-radius: 6px;
+    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
+    margin: 10px 5px 10px;
+    padding: 5px 5px 8px 8px;
+    width: auto;
+    height: auto;
+    background-color: rgba(17,10,10,0.7);
+    transition: all ease-in-out 0.36s;
+    z-index: -10;
+}
+
+div.fleet {
+    white-space: nowrap;
+    border: 0 outset gray;
+    border-radius: 6px;
+    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
+    margin: 10px 5px 10px;
+    padding: 5px 5px 8px 8px;
+    width: auto;
+    height: auto;
+    background-color: rgba(17,10,10,0.7);
+    transition: all ease-in-out 0.36s;
+    z-index: -10;
+}
+div.fleet:hover {
+    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
+    background-color: rgba(17,10,10,0.7);
+    z-index:-10; 
+}
+
+div.alert {
+    white-space: nowrap;
+    border: 0 outset gray;
+    border-radius: 6px;
+    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
+    margin: 10px 5px 10px;
+    padding: 5px 5px 8px 8px;
+    width: auto;
+    height: auto;
+    background-color: rgba(17,10,10,0.7);
+    transition: all ease-in-out 0.36s;
+    z-index: -10;
+}
+div.alert:hover {
+    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
+    background-color: rgba(17,10,10,0.7);
+    z-index:-10; 
+}
+
+
+div.result_content {
+    border: 0 outset gray;
+    border-radius: 6px;
+    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
+    margin: 10px 5px 5px;
+    padding: 5px 5px 8px 8px;
+    width: auto;
+    background-color: rgba(17,10,10,0.5);
+    transition: all ease-in-out 0.36s;
+}
+div.result_content:hover {
+    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
+    background-color: rgba(17,10,10,0.5);
+}
+
+
+h2 {
+   background: -moz-linear-gradient(left center , #5E707D 5%, rgba(10, 10, 10, 0.1)) repeat scroll 0 0 transparent;
+   background: -ms-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
+   background: -o-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
+   background: -webkit-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
+   background: linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
+   border-radius: 10px;
+   border-left: 8px solid #5E707D;
+   color: white;
+   font-family: 'Open Sans',sans-serif;
+   font-size: 14px;
+   padding-bottom: 2px;
+   padding-top: 2px;
+   text-shadow: 0 0 3px black, 0 0 3px black;
+}
+
+h3 {
+   background: -moz-linear-gradient(left center , #5E707D 5%, rgba(10, 10, 10, 0.1)) repeat scroll 0 0 transparent;
+   background: -ms-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
+   background: -o-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
+   background: -webkit-linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
+   background: linear-gradient(left , #5E707D 10%, #000000) repeat scroll 0 0 transparent;
+   border-radius: 10px;
+   border-left: 8px solid #5E707D;
+   color: white;
+   font-family: 'Open Sans',sans-serif;
+   font-size: 12px;
+   padding-bottom: 3px;
+   padding-top: 3px;
+   text-shadow: 0 0 3px black, 0 0 3px black;
+}
+
+div.map
+{
+  border: 0 outset gray;
+  border-radius: 14px 14px 14px 14px;
+  box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
+  margin: 5px 1px 12px;
+  padding: 5px 5px 8px 8px;
+  width: 1355px;
+  background-color: rgba(10,15,24,0.5);
+  transition: all ease-in-out 0.3s;
+  position:fixed;
+  top: 0%;
+  left: 380px;
+}
+
+div.map:hover {
+    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
+    background-color: rgba(17,10,10,0.5);
+}
+
+div.mainpage
+{
+  border: 0 outset gray;
+  border-radius: 14px 14px 14px 14px;
+  box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
+  margin: 15px 15px 15px;
+  padding: 5px 5px 8px 8px;
+  height: auto;
+  width: auto;
+  background-color: rgba(10,15,24,0.7);
+  transition: all ease-in-out 0.3s;
+ 
+  top: 0%;
+  left: 380px;
+}
+
+div.mainpage:hover {
+    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
+    background-color: rgba(17,10,10,0.7);
+}
+
+info.tooltip{
+  position:relative; 
+  cursor:help; 
+  }
+
+  info.tooltip:hover{
+  background:transparent;
+  color:white;
+  z-index:25;
+  }
+
+  info.tooltip tip{
+  display: none
+  }
+
+  info.tooltip:hover tip{ 
+  clear:both;
+  display:block;
+  position:absolute;
+  top:20px;
+  left:40px;
+  width:auto;
+  font-weight: normal;
+  font-size: 9px;
+  padding:2px;
+  border:0px solid #999;
+  background-color: white; 
+  color:black;
+  text-shadow: none;
+  }
+
+input[type="radio"], label {
+  float:left;
+  }
+input{
+  clear:left;
+}

@@ -1,0 +1,67 @@
+<% content_for :for_head do %>
+  <script>
+  document.title = "Resultados <%= @results.first.planet.name %>"
+  </script>
+<% end %>
+<% if @results.first.planet.generic_fleets.any? { |unit| unit.squad == @squad } %>
+<div class="result_content">
+<h2><%= @results.first.planet.name %> <%= " (wormhole p/ #{@results.first.planet.routes.last}) " if @results.first.planet.wormhole? %></h2>
+<%= form_tag "results" do %>
+  <table>
+  <tr valign=bottom>
+  <td></td><td>Destruidos</td><td>Fugiram</td><td>Capturados</td><td>Capturado Por</td><td>Bloqueada?<br>Em Órbita?</td>
+  </tr>
+  <tr>
+  <% @results.each do |result| %>
+  <td>
+    <%= simple_fields_for "results[]", result do |result_form| %>
+       <info class="tooltip">
+       <tip><%= raw result_form.object.description %></tip>
+       <span style="<%= raw result_form.object.span_style %>">
+       <%= result_form.object.show %>
+       </span>
+       </info>
+   </td>
+       <%= result_form.input :automatic, :as => :hidden %>
+       <%= result_form.input :quantity, :as => :hidden %>
+       <%= result_form.association :generic_unit, :as => :hidden %>
+       <%= result_form.association :generic_fleet, :as => :hidden %>
+       <%= result_form.association :planet, :as => :hidden %>
+       <%= result_form.association :round, :as => :hidden %>
+       <%= result_form.association :squad, :as => :hidden %>
+       <td align = "center">
+       <%= result_form.input :blasted, :input_html => {:style => 'width: 40px'}, :label => false if result_form.object.editable?('Blasted') %>
+       <% if result_form.object.automatic? %>
+         <center>Resultado<br>Automático</center>
+       <% end %>
+       </td>
+       <td align = "center">
+       <%= result_form.input :fled, :input_html => {:style => 'width: 40px'}, :label => false if result_form.object.editable?('Fled') %>
+       </td>
+       <td align = "center">
+       <%= result_form.input :captured, :input_html => {:style => 'width: 40px'}, :label => false if result_form.object.editable?('Captured') %>
+       </td>
+       <td align = "center">
+       <%= result_form.association :captor, :collection => @squads.select { |squad| squad != result_form.object.squad }, :label => false if result_form.object.editable?('Captor') %>
+       </td>
+       <td align = "center">
+       <%= result_form.input :not_landed, :input_html => {:style => 'width: 40px'}, :label => false if result_form.object.editable?('NotLanded') %>
+       <%= result_form.check_box :sabotaged if result_form.object.editable?('Sabotaged') %>
+       </td>
+       </tr>
+    <% end %>
+  <% end %>
+  </table>
+<info class="tooltip">
+   <tip style=width:250px>Se houver inconsistência o resultado não é gravado.</tip>
+  <%= submit_tag 'Salvar resultados' %>
+  </info>
+<br><br>
+<% end %>
+</div>
+<br>
+<% else %>
+<div class="result_content">
+Não há unidades do seu esquadrão neste planeta.
+</div>
+<% end %>

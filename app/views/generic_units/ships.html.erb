@@ -1,0 +1,25 @@
+<div class="fleet">
+<h2>Adicione mais unidades à sua facção:</h2>
+<table>
+<%= simple_form_for :ships, :url => url_for(:controller => 'generic_units', :action => 'add_to_squad')  do |f| %>
+  <tr>
+  <td><%= f.input :id, :collection => @generic_units, :label => false %></td>
+  <td><%= f.submit 'Add' %></td>
+  <tr>
+<% end %>
+</table>
+<h2>Unidades já disponíveis na sua frota:</h2>
+
+<span style=font-weight:bold;color:#<%= @squad.color %>
+
+<% @fleet.each do |fleet| %>
+
+ <%= fleet.name %>
+<br>
+
+<% end %>
+</span>
+<br>
+<br>
+<a href = "/fleets">FINALIZAR</a>  
+</div>

@@ -1,0 +1,54 @@
+<script>
+refreshParent();
+document.title = "<%= @facility %> <%= @planet %>"
+</script>
+<div class="fleet">
+<h2><%= @planet %></h2>
+<table>
+<tr>
+<td width=50%>
+  <h3><%= @facility %></h3>
+  <span style=font-weight:bold;font-size:15px;color:yellow>
+  Pontos de Produção: <%= @facility.balance.to_i %><br>
+  </span>
+  <span style=font-weight:bold;font-size:13px;color:yellow>
+  Income por Turno: <%= @facility.capacity + @facility.current_upgrade_ratio %><br>
+  Padrão: <%= @facility.capacity %><br>
+  Upgrades: +<%= @facility.current_upgrade_ratio %> (Nível <%= @facility.level %>)<br>
+  </span>
+  <span style=font-weight:bold;font-size:13px;color:red>
+  <%  if @facility.sabotaged? %>
+  <%= "Fábrica Sabotada: -" %><%= @facility.capacity / 2 %> (-50%)<br>
+  <% end %>
+  </span>
+  <p>
+  <div align = left><a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a></div>
+</div>
+</td>
+<td>
+<h3>Upgrade</h3>
+O Upgrade custa <%= @facility.upgrade_cost %> créditos<br>
+Cada nível aumenta em <%= @facility.upgrade_ratio %> o income padrão<br>
+Atenção: O upgrade é perdido ao desmontar a fábrica
+<p>
+<%= render :partial => 'aprimorar', :locals => { :facility => @facility } %>
+</td>
+</tr>
+</table>
+</div>
+<div class="fleet">
+<table> 
+<tr>
+<th width=10%>Qtde:</th><th width=20%>Unidade:</th><th align=left></th>
+</tr>
+<tr>
+<%= simple_form_for :unit, :url => url_for(:controller => 'facility_fleets', :action => 'produce') do |f| %>
+  <%= f.hidden_field :facility, :value => @facility.id %> 
+<td><%= f.input :quantity, :label => false, :input_html => {:style => 'width: 40px'} %></td>
+<td><%= f.input :id, :collection => @units, :label => false %></td>
+<td><%= f.submit 'Produzir' %></td>
+</tr>
+</table>
+<% end %>
+</div>
+

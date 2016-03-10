@@ -1,0 +1,273 @@
+
+
+Started GET "/" for 192.168.0.108 at 2014-07-20 11:42:36 -0700
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 10ms (Views: 9.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 192.168.0.108 at 2014-07-20 11:42:39 -0700
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:42:40 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 53ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:42:50 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:43:00 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:43:10 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:43:20 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:43:30 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:43:40 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:43:50 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:44:00 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:44:10 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:44:20 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 5ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:44:30 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 4ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:44:40 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 5ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:44:50 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:45:00 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 3ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:45:10 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 5ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:45:20 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:45:30 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 7ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:45:40 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:45:50 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:46:00 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:46:10 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:46:20 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 7ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:46:30 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:46:40 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:46:50 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:47:00 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:47:10 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+
+
+
+Started GET "/planets/map.xml" for 192.168.0.108 at 2014-07-20 11:47:20 -0700
+  Processing by PlanetsController#map as XML
+Completed 500 Internal Server Error in 6ms
+
+NoMethodError (undefined method `flee_tax' for "NO SQUAD":String):
+  app/controllers/planets_controller.rb:43:in `map'
+

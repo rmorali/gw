@@ -1,0 +1,4 @@
+class Fighter < Unit
+
+end
+

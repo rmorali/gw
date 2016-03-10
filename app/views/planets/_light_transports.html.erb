@@ -1,0 +1,22 @@
+<info class="tooltip">
+<tip><%= raw fleet.description %></tip>
+<span style="<%= raw fleet.span_style %>">
+<%= fleet.show %>
+</span>
+</info>
+<% if fleet.squad == @squad && !@squad.ready? && !@round.attack? %>
+  <a href = "" onclick="window.open('/light_transports/<%= fleet.id %>/edit', 'Transport <%= fleet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=450')">+</a>
+<% end %>
+<% unless fleet.cargo.empty? %>
+  <% fleet.cargo.each do |cargo| %>
+    <br>
+    <span style="<%= raw cargo.span_style %>">
+    + <%= cargo.show %>
+    </span>
+  <% end %>
+<% end %>
+
+
+
+
+

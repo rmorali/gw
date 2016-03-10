@@ -1,0 +1,3 @@
+class Trooper < Unit
+end
+

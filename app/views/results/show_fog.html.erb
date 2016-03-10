@@ -1,0 +1,41 @@
+<script>
+document.title = "Inteligência"
+</script>
+<div class="fleet">
+<h2> Centro de Inteligência </h2>
+Últimas informações de espionagem:<br>
+  <% @planets.each do |planet| %>
+    <h3> <%= planet.name %>
+      <%= " (wormhole p/ #{planet.routes.last}) " if planet.wormhole? %>
+      <info class="tooltip">
+        <tip><b>Estacao de negociacao</b><br>Vender: 50% abaixo da tabela<br>Comprar: até 10% abaixo da tabela</tip>
+      <%= ' (tradeport)' if planet.tradeport? %>
+      </info>
+    </h3>
+    <p>
+    <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
+      <% if fleet.round.number >= planet.results.maximum("round_id") and fleet.squad != @squad and planet.results.any? { |result| result.squad == @squad && result.round == fleet.round }%>
+        <% unless fleet.final_quantity <= 0 %>
+          <span style="<%= raw fleet.span_style %>">
+          <% case fleet.generic_unit.type %>
+          <% when 'Warrior' %>
+            <%= fleet.generic_unit.name %> (<%= fleet.final_quantity %> vidas)
+          <% when 'Commander' %>
+            <%= fleet.generic_unit.name %>
+          <% when 'Facility' %>
+            <%= fleet.generic_unit.name %>
+          <% when 'CapitalShip' %>
+            <%= fleet.show %>
+          <% when 'Trooper' %>
+            <%= fleet.final_quantity %>
+            <%= fleet.generic_unit.name %> 
+          <% else %>
+            <%= fleet.final_quantity %>
+            <%= fleet.generic_unit.name %>  
+          <% end %></span>
+          <br>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,28 @@
+<script>
+document.title = "<%= @fleet.name %> de <%= @planet.name %>"
+</script>
+<div class="fleet">
+<h2> <%= @fleet.generic_unit.name %> de <%= @planet.name %></h2>
+Foram detectadas ameaças inimigas em:<br><br>
+<% @routes.sort_by{|a| [a.name]}.each do |planet| %>
+   <% unless planet.generic_fleets.select { |units| units.squad != @current_squad && (units.generic_unit.type == 'CapitalShip' || units.generic_unit.type == 'Facility' || units.generic_unit.type == 'Sensor' || units.generic_unit.type == 'Trooper') }.empty? %>
+     <h3> <%= planet.name %> </h3>
+       <% planet.generic_fleets.select { |units| units.squad != @current_squad && (units.generic_unit.type == 'CapitalShip' || units.generic_unit.type == 'Facility' || units.generic_unit.type == 'Sensor' || units.generic_unit.type == 'Trooper') }.each do |fleet| %>
+       <span style="<%= raw fleet.span_style %>">
+       <% case fleet.generic_unit.type %>
+       <% when 'CapitalShip' %>
+         <%= fleet.name %>
+       <% when 'Facility' %>
+         <%= fleet.name %>
+       <% when 'Trooper' %>
+         <%= fleet.name %>s
+       <% else %>
+         <%= fleet.show %>
+       <% end %></span>
+       <br>
+     <% end %>
+   <br>
+   <% end %>
+
+<% end %>
+</div>

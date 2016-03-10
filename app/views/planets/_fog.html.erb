@@ -1,0 +1,35 @@
+<h2> <%= planet.name %> </h2>
+<% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
+      <% if fleet.round.number >= planet.results.maximum("round_id") and fleet.squad != @squad and planet.results.any? { |result| result.squad == @squad && result.round == fleet.round } %>
+        <info class="tooltip">
+        <tip><%= raw fleet.description %></tip>
+        <span style="<%= raw fleet.span_style %>">
+        <% unless fleet.final_quantity <= 0 %>
+          <% @round_number = fleet.round.number %>
+          <% case fleet.generic_unit.type %>
+          <% when 'Warrior' %> 
+            <%= fleet.generic_unit.name %> (<%= fleet.final_quantity %> vidas)
+          <% when 'Commander' %>
+            <%= fleet.generic_unit.name %>
+          <% when 'Facility' %>
+            <%= fleet.generic_unit.name %>
+          <% when 'CapitalShip' %>
+            <%= fleet.show %>
+          <% when 'Trooper' %>
+            <%= fleet.final_quantity %>
+            <%= fleet.generic_unit.name %> 
+          <% else %>
+            <%= fleet.final_quantity %>
+            <%= fleet.generic_unit.name %>  
+          <% end %>
+          <br>
+        <% end %>
+        </span>
+        </info>
+      <% end %>
+    <% end %>
+<% if @round_number %>
+  <br>
+  Esta foi a frota vista neste planeta no Round: <%= @round_number %>
+  <br><br>
+<% end %>

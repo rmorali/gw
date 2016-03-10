@@ -1,0 +1,57 @@
+<script>
+document.title = "Log de batalhas"
+</script>
+<div class="fleet">
+Log de todas as batalhas do esquadrão:
+  <% @rounds.sort_by{|a| a.number}.reverse.each do |round| %>
+    <h2> Round: <%= round.number %> </h2>
+
+    <% round.results.group_by(&:planet).each do |planet, fleet| %>
+      <% if fleet.any? { |unit| unit.squad == @squad } %>
+        <h3> <%= planet.name %>
+      <info class="tooltip">
+        <tip>Conexão direta com <%= planet.routes.last %> </tip>
+        <%= ' (wormhole) ' if planet.wormhole? %>
+      </info>
+      <info class="tooltip">
+        <tip>Estacao de negociacao (zona neutra)<br>Vender: 50% do valor da unidade.<br>Comprar: Descontos de 10% a 50%</tip>
+      <%= ' (tradeport)' if planet.tradeport? %>
+      </info>
+        </h3>
+        <% fleet.each do |unit| %>
+          <span style=color:#<%= unit.squad.color %>>
+          <% case unit.generic_unit.type %>
+            <% when 'Warrior' %>
+              <span style=font-weight:strong;outline:dotted;background-color:#331100;color:#<%= unit.squad.color %>>
+              <%= unit.show %>
+            <% when 'Commander' %>
+              <span style=font-weight:strong;outline:solid;color:#<%= unit.squad.color %>>
+              <%= unit.show %>
+            <% when 'Facility' %>
+              <span style=color:#<%= unit.squad.color %>>
+              <%= unit.generic_unit.name %>
+              ( <%= unit.producing_unit.name if unit.producing_unit %> / <%= unit.producing_unit2.name if unit.producing_unit2 %> )
+            <% when 'CapitalShip' %>
+              <span style=color:#<%= unit.squad.color %>>
+              <%= unit.show %>
+            <% when 'Sensor' %>
+              <span style=color:#<%= unit.squad.color %>>
+              <%= unit.generic_unit.name %>
+            <% else %>
+              <span style=color:#<%= unit.squad.color %>>
+              <%= unit.show %> 
+          <% end %></span>
+          <span style=color:#40E0D0> <%= unit.show_results %> </span>
+          <br>
+        <% end %>
+      <% end %>
+      <% if round == @round %>
+        <p>
+        <a href = "" onclick="window.open('/planets/<%= planet.id %>/results', 'Resultados <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=630, height=540')">postar resultados</a>
+      <% end %>
+
+    <% end %>
+
+  <% end %>
+ 
+</div>

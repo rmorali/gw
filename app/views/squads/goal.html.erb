@@ -1,0 +1,12 @@
+<div class="goal_content">
+<span style=color:#<%= @squad.color %>>** Seu objetivo ** ( <%= @squad.name %> )
+<br>
+Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
+<br><br>
+Lista completa dos objetivos:
+<p>
+<% @goals.each do |goal| %>
+  <p>
+  Objetivo <%= goal.id %>: <%= goal.description %>
+<% end %>
+</div>

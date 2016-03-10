@@ -1,0 +1,4 @@
+class CapitalShip < Unit
+
+end
+

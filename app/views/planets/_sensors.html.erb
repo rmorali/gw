@@ -1,0 +1,9 @@
+<info class="tooltip">
+<tip><%= raw fleet.description %></tip>
+<span style="<%= raw fleet.span_style %>">
+<%= fleet.show %>
+</span>
+</info>
+<% unless fleet.squad != @squad || fleet.squad.ready? || fleet.moving? || fleet.sabotaged? || @round.attack? %>
+  <a href = "" onclick="window.open('/sensors/<%= fleet.id %>/edit', 'Sensor <%= fleet.planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=400')">+</a>
+<% end %>

@@ -1,0 +1,47 @@
+<% content_for :for_head do %>
+  <script>
+  document.title = " Novo Esquadrao "
+  </script>  
+<% end %>
+<div class="fleet">
+<h2>Novo Esquadrão</h2>
+<span style=color:#FFFF00;font-size:14px>Seu Objetivo: <%= @goal.id %> - <%= @goal.description %></span>
+<br>
+<table>
+<%= simple_form_for [@squad] do |f| %>
+<tr>
+<td align=right>Nome: </td>
+<td><%= f.input :name, :label => false, :input_html => { :size => 10 } %> </td>
+</tr>
+<tr>
+<td>Facção: </td>
+<td><%= f.input :faction, :collection => FACTIONS, :label => false %></td>
+</tr>
+<tr>
+<td>Cor: </td>
+<td><%= f.input :color, :collection => @colors, :label => false %></td>
+</tr>
+<tr>
+<td>Home Planet: </td>
+<td><%= f.input :home_planet_id, :collection => @planets.collect {|c| [c.name, c.id]}, :label => false %></td>
+</tr>
+<tr>
+<td>URL Fórum Secreto: </td>
+<td><%= f.input :url, :label => false, :input_html => { :size => 38 }, :placeholder => 'http://' %></td>
+</tr>
+<tr>
+<%= f.hidden_field :goal_id, :value => @goal.id %>
+<td><%= f.submit ' Criar squad ' %></td>
+</tr>
+</table>
+<% end %>
+<br>
+- Tabela de cores:<br>
+<span style=color:#FF0000>FF0000 - Vermelho</span><br>
+<span style=color:#00FF00>00FF00 - Verde</span><br>
+<span style=color:#FFFF00>FFFF00 - Amarelo</span><br>
+<span style=color:#66CCFF>66CCFF - Roxo</span><br>
+<span style=color:#FFFFFF>FFFFFF - Branco</span><br>
+<span style=color:#EE82EE>EE82EE - Magenta</span><br>
+
+</div>

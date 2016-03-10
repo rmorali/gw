@@ -1,0 +1,54 @@
+class SquadsController < ApplicationController
+
+  def new
+    @squad = Squad.new
+    @colors = %w[FF0000 00FF00 FFFF00 66CCFF FFFFFF EE82EE]
+    @planets = Planet.where(:tradeport => nil)
+    @goal = Goal.get_goal
+  end
+
+  def create
+    squad = Squad.create(params[:squad])
+    current_user.squad = squad
+    squad.credits = Setting.getInstance.initial_credits
+    squad.save!
+    redirect_to :controller => 'generic_units', :action => 'ships', :id => squad.id 
+  end
+
+  def ready
+    @squad = current_squad
+    @squad.ready!
+    @squad.reload
+    @round = Round.getInstance
+    if @squad.ready == true
+      @status = "preparado e aguardando"
+    else
+      @status = "em fase de estrategia" if @round.move == true
+      @status = "em fase de combates" if @round.attack == true
+    end
+  end
+
+  def transfer
+    @squad = current_squad
+    @squads = Squad.all.reject! { |squad| squad == @squad }
+  end
+
+  def transfer_credits
+    unless params[:transfer][:credits].empty? || params[:transfer][:squad].empty?
+      @squad_destination = Squad.find(params[:transfer][:squad])
+      @quantity = (params[:transfer][:credits]).to_i
+      current_squad.transfer_credits @quantity, @squad_destination
+      redirect_to :back
+    end
+  end
+
+  def goal
+    #@squad = Squad.find(params[:id])
+    @squad = current_squad
+    @goal = @squad.goal
+    @goals = Goal.all
+  end
+
+
+end
+

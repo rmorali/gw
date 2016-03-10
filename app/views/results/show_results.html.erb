@@ -1,0 +1,100 @@
+<script>
+document.title = "Lista de Combates"
+</script>
+<div class="fleet">
+  <% @rounds.sort_by{|a| a.number}.reverse.each do |round| %>
+    <h2> Round: <%= round.number %> </h2>
+
+    <% round.results.group_by(&:planet).each do |planet, fleet| %>
+      <% if fleet.any? { |unit| unit.squad == @squad } %>
+        <div class="fleet">
+        <h3> <%= planet.name %>
+      <%= " (wormhole p/ #{planet.routes.last}) " if planet.wormhole? %>
+      <info class="tooltip">
+        <tip><b>Estacao de negociacao</b><br>Vender: 50% abaixo da tabela<br>Comprar: até 10% abaixo da tabela</tip>
+      <%= ' (tradeport)' if planet.tradeport? %>
+      </info>
+        </h3>
+        <table>
+        <tr><td width=200>
+        <% fleet.each do |unit| %>
+          <info class="tooltip">
+          <tip><%= raw unit.description %></tip>
+          <span style="<%= raw unit.span_style %>">
+          <% case unit.generic_unit.type %>
+            <% when 'Warrior' %>   
+              <%= unit.show %>
+            <% when 'Commander' %>
+              <%= unit.show %>
+            <% when 'Facility' %>
+              <%= unit.show %>
+            <% when 'CapitalShip' %>   
+              <%= unit.show %>
+            <% when 'LightTransport' %>
+              <%= unit.show %> 
+            <% when 'Trooper' %>
+              <%= unit.show %>
+            <% else %>
+              <%= unit.show %> 
+          <% end %></span></info>
+          <span style=color:#40E0D0> <%= unit.show_results %> </span>
+          <br>
+        <% end %>
+        </td>
+        <% if round == @round %>
+          <td>
+          <info class="tooltip">
+          <tip><b>Partida</b><br>1 x 1 se um squad<br>menor que $ <%= Setting.getInstance.maximum_fleet_size %></tip>
+          Partida: <b><%= planet.players_quantity %></b><br>
+          </info>
+          <info class="tooltip">
+          <tip><b>Distancia no XWA</b><br>-Random 4 a 8 km</tip>
+          Distancia: <b><%= planet.distance %> km</b><br>
+          </info>
+          <info class="tooltip">
+          <tip><b>Atacante</b><br>-Frota: $ <%= planet.calculate_fleet_size_for(planet.first_player) %><br>-Toma iniciativa<br>-Usa slots de cima<br>-Monta frota primeiro</tip>
+          Atacante: <span style=color:#<%= planet.first_player.color %>><%= planet.first_player.name %></span><br>
+          </info>
+          <% if planet.squads.count > 2 %>
+            <% mid_defense = planet.squads.reject {|x| x == planet.first_player or x == planet.last_player}.first %>
+            <info class="tooltip">
+            <tip><b>1.Defensor</b><br>-Frota: $ <%= planet.calculate_fleet_size_for(mid_defense) %><br>-Host do jogo<br>-Usa slots de baixo<br>-Monta frota depois</tip>
+             1. Defensor: <span style=color:#<%= mid_defense.color %>><%= mid_defense.name %></span><br>
+            </info>
+          <% end %>
+          <info class="tooltip">
+          <tip><b>Defensor</b><br>-Frota: $ <%= planet.calculate_fleet_size_for(planet.last_player) %><br>-Host do jogo<br>-Usa slots de baixo<br>-Monta frota depois</tip>
+          Defensor: <span style=color:#<%= planet.last_player.color %>><%= planet.last_player.name %></span><br>
+          </info>
+          <br>
+          <a href = "" onclick="window.open('/planets/<%= planet.id %>/results', 'Resultados <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=630, height=540')">postar resultados</a>
+          <p><p>
+
+          
+          <% if planet.results.any? { |result| !result.automatic? && result.round == @round && ( result.generic_unit.type == 'Trooper' || result.generic_unit.type == 'Warrior' ) } %>
+            <center>
+            <info class="tooltip"><tip>Calcular resultado automatico</tip> <span style=color:cyan;font-weight:bold>Simular combates</span></info>
+            </center>
+          <% end %>
+          
+          <% if planet.results.any? { |result| !result.automatic? && result.round == @round && result.generic_unit.type == 'Trooper' } %>
+            <a href = "" onclick="window.open('/results/<%= planet.id %>/calculate_troopers', 'Resultados <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=630, height=540')">Troopers</a>
+          <% end %>
+
+          <% if planet.results.any? { |result| !result.automatic? && result.round == @round && result.generic_unit.type == 'Warrior' } %>
+            <a href = "" onclick="window.open('/results/<%= planet.id %>/calculate_warriors', 'Resultados <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=630, height=540')">Jedi / Sith</a>
+          <% end %>
+          </td>
+        <% end %>
+        </tr>
+        </table>
+</div>
+
+      <% end %>
+
+
+    <% end %>
+
+  <% end %>
+ 
+</div>

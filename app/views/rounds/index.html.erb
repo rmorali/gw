@@ -1,0 +1,34 @@
+<% content_for :for_head do %>
+  <script>
+  document.title = " Rounds "
+  </script>  
+<% end %>
+<div class="fleet">
+<h2> Ferramentas para Reset e Inicio de Partida </h2>
+<p>
+<%= link_to 'NEW GAME', :controller => 'rounds', :action => 'new_game' %> - Inicia uma nova partida
+<p>
+<%= link_to 'Passar MOVIMENTO', :controller => 'rounds', :action => 'end_moving' %> - Passa da fase de estratégia para a de combates
+<p>
+<%= link_to 'Passar TURNO', :controller => 'rounds', :action => 'end_round' %> - Passa o turno após postagem de resultados
+<p>
+<%= link_to 'Zerar BD', :controller => 'rounds', :action => 'reset_database' %> - Zera totalmente o XWS (Cuidado)
+<p>
+<%= link_to 'Criar 2 SQUADS', :controller => 'rounds', :action => 'create_2_test_squads' %> - Cria 2 esquadrões para teste, senha 123456
+<p>
+<%= link_to 'Criar 4 SQUADS', :controller => 'rounds', :action => 'create_4_test_squads' %> - Cria 4 esquadrões para teste, senha 123456
+<p>
+Usuários registrados:<br>
+<% if @user %>
+  <% @user.each do |user| %>
+    <span style=color:#<%= Squad.where(:user => user).first.color unless Squad.where(:user => user).first == nil %>>
+    <%= user.email %> - <%= Squad.where(:user => user).first.name unless Squad.where(:user => user).first == nil %>
+    </span>
+    <br>
+  <% end %>
+<% end %>
+</div>
+<div class="fleet">
+<h2> Setup do XWS </h2>
+<%= link_to 'Clique aqui', :controller => 'settings', :action => 'index' %>
+</div>

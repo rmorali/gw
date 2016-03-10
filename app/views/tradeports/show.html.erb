@@ -1,0 +1,38 @@
+<script>
+refreshParent();
+document.title = "Tradeport <%= @planet.name %>"
+</script>
+<h2> <%= @planet.name %> <%= ' (wormhole) ' if @planet.wormhole? %><%= ' (tradeport)' if @planet.tradeport? %></h2>
+<div class="fleet">
+<table>
+<tr>
+<th width=10%>Qtde:</th><th width=90%>Unidade:</th>
+</tr>
+<tr>
+<%= simple_form_for :fleet, :url => url_for(:controller => 'tradeports', :action => 'sell') do |f| %>
+  <%= f.hidden_field :planet, :value => @planet.id %>
+<td><%= f.input :quantity, :label => false, :input_html => {:style => 'width: 40px'} %></td>
+<td><%= f.input :id, :collection => @tradeport_stock, :label => false %></td>
+</tr>
+<tr>
+<td></td><td><%= f.submit 'Comprar' %></td>
+</tr>
+</table>
+<% end %>
+</div>
+<div class="fleet">
+<table>
+<tr>
+<th width=10%>Qtde:</th><th width=90%>Unidade:</th>
+</tr>
+<tr>
+<%= simple_form_for :fleet, :url => url_for(:controller => 'tradeports', :action => 'buy') do |f| %>
+  <td><%= f.input :quantity, :label => false, :input_html => {:style => 'width: 40px'} %></td>
+  <td><%= f.input :id, :collection => @fleets, :label => false %></td>
+</tr>
+<tr>
+  <td></td><td><%= f.submit 'Vender' %></td>
+</tr>
+</table>
+<% end %>
+</div>

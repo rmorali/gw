@@ -1,0 +1,94 @@
+<script>
+refreshParent();
+document.title = " <%= @capital_ship.generic_unit.name %> '<%= @capital_ship.fleet_name %>'"
+</script>
+<div class="fleet">
+  <h2><%= @planet %></h2>
+  <h3><%= @capital_ship.show %> '<%= @capital_ship.fleet_name %>'</h3>
+
+<% unless @capital_ship.fleet_name? %>
+  <%= simple_form_for @capital_ship, :url => url_for(:controller => 'capital_ships', :action => 'update') do |f| %>
+    <table>
+    <tr>
+    <td><%= f.input :fleet_name, :label => false, :input_html => { :size => 10 } %></td>
+    <td><%= f.submit 'Batizar' %></td>
+    </tr> 
+    </table>
+  <% end %>
+<% end %>
+
+</div>
+
+<div class="fleet">
+Unidades carregadas:
+<p>
+<table>
+<% @carried_fleets.each do |fleet| %>
+  <tr>
+  <%= simple_form_for fleet, :url => url_for(:controller => 'capital_ships', :action => 'unload_from') do |f| %>
+    <td><span style=<%= fleet.span_style %>><%= fleet.show %></span></td>
+    <td align=right>
+        <% if fleet.type?(Warrior) || fleet.type?(Commander) || fleet.type?(CapitalShip) || fleet.type?(Facility) %>
+          <%= f.input :quantity, :collection => fleet.quantity..fleet.quantity, :label => false %>
+        <% else %>
+          <%= f.input :quantity, :collection => 1..fleet.quantity, :label => false %>
+        <% end %>
+    </td>
+        <%= f.hidden_field :id, :value => fleet.id %>
+    <td><%= f.submit '>' %></td>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+</div>
+<div class="fleet">
+Carregar Unidades:
+<p>
+<table>
+<% @carriable_fleets.each do |fleet| %>
+  <tr>
+  <%= simple_form_for fleet, :url => url_for(:controller => 'capital_ships', :action => 'load_in') do |f| %>
+    <td><span style=<%= fleet.span_style %>><%= fleet.show %></span></td>
+    <td align=right>
+        <% if fleet.type?(Warrior) || fleet.type?(Commander) || fleet.type?(CapitalShip) || fleet.type?(Facility) %>
+          <%= f.input :quantity, :collection => fleet.quantity..fleet.quantity, :label => false %>
+        <% else %>
+          <%= f.input :quantity, :collection => 1..fleet.quantity, :label => false %>
+        <% end %>
+    </td>
+        <%= f.hidden_field :id, :value => fleet.id %>
+    <td><%= f.submit '<' %></td>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+Carga permitida (Grande / Pequena): <%= @capital_ship.heavy_loading_capacity %> / <%= @capital_ship.light_loading_capacity %> 
+</div>
+<div class="fleet">
+  <%= simple_form_for @capital_ship, :url => url_for(:controller => 'capital_ships', :action => 'install_skill') do |f| %>
+    <table>
+    <tr><td><b>Skills Disponíveis:</b></td><td><b>Skills Instaladas:</b></td></tr>
+    <tr><td>
+    <%= f.hidden_field :id %>
+    <%= f.input :skill_id,
+    :collection => @skills,
+    :label_method => :show,
+    :value_method => :id,
+    :as => :radio,
+    :label => false %></td>
+    <td><%= "- #{@capital_ship.skill.name}" if @capital_ship.skill %></td></tr>
+    <tr>
+    <td>
+    <p><%= f.submit 'Instalar' %>
+    <% end %>
+    </td>
+    <td>
+  <%= simple_form_for @capital_ship, :url => url_for(:controller => 'capital_ships', :action => 'uninstall_skill') do |f| %>
+    <%= f.hidden_field :id %>
+    <%= f.submit 'Desinstalar' %>
+  <% end %>
+     </td>
+    </tr>
+    </table>
+</div>
+

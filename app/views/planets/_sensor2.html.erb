@@ -1,0 +1,13 @@
+<h2> <%= @planet.name %> </h2>
+<% unless @planet.generic_fleets.select { |units| units.squad != @current_squad && units.round < @round.number && (units.generic_unit.type == 'CapitalShip' || units.generic_unit.type == 'Facility' || units.generic_unit.type == 'Sensor' || units.generic_unit.type == 'Trooper') }.empty? %>
+  O Sensor de <%= sensor.name %> detectou as seguintes ameaças:<br>
+  <% @planet.generic_fleets.select { |units| units.squad != @current_squad && units.round < @round.number && (units.generic_unit.type == 'CapitalShip' || units.generic_unit.type == 'Facility' || units.generic_unit.type == 'Sensor' || units.generic_unit.type == 'Trooper') }.sort_by { |fleet| -fleet.generic_unit.price }.each do |fleet| %>
+    <span style="<%= raw fleet.span_style %>">
+    <%= fleet.generic_unit.name %>
+    </span>
+    <br>
+  <% end %>
+<% else %>
+  O Sensor de <%= sensor.name %> não detectou ameaças neste planeta.<br><br>
+<% end %>
+
