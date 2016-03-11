@@ -8,17 +8,18 @@ document.title = "<%= @facility %> <%= @planet %>"
 <tr>
 <td width=50%>
   <h3><%= @facility %></h3>
-  <span style=font-weight:bold;font-size:15px;color:yellow>
+  <span style=font-weight:bold;font-size:16px;color:yellow>
   Pontos de Produção: <%= @facility.balance.to_i %><br>
   </span>
-  <span style=font-weight:bold;font-size:13px;color:yellow>
-  Income por Turno: <%= @facility.capacity + @facility.current_upgrade_ratio %><br>
-  Padrão: <%= @facility.capacity %><br>
-  Upgrades: +<%= @facility.current_upgrade_ratio %> (Nível <%= @facility.level %>)<br>
+  <span style=font-weight:bold;font-size:13px;color:#00FF00>
+  Nível: <%= @facility.level %><br>
+  Income Previsto: <%= @facility.capacity %> (+<%= @facility.current_upgrade_ratio %>)<br>
+  Próximo Turno: <%= @facility.default_capacity + @facility.balance %>
   </span>
-  <span style=font-weight:bold;font-size:13px;color:red>
+  <span style=font-weight:bold;font-size:13px;color:#FF0000>
   <%  if @facility.sabotaged? %>
-  <%= "Fábrica Sabotada: -" %><%= @facility.capacity / 2 %> (-50%)<br>
+    <br>
+    Sabotada: Perdeu <%= @facility.capacity / 2 %> (-50%) de Income<br>
   <% end %>
   </span>
   <p>
@@ -28,8 +29,7 @@ document.title = "<%= @facility %> <%= @planet %>"
 <td>
 <h3>Upgrade</h3>
 O Upgrade custa <%= @facility.upgrade_cost %> créditos<br>
-Cada nível aumenta em <%= @facility.upgrade_ratio %> o income padrão<br>
-Atenção: O upgrade é perdido ao desmontar a fábrica
+Cada nível dá bônus de <%= @facility.upgrade_ratio %> no income<br>
 <p>
 <%= render :partial => 'aprimorar', :locals => { :facility => @facility } %>
 </td>
