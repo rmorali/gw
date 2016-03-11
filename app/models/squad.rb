@@ -62,7 +62,7 @@ class Squad < ActiveRecord::Base
   def warp_facility_on value, planet
     facilities = Facility.allowed_for(faction).where(:price => value)
     random_facility = facilities[rand(facilities.size)]
-    facility = facility_fleets.new(:facility => random_facility, :planet => planet, :balance => random_facility.capacity, :level => 0, :fleet_name => ' ', :round => 0)
+    facility = facility_fleets.new(:facility => random_facility, :planet => planet, :balance => random_facility.capacity, :level => 0, :fleet_name => ' ', :round => Round.getInstance.number)
     facility.save!
   end
 
