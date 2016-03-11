@@ -1,34 +1,34 @@
-bespin = Planet.create(:name => 'Bespin', :sector => 1, :credits => 600, :description => 'Bespin Cloud City' )
+bespin = Planet.create(:name => 'Bespin', :sector => 1, :credits => 500, :description => 'Bespin Cloud City' )
 brr_station = Planet.create(:name => 'BrR Station', :sector => 4, :credits => 0, :tradeport => true, :description => 'Tradeport' )
 cimf_station = Planet.create(:name => 'CIMF Station', :sector => 1, :credits => 0, :tradeport => true, :description => 'Tradeport' )
-concord_dawn = Planet.create(:name => 'Concord Dawn', :sector => 2, :credits => 600, :description => 'Raxus Prime' )
-corellia = Planet.create(:name => 'Corellia', :sector => 2, :credits => 600, :description => 'Corellia' )
-coruscant = Planet.create(:name => 'Coruscant', :sector => 2, :credits => 600, :description => 'Coruscant' )
-dagobah = Planet.create(:name => 'Dagobah', :sector => 4, :credits => 600, :description => 'Dagobah' )
-deathstar = Planet.create(:name => 'Death Star', :sector => 2, :credits => 600, :description => 'Deathstar' )
-endor = Planet.create(:name => 'Endor', :sector => 1, :credits => 600, :description => 'Kashyyyk' )
-felucia = Planet.create(:name => 'Felucia', :sector => 3, :credits => 600, :description => 'Felucia' )
-geonosis = Planet.create(:name => 'Geonosis', :sector => 4, :credits => 600, :description => 'Geonosis/R. Prime' )
-haruun_kal = Planet.create(:name => 'Haruun Kal', :sector => 4, :credits => 600, :description => 'Haruun Kal' )
-hoth = Planet.create(:name => 'Hoth', :sector => 1, :credits => 600, :description => 'Hoth/RhenVar Harbor' )
-kamino = Planet.create(:name => 'Kamino', :sector => 3, :credits => 600, :description => 'Kamino' )
-kashyyyk = Planet.create(:name => 'Kashyyyk', :sector => 3, :credits => 600, :description => 'Kashyyyk' )
-kessel_asteroids = Planet.create(:name => 'Kessel Asteroids', :sector => 3, :credits => 600, :description => 'Polis Massa' )
-kuat = Planet.create(:name => 'Kuat', :sector => 4, :credits => 600, :description => 'Ord Ibanna' )
-mandalore = Planet.create(:name => 'Mandalore', :sector => 2, :credits => 600, :description => 'Yavin Arena' )
-mon_calamari = Planet.create(:name => 'Mon Calamari', :sector => 3, :credits => 600, :description => 'Kamino Tipoca City' )
-mustafar = Planet.create(:name => 'Mustafar', :sector => 1, :credits => 600, :description => 'Mustafar' )
-mygeeto = Planet.create(:name => 'Mygeeto', :sector => 2, :credits => 600, :description => 'Mygeeto' )
-naboo = Planet.create(:name => 'Naboo', :sector => 4, :credits => 600, :description => 'Naboo' )
-nal_hutta = Planet.create(:name => 'Nal Hutta', :sector => 3, :credits => 600, :description => 'Jabba Palace' )
-ord_ibanna = Planet.create(:name => 'Ord Ibanna', :sector => 1, :credits => 600, :description => 'Ord Ibanna' )
-polis_massa = Planet.create(:name => 'Polis Massa', :sector => 1, :credits => 600, :description => 'Polis Massa' )
-rattatak = Planet.create(:name => 'Rattatak', :sector => 1, :credits => 600, :description => 'Rattatak' )
+concord_dawn = Planet.create(:name => 'Concord Dawn', :sector => 2, :credits => 500, :description => 'Raxus Prime' )
+corellia = Planet.create(:name => 'Corellia', :sector => 2, :credits => 500, :description => 'Corellia' )
+coruscant = Planet.create(:name => 'Coruscant', :sector => 2, :credits => 500, :description => 'Coruscant' )
+dagobah = Planet.create(:name => 'Dagobah', :sector => 4, :credits => 500, :description => 'Dagobah' )
+deathstar = Planet.create(:name => 'Death Star', :sector => 2, :credits => 500, :description => 'Deathstar' )
+endor = Planet.create(:name => 'Endor', :sector => 1, :credits => 500, :description => 'Kashyyyk' )
+felucia = Planet.create(:name => 'Felucia', :sector => 3, :credits => 500, :description => 'Felucia' )
+geonosis = Planet.create(:name => 'Geonosis', :sector => 4, :credits => 500, :description => 'Geonosis/R. Prime' )
+haruun_kal = Planet.create(:name => 'Haruun Kal', :sector => 4, :credits => 500, :description => 'Haruun Kal' )
+hoth = Planet.create(:name => 'Hoth', :sector => 1, :credits => 500, :description => 'Hoth/RhenVar Harbor' )
+kamino = Planet.create(:name => 'Kamino', :sector => 3, :credits => 500, :description => 'Kamino' )
+kashyyyk = Planet.create(:name => 'Kashyyyk', :sector => 3, :credits => 500, :description => 'Kashyyyk' )
+kessel_asteroids = Planet.create(:name => 'Kessel Asteroids', :sector => 3, :credits => 500, :description => 'Polis Massa' )
+kuat = Planet.create(:name => 'Kuat', :sector => 4, :credits => 500, :description => 'Ord Ibanna' )
+mandalore = Planet.create(:name => 'Mandalore', :sector => 2, :credits => 500, :description => 'Yavin Arena' )
+mon_calamari = Planet.create(:name => 'Mon Calamari', :sector => 3, :credits => 500, :description => 'Kamino Tipoca City' )
+mustafar = Planet.create(:name => 'Mustafar', :sector => 1, :credits => 500, :description => 'Mustafar' )
+mygeeto = Planet.create(:name => 'Mygeeto', :sector => 2, :credits => 500, :description => 'Mygeeto' )
+naboo = Planet.create(:name => 'Naboo', :sector => 4, :credits => 500, :description => 'Naboo' )
+nal_hutta = Planet.create(:name => 'Nal Hutta', :sector => 3, :credits => 500, :description => 'Jabba Palace' )
+ord_ibanna = Planet.create(:name => 'Ord Ibanna', :sector => 1, :credits => 500, :description => 'Ord Ibanna' )
+polis_massa = Planet.create(:name => 'Polis Massa', :sector => 1, :credits => 500, :description => 'Polis Massa' )
+rattatak = Planet.create(:name => 'Rattatak', :sector => 1, :credits => 500, :description => 'Rattatak' )
 res_station = Planet.create(:name => 'RES Station', :sector => 3, :credits => 0, :tradeport => true, :description => 'Tradeport' )
-rhen_var = Planet.create(:name => 'Rhen Var', :sector => 3, :credits => 600, :description => 'Rhen Var Citadel' )
-tatooine = Planet.create(:name => 'Tatooine', :sector => 4, :credits => 600, :description => 'Mos Eisley' )
-utapau = Planet.create(:name => 'Utapau', :sector => 4, :credits => 600, :description => 'Utapau' )
-yavin = Planet.create(:name => 'Yavin', :sector => 2, :credits => 600, :description => 'Yavin 4' )
+rhen_var = Planet.create(:name => 'Rhen Var', :sector => 3, :credits => 500, :description => 'Rhen Var Citadel' )
+tatooine = Planet.create(:name => 'Tatooine', :sector => 4, :credits => 500, :description => 'Mos Eisley' )
+utapau = Planet.create(:name => 'Utapau', :sector => 4, :credits => 500, :description => 'Utapau' )
+yavin = Planet.create(:name => 'Yavin', :sector => 2, :credits => 500, :description => 'Yavin 4' )
 
 Route.create(:vector_a => mygeeto, :vector_b => yavin, :distance => 1)
 Route.create(:vector_a => mygeeto, :vector_b => deathstar, :distance => 1)
@@ -111,21 +111,21 @@ Goal.create(:description => 'Dominar o Quadrante Oeste e o planeta Nal Hutta')
 Goal.create(:description => 'Dominar o Quadrante Leste e o planeta Hoth')
 Goal.create(:description => 'Dominar os 4 planetas com Income Especial')
 
-Setting.create(:initial_factories => 3600,
+Setting.create(:initial_factories => 1200,
                :initial_fighters => 0,
                :initial_capital_ships => 0,
                :initial_transports => 0,
                :initial_troopers => 0,
                :initial_planets => 1,
                :initial_credits => 1000,
-               :net_planet_income => 300,
-               :bonus_planet_income => 600,
+               :net_planet_income => 500,
+               :bonus_planet_income => 1000,
                :ground_income_rate => 50,
                :facility_divisor_rate => 4,
                :facility_primary_production_rate => 50,
                :facility_secondary_production_rate => 10,
-               :facility_upgrade_cost => 1000,
-               :facility_upgrade_rate => 500,
+               :facility_upgrade_cost => 1200,
+               :facility_upgrade_rate => 300,
                :capital_ship_upgrade_cost => 1000,
                :maximum_warrior_life => 10,
                :upgradable_capital_ships => true,
@@ -150,18 +150,18 @@ all = ['empire','rebel','mercenary','pirate']
 none = ['nenhuma']
 
 Facility.create(:name => 'Ind.Complex', :price => 1200, :description => 'Comboio(6 Bulk Freighter)' ).factions = imp_reb
-Facility.create(:name => 'Space Colony', :price => 1200, :description => 'Comboio(6 Cargo Ferry)' ).factions = all
-Facility.create(:name => 'Cargo Facility II', :price => 2400, :description => 'Comboio(6 Mod.Conveyor)' ).factions = merc
-Facility.create(:name => 'Platforms', :price => 2400, :description => 'Comboio(6 Mod.Action Transp)' ).factions = all
-Facility.create(:name => 'DeepSpace Facility', :price => 2400, :description => 'Comboio(6 Mod.Action Transp)' ).factions = all
-Facility.create(:name => 'Asteroid Hangar', :price => 3600, :description => 'Comboio(6 Xyitiar Transp)' ).factions = all
-Facility.create(:name => 'Rebel Platform', :price => 3600, :description => 'Comboio(6 Reb Med Transp)' ).factions = reb
-Facility.create(:name => 'Golan I', :price => 3600, :description => 'Comboio(6 Mod Action Transp)' ).factions = all
-Facility.create(:name => 'Golan II', :price => 4800, :description => 'Comboio(6 Container Transp)' ).factions = all
-Facility.create(:name => 'Imp Research Ship', :price => 4800, :description => 'Comboio(6 Star Galleon)' ).factions = imp
-Facility.create(:name => 'Pirate S.Yard', :price => 4800, :description => 'Comboio(6 Xyitiar Transp)' ).factions = mand_merc
-Facility.create(:name => 'Golan III', :price => 6000, :description => 'Comboio(6 Xyitiar Transp)' ).factions = all
-Facility.create(:name => 'Shipyard', :price => 6000, :description => 'Comboio(6 Xyitiar Transp)' ).factions = all
+Facility.create(:name => 'Space Colony', :price => 1200, :description => 'Comboio(6 Cargo Ferry)' ).factions = mand_merc
+Facility.create(:name => 'Cargo Facility II', :price => 1800, :description => 'Comboio(6 Mod.Conveyor)' ).factions = mand_merc
+Facility.create(:name => 'Platforms', :price => 1800, :description => 'Comboio(6 Mod.Action Transp)' ).factions = all
+Facility.create(:name => 'DeepSpace Facility', :price => 1800, :description => 'Comboio(6 Mod.Action Transp)' ).factions = all
+Facility.create(:name => 'Asteroid Hangar', :price => 2400, :description => 'Comboio(6 Xyitiar Transp)' ).factions = all
+Facility.create(:name => 'Rebel Platform', :price => 2400, :description => 'Comboio(6 Reb Med Transp)' ).factions = reb
+Facility.create(:name => 'Golan I', :price => 2400, :description => 'Comboio(6 Mod Action Transp)' ).factions = all
+Facility.create(:name => 'Golan II', :price => 3000, :description => 'Comboio(6 Container Transp)' ).factions = all
+Facility.create(:name => 'Imp Research Ship', :price => 3000, :description => 'Comboio(6 Star Galleon)' ).factions = imp
+Facility.create(:name => 'Pirate S.Yard', :price => 3000, :description => 'Comboio(6 Xyitiar Transp)' ).factions = mand_merc
+Facility.create(:name => 'Golan III', :price => 3600, :description => 'Comboio(6 Xyitiar Transp)' ).factions = all
+Facility.create(:name => 'Shipyard', :price => 3600, :description => 'Comboio(6 Xyitiar Transp)' ).factions = all
 
 Unit.create(:name => '__________Capital Ships__________').factions = all
 CapitalShip.create(:name => 'Corellian Gunship', :price => 300, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 100, :light_loading_capacity => 1000 ).factions = all
