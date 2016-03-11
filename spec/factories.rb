@@ -124,7 +124,7 @@ Factory.define :goal do |f|
 end
 
 Factory.define :setting do |f|
-  f.initial_factories 6000
+  f.initial_factories 1200
   f.initial_capital_ships 1700
   f.initial_fighters 2000
   f.initial_transports 400

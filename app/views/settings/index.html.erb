@@ -29,8 +29,8 @@
 <%= f.input :builder_unit, :label => 'Unidade construtora:', :collection => @units %>
 <br>
 Exemplos:<br>
-<b>Shipyard - Custo 6000</b><br>
-Produtividade: <%= 6000 / 100 * @settings.facility_primary_production_rate %><br>
+<b>Shipyard - Custo 3600</b><br>
+Produtividade: <%= 3600 / 100 * @settings.facility_primary_production_rate %><br>
 <b>Industrial Complex - Custo 1200</b><br>
 Produtividade: <%= 1200 / 100 * @settings.facility_primary_production_rate %><br>
 </div>
@@ -48,7 +48,7 @@ Produtividade: <%= 1200 / 100 * @settings.facility_primary_production_rate %><br
 <h3>Random Inicial - Quantidades</h3>
 <%= f.input :initial_credits, :label => 'Créditos: ', :collection => (0..2000).step(200) %>
 <%= f.input :initial_planets, :label => 'Planetas (além do Home Planet): ', :collection => (0..5) %>
-<%= f.input :initial_factories, :label => 'Fábricas ($): ', :collection => (3600..6001).step(1200) %>
+<%= f.input :initial_factories, :label => 'Fábricas ($): ', :collection => (1200..3601).step(600) %>
 <%= f.input :initial_capital_ships, :label => 'Capital Ships ($): ', :collection => (0..3000).step(100) %>
 <%= f.input :initial_fighters, :label => 'Caças x 2 ($): ', :collection => (0..3000).step(100) %>
 <%= f.input :initial_transports, :label => 'Transportes ($): ', :collection => (0..3000).step(100) %>

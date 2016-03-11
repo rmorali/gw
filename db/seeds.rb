@@ -111,7 +111,7 @@ Goal.create(:description => 'Dominar o Quadrante Oeste e o planeta Nal Hutta')
 Goal.create(:description => 'Dominar o Quadrante Leste e o planeta Hoth')
 Goal.create(:description => 'Dominar os 4 planetas com Income Especial')
 
-Setting.create(:initial_factories => 1200,
+Setting.create(:initial_factories => 2400,
                :initial_fighters => 0,
                :initial_capital_ships => 0,
                :initial_transports => 0,

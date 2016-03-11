@@ -16,7 +16,7 @@ describe Round do
       rebel.planets.clear
       rebel.facility_fleets.clear
       Factory :fighter, :price => 100
-      Factory :facility, :price => 3000
+      Factory :facility, :price => 1200
       Factory :light_transport, :price => 100
       Factory :warrior, :price => 50
       Factory :warrior, :price => 45
@@ -45,7 +45,7 @@ describe Round do
       rebel.facility_fleets(true).first.balance.should_not == 0
     end
     it 'should place random units on the planets' do
-      rebel.generic_fleets.count.should == 24
+      rebel.generic_fleets.count.should == 21
     end
     it 'should randomize 4 planets with increased income' do
       Planet.where(:credits => @settings.bonus_planet_income).count.should == 4

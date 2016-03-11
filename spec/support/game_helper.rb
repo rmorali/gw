@@ -20,7 +20,7 @@ module GameHelper
     Factory :fighter, :factions => 'empire'
     Factory :capital_ship, :factions => 'empire'
     Factory :facility, :price => 1200, :factions => 'empire'
-    Factory :facility, :price => 4500, :factions => 'empire'
+    Factory :facility, :price => 2400, :factions => 'empire'
     Round.getInstance.new_game!
     visit '/fleets'
   end

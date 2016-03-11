@@ -59,14 +59,11 @@ class Squad < ActiveRecord::Base
     random_planet = planets_array[rand(planets_array.size)]
   end
 
-  def warp_facility_on total_value, planet
-    until total_value < 1200 do
-      facilities = Facility.allowed_for(faction).where(:price => 1200..total_value)
-      random_facility = facilities[rand(facilities.size)]
-      facility = facility_fleets.new(:facility => random_facility, :planet => planet, :balance => random_facility.capacity, :level => 0, :fleet_name => ' ', :round => Round.getInstance.number)
-      facility.save!
-      total_value -= random_facility.price
-    end
+  def warp_facility_on value, planet
+    facilities = Facility.allowed_for(faction).where(:price => value)
+    random_facility = facilities[rand(facilities.size)]
+    facility = facility_fleets.new(:facility => random_facility, :planet => planet, :balance => random_facility.capacity, :level => 0, :fleet_name => ' ', :round => Round.getInstance.number)
+    facility.save!
   end
 
   def warp_units total_value, unit, allowed_price, planet
