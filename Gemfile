@@ -9,6 +9,7 @@ gem 'rake'
 gem 'nokogiri', '~> 1.5.0'
 gem 'activeadmin'
 gem 'thin'
+gem 'unicorn'
 
 group :development, :test do
   gem 'rspec-rails'
