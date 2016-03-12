@@ -95,7 +95,9 @@ document.title = "<%= @planet.name %>"
         <% end %>
 
         </table>
-        <%= submit_tag 'Mover' %>
+        <% unless @squad.ready? %>
+          <%= submit_tag 'Mover' %>
+        <% end %>
         <p>
       <% end %>
    <% else %>
