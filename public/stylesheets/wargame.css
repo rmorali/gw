@@ -224,7 +224,6 @@ div.mainpage
   width: auto;
   background-color: rgba(10,15,24,0.7);
   transition: all ease-in-out 0.3s;
- 
   top: 0%;
   left: 380px;
 }
@@ -271,3 +270,28 @@ input[type="radio"], label {
 input{
   clear:left;
 }
+
+header,footer,section,article {
+  border: 0 outset gray;
+  border-radius: 14px 14px 14px 14px;
+  box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
+  margin: 15px 15px 15px;
+  padding: 5px 5px 8px 8px;
+  height: auto;
+  width: auto;
+  background-color: rgba(10,15,24,0.7);
+  transition: all ease-in-out 0.3s;
+  top: 0%;
+  left: 380px;
+}
+
+nav ul {
+  margin:0;
+  padding:0;
+}
+
+nav ul li {
+  display:inline;
+  margin:5px;
+}
+
