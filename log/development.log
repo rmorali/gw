@@ -1134,3 +1134,5 @@ Started GET "/" for 10.105.10.6 at 2016-03-14 11:53:09 -0700
   Processing by HomeController#index as HTML
 Rendered home/index.html.erb within layouts/application (3.5ms)
 Completed 200 OK in 14ms (Views: 10.2ms | ActiveRecord: 0.0ms)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
