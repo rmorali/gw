@@ -15,7 +15,7 @@ kamino = Planet.create(:name => 'Kamino', :sector => 3, :credits => 500, :descri
 kashyyyk = Planet.create(:name => 'Kashyyyk', :sector => 3, :credits => 500, :description => 'Kashyyyk' )
 kessel_asteroids = Planet.create(:name => 'Kessel Asteroids', :sector => 3, :credits => 500, :description => 'Polis Massa' )
 kuat = Planet.create(:name => 'Kuat', :sector => 4, :credits => 500, :description => 'Ord Ibanna', :file_name => 'eriadu.gif', :coord_x => 9, :coord_y => 4 )
-mandalore = Planet.create(:name => 'Mandalore', :sector => 2, :credits => 500, :description => 'Yavin Arena', :file_name => 'eriadu.gif', :coord_x => 6, :coord_y => 3 )
+mandalore = Planet.create(:name => 'Mandalore', :sector => 2, :credits => 500, :description => 'Yavin Arena', :file_name => 'geral.gif', :coord_x => 6, :coord_y => 3 )
 mon_calamari = Planet.create(:name => 'Mon Calamari', :sector => 3, :credits => 500, :description => 'Kamino Tipoca City' )
 mustafar = Planet.create(:name => 'Mustafar', :sector => 1, :credits => 500, :description => 'Mustafar' )
 mygeeto = Planet.create(:name => 'Mygeeto', :sector => 2, :credits => 500, :description => 'Mygeeto' )

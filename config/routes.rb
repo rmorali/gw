@@ -33,6 +33,7 @@ Rpg::Application.routes.draw do
      end
      collection do
        get :map
+       get :mapa, format: :svg
      end
      resources :results do
        member do

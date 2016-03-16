@@ -88,5 +88,11 @@ class PlanetsController < ApplicationController
     respond_with @planets
   end
 
+  def mapa
+    @planets = Planet.seen_by(current_squad)
+    
+  end
+
+
 end
 
