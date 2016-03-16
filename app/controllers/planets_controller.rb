@@ -89,8 +89,10 @@ class PlanetsController < ApplicationController
   end
 
   def mapa
-    @planets = Planet.seen_by(current_squad)
-    
+    @planets = Planet.all
+    @planets_seen_by_squad = Planet.seen_by(current_squad)
+    @current_squad = current_squad
+    @round = Round.getInstance
   end
 
 

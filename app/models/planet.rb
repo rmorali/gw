@@ -237,9 +237,5 @@ class Planet < ActiveRecord::Base
     fleet_price
   end
 
-  def seen_by(squad)
-    generic_fleets
-  end
-
 end
 

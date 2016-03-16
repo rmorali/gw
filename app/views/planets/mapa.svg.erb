@@ -1,13 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink" height="100%" width="100%"
-     onresize="resize(evt)">
+     onresize="resize(evt)" onload="timedRefresh(5000)">
   <script type="text/ecmascript"><![CDATA[
     function resize(evt){
       var background = document.getElementById('background');
       background.setAttribute("width", "100%");
       background.setAttribute("height", "100%");
     }
-    ]]></script>
+    ]]>
+  </script>
+  <script>
+    function timedRefresh(timeoutPeriod) {
+      setTimeout("location.reload(true);",timeoutPeriod);
+    }
+  </script>
+
   <defs>
     <filter id="f1" x="0" y="0" width="200%" height="200%">
       <feOffset result="offOut" in="SourceAlpha" dx="0" dy="0" />
@@ -19,19 +26,39 @@
     <image id="background" xlink:href="/images/background-azul.jpg" height="100%" width="100%" x="0" y="0"
            preserveAspectRatio="none" />
     <% @planets.each do |planet| %>
-      <% coord_x = planet.coord_x.to_i * 7 %>
-      <% coord_y = planet.coord_y.to_i * 17 %>
-      <text x="<%= coord_x + 2 %>%" y="<%= coord_y %>%" style="fill:white; font-size:15px; font-weight: bold; font-family:'Open Sans'" filter="url(#f1)"> <%= planet.name %> </text>
-      <a xlink:href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=560, height=400')"> <image xlink:href="/images/<%= planet.file_name %>" x="<%= coord_x %>%" y="<%= coord_y %>%" height="7%" width="7%" filter="url(#f1)" /> </a>
-      <% y = coord_y %>
-      <% planet.seen_by(@current_squad).each do |fleet| %>
-        <% x = coord_x + 5 %>
-        <% y += 1 %>
-        <text x="<%= x %>%" y="<%= y %>%" fill="#<%= fleet.squad.color %>" style="font-weight:bold; font-size:11px; font-family:'Open Sans'" filter="url(#f1)"> <%= fleet.show %> </text>
-      <% end %>
-
-
+      <% x = planet.coord_x.to_i * 7 %>
+      <% y = planet.coord_y.to_i * 17 %>
+      <text x="<%= x + 2 %>%" y="<%= y - 1 %>%" style="fill:white; font-size:15px; font-weight: bold; font-family:'Open Sans'" filter="url(#f1)"> <%= planet.name %> </text>
+      <a xlink:href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=560, height=400')"> <image xlink:href="/images/<%= planet.file_name %>" x="<%= x %>%" y="<%= y %>%" height="7%" width="7%" filter="url(#f1)" /> </a>
     <% end %>
+
+      <% @planets_seen_by_squad.each do |planet| %>
+        <% x = (planet.coord_x.to_i * 7) + 5 %>
+        <% y = (planet.coord_y.to_i * 17) + 1 %>
+        <% planet.generic_fleets.each do |fleet| %>
+
+          <% if fleet.squad == @current_squad %>
+
+            <% if fleet.moving? %>
+              <text x="<%= x %>%" y="<%= y %>%" fill="#00FFFF" style="font-weight:bold; font-size:11px; font-family:'Open Sans'" filter="url(#f1)"> <%= fleet.show.first(12) %> -> <%= fleet.destination.name %> </text>
+            <% else %>
+              <text x="<%= x %>%" y="<%= y %>%" fill="#<%= fleet.squad.color %>" style="font-weight:bold; font-size:11px; font-family:'Open Sans'" filter="url(#f1)"> <%= fleet.show %> </text>
+            <% end %>             
+
+          <% else %>
+
+            <% if @round.move? && fleet.round < @round.number %>
+              <text x="<%= x %>%" y="<%= y %>%" fill="#<%= fleet.squad.color %>" style="font-weight:bold; font-size:11px; font-family:'Open Sans'" filter="url(#f1)"> <%= fleet.name %> </text>
+            <% else %>
+              <text x="<%= x %>%" y="<%= y %>%" fill="#<%= fleet.squad.color %>" style="font-weight:bold; font-size:11px; font-family:'Open Sans'" filter="url(#f1)"> <%= fleet.show %> </text>
+            <% end %>
+
+          <% end %>
+
+        <% y += 2 %>
+        <% end %>
+
+      <% end %>
 
   </g>
 </svg>
