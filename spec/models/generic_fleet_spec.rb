@@ -230,7 +230,7 @@ describe GenericFleet do
       unit.generic_unit = Factory :fighter
       unit.quantity = 10
       unit.save
-      unit.arm_with armament_fleet
+      unit.arm_with armament_fleet, 1
       unit.weapon1.should == armament
       unit.quantity.should == 10
       GenericFleet.count.should == 1   
@@ -240,7 +240,7 @@ describe GenericFleet do
       unit.generic_unit = Factory :fighter
       unit.quantity = 10
       unit.save
-      unit.arm_with armament_fleet
+      unit.arm_with armament_fleet, 1
       unit.weapon1.should == armament
       unit.quantity.should == 4
       not_armed_unit = GenericFleet.where(:weapon1_id => nil).first
@@ -252,7 +252,7 @@ describe GenericFleet do
       unit.generic_unit = Factory :fighter
       unit.quantity = 4
       unit.save
-      unit.arm_with armament_fleet
+      unit.arm_with armament_fleet, 1
       unit.weapon1.should == armament
       unit.quantity.should == 4
       armament_fleet.quantity.should == 6
@@ -267,7 +267,7 @@ describe GenericFleet do
       unit.weapon1 = armament
       unit.save
       unit.weapon1.should == armament
-      unit.disarm
+      unit.disarm 1
       unit.weapon1.should be_nil
       unit.weapon2.should be_nil
       armament_fleet = GenericFleet.where(:generic_unit => armament).first

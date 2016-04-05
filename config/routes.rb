@@ -72,8 +72,10 @@ Rpg::Application.routes.draw do
 
    resources :fighters do
      member do
-       put :arm
-       put :disarm
+       put :arm_1
+       put :arm_2
+       put :disarm_1
+       put :disarm_2
      end
    end
 

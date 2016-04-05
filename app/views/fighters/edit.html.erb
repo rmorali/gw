@@ -8,30 +8,46 @@ document.title = " <%= @fighter.show %> "
 </div>
 <div class="fleet">
     <table>
-    <tr><td><b>Armas disponíveis:</b></td><td><b>Armas instaladas:</b></td></tr>
-    <%= simple_form_for @fighter, :url => url_for(:controller => 'fighters', :action => 'arm') do |f| %>
-    <tr><td>
+    <tr><td><b>Warheads:</b></td><td><b>Counters:</b></td><tr>
+    <tr>
+    <td>
+    <%= simple_form_for @fighter, :url => url_for(:controller => 'fighters', :action => 'arm_1') do |f| %>
     <%= f.hidden_field :id %>
     <%= f.input :weapon1_id,
     :collection => @armaments,
     :label_method => :show,
     :value_method => :id,
     :as => :radio,
-    :label => false %></td>
-    <td> <%= "- #{@fighter.quantity} #{@fighter.weapon1.name}" if @fighter.weapon1 %></td>
-    </tr>
-    <tr>
-    <td>
-    <p><%= f.submit 'Armar' %>
+    :label => false %>
+    <p><br><br><br><%= f.submit 'Armar' %>
+    <% end %>
+    <br>
+    <b><%= "+ #{@fighter.quantity} #{@fighter.weapon1.name}" if @fighter.weapon1 %></b><br>
+    <%= simple_form_for @fighter, :url => url_for(:controller => 'fighters', :action => 'disarm_1') do |f| %>
+      <%= f.hidden_field :id %>
+      <p><br><%= f.submit 'Desarmar' %>
     <% end %>
     </td>
     <td>
-  <%= simple_form_for @fighter, :url => url_for(:controller => 'fighters', :action => 'disarm') do |f| %>
+    <%= simple_form_for @fighter, :url => url_for(:controller => 'fighters', :action => 'arm_2') do |f| %>
     <%= f.hidden_field :id %>
-    <%= f.submit 'Desarmar' %>
-  <% end %>
-     </td>
+    <%= f.input :weapon2_id,
+    :collection => @armaments,
+    :label_method => :show,
+    :value_method => :id,
+    :as => :radio,
+    :label => false %>
+    <p><br><br><br><%= f.submit 'Armar' %>
+    <% end %>
+    <br>
+    <b><%= "+ #{@fighter.quantity} #{@fighter.weapon2.name}" if @fighter.weapon2 %></b><br>
+    <%= simple_form_for @fighter, :url => url_for(:controller => 'fighters', :action => 'disarm_2') do |f| %>
+      <%= f.hidden_field :id %>
+      <p><br><%= f.submit 'Desarmar' %>
+    <% end %>
+    </td>
     </tr>
+
     </table>
 </div>
 <div class="fleet">

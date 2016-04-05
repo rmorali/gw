@@ -97,11 +97,11 @@ class GenericFleet < ActiveRecord::Base
         "#{generic_unit.description}"
       end
     else
-       unless weapon1_id
-         "#{quantity} #{name}"
-       else
-         "#{quantity} #{name} + #{weapon1.name}"
-       end
+      info = ""
+      info << "#{quantity} #{name}"
+      info << " + #{weapon1.acronym}" if weapon1_id
+      info << " + #{weapon2.acronym}" if weapon2_id
+      info
     end
   end
 
@@ -115,7 +115,8 @@ class GenericFleet < ActiveRecord::Base
       info << "<br>- Warheads destroem Fabrica"
     when 'Fighter'
       info << "<br>- Unidades Pilotaveis"
-      info << "<br>- Armas: #{weapon1.name}" if weapon1
+      info << "<br>- Arma1: #{weapon1.name}" if weapon1
+      info << "<br>- Arma2: #{weapon2.name}" if weapon2
     when 'Skill'
       info << "<br>- Equipa Capital Ships"
     when 'CapitalShip'
@@ -272,32 +273,46 @@ class GenericFleet < ActiveRecord::Base
     end 
   end
 
-  def arm_with armament
+  def arm_with armament, slot
     if armament.quantity == self.quantity
-      self.update_attributes(:weapon1 => armament.generic_unit)
+      self.update_attributes(:weapon1 => armament.generic_unit) if slot == 1
+      self.update_attributes(:weapon2 => armament.generic_unit) if slot == 2
       armament.update_attributes(:quantity => armament.quantity - self.quantity)
     elsif armament.quantity > self.quantity
-      self.update_attributes(:weapon1 => armament.generic_unit)
+      self.update_attributes(:weapon1 => armament.generic_unit) if slot == 1
+      self.update_attributes(:weapon2 => armament.generic_unit) if slot == 2
       armament.update_attributes(:quantity => armament.quantity - self.quantity)
     else
       not_armed_fleet = self.clone
       not_armed_fleet.quantity -= armament.quantity
       not_armed_fleet.save!
-      self.update_attributes(:weapon1 => armament.generic_unit, :quantity => armament.quantity)
+      self.update_attributes(:weapon1 => armament.generic_unit, :quantity => armament.quantity) if slot == 1
+      self.update_attributes(:weapon2 => armament.generic_unit, :quantity => armament.quantity) if slot == 2
       armament.update_attributes(:quantity => 0)     
     end
   end
 
-  def disarm
-    discharged_armaments = self.clone
-    discharged_armaments.generic_unit_id = self.weapon1.id
-    discharged_armaments.moving = nil
-    discharged_armaments.destination = nil
-    discharged_armaments.weapon1 = nil
-    discharged_armaments.weapon2 = nil
-    discharged_armaments.save!
-    self.update_attributes(:weapon1 => nil, :weapon2 => nil)
-    discharged_armaments.group_fleets
+  def disarm slot
+    if slot == 1
+      discharged_armaments = self.clone
+      discharged_armaments.generic_unit_id = self.weapon1.id
+      discharged_armaments.moving = nil
+      discharged_armaments.destination = nil
+      discharged_armaments.weapon1 = nil
+      discharged_armaments.weapon2 = nil
+      discharged_armaments.save!
+      self.update_attributes(:weapon1 => nil)
+   else
+      discharged_armaments = self.clone
+      discharged_armaments.generic_unit_id = self.weapon2.id
+      discharged_armaments.moving = nil
+      discharged_armaments.destination = nil
+      discharged_armaments.weapon1 = nil
+      discharged_armaments.weapon2 = nil
+      discharged_armaments.save!
+      self.update_attributes(:weapon2 => nil)
+   end
+      discharged_armaments.group_fleets
   end
 
   def install skill
