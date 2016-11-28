@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160310153414) do
+ActiveRecord::Schema.define(:version => 20161128192248) do
 
   create_table "generic_fleets", :force => true do |t|
     t.integer  "squad_id"
@@ -77,6 +77,8 @@ ActiveRecord::Schema.define(:version => 20160310153414) do
     t.integer  "sector"
     t.boolean  "special"
     t.integer  "distance"
+    t.integer  "x"
+    t.integer  "y"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
