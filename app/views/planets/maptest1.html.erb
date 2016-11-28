@@ -1,0 +1,15 @@
+
+
+<% @planets.each do |planet| %>
+
+<script> carregar('/planets/<%= planet.id %>')</script>
+<script>
+    function carregar(pagina){
+        $("#conteudo_<%= planet.name %>").load(pagina);
+    }
+    
+</script>
+
+<div id="conteudo_<%= planet.name %>" style="position: absolute; left: <%= planet.id * 50 %>px; top: <%= planet.id * 50 %>px "></div>
+
+<% end %>

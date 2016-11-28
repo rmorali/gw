@@ -1,0 +1,52 @@
+<script type="text/javascript">
+        $(document).ready(function () {
+            //define objetos iniciais
+            var textplaneta = $(".divtextplanetas");
+            var imgplaneta = $(".imgplaneta");
+            //esconde todos os textos
+            $(textplaneta).hide();
+            //faz iteração com o mouse
+            $(imgplaneta).mouseover(function () { showhide(this, true) });
+            $(imgplaneta).mouseout(function () { showhide(this, false) });
+
+            function showhide(object, show)
+            {
+                //vasculha cada objeto interno onde se passou o mouse por cima, ou tirou o mouse
+                var mainplanetname = $(object).parent().parent().get(0).id;
+                $.each($("#" + mainplanetname), function (i, obj) {
+                    //vasculha cada div interna
+                    $('div', obj).each(function () {
+                        //se a div for a que queremos (texto), apresenta o oculta a div
+                        if ($(this).attr('class').toString() == "divtextplanetas")
+                            if (show) {
+                                $(this).html(callAjax(mainplanetname));
+                                $(this).show();
+                            }
+                            else
+                                $(this).hide();
+                    });
+                });
+            }
+            function callAjax(planetname)
+            {
+                $.get("sua pagina ruby" + planetname, function (data, status) {
+                    alert("Retotno: " + data + "\nStatus: " + status);
+                });
+            }
+        });
+
+    </script>
+
+<% @planets.each do |planet| %>
+
+  <div id="<%= planet.name %>">
+        <div class="divimgplaneta" style="position: absolute; left: <%= planet.id * 100 %>px" >
+            <img src="img/planetaX.gif" class="imgplaneta" alt="Planeta">
+        </div>
+        <div class="divtextplanetas" style="position: absolute; left: <%= planet.id * 100 +50 %>px; top: 50px" >
+            <%= planet.name %>
+        </div>
+  </div>
+
+
+<% end %>
