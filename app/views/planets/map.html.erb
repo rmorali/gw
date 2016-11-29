@@ -1,52 +1,40 @@
-<script type="text/javascript">
-        $(document).ready(function () {
-            //define objetos iniciais
-            var textplaneta = $(".divtextplanetas");
-            var imgplaneta = $(".imgplaneta");
-            //esconde todos os textos
-            $(textplaneta).hide();
-            //faz iteração com o mouse
-            $(imgplaneta).mouseover(function () { showhide(this, true) });
-            $(imgplaneta).mouseout(function () { showhide(this, false) });
-
-            function showhide(object, show)
-            {
-                //vasculha cada objeto interno onde se passou o mouse por cima, ou tirou o mouse
-                var mainplanetname = $(object).parent().parent().get(0).id;
-                $.each($("#" + mainplanetname), function (i, obj) {
-                    //vasculha cada div interna
-                    $('div', obj).each(function () {
-                        //se a div for a que queremos (texto), apresenta o oculta a div
-                        if ($(this).attr('class').toString() == "divtextplanetas")
-                            if (show) {
-                                $(this).html(callAjax(mainplanetname));
-                                $(this).show();
-                            }
-                            else
-                                $(this).hide();
-                    });
-                });
-            }
-            function callAjax(planetname)
-            {
-                $.get("sua pagina ruby" + planetname, function (data, status) {
-                    alert("Retotno: " + data + "\nStatus: " + status);
-                });
-            }
-        });
-
-    </script>
-
 <% @planets.each do |planet| %>
 
-  <div id="<%= planet.name %>">
-        <div class="divimgplaneta" style="position: absolute; left: <%= planet.id * 100 %>px" >
-            <img src="img/planetaX.gif" class="imgplaneta" alt="Planeta">
-        </div>
-        <div class="divtextplanetas" style="position: absolute; left: <%= planet.id * 100 +50 %>px; top: 50px" >
-            <%= planet.name %>
-        </div>
+  <div id="gifs" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y %>px;z-index: 10;">
+  <b href = "" onclick="window.open('/planets/<%= planet.id %>', 'Planeta <%= planet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=500, height=500')">
+  <img src="/images/planets/planeta.png">
+  </b>
   </div>
 
+  <div id="nomes" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y - 10 %>px;z-index: 10;">
+  <%= planet.name %>
+  </div>
+
+  <div id="frotas" style="position:absolute; left:<%= planet.x + 70 %>px; top:<%= planet.y + 10 %>px;z-index: 10;">
+  <% has_fleet = planet.generic_fleets.select { |fleet| fleet.squad == @current_squad } %>
+  <% unless has_fleet.empty? %>
+        <% planet.generic_fleets.each_with_index do |fleet, index| %>
+          <% unless fleet.moving && fleet.squad == @current_squad %>
+            <% if @round.move && fleet.squad != @current_squad %>
+               <% if fleet.round < @round.number %>
+                 <span style="<%= raw fleet.span_style %>">
+                 <%= fleet.show %>
+                 </span>
+               <% end %>
+            <% else %>
+              <span style="<%= raw fleet.span_style %>">
+              <%= fleet.show %>
+              </span>
+            <% end %>
+          <% else %>
+            <span style="<%= raw fleet.span_style %>">            
+            <%= fleet.show + ' -> ' + fleet.destination.name %>
+          <% end %>
+          <br>
+        <% end %>
+  <% end %>
+  </div>
 
 <% end %>
+
+
