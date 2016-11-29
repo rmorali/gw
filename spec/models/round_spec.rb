@@ -119,7 +119,11 @@ describe Round do
       Result.all.count.should > 0
     end
     it 'should transfer facilities balance to planet balance' do
+      planet = Factory(:planet, :balance => 0)
+      facility_fleet = Factory :facility, :planet => planet
+      facility_fleet2 = Factory :facility, :planet => planet
       @round.end_round!
+      planet.balance.should == 2000      
     end
   end
 end

@@ -48,9 +48,11 @@ class FacilityFleet < GenericFleet
   end
 
   def update_balance!
+    self.balance = 0 
+    self.save
     return if self.moving? || self.planet.tradeport
     self.balance += default_capacity
-    save
+    self.save
   end
 
   def produce! unit, quantity, planet, squad

@@ -241,5 +241,10 @@ class Planet < ActiveRecord::Base
     facilities = generic_fleets.where(:type => 'FacilityFleet').sum(:balance)
   end
 
+  def update_balance
+    self.balance += constructive_capacity
+    self.save
+  end
+
 end
 

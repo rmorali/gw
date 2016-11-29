@@ -61,6 +61,13 @@ class Round < ActiveRecord::Base
     Round.create(:number => self.number + 1, :move => true)
     Tradeport.start
     set_map
+    set_planet_balance
+  end
+ # VERIFICAR AQUI NAO PODE ATUALIZAR BALANCE DO PLANETA SE A FACILITY FOR CAPTURADA
+  def set_planet_balance
+    Planet.all.each do |planet|
+      planet.update_balance
+    end
   end
 
   def set_map
