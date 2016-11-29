@@ -31,6 +31,11 @@
   Tropas: <%= @troopers %><br>
 </span>
 </div>
+<div class="painel1" style="width:350px">
+<span style=color:#<%= @current_squad.color %>>** Seu objetivo ** ( <%= @current_squad.name %> )
+<br>
+Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></span>
+</div>
 <div class="painel1">
   <span style="color:white;font-size: 14px;font-weight: bold;text-decoration: blink">
   <%= @comment1 %><br>
@@ -75,8 +80,22 @@
   </b>
   </div>
 
-  <div id="nomes" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y - 10 %>px;z-index: 10; white-space: nowrap">
+  <div id="nomes" style="position:absolute; left:<%= planet.x + 15 %>px; top:<%= planet.y - 15 %>px;z-index: 10; white-space: nowrap">
+<span style="color:white;font-size: 14px;font-weight: bold">
   <%= planet.name %>
+</font>
+  </div>
+
+  <div id="Controle espacial" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y + 5 %>px;z-index: 10; white-space: nowrap">
+<span style="color:yellow;font-size: 10px;font-weight: bold">
+  <%= "#{planet.air_credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && !planet.under_attack? && !planet.tradeport? && planet.squad == @current_squad %>
+</font>
+  </div>
+  
+  <div id="Controle terrestre" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y + 40 %>px;z-index: 10; white-space: nowrap">
+<span style="color:yellow;font-size: 10px;font-weight: bold">
+  <%= "#{planet.ground_credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && !planet.under_attack? && !planet.tradeport?  && planet.ground_squad == @current_squad %>
+</font>
   </div>
 
   <% if planet.constructive_capacity > 0 && planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
