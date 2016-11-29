@@ -344,7 +344,8 @@ class GenericFleet < ActiveRecord::Base
   end
 
   def is_a_sensor?
-    true if self.type?(Sensor) || (self.skill && self.skill.acronym == 'SAR')
+    #true if self.type?(Sensor) || (self.skill && self.skill.acronym == 'SAR')
+    true if self.skill && self.skill.acronym == 'SAR'
   end
 
   def is_a_bomber?

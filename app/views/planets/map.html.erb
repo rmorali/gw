@@ -1,9 +1,10 @@
 <% @planets.each do |planet| %>
 
+  <% @round_number = nil %>
   <% @sensor = nil %>
   <% @routes = planet.routes %>
     <% @routes.each do |route| %>
-      <% @sensor = route if route.generic_fleets.any? { |fleet| (fleet.type?(Sensor) && fleet.squad == @current_squad) || (fleet.is_a_sensor? && fleet.squad == @current_squad) } %>
+      <% @sensor = route if route.generic_fleets.any? { |fleet| fleet.is_a_sensor? && fleet.squad == @current_squad } %>
     <% end %>
 
   <div id="gifs" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y %>px;z-index: 10;">
@@ -18,7 +19,7 @@
 
   <div id="frotas" style="position:absolute; left:<%= planet.x + 70 %>px; top:<%= planet.y + 10 %>px;z-index: 10; white-space: nowrap">
   <% has_fleet = planet.generic_fleets.select { |fleet| fleet.squad == @current_squad } %>
-  <% if !has_fleet.empty? %>
+  <% if planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
         <% planet.generic_fleets.each_with_index do |fleet, index| %>
           <% unless fleet.moving && fleet.squad == @current_squad %>
             <% if @round.move && fleet.squad != @current_squad %>
@@ -49,7 +50,85 @@
       <% end %>
     <% else %>
       O Sensor de <%= @sensor.name %> não detectou ameaças neste planeta.<br><br>
-    <% end %>    
+    <% end %>  
+    
+    <% resultados = planet.results.reject!{|a| a.generic_unit.type == 'CapitalShip' || a.generic_unit.type == 'Facility' || a.generic_unit.type == 'Sensor' || a.generic_unit.type == 'Trooper'} %>
+    <% if resultados %>
+      <% resultados.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
+      <% unless fleet.round.number >= planet.results.maximum("round_id") and fleet.squad != @squad and planet.results.any? { |result| result.squad == @squad && result.round == fleet.round } %>
+        <info class="tooltip">
+        <tip><%= raw fleet.description %></tip>
+        <span style="<%= raw fleet.span_style %>">
+        <% unless fleet.final_quantity <= 0 || fleet.squad == @current_squad %>
+          <% @round_number = fleet.round.number %>
+          <% case fleet.generic_unit.type %>
+          <% when 'Warrior' %> 
+            <%= fleet.generic_unit.name %> (<%= fleet.final_quantity %> vidas)
+          <% when 'Commander' %>
+            <%= fleet.generic_unit.name %>
+          <% when 'Facility' %>
+            <%= fleet.generic_unit.name %>
+          <% when 'CapitalShip' %>
+            <%= fleet.show %>
+          <% when 'Trooper' %>
+            <%= fleet.final_quantity %>
+            <%= fleet.generic_unit.name %> 
+          <% else %>
+            <%= fleet.final_quantity %>
+            <%= fleet.generic_unit.name %>  
+          <% end %>
+          <br>
+        <% end %>
+        </span>
+        </info>
+      <% end %>
+    <% end %>
+    <% end %>
+
+    <% if @round_number %>
+    <br>
+    Esta foi a frota vista neste planeta no Round: <%= @round_number %>
+    <br><br>
+    <% end %>   
+
+
+
+  <% else %>
+
+    <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
+      <% unless fleet.round.number >= planet.results.maximum("round_id") and fleet.squad != @squad and planet.results.any? { |result| result.squad == @squad && result.round == fleet.round } %>
+        <info class="tooltip">
+        <tip><%= raw fleet.description %></tip>
+        <span style="<%= raw fleet.span_style %>">
+        <% unless fleet.final_quantity <= 0 || fleet.squad == @current_squad %>
+          <% @round_number = fleet.round.number %>
+          <% case fleet.generic_unit.type %>
+          <% when 'Warrior' %> 
+            <%= fleet.generic_unit.name %> (<%= fleet.final_quantity %> vidas)
+          <% when 'Commander' %>
+            <%= fleet.generic_unit.name %>
+          <% when 'Facility' %>
+            <%= fleet.generic_unit.name %>
+          <% when 'CapitalShip' %>
+            <%= fleet.show %>
+          <% when 'Trooper' %>
+            <%= fleet.final_quantity %>
+            <%= fleet.generic_unit.name %> 
+          <% else %>
+            <%= fleet.final_quantity %>
+            <%= fleet.generic_unit.name %>  
+          <% end %>
+          <br>
+        <% end %>
+        </span>
+        </info>
+      <% end %>
+    <% end %>
+    <% if @round_number %>
+    <br>
+    XXXEsta foi a frota vista neste planeta no Round: <%= @round_number %>
+    <br><br>
+    <% end %>  
 
   <% end %>
   </div>
