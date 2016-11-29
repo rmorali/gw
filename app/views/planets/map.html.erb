@@ -50,7 +50,8 @@
 
   <div id="gifs" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y %>px;z-index: 10;">
   <b href = "" onclick="window.open('/planets/<%= planet.id %>', 'Planeta <%= planet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=500, height=500')">
-  <img src="/images/planets/planeta.png">
+
+  <img src="/images/planets/<%= planet.name.gsub(" ","").downcase %>.png">
   </b>
   </div>
 
