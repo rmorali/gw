@@ -84,7 +84,7 @@ class PlanetsController < ApplicationController
     @all_squads.each do |squad|
       @comment2 << squad.name + " pronto! " if squad.ready?
     end
-
+    
     respond_with @planets
   end
 

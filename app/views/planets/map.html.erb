@@ -1,5 +1,10 @@
 <% @planets.each do |planet| %>
 
+  <% @routes = planet.routes %>
+    <% @routes.each do |route| %>
+      <% @sensor = route if route.generic_fleets.any? { |fleet| (fleet.type?(Sensor) && fleet.squad == @current_squad) || (fleet.is_a_sensor? && fleet.squad == @current_squad) } %>
+    <% end %>
+
   <div id="gifs" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y %>px;z-index: 10;">
   <b href = "" onclick="window.open('/planets/<%= planet.id %>', 'Planeta <%= planet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=500, height=500')">
   <img src="/images/planets/planeta.png">
@@ -12,7 +17,7 @@
 
   <div id="frotas" style="position:absolute; left:<%= planet.x + 70 %>px; top:<%= planet.y + 10 %>px;z-index: 10; white-space: nowrap">
   <% has_fleet = planet.generic_fleets.select { |fleet| fleet.squad == @current_squad } %>
-  <% unless has_fleet.empty? %>
+  <% if !has_fleet.empty? %>
         <% planet.generic_fleets.each_with_index do |fleet, index| %>
           <% unless fleet.moving && fleet.squad == @current_squad %>
             <% if @round.move && fleet.squad != @current_squad %>
@@ -32,9 +37,21 @@
           <% end %>
           <br>
         <% end %>
+  <% elsif @sensor != nil && @round.move %>
+    <% unless planet.generic_fleets.select { |units| units.squad != @current_squad && units.round < @round.number && (units.generic_unit.type == 'CapitalShip' || units.generic_unit.type == 'Facility' || units.generic_unit.type == 'Sensor' || units.generic_unit.type == 'Trooper') }.empty? %>
+      O Sensor de <%= @sensor.name %> detectou as seguintes ameaças:<br>
+      <% planet.generic_fleets.select { |units| units.squad != @current_squad && units.round < @round.number && (units.generic_unit.type == 'CapitalShip' || units.generic_unit.type == 'Facility' || units.generic_unit.type == 'Sensor' || units.generic_unit.type == 'Trooper') }.sort_by { |fleet| -fleet.generic_unit.price }.each do |fleet| %>
+        <span style="<%= raw fleet.span_style %>">
+        <%= fleet.generic_unit.name %>
+        </span>
+        <br>
+      <% end %>
+    <% else %>
+      O Sensor de <%= @sensor.name %> não detectou ameaças neste planeta.<br><br>
+    <% end %>    
+
   <% end %>
   </div>
-
 <% end %>
 
 
