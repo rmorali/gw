@@ -1,5 +1,6 @@
 <% @planets.each do |planet| %>
 
+  <% @sensor = nil %>
   <% @routes = planet.routes %>
     <% @routes.each do |route| %>
       <% @sensor = route if route.generic_fleets.any? { |fleet| (fleet.type?(Sensor) && fleet.squad == @current_squad) || (fleet.is_a_sensor? && fleet.squad == @current_squad) } %>
