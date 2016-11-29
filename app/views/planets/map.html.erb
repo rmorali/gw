@@ -58,8 +58,14 @@
   <%= planet.name %>
   </div>
 
+  <% if planet.constructive_capacity > 0 && planet.generic_fleets.any? { |unit| unit.squad == @current_squad }  %>
+    <div id="capacidade_construtiva" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y + 70 %>px;z-index: 10; white-space: nowrap">
+    <img src="/images/planets/shipyard.gif" height="30" width="40">
+  </div>
+  <% end %>
+
   <div id="frotas" style="position:absolute; left:<%= planet.x + 70 %>px; top:<%= planet.y + 10 %>px;z-index: 10; white-space: nowrap">
-  <% has_fleet = planet.generic_fleets.select { |fleet| fleet.squad == @current_squad } %>
+
   <% if planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
         <% planet.generic_fleets.each_with_index do |fleet, index| %>
           <% unless fleet.moving && fleet.squad == @current_squad %>

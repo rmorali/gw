@@ -237,5 +237,9 @@ class Planet < ActiveRecord::Base
     fleet_price
   end
 
+  def constructive_capacity
+    facilities = generic_fleets.where(:type => 'FacilityFleet').sum(:balance)
+  end
+
 end
 

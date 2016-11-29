@@ -1,0 +1,41 @@
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+  [1m[36mPlanet Load (0.8ms)[0m  [1mSELECT `planets`.* FROM `planets` ORDER BY name ASC LIMIT 1[0m
+  [1m[35mGenericFleet Load (0.2ms)[0m  SELECT `generic_fleets`.* FROM `generic_fleets` WHERE (`generic_fleets`.planet_id = 1) ORDER BY squad_id ASC, moving ASC, destination_id ASC, generic_unit_id ASC, updated_at DESC
+  [1m[36mSCHEMA (0.6ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mGenericUnit Load (0.1ms)[0m  SELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 6 LIMIT 1
+  [1m[36mGenericUnit Load (0.1ms)[0m  [1mSELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 18 LIMIT 1[0m
+  [1m[35mGenericUnit Load (0.1ms)[0m  SELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 25 LIMIT 1
+  [1m[36mGenericUnit Load (0.1ms)[0m  [1mSELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 46 LIMIT 1[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+  [1m[36mPlanet Load (0.1ms)[0m  [1mSELECT `planets`.* FROM `planets` ORDER BY name ASC LIMIT 1[0m
+  [1m[35mGenericFleet Load (0.2ms)[0m  SELECT `generic_fleets`.* FROM `generic_fleets` WHERE (`generic_fleets`.planet_id = 1) ORDER BY squad_id ASC, moving ASC, destination_id ASC, generic_unit_id ASC, updated_at DESC
+  [1m[36mSCHEMA (0.4ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mGenericUnit Load (0.1ms)[0m  SELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 6 LIMIT 1
+  [1m[36mGenericUnit Load (0.2ms)[0m  [1mSELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 18 LIMIT 1[0m
+  [1m[35mGenericUnit Load (0.1ms)[0m  SELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 25 LIMIT 1
+  [1m[36mGenericUnit Load (0.1ms)[0m  [1mSELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 46 LIMIT 1[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+  [1m[36mPlanet Load (0.2ms)[0m  [1mSELECT `planets`.* FROM `planets` ORDER BY name ASC LIMIT 1[0m
+  [1m[35mGenericFleet Load (0.4ms)[0m  SELECT `generic_fleets`.* FROM `generic_fleets` WHERE (`generic_fleets`.planet_id = 1) ORDER BY squad_id ASC, moving ASC, destination_id ASC, generic_unit_id ASC, updated_at DESC
+  [1m[36mSCHEMA (0.4ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mGenericUnit Load (0.1ms)[0m  SELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 6 LIMIT 1
+  [1m[36mGenericUnit Load (0.1ms)[0m  [1mSELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 18 LIMIT 1[0m
+  [1m[35mGenericUnit Load (0.1ms)[0m  SELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 25 LIMIT 1
+  [1m[36mGenericUnit Load (0.1ms)[0m  [1mSELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 46 LIMIT 1[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+  [1m[36mPlanet Load (0.2ms)[0m  [1mSELECT `planets`.* FROM `planets` ORDER BY name ASC LIMIT 1[0m
+  [1m[35mGenericFleet Load (0.1ms)[0m  SELECT `generic_fleets`.* FROM `generic_fleets` WHERE (`generic_fleets`.planet_id = 1) ORDER BY squad_id ASC, moving ASC, destination_id ASC, generic_unit_id ASC, updated_at DESC
+  [1m[36mSCHEMA (0.3ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mGenericUnit Load (0.1ms)[0m  SELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 6 LIMIT 1
+  [1m[36mGenericUnit Load (0.2ms)[0m  [1mSELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 18 LIMIT 1[0m
+  [1m[35mGenericUnit Load (0.1ms)[0m  SELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 25 LIMIT 1
+  [1m[36mGenericUnit Load (0.1ms)[0m  [1mSELECT `generic_units`.* FROM `generic_units` WHERE `generic_units`.`id` = 46 LIMIT 1[0m
+  [1m[35mSQL (1.1ms)[0m  SELECT SUM(`generic_fleets`.`balance`) AS sum_id FROM `generic_fleets` WHERE (`generic_fleets`.planet_id = 1)
+  [1m[36mGenericFleet Load (0.6ms)[0m  [1mSELECT `generic_fleets`.* FROM `generic_fleets` WHERE `generic_fleets`.`type` = '--- !ruby/class \'Facility\'\n' AND (`generic_fleets`.planet_id = 1) ORDER BY squad_id ASC, moving ASC, destination_id ASC, generic_unit_id ASC, updated_at DESC[0m
+  [1m[35mGenericFleet Load (0.4ms)[0m  SELECT `generic_fleets`.* FROM `generic_fleets` WHERE `generic_fleets`.`type` = '--- !ruby/class \'FacilityFleet\'\n' AND (`generic_fleets`.planet_id = 1) ORDER BY squad_id ASC, moving ASC, destination_id ASC, generic_unit_id ASC, updated_at DESC
+  [1m[36mGenericFleet Load (0.6ms)[0m  [1mSELECT `generic_fleets`.* FROM `generic_fleets` WHERE `generic_fleets`.`type` = 'FacilityFleet' AND (`generic_fleets`.planet_id = 1) ORDER BY squad_id ASC, moving ASC, destination_id ASC, generic_unit_id ASC, updated_at DESC[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT SUM(`generic_fleets`.`balance`) AS sum_id FROM `generic_fleets` WHERE `generic_fleets`.`type` = 'FacilityFleet' AND (`generic_fleets`.planet_id = 1)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+  [1m[36mPlanet Load (0.2ms)[0m  [1mSELECT `planets`.* FROM `planets` ORDER BY name ASC LIMIT 1[0m
+  [1m[35mSCHEMA (0.3ms)[0m  SHOW TABLES 
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT SUM(`generic_fleets`.`balance`) AS sum_id FROM `generic_fleets` WHERE `generic_fleets`.`type` = 'FacilityFleet' AND (`generic_fleets`.planet_id = 1)[0m
