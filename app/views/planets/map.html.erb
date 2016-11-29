@@ -1,3 +1,44 @@
+<div class="painel1">
+  <%= @current_squad.name %><br>
+  Turno: <%= @round.number %> - <%= @round_phase %><br>
+  Créditos: <%= @current_squad.credits %><br>
+  + espacial: <%= @air_income %><br>
+  + terrestre:  <%= @ground_income %><br>
+  - fugas: <%= @flee_tax %><br>
+  Próx.turno: <%= @provided %><br>
+  Fábricas: <%= @facilities %><br>
+  Capital Ships: <%= @capital_ships %><br>
+  Caças: <%= @fighters %><br>
+  Transportes: <%= @transports %><br>
+  Sensores: <%= @sensors %><br>
+  Jedi/Sith: <%= @warriors %><br>
+  Tropas: <%= @troopers %><br>
+  <%= @comment1 %><br>
+  <%= @comment2 %>
+</div>
+<div class="painel2">
+  <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/goal', 'Objetivos', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=500')">
+  Objetivos
+  </a><br>
+  <a href = "" onclick="window.open('/results/<%= @current_squad.id %>/show_results', 'Combates', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=500')">
+  Combates
+  </a><br>
+  <a href = "" onclick="window.open('https://docs.google.com/spreadsheets/d/1MmlpHv6qHDJqGnv7AmeU0MPzUQeslwk7rGmBln9-2ls/edit?authkey=CL_F9boP&hl=pt_BR#gid=6', 'Unidades', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">
+  Unidades
+  </a><br>
+  <a href = "" onclick="window.open('https://wgbrnavies.wordpress.com/', 'Regras', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">
+  Regras
+  </a><br>
+  <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/transfer', 'Transferir', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=200')">
+  Transferir
+  </a><br>
+  <a href = "" onclick="window.open('http://10.105.13.117:3000/ready', 'Passar Turno', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=150')">
+  Passar Turno
+  </a><br>
+
+</div>
+
+
 <% @planets.each do |planet| %>
 
   <% @round_number = nil %>
