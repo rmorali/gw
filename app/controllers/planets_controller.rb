@@ -78,11 +78,10 @@ class PlanetsController < ApplicationController
     end
     #@inactive = FacilityFleet.where(:squad => @current_squad, :producing_unit_id => nil).count + FacilityFleet.where(:squad => @current_squad, :producing_unit2_id => nil).count
     @inactive = FacilityFleet.select { |facility| facility.squad == @current_squad && facility.balance > 0 }.count
-    @comment1 = "."
-    @comment1 = "#{@inactive} fab. c/ pontos" unless @inactive == 0    
-    @comment2 = "."
+    @comment1 = "#{@inactive} fabricas sem produzir!" unless @inactive == 0    
+    @comment2 = ""
     @all_squads.each do |squad|
-      @comment2 << squad.name + " pronto! " if squad.ready?
+      @comment2 << squad.name + " pronto e aguardando! " if squad.ready?
     end
     
     respond_with @planets
