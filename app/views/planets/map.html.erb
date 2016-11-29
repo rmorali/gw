@@ -37,8 +37,15 @@
             <span style="color: #00FFFF" %>            
             <%= fleet.show + ' -> ' + fleet.destination.name %>
           <% end %>
+        <% if @round.attack %>
+          <span style=color:#40E0D0> 
+          <%= fleet.show_results %>
+          </span>
+        <% end %>
           <br>
         <% end %>
+        
+
   <% elsif @sensor != nil && @round.move %>
     <% unless planet.generic_fleets.select { |units| units.squad != @current_squad && units.round < @round.number && (units.generic_unit.type == 'CapitalShip' || units.generic_unit.type == 'Facility' || units.generic_unit.type == 'Sensor' || units.generic_unit.type == 'Trooper') }.empty? %>
       <% planet.generic_fleets.select { |units| units.squad != @current_squad && units.round < @round.number && (units.generic_unit.type == 'CapitalShip' || units.generic_unit.type == 'Facility' || units.generic_unit.type == 'Sensor' || units.generic_unit.type == 'Trooper') }.sort_by { |fleet| -fleet.generic_unit.price }.each do |fleet| %>
