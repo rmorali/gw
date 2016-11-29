@@ -58,10 +58,22 @@
   <%= planet.name %>
   </div>
 
-  <% if planet.constructive_capacity > 0 && planet.generic_fleets.any? { |unit| unit.squad == @current_squad }  %>
+  <% if planet.constructive_capacity > 0 && planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
     <div id="capacidade_construtiva" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y + 70 %>px;z-index: 10; white-space: nowrap">
-    <img src="/images/planets/shipyard.gif" height="30" width="40">
+    <img src="/images/planets/shipyard.gif" height="20" width="30">
   </div>
+  <% end %>
+
+  <% if planet.able_to_construct?(@current_squad) && planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
+    <div id="construcao" style="position:absolute; left:<%= planet.x + 40 %>px; top:<%= planet.y + 70 %>px;z-index: 10; white-space: nowrap">
+    <img src="/images/planets/construcao.jpg" height="20" width="20">
+    </div>
+  <% end %>
+
+  <% if planet.wormhole? && planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
+    <div id="wormhole" style="position:absolute; left:<%= planet.x + 40 %>px; top:<%= planet.y - 30 %>px;z-index: 10; white-space: nowrap">
+    <img src="/images/planets/wormhole.gif" height="50" width="75" >
+    </div>
   <% end %>
 
   <div id="frotas" style="position:absolute; left:<%= planet.x + 70 %>px; top:<%= planet.y + 10 %>px;z-index: 10; white-space: nowrap">
