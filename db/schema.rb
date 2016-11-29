@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161128192248) do
+ActiveRecord::Schema.define(:version => 20161129175829) do
 
   create_table "generic_fleets", :force => true do |t|
     t.integer  "squad_id"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20161128192248) do
     t.integer  "distance"
     t.integer  "x"
     t.integer  "y"
+    t.integer  "balance"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

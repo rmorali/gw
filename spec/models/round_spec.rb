@@ -118,7 +118,9 @@ describe Round do
       @round.end_moving!
       Result.all.count.should > 0
     end
-
+    it 'should transfer facilities balance to planet balance' do
+      @round.end_round!
+    end
   end
 end
 

@@ -39,8 +39,9 @@ describe Planet do
     it 'should show its ownerships if a sensor is located nearby' do
       @fleet.destroy
       nearby_planet = Factory :planet
+      sar = Factory :skill, :acronym => 'SAR'
       Route.create(:vector_a => planet, :vector_b => nearby_planet, :distance => 1)
-      sensor = Factory :generic_fleet, :generic_unit => Factory(:sensor), :planet => nearby_planet, :squad => @squad
+      sensor = Factory :generic_fleet, :generic_unit => Factory(:capital_ship), :planet => nearby_planet, :squad => @squad, :skill => sar
       planet.owner_visible_to?(@squad).should be_true
       planet.ground_owner_visible_to?(@squad).should be_true
     end
