@@ -6,11 +6,11 @@
   </b>
   </div>
 
-  <div id="nomes" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y - 10 %>px;z-index: 10;">
+  <div id="nomes" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y - 10 %>px;z-index: 10; white-space: nowrap">
   <%= planet.name %>
   </div>
 
-  <div id="frotas" style="position:absolute; left:<%= planet.x + 70 %>px; top:<%= planet.y + 10 %>px;z-index: 10;">
+  <div id="frotas" style="position:absolute; left:<%= planet.x + 70 %>px; top:<%= planet.y + 10 %>px;z-index: 10; white-space: nowrap">
   <% has_fleet = planet.generic_fleets.select { |fleet| fleet.squad == @current_squad } %>
   <% unless has_fleet.empty? %>
         <% planet.generic_fleets.each_with_index do |fleet, index| %>
