@@ -20,7 +20,11 @@ a:link {
 body {
     /* background-image: url(/images/star_background.gif); */
     /* background-attachment: fixed; */
+    /* background-image: url(/images/klyck_nebula_remastered-wallpaper-2736x1824.jpg); */
+    background-image: url(/images/HD-Space-Wallpapers-Image.jpg);
+    background-attachment: auto;
     background-color: black;
+    background-repeat: no-repeat;
     color: white;
     font-size: 11px;
     line-height: 18px;
@@ -87,13 +91,13 @@ white-space: nowrap;
     padding: 5px 5px 8px 8px;
     width: 200px;
     height: 300px;
-    background-color: rgba(17,10,10,0.7);
+    background-color: rgba(0,0,0,0.7);
     transition: all ease-in-out 0.36s;
     z-index: 15;
 }
 div.painel1:hover {
     box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
-    background-color: rgba(17,10,10,0.7);
+    background-color: rgba(0,0,0,0.7);
     z-index: 15;
 }
 
@@ -106,13 +110,13 @@ white-space: nowrap;
     padding: 5px 5px 8px 8px;
     width: 200px;
     height: 300px;
-    background-color: rgba(17,10,10,0.7);
+    background-color: rgba(0,0,0,0.7);
     transition: all ease-in-out 0.36s;
     z-index: 15;
 }
-div.painel2:hover {
+div.painel1:hover {
     box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
-    background-color: rgba(17,10,10,0.7);
+    background-color: rgba(0,0,0,0.7);
     z-index: 15;
 }
 
@@ -156,13 +160,13 @@ div.fleet {
     padding: 5px 5px 8px 8px;
     width: auto;
     height: auto;
-    background-color: rgba(17,10,10,0.7);
+    background-color: rgba(0,0,0,0.5);
     transition: all ease-in-out 0.36s;
     z-index: -10;
 }
 div.fleet:hover {
     box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
-    background-color: rgba(17,10,10,0.7);
+    background-color: rgba(0,0,0,0.7);
     z-index:-10; 
 }
 
@@ -234,24 +238,23 @@ h3 {
    text-shadow: 0 0 3px black, 0 0 3px black;
 }
 
-div.map
-{
-  border: 0 outset gray;
-  border-radius: 14px 14px 14px 14px;
-  box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
-  margin: 5px 1px 12px;
-  padding: 5px 5px 8px 8px;
-  width: 1355px;
-  background-color: rgba(10,15,24,0.5);
-  transition: all ease-in-out 0.3s;
-  position:fixed;
-  top: 0%;
-  left: 380px;
+div.map {
+    white-space: nowrap;
+    /* border: 0 outset gray; */
+    border-radius: 6px;
+    /* box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset; */
+    margin: 10px 5px 10px;
+    padding: 5px 5px 8px 8px;
+    width: auto;
+    height: auto;
+    background-color: rgba(0,0,0,0.5);
+    transition: all ease-in-out 0.36s;
+    z-index: -10;
 }
-
 div.map:hover {
-    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
-    background-color: rgba(17,10,10,0.5);
+    /* box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60); */
+    background-color: rgba(0,0,0,0.7);
+    z-index:-10; 
 }
 
 div.mainpage

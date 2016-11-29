@@ -76,7 +76,7 @@
     </div>
   <% end %>
 
-  <div id="frotas" style="position:absolute; left:<%= planet.x + 70 %>px; top:<%= planet.y + 10 %>px;z-index: 10; white-space: nowrap">
+  <div id="frotas" class="map" style="position:absolute; left:<%= planet.x + 70 %>px; top:<%= planet.y + 10 %>px;z-index: 10; white-space: nowrap">
 
   <% if planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
         <% planet.generic_fleets.each_with_index do |fleet, index| %>
