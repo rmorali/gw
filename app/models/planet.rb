@@ -184,7 +184,7 @@ class Planet < ActiveRecord::Base
   end
 
   def able_to_construct?(squad)
-    if generic_fleets.any?{|fleet| fleet.squad != squad} or self.tradeport?
+    if generic_fleets.any?{|fleet| fleet.squad != squad} or self.tradeport? or !self.has_a?(Setting.getInstance.builder_unit.constantize)
       permission = nil
     else
       permission = true

@@ -76,12 +76,12 @@ class PlanetsController < ApplicationController
       @commanders += 1 if fleet.type?(Commander)
       @sensors += 1 if fleet.is_a_sensor?
     end
-    #@inactive = FacilityFleet.where(:squad => @current_squad, :producing_unit_id => nil).count + FacilityFleet.where(:squad => @current_squad, :producing_unit2_id => nil).count
-    @inactive = FacilityFleet.select { |facility| facility.squad == @current_squad && facility.balance > 0 }.count
-    @comment1 = "#{@inactive} fabricas sem produzir!" unless @inactive == 0    
+    #@active = FacilityFleet.select { |facility| facility.squad == @current_squad && facility.balance > 0 }.count
+    #@comment1 = "#{@inactive} fabricas sem produzir!" unless @active == 0  
+    @comment1 = ""  
     @comment2 = ""
     @all_squads.each do |squad|
-      @comment2 << "<span style=color:##{squad.color}>" + squad.name + " pronto e aguardando!<span><br>" if squad.ready?
+      @comment2 << "<span style=color:##{squad.color}>" + squad.name + " pronto!<span><br>" if squad.ready?
     end
     
     respond_with @planets

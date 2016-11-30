@@ -14,14 +14,18 @@ document.title = "<%= @facility %> <%= @planet %>"
   <span style=font-weight:bold;font-size:13px;color:#00FF00>
   Nível: <%= @facility.level %><br>
   Income Previsto: <%= @facility.capacity %> (+<%= @facility.current_upgrade_ratio %>)<br>
-  Próximo Turno: <%= @facility.default_capacity + @facility.balance %>
   </span>
   <span style=font-weight:bold;font-size:13px;color:#FF0000>
-  <%  if @facility.sabotaged? %>
+  <% if @facility.sabotaged? %>
     <br>
     Sabotada: Perdeu <%= @facility.capacity / 2 %> (-50%) de Income<br>
   <% end %>
+  <% if @facility.captured? %>
+    <br>
+    Capturada: Perdeu <%= @facility.capacity %> (-100%) de Income<br>
+  <% end %>
   </span>
+
   <p>
   <div align = left><a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a></div>
 </div>

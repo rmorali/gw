@@ -6,5 +6,5 @@
 </info>
 
 <% if @round.move && fleet.squad == @squad && !fleet.squad.ready? %>
-  <a href = "" onclick="window.open('/facility_fleets/<%= fleet.id %>/edit', 'Facility <%= fleet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=500, height=320')">+</a>
+  <a href = "" onclick="window.open('/facility_fleets/<%= fleet.id %>/edit', 'Facility <%= fleet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=550, height=360')">+</a>
 <% end %>
