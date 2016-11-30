@@ -1,0 +1,111 @@
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-11-30 02:56:20 -0800
+  Processing by Devise::SessionsController#new as HTML
+Rendered /home/morali/.rvm/gems/ruby-1.9.3-p484/gems/devise-1.5.4/app/views/devise/shared/_links.erb (1.3ms)
+Rendered /home/morali/.rvm/gems/ruby-1.9.3-p484/gems/devise-1.5.4/app/views/devise/sessions/new.html.erb within layouts/application (91.9ms)
+Completed 200 OK in 115ms (Views: 103.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/js/js_1.9/jquery-ui-1.9.1.custom.min.js" for 127.0.0.1 at 2016-11-30 02:56:20 -0800
+
+ActionController::RoutingError (No route matches "/users/js/js_1.9/jquery-ui-1.9.1.custom.min.js"):
+  
+
+Rendered /home/morali/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.0.20/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/users/js/js_1.9/jquery-1.8.2.js" for 127.0.0.1 at 2016-11-30 02:56:20 -0800
+
+ActionController::RoutingError (No route matches "/users/js/js_1.9/jquery-1.8.2.js"):
+  
+
+Rendered /home/morali/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.0.20/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/users/javascripts/jquery.min.js" for 127.0.0.1 at 2016-11-30 02:56:20 -0800
+
+ActionController::RoutingError (No route matches "/users/javascripts/jquery.min.js"):
+  
+
+Rendered /home/morali/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.0.20/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/users/javascripts/thickbox-compressed.js" for 127.0.0.1 at 2016-11-30 02:56:20 -0800
+
+ActionController::RoutingError (No route matches "/users/javascripts/thickbox-compressed.js"):
+  
+
+Rendered /home/morali/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.0.20/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/users/stylesheets/lightbox.css" for 127.0.0.1 at 2016-11-30 02:56:20 -0800
+
+ActionController::RoutingError (No route matches "/users/stylesheets/lightbox.css"):
+  
+
+Rendered /home/morali/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.0.20/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/users/stylesheets/lightbox.css" for 127.0.0.1 at 2016-11-30 02:56:21 -0800
+
+ActionController::RoutingError (No route matches "/users/stylesheets/lightbox.css"):
+  
+
+Rendered /home/morali/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.0.20/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.3ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2016-11-30 02:56:31 -0800
+  Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wESdRGHD2SvoIM/YRRdig3E1Gw82lax9VHHQmxpgNAI=", "user"=>{"email"=>"setup@xws.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mSCHEMA (0.5ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`email` = 'setup@xws.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2016-11-30 10:56:31', `current_sign_in_at` = '2016-11-30 10:56:31', `last_sign_in_ip` = '127.0.0.1', `current_sign_in_ip` = '127.0.0.1', `sign_in_count` = 1, `updated_at` = '2016-11-30 10:56:31' WHERE `users`.`id` = 1
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSquad Load (0.7ms)[0m  SELECT `squads`.* FROM `squads` WHERE (`squads`.user_id = 1) ORDER BY id ASC LIMIT 1
+Redirected to http://localhost:3000/settings
+Completed 302 Found in 201ms
+
+
+Started GET "/settings" for 127.0.0.1 at 2016-11-30 02:56:31 -0800
+  Processing by SettingsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mSetting Load (0.3ms)[0m  SELECT `settings`.* FROM `settings` LIMIT 1
+DEPRECATION WARNING: [SIMPLE_FORM] Using `:as => :radio` as input type is deprecated, please change it to `:as => :radio_buttons`. (called from block in _app_views_settings_index_html_erb___674148114_85979360__903509771 at /home/morali/gw/app/views/settings/index.html.erb:41)
+DEPRECATION WARNING: [SIMPLE_FORM] Using `:as => :radio` as input type is deprecated, please change it to `:as => :radio_buttons`. (called from block in _app_views_settings_index_html_erb___674148114_85979360__903509771 at /home/morali/gw/app/views/settings/index.html.erb:42)
+Rendered settings/index.html.erb within layouts/application (270.3ms)
+Completed 200 OK in 298ms (Views: 279.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/js/js_1.9/jquery-1.8.2.js" for 127.0.0.1 at 2016-11-30 02:56:31 -0800
+
+ActionController::RoutingError (No route matches "/js/js_1.9/jquery-1.8.2.js"):
+  
+
+Rendered /home/morali/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.0.20/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/js/js_1.9/jquery-ui-1.9.1.custom.min.js" for 127.0.0.1 at 2016-11-30 02:56:31 -0800
+
+ActionController::RoutingError (No route matches "/js/js_1.9/jquery-ui-1.9.1.custom.min.js"):
+  
+
+Rendered /home/morali/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.0.20/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/js/js_1.9/jquery-1.8.2.js" for 127.0.0.1 at 2016-11-30 02:56:31 -0800
+
+ActionController::RoutingError (No route matches "/js/js_1.9/jquery-1.8.2.js"):
+  
+
+Rendered /home/morali/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.0.20/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/js/js_1.9/jquery-ui-1.9.1.custom.min.js" for 127.0.0.1 at 2016-11-30 02:56:31 -0800
+
+ActionController::RoutingError (No route matches "/js/js_1.9/jquery-ui-1.9.1.custom.min.js"):
+  
+
+Rendered /home/morali/.rvm/gems/ruby-1.9.3-p484/gems/actionpack-3.0.20/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
