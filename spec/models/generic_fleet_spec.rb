@@ -377,7 +377,7 @@ describe GenericFleet do
     end
 
     context 'related to captured facility fleet' do
-      it 'should keeps its balance when captured' do
+      it 'should reset its balance when captured' do
         facility_unit.planet = planet
         facility_unit.balance = 100
         facility_unit.producing_unit = capital_ship
@@ -386,7 +386,7 @@ describe GenericFleet do
         captured_facility = squad.generic_fleets.first
         captured_facility.update_balance!
         captured_facility = squad.generic_fleets.first
-        captured_facility.balance.should == 100
+        captured_facility.balance.should == 0
       end
     end
 

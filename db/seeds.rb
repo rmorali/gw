@@ -241,12 +241,12 @@ Armament.create(:name => 'Flare', :acronym => 'FLR', :price => 10, :hyperdrive =
 
 Unit.create(:name => '_____Capital Ship Skills________').factions = all
 Skill.create(:name => 'Sensor Array', :acronym => 'SAR', :price => 150, :hyperdrive => false, :description => 'Detecta Unidades Inimigas'  ).factions = all
-Skill.create(:name => 'Anti-Trooper Bombs', :acronym => 'ATB', :price => 150, :hyperdrive => false, :description => 'Bombardeia Exercitos'  ).factions = all
+#Skill.create(:name => 'Anti-Trooper Bombs', :acronym => 'ATB', :price => 150, :hyperdrive => false, :description => 'Bombardeia Exercitos'  ).factions = all
 Skill.create(:name => 'Long Range Engine', :acronym => 'ENG', :price => 300, :hyperdrive => false, :description => 'Permite Hyperspace em todo o Setor'  ).factions = all
 Skill.create(:name => 'Gravity Generator', :acronym => 'INT', :price => 600, :hyperdrive => false, :description => 'Bloqueia Fugas - Interdictor'  ).factions = all
 
-Unit.create(:name => '____________Tropas______________').factions = all
-Trooper.create(:name => 'Troopers', :price => 1, :hyperdrive => false ).factions = all
+#Unit.create(:name => '____________Tropas______________').factions = all
+#Trooper.create(:name => 'BF2 Trooper', :price => 1, :hyperdrive => false ).factions = all
 
 #Unit.create(:name => '__________Guerreiros_____________').factions = all
 #Warrior.create(:name => 'Mestre Yoda', :price => 30, :description => 'Jedi' ).factions = reb

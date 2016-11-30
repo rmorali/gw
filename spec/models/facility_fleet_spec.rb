@@ -117,10 +117,10 @@ describe FacilityFleet do
     end
     it 'should not update its balance if moving' do
       facility_fleet.moving = true
-      facility_fleet.balance = 1000
+      facility_fleet.balance = 0
       facility_fleet.save
       facility_fleet.update_balance!
-      facility_fleet.balance.should == 1000
+      facility_fleet.balance.should == 0
     end
     it 'should block its function after being captured' do
 

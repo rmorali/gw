@@ -120,10 +120,10 @@ describe Round do
     end
     it 'should transfer facilities balance to planet balance' do
       planet = Factory(:planet, :balance => 0)
-      facility_fleet = Factory :facility, :planet => planet
-      facility_fleet2 = Factory :facility, :planet => planet
+      facility_fleet = Factory :facility_fleet, :generic_unit => Factory(:facility), :squad => rebel, :planet => planet
+      facility_fleet2 = Factory :facility_fleet, :generic_unit => Factory(:facility), :squad => rebel, :planet => planet
       @round.end_round!
-      planet.balance.should == 2000      
+      planet.reload.balance.should == 600      
     end
   end
 end
