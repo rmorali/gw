@@ -3,8 +3,9 @@ document.title = "Construir em <%= @planet.name %>"
 </script>
 <div class="fleet">
 <h2> <%= @planet.name %> </h2>
+<h3> Construir Fábrica: </h3>
 <%= simple_form_for [@planet, @facility_fleet]  do |f| %>
-  <%= f.association :facility, :collection => @facilities, :label => 'Tipo de fábrica: ' %>
+  <%= f.association :facility, :collection => @facilities, :label => 'Tipo: ' %>
   <br>
   <%= f.submit 'Construir' %>
 <% end %>

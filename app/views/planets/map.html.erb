@@ -131,12 +131,15 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   <% end %>
 
   <% if planet.wormhole? && planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
-    <div id="wormhole" style="position:absolute; left:<%= planet.x + 40 %>px; top:<%= planet.y - 30 %>px;z-index: 10; white-space: nowrap">
+    <div id="wormhole" style="position:absolute; left:<%= planet.x + 40 %>px; top:<%= planet.y - 30 %>px; white-space: nowrap">
+        <info class="tooltip">
+        <tip>Wormhole para <%=  planet.routes.last %></tip>
     <img src="/images/planets/wormhole.gif" height="50" width="75" >
+        </info>
     </div>
   <% end %>
 
-  <div id="frotas" class="map" style="position:absolute; left:<%= planet.x + 70 %>px; top:<%= planet.y + 10 %>px;z-index: 10; white-space: nowrap">
+  <div id="frotas" class="map" style="position:absolute; left:<%= planet.x + 70 %>px; top:<%= planet.y + 10 %>px; white-space: nowrap">
 
   <% if planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
         <% planet.generic_fleets.each_with_index do |fleet, index| %>

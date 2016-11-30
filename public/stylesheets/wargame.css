@@ -1,6 +1,18 @@
-b:link{
-
+body {
+    /* background-image: url(/images/star_background.gif); */
+    /* background-attachment: fixed; */
+    /* background-image: url(/images/klyck_nebula_remastered-wallpaper-2736x1824.jpg); */
+    background-image: url(/images/HD-Space-Wallpapers-Image.jpg);
+    background-attachment: auto;
+    background-color: black;
+    background-repeat: no-repeat;
+    color: white;
+    font-size: 11px;
+    line-height: 18px;
+    font-family: 'Open Sans',sans-serif;
+    font-weight: bold;
 }
+
 a:link {
     background: none repeat scroll 0 0 rgba(10, 10, 10, 0.8);
     border: 1px solid rgba(100, 120, 160, 0.60);
@@ -15,21 +27,6 @@ a:link {
     padding: 2px;
     text-decoration: none;
     transition: all 0.4s ease-in-out 0s;
-}
-
-body {
-    /* background-image: url(/images/star_background.gif); */
-    /* background-attachment: fixed; */
-    /* background-image: url(/images/klyck_nebula_remastered-wallpaper-2736x1824.jpg); */
-    background-image: url(/images/HD-Space-Wallpapers-Image.jpg);
-    background-attachment: auto;
-    background-color: black;
-    background-repeat: no-repeat;
-    color: white;
-    font-size: 11px;
-    line-height: 18px;
-    font-family: 'Open Sans',sans-serif;
-    font-weight: bold;
 }
 
 a:visited {
@@ -64,22 +61,9 @@ a:active {
     top: 2px;
 }
 
-div.squad_info:hover {
-    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60) ;
-    background-color: rgba(17,10,10,0.95);
-}
-div.squad_info {
-    position:fixed;
-    border: 0 outset gray;
-    border-radius: 14px 14px 14px 14px;
-    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
-    margin: -5px 1px 12px;
-    padding: 5px 5px 8px 8px;
-    width: auto;
-    height: auto;
-    background-color: rgba(17,10,10,0.95);
-    transition: all ease-in-out 0.3s;
-    z-index: -1;
+b {
+    cursor:pointer;
+
 }
 
 div.painel1 {
@@ -210,38 +194,6 @@ div.painel6:hover {
     z-index: 15;
 }
 
-
-div.planet_content {
-    white-space: nowrap;
-    border: 0 outset gray;
-    border-radius: 6px;
-    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
-    margin: 10px 5px 10px;
-    padding: 5px 5px 8px 8px;
-    width: auto;
-    height: auto;
-    background-color: rgba(17,10,10,0.7);
-    transition: all ease-in-out 0.36s;
-    z-index: -10;
-}
-div.planet_content:hover {
-    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
-    background-color: rgba(17,10,10,0.7);
-    z-index:-10;
-}
-div.goal_content {
-    border: 0 outset gray;
-    border-radius: 6px;
-    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
-    margin: 10px 5px 10px;
-    padding: 5px 5px 8px 8px;
-    width: auto;
-    height: auto;
-    background-color: rgba(17,10,10,0.7);
-    transition: all ease-in-out 0.36s;
-    z-index: -10;
-}
-
 div.fleet {
     white-space: nowrap;
     border: 0 outset gray;
@@ -279,23 +231,6 @@ div.alert:hover {
     background-color: rgba(17,10,10,0.7);
     z-index:-10; 
 }
-
-
-div.result_content {
-    border: 0 outset gray;
-    border-radius: 6px;
-    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
-    margin: 10px 5px 5px;
-    padding: 5px 5px 8px 8px;
-    width: auto;
-    background-color: rgba(17,10,10,0.5);
-    transition: all ease-in-out 0.36s;
-}
-div.result_content:hover {
-    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
-    background-color: rgba(17,10,10,0.5);
-}
-
 
 h2 {
    background: -moz-linear-gradient(left center , #5E707D 5%, rgba(10, 10, 10, 0.1)) repeat scroll 0 0 transparent;
