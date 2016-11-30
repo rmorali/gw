@@ -9,7 +9,7 @@ document.title = "<%= @facility %> <%= @planet %>"
 <td width=50%>
   <h3><%= @facility %></h3>
   <span style=font-weight:bold;font-size:16px;color:yellow>
-  Pontos de Produção: <%= @facility.balance.to_i %><br>
+  Produção Planetária: <%= @facility.planet.balance.to_i %><br>
   </span>
   <span style=font-weight:bold;font-size:13px;color:#00FF00>
   Nível: <%= @facility.level %><br>

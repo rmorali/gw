@@ -110,7 +110,7 @@ white-space: nowrap;
     padding: 5px 5px 8px 8px;
     width: 100px;
     height: auto;
-    position: absolute;
+    position: fixed;
     left: 220px;
     top: 5px;
     background-color: rgba(0,0,0,0.7);

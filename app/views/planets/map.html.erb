@@ -102,7 +102,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   <% if planet.generic_fleets.any? { |unit| unit.squad == @current_squad && unit.type == 'FacilityFleet' } %>
     <div id="capacidade_construtiva" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y + 70 %>px;z-index: 10; white-space: nowrap">
     <% if @round.move && !@current_squad.ready? && planet.constructive_capacity > 0 %>
-      <b href = "" onclick="window.open('/facility_fleets/<%= planet.generic_fleets.select { |unit| unit.squad == @current_squad && unit.type == 'FacilityFleet' }.first.id  %>/edit', 'Facility', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=500, height=320')">
+      <b href = "" onclick="window.open('/facility_fleets/<%= planet.generic_fleets.select { |unit| unit.squad == @current_squad && unit.type == 'FacilityFleet' }.first.id  %>/edit', 'Facility', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=550, height=360')">
     <% end %>
     <img src="/images/planets/shipyard.gif" height="20" width="30">
       </b>

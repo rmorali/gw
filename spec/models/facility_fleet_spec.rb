@@ -137,11 +137,15 @@ describe FacilityFleet do
       facility_fleet.save!
     end
     it 'should produce fleet if we have enough production points' do
+      facility_fleet.planet = Factory :planet, :balance => 1000
       facility_fleet.produce! unit, 1, planet, squad
       Fleet.count.should be 1
     end
     it 'should not produce a fleet if we dont have production points' do
+      planet.balance = 0
+      planet.save
       facility_fleet.balance = 0
+      facility_fleet.planet = planet
       facility_fleet.save
       facility_fleet.produce! unit, 1, planet, squad
       Fleet.count.should_not > 0

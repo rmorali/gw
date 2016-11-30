@@ -56,10 +56,15 @@ class FacilityFleet < GenericFleet
   end
 
   def produce! unit, quantity, planet, squad
-    unless quantity * unit.price > self.balance
+    #unless quantity * unit.price > self.balance
+      #Fleet.create_from_facility unit, quantity, planet, squad
+      #self.balance -= quantity * unit.price
+      #self.save
+    #end
+    unless quantity * unit.price > self.planet.balance
       Fleet.create_from_facility unit, quantity, planet, squad
-      self.balance -= quantity * unit.price
-      self.save
+      self.planet.balance -= quantity * unit.price
+      self.planet.save
     end
   end
 
