@@ -75,7 +75,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
     <% end %>
 
   <div id="gifs" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y %>px;z-index: 10;">
-  <b href = "" onclick="window.open('/planets/<%= planet.id %>', 'Planeta <%= planet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=500, height=500')">
+  <b href = "" onclick="window.open('/planets/<%= planet.id %>', 'Planeta <%= planet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=600, height=500')">
 
   <img src="/images/planets/<%= planet.name.gsub(" ","").downcase %>.png">
   </b>
@@ -99,9 +99,9 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
 </font>
   </div>
 
-  <% if planet.constructive_capacity > 0 && planet.generic_fleets.any? { |unit| unit.squad == @current_squad && unit.type == 'FacilityFleet' } %>
+  <% if planet.generic_fleets.any? { |unit| unit.squad == @current_squad && unit.type == 'FacilityFleet' } %>
     <div id="capacidade_construtiva" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y + 70 %>px;z-index: 10; white-space: nowrap">
-    <% if @round.move && !@current_squad.ready? %>
+    <% if @round.move && !@current_squad.ready? && planet.constructive_capacity > 0 %>
       <b href = "" onclick="window.open('/facility_fleets/<%= planet.generic_fleets.select { |unit| unit.squad == @current_squad && unit.type == 'FacilityFleet' }.first.id  %>/edit', 'Facility', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=500, height=320')">
     <% end %>
     <img src="/images/planets/shipyard.gif" height="20" width="30">
@@ -119,8 +119,9 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
      <% if @round.move && !planet.tradeport? && !@current_squad.ready? && planet.able_to_construct?(@current_squad) %>
        <b href = "" onclick="window.open('/planets/<%= planet.id %>/facility_fleets/new', 'Construir <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=220')">
      <% end %>
-
+    <% if @round.move %>
     <img src="/images/planets/construcao.jpg" height="20" width="20">
+    <% end %>
     </b>
     </div>
   <% end %>
