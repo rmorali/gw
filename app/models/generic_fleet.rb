@@ -27,9 +27,7 @@ class GenericFleet < ActiveRecord::Base
     FacilityFleet.is_free
     captured_fleet = self.clone
     captured_fleet.update_attributes(:squad => squad, :quantity => quantity, :type => self.type, :level => self.level)
-    if captured_fleet.is_a? FacilityFleet
-      captured_fleet.moving = true
-    end
+    captured_fleet.moving = true
     captured_fleet.save
     self.quantity = self.quantity - quantity
     save

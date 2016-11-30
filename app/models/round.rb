@@ -33,7 +33,7 @@ class Round < ActiveRecord::Base
 
   def end_moving!
     Squad.update_all(:ready => nil)
-    GenericFleet.update_all(:sabotaged => nil, :carried_by_id => nil)
+    GenericFleet.update_all(:sabotaged => nil, :captured => nil, :carried_by_id => nil)
     self.move_fleets
     self.update_attributes(:move => nil, :attack => true)
     Result.create_all
@@ -63,8 +63,7 @@ class Round < ActiveRecord::Base
     set_map
     set_planet_balance
   end
- # VERIFICAR AQUI NAO PODE ATUALIZAR BALANCE DO PLANETA SE A FACILITY FOR CAPTURADA
- # UMA FORMA PARECE SER MARCAR COMO SABOTADA NO CASO DE CAPTURAR
+
   def set_planet_balance
     Planet.all.each do |planet|
       planet.update_balance

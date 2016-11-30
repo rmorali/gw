@@ -83,9 +83,9 @@ class Planet < ActiveRecord::Base
     @settings = Setting.getInstance
     Planet.where(:tradeport => nil).each do |planet|
       if planet.special?
-        planet.update_attributes(:credits => @settings.bonus_planet_income)
+        planet.update_attributes(:credits => @settings.bonus_planet_income, :balance => 0)
       else
-        planet.update_attributes(:credits => @settings.net_planet_income)
+        planet.update_attributes(:credits => @settings.net_planet_income, :balance => 0)
       end
     end
   end
@@ -242,7 +242,11 @@ class Planet < ActiveRecord::Base
   end
 
   def update_balance
-    self.balance += constructive_capacity
+    if constructive_capacity > 0
+      self.balance += constructive_capacity
+    else
+      self.balance = 0
+    end
     self.save
   end
 
