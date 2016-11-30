@@ -25,7 +25,11 @@ class Round < ActiveRecord::Base
       settings.initial_planets.times {squad.planets << Planet.randomize} unless settings.initial_planets == 0
       FacilityFleet.is_free
       squad.populate_planets
+      squad.facility_fleets.each do |facility|
+        facility.update_balance!
+      end
     end
+    set_planet_balance
     GenericFleet.update_all(:level => 0)
     Tradeport.start
     set_map

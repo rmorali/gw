@@ -117,7 +117,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
       </b>
     </div>
     <div id="planet balance" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y + 88 %>px;z-index: 15; white-space: nowrap">
-    <% if planet.constructive_capacity > 0 %>
+    <% if planet.balance > 0 %>
       <span style="color:white;font-size: 12px;font-weight: bold;text-decoration: blink">
     <% else %>
       <span style="color:white;font-size: 12px;font-weight: bold">
