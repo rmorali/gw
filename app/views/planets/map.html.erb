@@ -109,14 +109,19 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
     </div>
     <div id="planet balance" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y + 88 %>px;z-index: 15; white-space: nowrap">
     <span style="color:white;font-size: 12px;font-weight: bold">
-    <%= planet.balance %>
+    <%= planet.balance if @round.move %>
     </span>
     </div>
   <% end %>
 
   <% if planet.able_to_construct?(@current_squad) && planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
     <div id="construcao" style="position:absolute; left:<%= planet.x + 40 %>px; top:<%= planet.y + 70 %>px;z-index: 10; white-space: nowrap">
+     <% if @round.move && !planet.tradeport? && !@current_squad.ready? && planet.able_to_construct?(@current_squad) %>
+       <b href = "" onclick="window.open('/planets/<%= planet.id %>/facility_fleets/new', 'Construir <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=220')">
+     <% end %>
+
     <img src="/images/planets/construcao.jpg" height="20" width="20">
+    </b>
     </div>
   <% end %>
 
