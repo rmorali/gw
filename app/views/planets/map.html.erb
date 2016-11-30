@@ -5,7 +5,7 @@
     font-weight: bold">
   Turno: <%= @round.number %> - <%= @round_phase %><br>
 </div>
-<div class="painel1">  
+<div class="painel2">  
 <span style="color:yellow;font-size: 18px;font-weight: bold">
   Créditos: <%= @current_squad.credits %><br>
 </span>
@@ -20,7 +20,7 @@
   Próx.turno: <%= @provided %><br>
 </span>
 </div>
-<div class="painel1">
+<div class="painel3">
 <span style="color:white;font-size: 18px;font-weight: bold">
   Fábricas: <%= @facilities %><br>
   Capital Ships: <%= @capital_ships %><br>
@@ -31,17 +31,17 @@
   Tropas: <%= @troopers %><br>
 </span>
 </div>
-<div class="painel1" style="width:350px">
+<div class="painel4" style="width:350px">
 <span style=color:#<%= @current_squad.color %>>** Seu objetivo ** ( <%= @current_squad.name %> )
 <br>
 Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></span>
 </div>
-<div class="painel1" style="width:230px">
+<div class="painel5" style="width:230px">
   <span style="color:white;font-size: 14px;font-weight: bold;text-decoration: blink">
   <%= raw @comment1 if @comment1 %><br>
   <%= raw @comment2 if @comment2 %>
 </div>
-<div class="painel2">
+<div class="painel6">
   <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/goal', 'Objetivos', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=500')">
   Objetivos
   </a><br><br>
