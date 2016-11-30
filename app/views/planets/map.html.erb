@@ -93,16 +93,21 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
 </font>
   </div>
   
-  <div id="Controle terrestre" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y + 40 %>px;z-index: 10; white-space: nowrap">
+  <div id="Controle terrestre" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y + 45 %>px;z-index: 10; white-space: nowrap">
 <span style="color:yellow;font-size: 10px;font-weight: bold">
   <%= "#{planet.ground_credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && !planet.under_attack? && !planet.tradeport?  && planet.ground_squad == @current_squad %>
 </font>
   </div>
 
-  <% if planet.constructive_capacity > 0 && planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
+  <% if planet.constructive_capacity > 0 && planet.generic_fleets.any? { |unit| unit.squad == @current_squad && unit.type == 'FacilityFleet' } %>
     <div id="capacidade_construtiva" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y + 70 %>px;z-index: 10; white-space: nowrap">
     <img src="/images/planets/shipyard.gif" height="20" width="30">
-  </div>
+    </div>
+    <div id="planet balance" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y + 88 %>px;z-index: 15; white-space: nowrap">
+    <span style="color:white;font-size: 12px;font-weight: bold">
+    <%= planet.balance %>
+    </span>
+    </div>
   <% end %>
 
   <% if planet.able_to_construct?(@current_squad) && planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
