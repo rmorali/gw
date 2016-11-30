@@ -81,7 +81,7 @@ class PlanetsController < ApplicationController
     @comment1 = "#{@inactive} fabricas sem produzir!" unless @inactive == 0    
     @comment2 = ""
     @all_squads.each do |squad|
-      @comment2 << squad.name + " pronto e aguardando! " if squad.ready?
+      @comment2 << "<span style=color:##{squad.color}>" + squad.name + " pronto e aguardando!<span><br>" if squad.ready?
     end
     
     respond_with @planets

@@ -15,7 +15,7 @@ class GenericFleetsController < ApplicationController
     end
     @small_fleet = nil
     total = 0 
-    
+    redirect_to :controller => 'planets', :action => 'map'
   end
 
   def move

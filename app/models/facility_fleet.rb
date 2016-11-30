@@ -72,9 +72,11 @@ class FacilityFleet < GenericFleet
     end
   end
 
-  def default_capacity
+  def default_capacity 
     if sabotaged?
       ((capacity + current_upgrade_ratio) * 0.50).to_i
+    elsif captured?
+      0
     else
       (capacity + current_upgrade_ratio).to_i
     end

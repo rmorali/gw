@@ -36,10 +36,10 @@
 <br>
 Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></span>
 </div>
-<div class="painel1">
+<div class="painel1" style="width:230px">
   <span style="color:white;font-size: 14px;font-weight: bold;text-decoration: blink">
   <%= @comment1 %><br>
-  <%= @comment2 %>
+  <%= raw @comment2 %>
 </div>
 <div class="painel2">
   <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/goal', 'Objetivos', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=500')">
@@ -57,9 +57,10 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/transfer', 'Transferir', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=200')">
   Transferir
   </a><br><br>
-  <a href = "" onclick="window.open('http://10.105.13.117:3000/ready', 'Passar Turno', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=150')">
+  <a href = "" onclick="window.open('/ready', 'Passar Turno', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=150')">
   Passar Turno
-  </a><br>
+  </a><br><br>
+  <a href = "/users/sign_out">Logout</a><br>
 
 </div>
 
