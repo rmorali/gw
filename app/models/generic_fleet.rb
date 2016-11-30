@@ -90,7 +90,7 @@ class GenericFleet < ActiveRecord::Base
       "#{quantity} #{name}"
     when 'Facility'
       unless moving?
-        "#{name} - #{balance.to_i}"
+        "#{name}"
       else
         "#{generic_unit.description}"
       end
@@ -124,9 +124,10 @@ class GenericFleet < ActiveRecord::Base
       info << "<br>- Skill: #{skill.name}" if skill
 
     when 'Facility'
-      info << "<br>- Pontos de Producao: #{self.balance.to_i}"
+      #info << "<br>- Pontos de Producao: #{self.balance.to_i}"
       info << "<br>- Nivel: #{self.level} (+#{current_upgrade_ratio})"
       info << "<br><b>- Bloqueada/Sabotada (-#{(default_capacity * 0.50).to_i})</b>" if self.sabotaged?
+      info << "<br><b>- Capturada </b>" if self.captured?
       info << "<br>- Income por turno: #{self.default_capacity}"
       info << "<br>- Producao / Treinamento de Unidades"
       info << "<br>- Congela Nivel e Pontos se movimentada"
