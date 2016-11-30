@@ -87,6 +87,15 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
 </font>
   </div>
 
+  <div id="income planetario" style="position:absolute; left:<%= planet.x + 60 %>px; top:<%= planet.y + 5 %>px;z-index: 10; white-space: nowrap">
+<span style="color:grey;font-size: 10px;font-weight: bold">
+      <info class="tooltip">
+      <tip>Income planetário <%= planet.credits %></tip>
+  <%= planet.credits %>
+      </info>
+</font>
+  </div>
+
   <div id="Controle espacial" style="position:absolute; left:<%= planet.x %>px; top:<%= planet.y + 5 %>px;z-index: 10; white-space: nowrap">
 <span style="color:yellow;font-size: 10px;font-weight: bold">
       <info class="tooltip">
