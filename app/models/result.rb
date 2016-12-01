@@ -38,13 +38,13 @@ class Result < ActiveRecord::Base
 
   def blast!
     self.generic_fleet.blast! self.blasted
-    self.final_quantity = self.quantity - self.blasted
+    self.final_quantity -= self.blasted
     save
   end
 
   def flee!
     self.generic_fleet.flee! self.fled if self.generic_fleet.respond_to? :flee!
-    self.final_quantity = self.quantity - self.fled
+    self.final_quantity -= self.fled
     save
   end
 
