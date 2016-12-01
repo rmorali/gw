@@ -220,7 +220,7 @@ describe Planet do
     squad = Factory :squad
     trooper = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:trooper)
     capital_ship = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:capital_ship)
-    planet.generic_fleets << capital_ship
+    planet.generic_fleets << trooper
     planet.able_to_construct?(squad).should be_true
     facility = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:facility)
     planet.generic_fleets << facility
