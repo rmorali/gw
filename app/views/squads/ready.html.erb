@@ -1,8 +1,7 @@
-<% content_for :for_head do %>
-  <script>
+<script>
+  refreshParent();
   document.title = " Passar Turno "
-  </script>  
-<% end %>
+ </script>  
 <div class="fleet">
 <span style=color:#<%= @squad.color %>;text-decoration:blink;font-size:14px> Esquadrão <%= @squad.name %> <%= @status %>. </span>
 <br><br>
