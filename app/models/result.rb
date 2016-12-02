@@ -159,9 +159,9 @@ class Result < ActiveRecord::Base
     when 'Skill'
       style << "border-radius:20%; border:solid 1px; padding:1px"
     when 'CapitalShip'
-      style << "font-weight:bolder; font-size:14px"
+      style << "font-weight:bolder; font-size:13px"
     when 'Facility'
-      style << "font-weight:bolder; font-size:14px; background-color:#000040"
+      style << "font-weight:bolder; font-size:13px; background-color:#000040"
     when 'LightTransport'
       style << "font-weight:bolder; font-size:12px"
     when 'Warrior'

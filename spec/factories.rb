@@ -109,6 +109,7 @@ Factory.define :result do |f|
   f.association :squad
   f.association :generic_unit
   f.quantity 10
+  f.final_quantity 0
   f.after_build do |f|
     f.generic_fleet = Factory :generic_fleet, :generic_unit => f.generic_unit, :planet => f.planet, :quantity => f.quantity
   end
