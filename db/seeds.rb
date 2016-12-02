@@ -246,7 +246,7 @@ Skill.create(:name => 'Long Range Engine', :acronym => 'ENG', :price => 600, :hy
 Skill.create(:name => 'Gravity Generator', :acronym => 'INT', :price => 600, :hyperdrive => false, :description => 'Bloqueia Fugas - Interdictor'  ).factions = all
 
 Unit.create(:name => '____________Tropas______________').factions = all
-Trooper.create(:name => 'Troopers', :price => 10, :hyperdrive => false ).factions = all
+Trooper.create(:name => 'Troopers', :price => 1, :hyperdrive => false ).factions = all
 
 #Unit.create(:name => '__________Guerreiros_____________').factions = all
 #Warrior.create(:name => 'Mestre Yoda', :price => 30, :description => 'Jedi' ).factions = reb
