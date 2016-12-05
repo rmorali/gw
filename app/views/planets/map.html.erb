@@ -210,7 +210,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
       <% if fleet.round.number >= planet.results.maximum("round_id") and fleet.squad != @current_squad and planet.results.any? { |result| result.squad == @current_squad && result.round == fleet.round } %>
         <info class="tooltip">
         <tip><%= raw fleet.description %></tip>
-        <span style="<%= raw fleet.span_style %>; opacity: 0.2">
+        <span style="<%= raw fleet.span_style %>; opacity: 0.3">
         <% unless fleet.final_quantity <= 0 || fleet.squad == @current_squad %>
           <% @round_number = fleet.round.number %>
           <% case fleet.generic_unit.type %>
@@ -247,7 +247,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
       <% if fleet.round.number >= planet.results.maximum("round_id") and fleet.squad != @current_squad and planet.results.any? { |result| result.squad == @current_squad && result.round == fleet.round } %>
         <info class="tooltip">
         <tip><%= raw fleet.description %></tip>
-        <span style="<%= raw fleet.span_style %>; opacity: 0.2">
+        <span style="<%= raw fleet.span_style %>; opacity: 0.3">
         <% unless fleet.final_quantity <= 0 || fleet.squad == @current_squad %>
           <% @round_number = fleet.round.number %>
           <% case fleet.generic_unit.type %>
