@@ -31,6 +31,10 @@ class SquadsController < ApplicationController
     redirect_to :fleets 
   end
 
+  def edit
+
+  end
+
   def ready
     @squad = current_squad
     @squad.ready!
