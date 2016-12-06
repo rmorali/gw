@@ -168,7 +168,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
             <% if @round.move && fleet.squad != @current_squad %>
                <% if fleet.round < @round.number %>
                  <span style="<%= raw fleet.span_style %>">
-                 <%= fleet.show %>
+                 <%= fleet.name %>
                  </span>
                <% end %>
             <% else %>
