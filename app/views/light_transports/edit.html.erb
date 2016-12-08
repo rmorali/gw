@@ -8,7 +8,7 @@ document.title = " <%= @light_transport.show %>"
 </div>
 <div class="fleet">
 Unidades carregadas (ou agrupadas para Raid Mission):
-<p>
+
 <table>
 <% @carried_fleets.each do |fleet| %>
   <tr>
@@ -30,7 +30,7 @@ Unidades carregadas (ou agrupadas para Raid Mission):
 </div>
 <div class="fleet">
 Carregar unidades:
-<p>
+
 <table>
 <% @carriable_fleets.each do |fleet| %>
   <tr>
@@ -64,7 +64,7 @@ Carga permitida (Grande / Pequena): <%= @light_transport.heavy_loading_capacity 
     :value_method => :id,
     :as => :radio,
     :label => false %>
-    <p><br><br><br><%= f.submit 'Armar' %>
+    <p><br><br><%= f.submit 'Armar' %>
     <% end %>
     <br>
     <b><%= "+ #{@light_transport.quantity} #{@light_transport.weapon1.name}" if @light_transport.weapon1 %></b><br>
@@ -82,7 +82,7 @@ Carga permitida (Grande / Pequena): <%= @light_transport.heavy_loading_capacity 
     :value_method => :id,
     :as => :radio,
     :label => false %>
-    <p><br><br><br><%= f.submit 'Armar' %>
+    <p><br><br><%= f.submit 'Armar' %>
     <% end %>
     <br>
     <b><%= "+ #{@light_transport.quantity} #{@light_transport.weapon2.name}" if @light_transport.weapon2 %></b><br>

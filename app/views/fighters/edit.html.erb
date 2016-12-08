@@ -19,7 +19,7 @@ document.title = " <%= @fighter.show %> "
     :value_method => :id,
     :as => :radio,
     :label => false %>
-    <p><br><br><br><%= f.submit 'Armar' %>
+    <p><br><br><%= f.submit 'Armar' %>
     <% end %>
     <br>
     <b><%= "+ #{@fighter.quantity} #{@fighter.weapon1.name}" if @fighter.weapon1 %></b><br>
@@ -37,7 +37,7 @@ document.title = " <%= @fighter.show %> "
     :value_method => :id,
     :as => :radio,
     :label => false %>
-    <p><br><br><br><%= f.submit 'Armar' %>
+    <p><br><br><%= f.submit 'Armar' %>
     <% end %>
     <br>
     <b><%= "+ #{@fighter.quantity} #{@fighter.weapon2.name}" if @fighter.weapon2 %></b><br>
