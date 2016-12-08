@@ -204,14 +204,14 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
 
     <% end %>  
     
-    <% resultados = planet.results.reject!{|a| a.generic_unit.type == 'CapitalShip' || a.generic_unit.type == 'Facility' || a.generic_unit.type == 'Sensor' || a.generic_unit.type == 'Trooper'} %>
+    <% resultados = planet.results.reject {|a| a.generic_unit.type == 'CapitalShip' || a.generic_unit.type == 'Facility' || a.generic_unit.type == 'Sensor' || a.generic_unit.type == 'Trooper'} %>
     <% if resultados %>
       <% resultados.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
       <% if fleet.round.number >= planet.results.maximum("round_id") and fleet.squad != @current_squad and planet.results.any? { |result| result.squad == @current_squad && result.round == fleet.round } %>
         <info class="tooltip">
         <tip><%= raw fleet.description %></tip>
-        <span style="<%= raw fleet.span_style %>; opacity: 0.3">
         <% unless fleet.final_quantity <= 0 || fleet.squad == @current_squad %>
+          <span style="<%= raw fleet.span_style %>; opacity: 0.3">
           <% @round_number = fleet.round.number %>
           <% case fleet.generic_unit.type %>
           <% when 'Warrior' %> 
@@ -229,9 +229,9 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
             <%= fleet.final_quantity %>
             <%= fleet.generic_unit.name %>  
           <% end %>
+          </span>
           <br>
         <% end %>
-        </span>
         </info>
       <% end %>
     <% end %>
@@ -247,8 +247,8 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
       <% if fleet.round.number >= planet.results.maximum("round_id") and fleet.squad != @current_squad and planet.results.any? { |result| result.squad == @current_squad && result.round == fleet.round } %>
         <info class="tooltip">
         <tip><%= raw fleet.description %></tip>
-        <span style="<%= raw fleet.span_style %>; opacity: 0.3">
         <% unless fleet.final_quantity <= 0 || fleet.squad == @current_squad %>
+          <span style="<%= raw fleet.span_style %>; opacity: 0.3">
           <% @round_number = fleet.round.number %>
           <% case fleet.generic_unit.type %>
           <% when 'Warrior' %> 
@@ -266,9 +266,9 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
             <%= fleet.final_quantity %>
             <%= fleet.generic_unit.name %>  
           <% end %>
+          </span>
           <br>
         <% end %>
-        </span>
         </info>
       <% end %>
     <% end %>
