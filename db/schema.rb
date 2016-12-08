@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161129223926) do
+ActiveRecord::Schema.define(:version => 20161208202708) do
 
   create_table "generic_fleets", :force => true do |t|
     t.integer  "squad_id"
@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(:version => 20161129223926) do
     t.integer  "goal_id"
     t.integer  "home_planet_id"
     t.string   "url"
+    t.integer  "map_ratio"
   end
 
   create_table "subtypes", :force => true do |t|

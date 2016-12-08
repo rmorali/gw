@@ -18,6 +18,7 @@ Factory.define :squad do |f|
   f.name Forgery::Name.full_name
   f.credits { Forgery::Basic.number(:at_least => 5000, :at_most => 10000) }
   f.color '00FF00'
+  f.map_ratio 100
   f.faction 'empire'
   f.home_planet {|a| a.association(:planet)}
 end

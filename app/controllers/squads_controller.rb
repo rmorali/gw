@@ -26,6 +26,7 @@ class SquadsController < ApplicationController
         color = 'EE82EE'
     end
     squad.color = color
+    squad.map_ratio = 100
     squad.save!
     #redirect_to :controller => 'generic_units', :action => 'ships', :id => squad.id
     redirect_to :fleets 
