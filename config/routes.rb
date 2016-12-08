@@ -67,6 +67,10 @@ Rpg::Application.routes.draw do
      member do
        put :load_in
        put :unload_from
+       put :arm_1
+       put :arm_2
+       put :disarm_1
+       put :disarm_2
      end
    end
 

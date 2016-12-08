@@ -51,3 +51,52 @@ Carregar unidades:
 </table>
 Carga permitida (Grande / Pequena): <%= @light_transport.heavy_loading_capacity %> / <%= @light_transport.light_loading_capacity %> 
 </div>
+<div class="fleet">
+    <table>
+    <tr><td><b>Warheads:</b></td><td><b>Counters:</b></td><tr>
+    <tr>
+    <td>
+    <%= simple_form_for @light_transport, :url => url_for(:controller => 'light_transports', :action => 'arm_1') do |f| %>
+    <%= f.hidden_field :id %>
+    <%= f.input :weapon1_id,
+    :collection => @armaments,
+    :label_method => :show,
+    :value_method => :id,
+    :as => :radio,
+    :label => false %>
+    <p><br><br><br><%= f.submit 'Armar' %>
+    <% end %>
+    <br>
+    <b><%= "+ #{@light_transport.quantity} #{@light_transport.weapon1.name}" if @light_transport.weapon1 %></b><br>
+    <%= simple_form_for @light_transport, :url => url_for(:controller => 'light_transports', :action => 'disarm_1') do |f| %>
+      <%= f.hidden_field :id %>
+      <p><br><%= f.submit 'Desarmar' %>
+    <% end %>
+    </td>
+    <td>
+    <%= simple_form_for @light_transport, :url => url_for(:controller => 'light_transports', :action => 'arm_2') do |f| %>
+    <%= f.hidden_field :id %>
+    <%= f.input :weapon2_id,
+    :collection => @armaments,
+    :label_method => :show,
+    :value_method => :id,
+    :as => :radio,
+    :label => false %>
+    <p><br><br><br><%= f.submit 'Armar' %>
+    <% end %>
+    <br>
+    <b><%= "+ #{@light_transport.quantity} #{@light_transport.weapon2.name}" if @light_transport.weapon2 %></b><br>
+    <%= simple_form_for @light_transport, :url => url_for(:controller => 'light_transports', :action => 'disarm_2') do |f| %>
+      <%= f.hidden_field :id %>
+      <p><br><%= f.submit 'Desarmar' %>
+    <% end %>
+    </td>
+    </tr>
+
+    </table>
+</div>
+<div class="fleet">
+Instruções:<br>
+Armar: carrega o grupo com o armamento selecionado<br>
+Desarmar: descarrega o armamento do grupo<br>
+</div>
