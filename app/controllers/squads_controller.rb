@@ -27,13 +27,37 @@ class SquadsController < ApplicationController
     end
     squad.color = color
     squad.map_ratio = 100
+    squad.map_background = true
     squad.save!
     #redirect_to :controller => 'generic_units', :action => 'ships', :id => squad.id
     redirect_to :fleets 
   end
 
   def edit
+    @squad = current_squad
+    @colors = %w[Vermelho Verde Amarelo Roxo Branco Magenta]
+  end
 
+  def update
+    @squad = current_squad
+    @squad.update_attributes(params[:squad])
+    case params[:squad][:color]
+      when 'Vermelho'
+        color = 'FF0000'
+      when 'Verde'
+        color = '00FF00'
+      when 'Amarelo'
+        color = 'FFFF00'
+      when 'Roxo'
+        color = '66CCFF'
+      when 'Branco'
+        color = 'FFFFFF'
+      when 'Magenta'
+        color = 'EE82EE'
+    end
+    @squad.color = color
+    @squad.save
+    redirect_to :back
   end
 
   def ready
