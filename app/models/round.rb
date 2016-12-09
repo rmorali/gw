@@ -120,15 +120,15 @@ class Round < ActiveRecord::Base
   def create_test_squads quantity
     User.create(:email => 'setup@xws.com', :password => '123456')
     rebel_user = User.create(:email => 'rebel@rebel.com', :password => '123456')
-    rebel_squad = Squad.create(:name => 'Rebel', :color => 'FF0000', :user => rebel_user, :faction => 'rebel', :home_planet => Planet.find(5), :credits => 1000, :goal => Goal.get_goal)
+    rebel_squad = Squad.create(:name => 'Rebel', :color => 'FF0000', :user => rebel_user, :faction => 'rebel', :home_planet => Planet.find(5), :credits => 1000, :goal => Goal.get_goal, :map_ratio => 100, :map_background => true)
     empire_user = User.create(:email => 'empire@empire.com', :password => '123456')
-    empire_squad = Squad.create(:name => 'Empire', :color => '00FF00', :user => empire_user, :faction => 'empire', :home_planet => Planet.find(10), :credits => 1000, :goal => Goal.get_goal)
+    empire_squad = Squad.create(:name => 'Empire', :color => '00FF00', :user => empire_user, :faction => 'empire', :home_planet => Planet.find(10), :credits => 1000, :goal => Goal.get_goal, :map_ratio => 100, :map_background => true)
 
     if quantity == 4
       mand_user = User.create(:email => 'mand@mand.com', :password => '123456')
-      mand_squad = Squad.create(:name => 'Mandalorian', :color => 'EE82EE', :user => mand_user, :faction => 'pirate', :home_planet => Planet.find(15), :credits => 1000, :goal => Goal.get_goal)
+      mand_squad = Squad.create(:name => 'Mandalorian', :color => 'EE82EE', :user => mand_user, :faction => 'pirate', :home_planet => Planet.find(15), :credits => 1000, :goal => Goal.get_goal, :map_ratio => 100, :map_background => true)
       merc_user = User.create(:email => 'merc@merc.com', :password => '123456')
-      merc_squad = Squad.create(:name => 'Mercenary', :color => 'FFFF00', :user => merc_user, :faction => 'mercenary', :home_planet => Planet.find(20), :credits => 1000, :goal => Goal.get_goal)
+      merc_squad = Squad.create(:name => 'Mercenary', :color => 'FFFF00', :user => merc_user, :faction => 'mercenary', :home_planet => Planet.find(20), :credits => 1000, :goal => Goal.get_goal, :map_ratio => 100, :map_background => true)
     end
   end
 
