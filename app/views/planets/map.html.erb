@@ -1,12 +1,4 @@
-<% unless @current_squad.map_background == true %>
-  <body onunload="location.reload()" style="background-image:url(<%= @current_squad.url %>)">
-<% end %>
-
-<svg width="1700" height="1300">
-  <polyline points="250,0 665,650 1020,650 1020,450 1080,300 940,0" style="fill:none;stroke:white;stroke-width:1;stroke-dasharray:1,1" />
-  <polyline points="665,650 370,1300" style="fill:none;stroke:white;stroke-width:1;stroke-dasharray:1,1" />
-  <polyline points="1020,650 1450,1300" style="fill:none;stroke:white;stroke-width:1;stroke-dasharray:1,1" />
-<svg>
+<%= render :partial => 'sectors' %>
 
 <div class="painel1">
   <span style="color:#<%= @current_squad.color %>;font-size: 28px;font-weight: bold">
@@ -41,7 +33,7 @@
   Tropas: <%= @troopers %><br>
 </span>
 </div>
-<div class="painel4" style="width:350px">
+<div class="painel4" style="width:200px">
 <span style=color:#<%= @current_squad.color %>>** Seu objetivo ** ( <%= @current_squad.name %> )
 <br>
 Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></span>
