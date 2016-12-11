@@ -113,13 +113,13 @@ Goal.create(:description => 'Dominar os 4 planetas com Income Especial')
 
 Setting.create(:initial_factories => 2400,
                :initial_fighters => 0,
-               :initial_capital_ships => 0,
+               :initial_capital_ships => 1000,
                :initial_transports => 0,
-               :initial_troopers => 0,
+               :initial_troopers => 500,
                :initial_planets => 1,
                :initial_credits => 1000,
-               :net_planet_income => 500,
-               :bonus_planet_income => 1000,
+               :net_planet_income => 400,
+               :bonus_planet_income => 800,
                :ground_income_rate => 50,
                :facility_divisor_rate => 4,
                :facility_primary_production_rate => 50,
@@ -133,9 +133,10 @@ Setting.create(:initial_factories => 2400,
                :maximum_fleet_size => 1000,
                :tradeports => true,
                :maximum_facilities => 4,
-               :air_domination_unit => 'CapitalShip',
-               :ground_domination_unit => 'Facility',
-               :builder_unit => 'LightTransport')
+               :air_domination_unit => 'Facility',
+               :ground_domination_unit => 'Trooper',
+               :minimum_quantity => 1,
+               :builder_unit => 'CapitalShip')
 
 User.create(:email => 'setup@xws.com', :password => '123456')
 

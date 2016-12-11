@@ -16,6 +16,7 @@
 <%= f.input :bonus_planet_income, :label => 'Income especial:', :collection => (400..2000).step(100) %>
 <%= f.input :air_domination_unit, :label => 'Dominio espacial:', :collection => @units %>
 <%= f.input :ground_domination_unit, :label => 'Dominio terreste:', :collection => @units %>
+<%= f.input :minimum_quantity, :label => 'Qtde mínima p/ dom. terrestre:', :collection => (1..100).step(1) %>
 <%= f.input :ground_income_rate, :label => 'Income % domínio terrestre:', :collection => (10..100).step(10) %>
 </div>
 </td>

@@ -151,6 +151,7 @@ Factory.define :setting do |f|
   f.maximum_facilities 1
   f.air_domination_unit 'CapitalShip'
   f.ground_domination_unit 'Trooper'
+  f.minimum_quantity 1
   f.builder_unit 'Trooper'
 end
 

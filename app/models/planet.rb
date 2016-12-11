@@ -38,7 +38,7 @@ class Planet < ActiveRecord::Base
   end
 
   def set_ground_ownership
-    if has_a? Setting.getInstance.ground_domination_unit.constantize and !self.under_attack?
+    if has_a?(Setting.getInstance.ground_domination_unit.constantize,1) and !self.under_attack?
       ground_units = generic_fleets.select {|fleet| fleet.type? Setting.getInstance.ground_domination_unit.constantize }
       ground_units.sort! { |one,other| one.updated_at <=> other.updated_at }
       self.ground_squad = ground_units.first.squad
@@ -98,8 +98,12 @@ class Planet < ActiveRecord::Base
     @@disable_routes = false
   end
 
-  def has_a?(type)
-    generic_fleets.any?{|fleet| fleet.type? type and fleet.moving != true}
+  def has_a?(type, qtde = 0)
+    if qtde == 0
+      generic_fleets.any?{|fleet| fleet.type? type and fleet.moving != true}
+    else
+      generic_fleets.any?{|fleet| fleet.type? type and fleet.moving != true and fleet.quantity >= Setting.getInstance.minimum_quantity}
+    end
   end
 
   def has_an_enemy?(type, current_squad)

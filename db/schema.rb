@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161209133720) do
+ActiveRecord::Schema.define(:version => 20161211211240) do
 
   create_table "generic_fleets", :force => true do |t|
     t.integer  "squad_id"
@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(:version => 20161209133720) do
     t.string  "air_domination_unit"
     t.string  "ground_domination_unit"
     t.string  "builder_unit"
+    t.integer "minimum_quantity"
   end
 
   create_table "squads", :force => true do |t|
