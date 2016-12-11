@@ -234,7 +234,7 @@ Armament.create(:name => 'Proton Torpedo', :acronym => 'PT', :price => 5, :hyper
 Armament.create(:name => 'Ion Pulse Torp', :acronym => 'IonPT', :price => 5, :hyperdrive => false ).factions = reb
 Armament.create(:name => 'Adv Missile', :acronym => 'AdvM', :price => 10, :hyperdrive => false ).factions = all
 Armament.create(:name => 'Adv Torpedo', :acronym => 'AdvT', :price => 10, :hyperdrive => false ).factions = all
-Armament.create(:name => 'Mag Pulse Torp', :acronym => 'MagPT', :price => 10, :hyperdrive => false ).factions = all
+Armament.create(:name => 'Mag Pulse Torp', :acronym => 'MagPT', :price => 20, :hyperdrive => false ).factions = all
 Armament.create(:name => 'Heavy Rocket', :acronym => 'HR', :price => 15, :hyperdrive => false ).factions = all
 Armament.create(:name => 'Space Bomb', :acronym => 'SB', :price => 20, :hyperdrive => false ).factions = all
 Armament.create(:name => 'Chaff', :acronym => 'CHF', :price => 2, :hyperdrive => false ).factions = all
