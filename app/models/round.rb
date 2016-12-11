@@ -12,16 +12,17 @@ class Round < ActiveRecord::Base
   end
 
   def new_game!
+    settings = Setting.getInstance
     Squad.all.each do |squad|
       home_planet = squad.home_planet
       squad.planets << home_planet
       squad.save
     end
+    #Planet.create_tradeports
     Planet.create_wormholes
     Planet.randomize_special_planets
     Planet.update_income
     Squad.all.each do |squad|
-      settings = Setting.getInstance
       settings.initial_planets.times {squad.planets << Planet.randomize} unless settings.initial_planets == 0
       FacilityFleet.is_free
       squad.populate_planets
@@ -31,7 +32,7 @@ class Round < ActiveRecord::Base
     end
     set_planet_balance
     GenericFleet.update_all(:level => 0)
-    Tradeport.start
+    #Tradeport.start
     set_map
   end
 

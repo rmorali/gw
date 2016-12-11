@@ -55,7 +55,7 @@ class Planet < ActiveRecord::Base
   end
 
   def self.randomize_by_sector(number)
-      empty_planets = self.where(:squad_id => nil, :wormhole => nil, :sector => number)
+      empty_planets = self.where(:squad_id => nil, :tradeport => nil, :sector => number)
       empty_planets[rand(empty_planets.count)]
   end
 
@@ -76,6 +76,13 @@ class Planet < ActiveRecord::Base
     for i in 1..4
       planet = Planet.randomize_by_sector(i)
       planet.update_attributes(:special => true)
+    end
+  end
+
+  def self.create_tradeports
+    for i in 1..4
+      planet = Planet.randomize_by_sector(i)
+      planet.update_attributes(:tradeport => true, :credits => 0)
     end
   end
 

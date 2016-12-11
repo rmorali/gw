@@ -96,7 +96,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
 <span style="color:grey;font-size: 10px;font-weight: bold">
       <info class="tooltip">
       <tip>Income planetário <%= planet.credits %></tip>
-  <%= planet.credits %>
+  <%= planet.credits %> <%= "- Tradeport" if planet.tradeport? %>
       </info>
 </font>
   </div>
