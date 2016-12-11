@@ -113,8 +113,6 @@ class GenericFleet < ActiveRecord::Base
       info << "<br>- Warheads destroem Fabrica"
     when 'Fighter'
       info << "<br>- Unidades Pilotaveis"
-      info << "<br>- Arma1: #{weapon1.name}" if weapon1
-      info << "<br>- Arma2: #{weapon2.name}" if weapon2
     when 'Skill'
       info << "<br>- Equipa Capital Ships"
     when 'CapitalShip'
@@ -147,6 +145,8 @@ class GenericFleet < ActiveRecord::Base
     else
 
     end
+      info << "<br>- Arma1: #{weapon1.name}" if weapon1
+      info << "<br>- Arma2: #{weapon2.name}" if weapon2
       if is_a_builder?
         info << "<br>- Construcao de Fabricas"
         info << "<br>- Maximo #{Setting.getInstance.maximum_facilities} fabricas por planeta"
