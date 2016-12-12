@@ -142,6 +142,7 @@ class GenericFleet < ActiveRecord::Base
       info << "<br>- Detecta Frotas Inimigas"
     when 'Trooper'
       info << "<br>- Dominio Terrestre"
+      info << "<br>- Minimo #{Setting.getInstance.minimum_quantity} por planeta"
     else
 
     end

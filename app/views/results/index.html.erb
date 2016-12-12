@@ -1,5 +1,6 @@
 <% content_for :for_head do %>
   <script>
+  refreshParent();
   document.title = "Resultados <%= @results.first.planet.name %>"
   </script>
 <% end %>
