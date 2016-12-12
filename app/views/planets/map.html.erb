@@ -126,11 +126,11 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
     <% end %>
       <info class="tooltip" style="cursor:pointer">
       <tip>Produzir Unidades</tip>
-    <img src="/images/planets/shipyard.gif" height="20" width="30">
+    <img src="/images/planets/shipyard.gif" height="30" width="40">
        </info>
       </b>
     </div>
-    <div id="planet balance" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio + 88 %>px;z-index: 15; white-space: nowrap">
+    <div id="planet balance" style="position:absolute; left:<%= planet.x * @map_ratio + 5 %>px; top:<%= planet.y * @map_ratio + 98 %>px;z-index: 15; white-space: nowrap">
     <% if planet.balance > 0 %>
       <span style="color:white;font-size: 12px;font-weight: bold;text-decoration: blink">
     <% else %>
@@ -142,7 +142,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   <% end %>
 
   <% if planet.able_to_construct?(@current_squad) && planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
-    <div id="construcao" style="position:absolute; left:<%= planet.x * @map_ratio + 40 %>px; top:<%= planet.y * @map_ratio + 70 %>px;z-index: 10; white-space: nowrap">
+    <div id="construcao" style="position:absolute; left:<%= planet.x * @map_ratio + 45 %>px; top:<%= planet.y * @map_ratio + 70 %>px;z-index: 10; white-space: nowrap">
      <% if @round.move && !planet.tradeport? && !@current_squad.ready? && planet.able_to_construct?(@current_squad) %>
        <b href = "" onclick="window.open('/planets/<%= planet.id %>/facility_fleets/new', 'Construir <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=220')">
      <% end %>
