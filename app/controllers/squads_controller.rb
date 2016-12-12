@@ -40,7 +40,6 @@ class SquadsController < ApplicationController
 
   def update
     @squad = current_squad
-    @squad.update_attributes(params[:squad])
     case params[:squad][:color]
       when 'Vermelho'
         color = 'FF0000'
@@ -54,7 +53,10 @@ class SquadsController < ApplicationController
         color = 'FFFFFF'
       when 'Magenta'
         color = 'EE82EE'
+      else
+        color = @squad.color
     end
+    @squad.update_attributes(params[:squad])
     @squad.color = color
     @squad.save
     redirect_to :back
