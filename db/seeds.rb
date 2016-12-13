@@ -237,13 +237,13 @@ Armament.create(:name => 'Adv Torpedo', :acronym => 'AdvT', :price => 10, :hyper
 Armament.create(:name => 'Mag Pulse Torp', :acronym => 'MagPT', :price => 20, :hyperdrive => false ).factions = all
 Armament.create(:name => 'Heavy Rocket', :acronym => 'HR', :price => 15, :hyperdrive => false ).factions = all
 Armament.create(:name => 'Space Bomb', :acronym => 'SB', :price => 20, :hyperdrive => false ).factions = all
-Armament.create(:name => 'Chaff', :acronym => 'CHF', :price => 2, :hyperdrive => false ).factions = all
-Armament.create(:name => 'Flare', :acronym => 'FLR', :price => 10, :hyperdrive => false ).factions = all
+Armament.create(:name => 'Chaff', :acronym => 'Chaff', :price => 2, :hyperdrive => false ).factions = all
+Armament.create(:name => 'Flare', :acronym => 'Flare', :price => 10, :hyperdrive => false ).factions = all
 
 Unit.create(:name => '_____Capital Ship Skills________').factions = all
 Skill.create(:name => 'Sensor Array', :acronym => 'SAR', :price => 150, :hyperdrive => false, :description => 'Detecta Unidades Inimigas'  ).factions = all
 Skill.create(:name => 'Anti-Trooper Bombs', :acronym => 'ATB', :price => 150, :hyperdrive => false, :description => 'Bombardeia Exercitos'  ).factions = all
-Skill.create(:name => 'Long Range Engine', :acronym => 'ENG', :price => 600, :hyperdrive => false, :description => 'Permite Hyperspace em todo o Setor'  ).factions = all
+Skill.create(:name => 'Long Range Engine', :acronym => 'ENG', :price => 300, :hyperdrive => false, :description => 'Permite Hyperspace em todo o Setor'  ).factions = all
 Skill.create(:name => 'Gravity Generator', :acronym => 'INT', :price => 600, :hyperdrive => false, :description => 'Bloqueia Fugas - Interdictor'  ).factions = all
 
 Unit.create(:name => '____________Tropas______________').factions = all
