@@ -23,7 +23,7 @@ test:
 
 production:
   adapter: mysql
-  database: xws_production
+  database: gw_production
   host: 127.0.0.1
   user: root
   password: pass
