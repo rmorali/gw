@@ -1,40 +1,41 @@
 <%= render :partial => 'sectors' %>
 
 <div class="painel1">
-  <span style="color:#<%= @current_squad.color %>;font-size: 28px;font-weight: bold">
+  <span style="color:#<%= @current_squad.color %>;font-size: 23px;font-weight: bold">
   <%= @current_squad.name %></span><br>
-  <span style="font-size: 20px;
+  <span style="font-size: 16px;
     font-weight: bold">
   Turno: <%= @round.number %> - <%= @round_phase %><br>
 </div>
 <div class="painel2">  
-<span style="color:yellow;font-size: 18px;font-weight: bold">
+<span style="color:yellow;font-size: 16px;font-weight: bold">
   Créditos: <%= @current_squad.credits %><br>
 </span>
-<span style="color:green;font-size: 18px;font-weight: bold">
+<span style="color:green;font-size: 16px;font-weight: bold">
   + espacial: <%= @air_income %><br>
   + terrestre:  <%= @ground_income %><br>
 </span>
-<span style="color:red;font-size: 18px;font-weight: bold">
+<span style="color:red;font-size: 16px;font-weight: bold">
   - fugas: <%= @flee_tax %><br>
 </span>
-<span style="color:cyan;font-size: 18px;font-weight: bold">
+<span style="color:cyan;font-size: 16px;font-weight: bold">
   Próx.turno: <%= @provided %><br>
 </span>
 </div>
 <div class="painel3">
-<span style="color:white;font-size: 18px;font-weight: bold">
-  Fábricas: <%= @facilities %><br>
-  Capital Ships: <%= @capital_ships %><br>
-  Caças: <%= @fighters %><br>
-  Transportes: <%= @transports %><br>
-  Sensores: <%= @sensors %><br>
+<span style="color:white;font-size: 14px;font-weight: bold">
+  Facilities: <%= @facilities %><br>
+  CapitalShips: <%= @capital_ships %><br>
+  MiningShips: <%= @miners %><br>
+  Fighters: <%= @fighters %><br>
+  Transports: <%= @transports %><br>
+  Sensors: <%= @sensors %><br>
   Jedi/Sith: <%= @warriors %><br>
-  Tropas: <%= @troopers %><br>
+  Troops: <%= @troopers %><br>
 </span>
 </div>
 <div class="painel4" style="width:200px">
-<span style=color:#<%= @current_squad.color %>>** Seu objetivo ** ( <%= @current_squad.name %> )
+<span style="font-size: 10px;color:#<%= @current_squad.color %>">** Seu objetivo ** ( <%= @current_squad.name %> )
 <br>
 Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></span>
 </div>
@@ -50,17 +51,17 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   <a href = "" onclick="window.open('/results/<%= @current_squad.id %>/show_results', 'Combates', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=500')">
   Combates
   </a><br><br>
-  <a href = "" onclick="window.open('https://docs.google.com/spreadsheets/d/1MmlpHv6qHDJqGnv7AmeU0MPzUQeslwk7rGmBln9-2ls/edit?authkey=CL_F9boP&hl=pt_BR#gid=6', 'Unidades', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">
-  Unidades
+  <a href = "" onclick="window.open('https://docs.google.com/spreadsheets/d/1MmlpHv6qHDJqGnv7AmeU0MPzUQeslwk7rGmBln9-2ls/edit?authkey=CL_F9boP&hl=pt_BR#gid=1177609294', 'Specs Naves', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">
+  Specs Naves
   </a><br><br>
   <a href = "" onclick="window.open('https://wgbrnavies.wordpress.com/', 'Regras', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">
   Regras
   </a><br><br>
-  <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/edit', 'Setup Squad', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=300')">
-  Setup Squad
+  <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/edit', 'Setup', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=300')">
+  Setup
   </a><br><br>
-  <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/transfer', 'Transferir', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=200')">
-  Transferir
+  <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/transfer', 'Finanças', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=200')">
+  Finanças
   </a><br><br>
   <a href = "" onclick="window.open('/ready', 'Passar Turno', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=150')">
   Passar Turno

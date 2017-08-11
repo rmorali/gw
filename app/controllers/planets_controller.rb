@@ -67,6 +67,7 @@ class PlanetsController < ApplicationController
     @warriors = 0
     @commanders = 0
     @sensors = 0
+    @miners = 0
     GenericFleet.where(:squad => @current_squad).each do |fleet|
       @capital_ships += fleet.quantity if fleet.type?(CapitalShip)
       @facilities += fleet.quantity if fleet.type?(Facility)
@@ -75,6 +76,7 @@ class PlanetsController < ApplicationController
       @transports += fleet.quantity if fleet.type?(LightTransport)
       @warriors += 1 if fleet.type?(Warrior)
       @commanders += 1 if fleet.type?(Commander)
+      @miners += 1 if fleet.type?(Miner)
       @sensors += 1 if fleet.is_a_sensor?
     end
     #@active = FacilityFleet.select { |facility| facility.squad == @current_squad && facility.balance > 0 }.count
