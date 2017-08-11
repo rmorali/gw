@@ -22,11 +22,8 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql
-  database: gw_production_cimf
-  host: 127.0.0.1
-  user: root
-  password: pass
+  adapter: sqlite3
+  database: db/gw_production.sqlite3
   pool: 5
   timeout: 5000
 

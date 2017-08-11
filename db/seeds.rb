@@ -221,8 +221,8 @@ Fighter.create(:name => 'Firespray', :price => 95 ).factions = mand
 Fighter.create(:name => 'Tie Fighter*', :hyperdrive => false, :price => 20, :description => 'Sem Hyperdrive/Warheads' ).factions = imp
 Fighter.create(:name => 'Tie Bomber*', :hyperdrive => false, :price => 25, :description => 'Sem Hyperdrive' ).factions = imp
 Fighter.create(:name => 'Tie Interceptor*', :hyperdrive => false, :price => 30, :description => 'Sem Hyperdrive/Warheads' ).factions = imp
-Fighter.create(:name => 'Authority IRD*', :hyperdrive => false, :price => 45, :description => 'Sem Hyperdrive' ).factions = none
-Fighter.create(:name => 'Toscan Fighter', :price => 90 ).factions = none
+#Fighter.create(:name => 'Authority IRD*', :hyperdrive => false, :price => 45, :description => 'Sem Hyperdrive' ).factions = imp
+#Fighter.create(:name => 'Toscan Fighter', :price => 90 ).factions = imp
 Fighter.create(:name => 'Tie Avenger', :price => 110 ).factions = imp
 Fighter.create(:name => 'Assault Gunboat', :price => 120 ).factions = imp
 Fighter.create(:name => 'Missile Boat', :price => 200 ).factions = imp
@@ -240,14 +240,14 @@ Armament.create(:name => 'Space Bomb', :acronym => 'SB', :price => 20, :hyperdri
 Armament.create(:name => 'Chaff', :acronym => 'Chaff', :price => 2, :hyperdrive => false ).factions = all
 Armament.create(:name => 'Flare', :acronym => 'Flare', :price => 10, :hyperdrive => false ).factions = all
 
-Unit.create(:name => '_____Capital Ship Skills________').factions = all
+Unit.create(:name => '____Capital Ship Upgrades___').factions = all
 Skill.create(:name => 'Sensor Array', :acronym => 'SAR', :price => 150, :hyperdrive => false, :description => 'Detecta Unidades Inimigas'  ).factions = all
-Skill.create(:name => 'Anti-Trooper Bombs', :acronym => 'ATB', :price => 150, :hyperdrive => false, :description => 'Bombardeia Exercitos'  ).factions = all
+#Skill.create(:name => 'Anti-Trooper Bombs', :acronym => 'ATB', :price => 150, :hyperdrive => false, :description => 'Bombardeia Exercitos'  ).factions = all
 Skill.create(:name => 'Long Range Engine', :acronym => 'ENG', :price => 300, :hyperdrive => false, :description => 'Permite Hyperspace em todo o Setor'  ).factions = all
 Skill.create(:name => 'Gravity Generator', :acronym => 'INT', :price => 600, :hyperdrive => false, :description => 'Bloqueia Fugas - Interdictor'  ).factions = all
 
-Unit.create(:name => '____________Tropas______________').factions = all
-Trooper.create(:name => 'Troopers', :price => 1, :hyperdrive => false ).factions = all
+Unit.create(:name => '___Estacao de Mineracao____').factions = all
+Miner.create(:name => 'Mining Unit', :price => 200, :hyperdrive => false,:description => 'Aumenta ganho de creditos' ).factions = all
 
 #Unit.create(:name => '__________Guerreiros_____________').factions = all
 #Warrior.create(:name => 'Mestre Yoda', :price => 30, :description => 'Jedi' ).factions = reb
