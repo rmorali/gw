@@ -18,14 +18,14 @@ gem 'unicorn'
 #gem 'sass'
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem "autotest"
-  gem 'ci_reporter'
+  #gem 'rspec-rails'
+  #gem "autotest"
+  #gem 'ci_reporter'
   #gem 'capistrano'
-  gem 'forgery', '0.3.10'
-  gem "autotest-rails"
-  gem 'autotest-notification'
-  gem 'escape_utils'
+  #gem 'forgery', '0.3.10'
+  #gem "autotest-rails"
+  #gem 'autotest-notification'
+  #gem 'escape_utils'
   #gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git'
 end
 group :test do
