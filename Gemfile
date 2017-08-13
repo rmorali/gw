@@ -1,23 +1,27 @@
 source 'http://rubygems.org'
 
+#use ruby 1.9.3
+#precisa atualizar as gems pois perderam suporte
+
 gem 'rails', '3.0.20'
 gem 'mysql'
 gem 'sqlite3'
 gem 'simple_form'
 gem 'devise'
 gem 'meta_where'
-gem 'rake'
-gem 'nokogiri', '1.6.0'
-gem 'activeadmin'
+gem 'rake', '~> 0.8.7'
+gem 'mini_portile2'
+gem 'nokogiri', '1.5.1'
+#gem 'activeadmin'
 gem 'thin'
 gem 'unicorn'
-gem 'sass'
+#gem 'sass'
 
 group :development, :test do
   gem 'rspec-rails'
   gem "autotest"
   gem 'ci_reporter'
-  gem 'capistrano'
+  #gem 'capistrano'
   gem 'forgery', '0.3.10'
   gem "autotest-rails"
   gem 'autotest-notification'
