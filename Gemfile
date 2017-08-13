@@ -29,11 +29,11 @@ group :development, :test do
   #gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git'
 end
 group :test do
-  gem 'capybara', '~> 1.0'
-  gem 'shoulda', '~> 2.0'
-  gem "ZenTest", '4.5.0'
-  gem 'simplecov', :platform => :ruby_19
-  gem 'simplecov-html', :platform => :ruby_19
-  gem 'simplecov-rcov', :platform => :ruby_19
-  gem 'factory_girl_rails', '~> 1.0'
+  #gem 'capybara', '~> 1.0'
+  #gem 'shoulda', '~> 2.0'
+  #gem "ZenTest", '4.5.0'
+  #gem 'simplecov', :platform => :ruby_19
+  #gem 'simplecov-html', :platform => :ruby_19
+  #gem 'simplecov-rcov', :platform => :ruby_19
+  #gem 'factory_girl_rails', '~> 1.0'
 end
