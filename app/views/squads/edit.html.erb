@@ -13,7 +13,7 @@
 <%= f.input :name, :label => 'Nome: ', :input_html => { :size => 10 } %>
 <%= f.input :color, :collection => @colors, :label => 'Cor: ' %>
 <%= f.input :url, :label => 'Url: ', :input_html => { :size => 38 }, :placeholder => 'http://' %>
-<%= f.input :map_ratio, :label => 'Tamanho do mapa (%):', :collection => (90..150).step(10) %>
+<%= f.input :map_ratio, :label => 'Tamanho do mapa (%):', :collection => (70..130).step(5) %>
 <%= f.input :map_background, :label => 'Mapa com background? ', as: :radio %><br><br><br>
 <%= f.submit 'Salvar' %>
 </div>
