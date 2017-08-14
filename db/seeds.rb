@@ -247,7 +247,7 @@ Skill.create(:name => 'Enhanced Engine', :acronym => 'ENG', :price => 300, :hype
 Skill.create(:name => 'Gravity Interdictor', :acronym => 'INT', :price => 600, :hyperdrive => false, :description => 'Bloqueia Fugas do adversario'  ).factions = all
 
 Unit.create(:name => '______Estacao de Mineracao_______').factions = all
-Miner.create(:name => 'Asteroid Mine Unit', :price => 200, :hyperdrive => false,:description => 'Produz creditos no planeta' ).factions = all
+Miner.create(:name => 'Astrd Mining Unit', :price => 200, :hyperdrive => false,:description => 'Produz creditos no planeta' ).factions = all
 
 #Unit.create(:name => '__________Guerreiros_____________').factions = all
 #Warrior.create(:name => 'Mestre Yoda', :price => 30, :description => 'Jedi' ).factions = reb
