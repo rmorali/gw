@@ -9,31 +9,34 @@ document.title = "<%= @facility %> <%= @planet %>"
 <td width=50%>
   <h3><%= @facility %></h3>
   <span style=font-weight:bold;font-size:16px;color:yellow>
-  Produção Planetária: <%= @facility.planet.balance.to_i %><br>
+  Produção Disponível: <%= @facility.planet.balance.to_i %><br>
   </span>
   <span style=font-weight:bold;font-size:13px;color:#00FF00>
-  Nível: <%= @facility.level %><br>
-  Income Previsto: <%= @facility.capacity %> (+<%= @facility.current_upgrade_ratio %>)<br>
+  Upgrades: <%= @facility.level %><br>
   </span>
+  <span style=font-weight:bold;font-size:13px;color:cyan>
+  Próx. Turno: <%= @facility.capacity %> (+<%= @facility.current_upgrade_ratio %>) = <%= @facility.capacity + @facility.current_upgrade_ratio + @facility.planet.balance.to_i %> <br>
+  </span>
+
   <span style=font-weight:bold;font-size:13px;color:#FF0000>
   <% if @facility.sabotaged? %>
     <br>
-    Sabotada: Perdeu <%= @facility.capacity / 2 %> (-50%) de Income<br>
+    Sabotada: Perdeu <%= @facility.capacity / 2 %> (-50%) de Produção<br>
   <% end %>
   <% if @facility.captured? %>
     <br>
-    Capturada: Perdeu <%= @facility.capacity %> (-100%) de Income<br>
+    Capturada: Perdeu <%= @facility.capacity %> (-100%) de Produção<br>
   <% end %>
   </span>
 
   <p>
-  <div align = left><a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Tabela de naves</a></div>
+  <div align = left><a href = "https://docs.google.com/spreadsheets/d/1MmlpHv6qHDJqGnv7AmeU0MPzUQeslwk7rGmBln9-2ls/edit?authkey=CL_F9boP&hl=pt_BR&authkey=CL_F9boP&hl=pt_BR#gid=1177609294" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Specs das Naves</a></div>
 </div>
 </td>
 <td>
 <h3>Upgrade</h3>
 O Upgrade custa <%= @facility.upgrade_cost %> créditos<br>
-Cada nível dá bônus de <%= @facility.upgrade_ratio %> no income<br>
+Cada upgrade aumenta <%= @facility.upgrade_ratio %> na produção<br>
 <p>
 <%= render :partial => 'aprimorar', :locals => { :facility => @facility } %>
 </td>

@@ -44,6 +44,8 @@ class GenericFleet < ActiveRecord::Base
   end
 
   def destroy_if_empty
+    # gambiarra pra mostrar que o planeta dara creditos
+    planet.set_map
     destroy if self.quantity == 0
   end
 
@@ -126,7 +128,7 @@ class GenericFleet < ActiveRecord::Base
       info << "<br>- Nivel: #{self.level} (+#{current_upgrade_ratio})"
       info << "<br><b>- Bloqueada/Sabotada (-#{(default_capacity * 0.50).to_i})</b>" if self.sabotaged?
       info << "<br><b>- Capturada </b>" if self.captured?
-      info << "<br>- Income por turno: #{self.default_capacity}"
+      info << "<br>- Producao por turno: #{self.default_capacity}"
       info << "<br>- Producao / Treinamento de Unidades"
       info << "<br>- Congela Nivel e Pontos se movimentada"
     when 'LightTransport'

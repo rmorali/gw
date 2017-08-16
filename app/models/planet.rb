@@ -11,6 +11,11 @@ class Planet < ActiveRecord::Base
   belongs_to :last_player, :class_name => "Squad"
   @@disable_routes = false
 
+  def set_map
+    set_ownership
+    set_ground_ownership
+  end
+
   def credits_per_turn
     (self.air_credits + self.ground_credits).to_i
   end
@@ -90,9 +95,9 @@ class Planet < ActiveRecord::Base
     @settings = Setting.getInstance
     Planet.where(:tradeport => nil).each do |planet|
       if planet.special?
-        planet.update_attributes(:credits => @settings.bonus_planet_income, :balance => 0)
+        planet.update_attributes(:credits => @settings.bonus_planet_income)
       else
-        planet.update_attributes(:credits => @settings.net_planet_income, :balance => 0)
+        planet.update_attributes(:credits => @settings.net_planet_income)
       end
     end
   end
