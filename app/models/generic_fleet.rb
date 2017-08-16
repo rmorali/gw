@@ -44,8 +44,6 @@ class GenericFleet < ActiveRecord::Base
   end
 
   def destroy_if_empty
-    # gambiarra pra mostrar que o planeta dara creditos
-    planet.set_map
     destroy if self.quantity == 0
   end
 
@@ -125,7 +123,7 @@ class GenericFleet < ActiveRecord::Base
 
     when 'Facility'
       #info << "<br>- Pontos de Producao: #{self.balance.to_i}"
-      info << "<br>- Nivel: #{self.level} (+#{current_upgrade_ratio})"
+      info << "<br>- Upgrades: #{self.level} (+#{current_upgrade_ratio})"
       info << "<br><b>- Bloqueada/Sabotada (-#{(default_capacity * 0.50).to_i})</b>" if self.sabotaged?
       info << "<br><b>- Capturada </b>" if self.captured?
       info << "<br>- Producao por turno: #{self.default_capacity}"
@@ -369,7 +367,7 @@ class GenericFleet < ActiveRecord::Base
   end
 
   def is_transportable?
-    true if ( self.type?(Fighter) || self.type?(Armament) || self.type?(Sensor) || self.type?(Warrior) || self.type?(Trooper) || self.type?(Skill) ) && self.moving != true && self.carried_by == nil
+    true if ( self.type?(Fighter) || self.type?(Armament) || self.type?(Sensor) || self.type?(Warrior) ||self.type?(Miner) || self.type?(Trooper) || self.type?(Skill) ) && self.moving != true && self.carried_by == nil
   end
 
   def heavy_loading_capacity

@@ -12,8 +12,8 @@
   Créditos: <%= @current_squad.credits %><br>
 </span>
 <span style="color:green;font-size: 16px;font-weight: bold">
-  + espacial: <%= @air_income %><br>
-  + terrestre:  <%= @ground_income %><br>
+  + <%= ( @setting.air_domination_unit.constantize ).to_s.pluralize %>: <%= @air_income %><br>
+  + <%= ( @setting.ground_domination_unit.constantize ).to_s.pluralize %>: <%= @ground_income %><br>
 </span>
 <span style="color:red;font-size: 16px;font-weight: bold">
   - fugas: <%= @flee_tax %><br>

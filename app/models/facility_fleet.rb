@@ -65,6 +65,7 @@ class FacilityFleet < GenericFleet
       Fleet.create_from_facility unit, quantity, planet, squad
       self.planet.balance -= quantity * unit.price
       self.planet.save
+      self.planet.set_map
     end
   end
 

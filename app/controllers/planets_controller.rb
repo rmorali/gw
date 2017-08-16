@@ -38,6 +38,7 @@ class PlanetsController < ApplicationController
 
   def map
     @round = Round.getInstance
+    @setting = Setting.getInstance
     @current_squad = current_squad
     @map_ratio = ( @current_squad.map_ratio.to_f / 100 ).to_f
     @planets = Planet.includes(:squad).all
