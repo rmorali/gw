@@ -249,6 +249,9 @@ Skill.create(:name => 'Gravity Interdictor', :acronym => 'INT', :price => 600, :
 Unit.create(:name => '______Estacao de Mineracao_______').factions = all
 Miner.create(:name => 'Astrd Mining Unit', :price => 200, :hyperdrive => false,:description => 'Produz creditos no planeta' ).factions = all
 
+Unit.create(:name => '_____________Troopers____________').factions = all
+Trooper.create(:name => 'Trooper', :price => 10, :hyperdrive => false,:description => 'Soldados' ).factions = all
+
 #Unit.create(:name => '__________Guerreiros_____________').factions = all
 #Warrior.create(:name => 'Mestre Yoda', :price => 30, :description => 'Jedi' ).factions = reb
 #Warrior.create(:name => 'Luke Skywalker', :price => 25, :description => 'Jedi' ).factions = reb

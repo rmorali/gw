@@ -21,6 +21,7 @@ class Round < ActiveRecord::Base
     #Planet.create_tradeports
     Planet.create_wormholes
     Planet.randomize_special_planets
+    Planet.update_all(:balance => 0)
     Planet.update_income
     Squad.all.each do |squad|
       settings.initial_planets.times {squad.planets << Planet.randomize} unless settings.initial_planets == 0
