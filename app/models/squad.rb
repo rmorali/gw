@@ -29,6 +29,7 @@ class Squad < ActiveRecord::Base
     new_fleet = FacilityFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet, :balance => 0, :level => 0, :fleet_name => ' ', :round => Round.getInstance.number)
     generic_fleets << new_fleet
     save
+    planet.set_map
   end
 
   def generate_profits!
