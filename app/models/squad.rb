@@ -92,11 +92,11 @@ class Squad < ActiveRecord::Base
     planets.each do |planet|
       settings = Setting.getInstance
       warp_facility_on Setting.getInstance.initial_factories, planet
-      warp_units settings.initial_capital_ships, CapitalShip, 350, planet unless settings.initial_capital_ships == 0
+      warp_units settings.initial_capital_ships, CapitalShip, 400, planet unless settings.initial_capital_ships == 0
       warp_units settings.initial_fighters, Fighter, 1..400, planet unless settings.initial_fighters == 0
       warp_units settings.initial_fighters, Fighter, 1..400, planet unless settings.initial_fighters == 0
       warp_units settings.initial_transports, LightTransport, 1..400, planet unless settings.initial_transports == 0
-      warp_units settings.initial_troopers, Trooper, 1..15, planet unless settings.initial_troopers == 0
+      warp_units settings.initial_troopers, Trooper, 1..400, planet unless settings.initial_troopers == 0
     end
   end
 

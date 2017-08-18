@@ -137,13 +137,13 @@ class Planet < ActiveRecord::Base
         when 'CapitalShip'
           routes = Planet.where(:sector => self.sector)
           routes.each do |route|
-            planets << route if (fleet.skill && fleet.skill.acronym == 'ENG')
+            planets << route # if (fleet.skill && fleet.skill.acronym == 'ENG')
           end
         when 'LightTransport'
-          routes = Planet.where(:sector => self.sector)
-          routes.each do |route|
-            planets << route
-          end
+          #routes = Planet.where(:sector => self.sector)
+          #routes.each do |route|
+            #planets << route
+          #end
         when 'Fighter'
           planets = []
           routes = Route.where({:vector_a => self} | {:vector_b => self})

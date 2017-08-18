@@ -110,13 +110,14 @@ class GenericFleet < ActiveRecord::Base
     case self.generic_unit.type
     when 'Armament'
       info << "<br>- Equipa Fighters e Bombers"
-      info << "<br>- Warheads destroem Fabrica"
+      info << "<br>- Torpedos destroem Fabricas"
     when 'Fighter'
       info << "<br>- Unidades Pilotaveis"
     when 'Skill'
       info << "<br>- Equipa Capital Ships"
     when 'CapitalShip'
       info << "<br>- Nome: <b>#{fleet_name}</b>"
+      info << "<br>- Ataques de Longa Distancia"
       info << "<br>- Abordagem / Captura de Fabricas"
       info << "<br>- Transporte de Unidades"
       info << "<br>- Skill: #{skill.name}" if skill
@@ -131,7 +132,7 @@ class GenericFleet < ActiveRecord::Base
       info << "<br>- Congela Nivel e Pontos se movimentada"
     when 'LightTransport'
       info << "<br>- Abordagem/Captura de Fabricas"
-      info << "<br>- Raid Missions Longa Distancia"
+      #info << "<br>- Raid Missions Longa Distancia"
       info << "<br>- Transporte de Unidades"
     when 'Warrior'
       info << "<br>- Espionagem"
