@@ -109,7 +109,7 @@ Goal.create(:description => 'Dominar o Quadrante Sul e o planeta Mygeeto')
 Goal.create(:description => 'Dominar o Quadrante Sul e o planeta Polis Massa')
 Goal.create(:description => 'Dominar o Quadrante Oeste e o planeta Nal Hutta')
 Goal.create(:description => 'Dominar o Quadrante Leste e o planeta Hoth')
-Goal.create(:description => 'Dominar os 4 planetas com Income Especial')
+Goal.create(:description => 'Dominar os 4 planetas com Income Especial e 3 planetas a sua escolha')
 
 Setting.create(:initial_factories => 2400,
                :initial_fighters => 0,
