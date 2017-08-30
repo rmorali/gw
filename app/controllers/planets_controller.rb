@@ -9,6 +9,7 @@ class PlanetsController < ApplicationController
 
   def show
     @planet = Planet.find(params[:id])
+    @planet.generic_fleets.first.group_fleets
     @setting = Setting.getInstance
     @round = Round.getInstance
     @squad = current_squad
@@ -29,7 +30,7 @@ class PlanetsController < ApplicationController
     redirect_to :close_popup if @fleets.empty? and @facilities.empty?
     move_planet_path(@planet)
   end
- 
+
 
   def results
     @planet = Planet.find(params[:id])
@@ -81,15 +82,14 @@ class PlanetsController < ApplicationController
       @sensors += 1 if fleet.is_a_sensor?
     end
     #@active = FacilityFleet.select { |facility| facility.squad == @current_squad && facility.balance > 0 }.count
-    #@comment1 = "#{@inactive} fabricas sem produzir!" unless @active == 0  
-    @comment1 = ""  
+    #@comment1 = "#{@inactive} fabricas sem produzir!" unless @active == 0
+    @comment1 = ""
     @comment2 = ""
     @all_squads.each do |squad|
       @comment2 << "<span style=color:##{squad.color}>" + squad.name + " pronto!<span><br>" if squad.ready?
     end
-    
+
     respond_with @planets
   end
 
 end
-

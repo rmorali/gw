@@ -2,6 +2,7 @@ class CapitalShipsController < ApplicationController
 
   def edit
     @capital_ship = GenericFleet.find(params[:id])
+    @capital_ship.group_fleets
     @planet = @capital_ship.planet
     @carriable_fleets = Fleet.select { |fleet| fleet.is_transportable? && fleet.planet == @capital_ship.planet && fleet.squad == @capital_ship.squad }
     @carried_fleets = GenericFleet.where(:carried_by => @capital_ship)
@@ -17,7 +18,7 @@ class CapitalShipsController < ApplicationController
   def load_in
     @fleet = GenericFleet.find(params[:fleet][:id])
     @capital_ship = GenericFleet.find(params[:id])
-    @fleet.load_in @capital_ship, params[:fleet][:quantity].to_i if params[:fleet][:quantity] && @fleet.squad.ready != true 
+    @fleet.load_in @capital_ship, params[:fleet][:quantity].to_i if params[:fleet][:quantity] && @fleet.squad.ready != true
     redirect_to :back
   end
 
@@ -31,7 +32,7 @@ class CapitalShipsController < ApplicationController
   def install_skill
     @capital_ship = GenericFleet.find(params[:fleet][:id])
     unless @capital_ship.skill_id || !params[:fleet][:skill_id]
-      @skill = GenericFleet.find(params[:fleet][:skill_id]) 
+      @skill = GenericFleet.find(params[:fleet][:skill_id])
       @capital_ship.install @skill
     end
     redirect_to :back
@@ -44,4 +45,3 @@ class CapitalShipsController < ApplicationController
   end
 
 end
-

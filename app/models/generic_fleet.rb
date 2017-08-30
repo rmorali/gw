@@ -184,7 +184,7 @@ class GenericFleet < ActiveRecord::Base
     else
 
     end
-    style.join(' ')    
+    style.join(' ')
   end
 
   def load_in carrier, qtt
@@ -195,12 +195,12 @@ class GenericFleet < ActiveRecord::Base
       end
       carrier_available_capacity = carrier.heavy_loading_capacity - carried_units
       if qtt > carrier_available_capacity && carrier_available_capacity <= carrier.heavy_loading_capacity
-        qtt = carrier_available_capacity 
+        qtt = carrier_available_capacity
       elsif qtt > carrier_available_capacity && carrier_available_capacity == 0
         return
       else
         qtt = qtt
-      end 
+      end
     else
       carried_units = 0
       carrier.cargo.each do |cargo|
@@ -208,12 +208,12 @@ class GenericFleet < ActiveRecord::Base
       end
       carrier_available_capacity = carrier.light_loading_capacity - carried_units
       if qtt > carrier_available_capacity && carrier_available_capacity <= carrier.light_loading_capacity
-        qtt = carrier_available_capacity 
+        qtt = carrier_available_capacity
       elsif qtt > carrier_available_capacity && carrier_available_capacity == 0
         return
       else
         qtt = qtt
-      end 
+      end
     end
 
     if qtt == self.quantity
@@ -221,7 +221,7 @@ class GenericFleet < ActiveRecord::Base
       self.moving = carrier.moving
       self.destination = carrier.destination
       self.save
-      self.group_fleets
+      #self.group_fleets
     elsif qtt != 0
       not_loaded_fleet = self.clone
       not_loaded_fleet.quantity -= qtt
@@ -230,8 +230,8 @@ class GenericFleet < ActiveRecord::Base
       self.quantity = qtt
       self.moving = carrier.moving
       self.destination = carrier.destination
-      self.save 
-      self.group_fleets     
+      self.save
+      #self.group_fleets
     end
   end
 
@@ -241,7 +241,7 @@ class GenericFleet < ActiveRecord::Base
       self.moving = nil
       self.destination = nil
       self.save
-      self.group_fleets
+      #self.group_fleets
     else
       unloaded_fleet = self.clone
       unloaded_fleet.quantity = qtt
@@ -253,7 +253,7 @@ class GenericFleet < ActiveRecord::Base
       self.moving = carrier.moving
       self.destination = carrier.destination
       self.save
-      unloaded_fleet.group_fleets         
+      #unloaded_fleet.group_fleets
     end
   end
 
@@ -267,11 +267,11 @@ class GenericFleet < ActiveRecord::Base
 
   def unload_all
     self.cargo.each do |cargo|
-      cargo.moving = nil 
+      cargo.moving = nil
       cargo.destination = nil
       cargo.carried_by = nil
-      cargo.save       
-    end 
+      cargo.save
+    end
   end
 
   def arm_with armament, slot
@@ -289,7 +289,7 @@ class GenericFleet < ActiveRecord::Base
       not_armed_fleet.save!
       self.update_attributes(:weapon1 => armament.generic_unit, :quantity => armament.quantity) if slot == 1
       self.update_attributes(:weapon2 => armament.generic_unit, :quantity => armament.quantity) if slot == 2
-      armament.update_attributes(:quantity => 0)     
+      armament.update_attributes(:quantity => 0)
     end
   end
 
@@ -328,7 +328,7 @@ class GenericFleet < ActiveRecord::Base
       not_skilled_fleet.quantity -= skill.quantity
       not_skilled_fleet.save!
       self.update_attributes(:skill => skill.generic_unit, :quantity => skill.quantity)
-      skill.update_attributes(:quantity => 0)     
+      skill.update_attributes(:quantity => 0)
     end
   end
 
@@ -367,6 +367,10 @@ class GenericFleet < ActiveRecord::Base
     true unless self.generic_unit.hyperdrive == false || self.planet.routes(self).empty? || self.carried_by != nil
   end
 
+  def is_groupable?
+    true unless self.type?(CapitalShip) || self.type?(Facility)
+  end
+
   def is_transportable?
     true if ( self.type?(Fighter) || self.type?(Armament) || self.type?(Sensor) || self.type?(Warrior) ||self.type?(Miner) || self.type?(Trooper) || self.type?(Skill) ) && self.moving != true && self.carried_by == nil
   end
@@ -382,9 +386,10 @@ class GenericFleet < ActiveRecord::Base
   def cancel_moves
     GenericFleet.where(:carried_by => self).update_all(:moving => nil, :destination_id => nil)
     self.update_attributes(:moving => nil, :destination_id => nil)
-    self.group_fleets
+    #self.group_fleets
   end
 
+=begin
   def group_fleets
     unless self.generic_unit.is_a?(Facility) || self.generic_unit.is_a?(CapitalShip)
       fleets = planet.generic_fleets.where(:generic_unit_id => self.generic_unit_id, :planet => self.planet, :squad => self.squad, :moving => self.moving, :destination_id => self.destination_id, :carried_by_id => self.carried_by_id, :weapon1_id => self.weapon1_id, :weapon2_id => self.weapon2_id, :skill_id => self.skill_id )
@@ -400,6 +405,19 @@ class GenericFleet < ActiveRecord::Base
       self.quantity += total_quantity
       self.round = old_unit_round
       save
+    end
+  end
+=end
+
+  def group_fleets
+    grouped = planet.generic_fleets.group_by{ |unit| [unit.generic_unit, unit.planet, unit.squad, unit.moving, unit.destination, unit.carried_by, unit.weapon1, unit.weapon2, unit.skill ] }
+    grouped.values.each do |duplicates|
+      first_one = duplicates.shift
+      duplicates.each do |double|
+        next unless first_one.is_groupable?
+        first_one.update_attributes(:quantity => first_one.quantity += double.quantity)
+        double.destroy
+      end
     end
   end
 

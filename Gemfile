@@ -26,10 +26,10 @@ group :development, :test do
   gem "autotest-rails"
   gem 'autotest-notification'
   gem 'escape_utils'
-  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git'
+  #gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git'
 end
 group :test do
-  #gem 'capybara', '~> 1.0'
+  gem 'capybara', '~> 2.0'
   gem 'shoulda', '~> 2.0'
   gem "ZenTest", '4.5.0'
   gem 'simplecov', :platform => :ruby_19

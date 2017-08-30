@@ -15,10 +15,10 @@ class Fleet < GenericFleet
       unless self.cargo.empty?
         if self.quantity == quantity
           self.cargo.each do |cargo|
-            cargo.moving = moving_fleet.moving 
+            cargo.moving = moving_fleet.moving
             cargo.destination = moving_fleet.destination
             cargo.carried_by = moving_fleet
-            cargo.save       
+            cargo.save
           end
         else
           self.unload_all
@@ -65,4 +65,3 @@ class Fleet < GenericFleet
   end
 
 end
-
