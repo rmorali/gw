@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe 'homepage' do
@@ -40,3 +41,4 @@ describe 'homepage' do
   end
 
 end
+=end

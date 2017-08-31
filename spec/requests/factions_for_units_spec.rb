@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe "Choosing Factions for Units" do
@@ -9,3 +10,4 @@ describe "Choosing Factions for Units" do
     end
   end
 end
+=end

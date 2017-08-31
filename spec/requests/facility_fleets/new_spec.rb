@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe "facility fleets" do
@@ -20,3 +21,4 @@ describe "facility fleets" do
     end
   end
 end
+=end

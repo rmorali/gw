@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe "Viewing dashboard" do
@@ -13,7 +14,6 @@ describe "Viewing dashboard" do
     Planet.enable_routes
   end
 
-=begin
 
   context "viewing planets" do
     before do
@@ -32,7 +32,6 @@ describe "Viewing dashboard" do
     end
   end
 
-=end
-
-
 end
+
+=end
