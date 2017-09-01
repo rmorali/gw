@@ -203,6 +203,3 @@ DEPENDENCIES
   simplecov-rcov
   sqlite3
   thin
-
-BUNDLED WITH
-   1.15.4
