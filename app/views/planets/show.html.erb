@@ -84,7 +84,7 @@ document.title = "<%= @planet.name %>"
               <% else %>
                 <td align=right><%= fleet_form.input :quantity, :collection => 1..fleet_form.object.quantity, :label => false if fleet_form.object.is_movable? && fleet_form.object.squad == @squad  %></td>
               <% end %>
-               <td><%= fleet_form.association :destination, :collection => @planet.routes(fleet_form.object), :disabled => false, :label => false if fleet_form.object.is_movable? && fleet_form.object.squad == @squad %></td>
+               <td><div class="minimal"><%= fleet_form.association :destination, :collection => @planet.routes(fleet_form.object), :disabled => false, :label => false if fleet_form.object.is_movable? && fleet_form.object.squad == @squad %></div></td>
           <% end %>
           <% if fleet.carried_by == nil %>
             <td>

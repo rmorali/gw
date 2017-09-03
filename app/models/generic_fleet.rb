@@ -159,20 +159,20 @@ class GenericFleet < ActiveRecord::Base
 
   def span_style
     style = []
-    style << "font-size:11px;font-weight:normal;color:##{self.squad.color};"
+    style << "font-size:9px;font-weight:normal;color:##{self.squad.color};"
     case self.generic_unit.type
     when 'Armament'
-      style << "border-radius:20%; border:solid 1px; padding:1px; font-size:11px"
+      style << "border-radius:20%; border:solid 1px; padding:1px; font-size:9px"
     when 'Fighter'
 
     when 'Skill'
       style << "border-radius:20%; border:solid 1px; padding:1px"
     when 'CapitalShip'
-      style << "font-weight:bolder; font-size:13px"
+      style << "font-weight:bolder; font-size:10px"
     when 'Facility'
-      style << "font-weight:bolder; font-size:13px; background-color:#000040"
+      style << "font-weight:bolder; font-size:10px; background-color:#000040"
     when 'LightTransport'
-      style << "font-weight:bolder; font-size:12px"
+      style << "font-weight:bolder; font-size:9px"
     when 'Warrior'
       style << "border-radius:20%; border:dotted 1px; padding:2px; background-color:#331100"
     when 'Sensor'
