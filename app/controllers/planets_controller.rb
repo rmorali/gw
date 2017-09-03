@@ -9,7 +9,7 @@ class PlanetsController < ApplicationController
 
   def show
     @planet = Planet.find(params[:id])
-    GroupFleet.new(@planet)
+    #GroupFleet.new(@planet)
     @setting = Setting.getInstance
     @round = Round.getInstance
     @squad = current_squad
