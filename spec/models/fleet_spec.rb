@@ -57,7 +57,7 @@ describe Fleet do
         @moving_partial_fleet.cargo.should be_empty
       end
     end
-    
+
     context 'cancelling movements' do
       before(:each) do
         Fleet.destroy_all
@@ -77,7 +77,7 @@ describe Fleet do
         carried_ship.should be_moving
         GenericFleet.where(:moving => true).count.should == 2
         GenericFleet.first.move 1, nil
-        GenericFleet.where(:moving => true).should be_empty 
+        GenericFleet.where(:moving => true).should be_empty
       end
 
     end
@@ -121,6 +121,7 @@ describe Fleet do
         @moving_fleet.should_not be_moving
       end
       it 'should group fleets on the destination planet after moving has finished' do
+        GroupFleet.new(planet)
         planet.generic_fleets.where(:generic_unit => unit.generic_unit).should have(1).fleet
         @moving_fleet.quantity.should == (@merging_fleet.quantity + @moving_quantity)
       end
@@ -144,4 +145,3 @@ describe Fleet do
   end
 
 end
-

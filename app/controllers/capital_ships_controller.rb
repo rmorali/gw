@@ -2,8 +2,8 @@ class CapitalShipsController < ApplicationController
 
   def edit
     @capital_ship = GenericFleet.find(params[:id])
-    @capital_ship.group_fleets
     @planet = @capital_ship.planet
+    GroupFleet.new(@planet)
     @carriable_fleets = Fleet.select { |fleet| fleet.is_transportable? && fleet.planet == @capital_ship.planet && fleet.squad == @capital_ship.squad }
     @carried_fleets = GenericFleet.where(:carried_by => @capital_ship)
     @skills = Fleet.select{ |unit| unit.planet == @capital_ship.planet && unit.squad == @capital_ship.squad && unit.type?(Skill) && !unit.moving? }

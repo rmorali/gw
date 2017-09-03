@@ -253,7 +253,7 @@ class GenericFleet < ActiveRecord::Base
       self.moving = carrier.moving
       self.destination = carrier.destination
       self.save
-      #unloaded_fleet.group_fleets
+      GroupFleet.new(self.planet)
     end
   end
 
@@ -313,7 +313,7 @@ class GenericFleet < ActiveRecord::Base
       discharged_armaments.save!
       self.update_attributes(:weapon2 => nil)
    end
-      discharged_armaments.group_fleets
+   #group
   end
 
   def install skill
@@ -341,7 +341,7 @@ class GenericFleet < ActiveRecord::Base
     discharged_skills.save!
     self.cancel_moves if self.skill.acronym == 'ENG'
     self.update_attributes(:skill => nil)
-    discharged_skills.group_fleets
+    GroupFleet.new(self.planet)
   end
 
   def is_a_sensor?
@@ -368,7 +368,8 @@ class GenericFleet < ActiveRecord::Base
   end
 
   def is_groupable?
-    true unless self.type?(CapitalShip) || self.type?(Facility)
+    return nil if self.type?(CapitalShip) || self.type?(Facility)
+    true
   end
 
   def is_transportable?
@@ -386,7 +387,7 @@ class GenericFleet < ActiveRecord::Base
   def cancel_moves
     GenericFleet.where(:carried_by => self).update_all(:moving => nil, :destination_id => nil)
     self.update_attributes(:moving => nil, :destination_id => nil)
-    #self.group_fleets
+    GroupFleet.new(self.planet)
   end
 
 =begin
@@ -408,17 +409,5 @@ class GenericFleet < ActiveRecord::Base
     end
   end
 =end
-
-  def group_fleets
-    grouped = planet.generic_fleets.group_by{ |unit| [unit.generic_unit, unit.planet, unit.squad, unit.moving, unit.destination, unit.carried_by, unit.weapon1, unit.weapon2, unit.skill ] }
-    grouped.values.each do |duplicates|
-      first_one = duplicates.shift
-      duplicates.each do |double|
-        next unless first_one.is_groupable?
-        first_one.update_attributes(:quantity => first_one.quantity += double.quantity)
-        double.destroy
-      end
-    end
-  end
 
 end
