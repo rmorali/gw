@@ -1,6 +1,7 @@
 class PlanetsController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:map]
+
   respond_to :html, :xml
 
   def index
@@ -9,7 +10,7 @@ class PlanetsController < ApplicationController
 
   def show
     @planet = Planet.find(params[:id])
-    #GroupFleet.new(@planet)
+    GroupFleet.new(@planet)
     @setting = Setting.getInstance
     @round = Round.getInstance
     @squad = current_squad
@@ -24,6 +25,7 @@ class PlanetsController < ApplicationController
 
   def move
     @planet = Planet.find(params[:id])
+    GroupFleet.new(@planet)
     @fleets = @planet.generic_fleets.where(:squad => current_squad, :type => 'Fleet')
     @facilities = @planet.generic_fleets.where(:squad => current_squad, :type => 'FacilityFleet')
     @routes = @planet.routes

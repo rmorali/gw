@@ -14,7 +14,7 @@ class GenericFleetsController < ApplicationController
       @tip = "Informe os resultados dos combates."
     end
     @small_fleet = nil
-    total = 0 
+    total = 0
     redirect_to :controller => 'planets', :action => 'map'
   end
 
@@ -32,7 +32,7 @@ class GenericFleetsController < ApplicationController
       end
     end
   @planet = @fleet.planet
-  GroupFleet.new(@planet)
+  #GroupFleet.new(@planet)
   redirect_to :controller => 'planets', :action => 'show', :id => @planet.id
   end
 
