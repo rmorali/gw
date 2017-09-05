@@ -171,11 +171,11 @@ describe Planet do
       planet.routes(@fleet).should == Planet.all
       Planet.enable_routes
     end
-    it 'should find all planets in a sector when it is a light_transport' do
+    it 'should find all planets in a sector when it is a capital ship' do
       planet.sector = 1
       planet.save
       3.times { Factory :planet, :sector => 1 }
-      @fleet.generic_unit = Factory :light_transport
+      @fleet.generic_unit = Factory :capital_ship
       @fleet.save
       planet.routes(@fleet).count.should == 3
     end

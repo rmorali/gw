@@ -10,7 +10,7 @@ class PlanetsController < ApplicationController
 
   def show
     @planet = Planet.find(params[:id])
-    GroupFleet.new(@planet)
+    GroupFleet.new(@planet).group!
     @setting = Setting.getInstance
     @round = Round.getInstance
     @squad = current_squad
@@ -25,7 +25,7 @@ class PlanetsController < ApplicationController
 
   def move
     @planet = Planet.find(params[:id])
-    GroupFleet.new(@planet)
+    GroupFleet.new(@planet).group!
     @fleets = @planet.generic_fleets.where(:squad => current_squad, :type => 'Fleet')
     @facilities = @planet.generic_fleets.where(:squad => current_squad, :type => 'FacilityFleet')
     @routes = @planet.routes
