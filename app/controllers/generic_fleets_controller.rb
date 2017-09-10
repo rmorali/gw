@@ -33,7 +33,7 @@ class GenericFleetsController < ApplicationController
     end
   @planet = @fleet.planet
   #GroupFleet.new(@planet)
-  redirect_to :controller => 'planets', :action => 'show', :id => @planet.id
+  redirect_to :controller => 'planets', :action => 'index', :id => @planet.id
   end
 
   def move_facility

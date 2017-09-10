@@ -1,4 +1,3 @@
-<%= render :partial => 'sectors' %>
 
 <div class="painel1">
   <span style="color:#<%= @current_squad.color %>;font-size: 23px;font-weight: bold">
@@ -70,7 +69,6 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
 
 </div>
 
-
 <% @planets.each do |planet| %>
 
   <% @round_number = nil %>
@@ -80,9 +78,12 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
       <% @sensor = route if route.generic_fleets.any? { |fleet| fleet.is_a_sensor? && fleet.squad == @current_squad } %>
     <% end %>
 
-  <div id="gifs" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio %>px;z-index: 10;">
-  <b href = "" onclick="window.open('/planets/<%= planet.id %>', 'Planeta <%= planet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=600, height=500')">
+  <div id='conteudo'>
 
+  </div>
+
+  <div id="gifs" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio %>px;z-index: 10;">
+  <b href="/planets/<%= planet.id %>" >
   <img src="/images/planets/<%= planet.name.gsub(" ","").downcase %>.png">
   </b>
   </div>

@@ -5,7 +5,12 @@ class PlanetsController < ApplicationController
   respond_to :html, :xml
 
   def index
-
+    @round = Round.getInstance
+    @setting = Setting.getInstance
+    @current_squad = current_squad
+    @squad = current_squad
+    @map_ratio = ( @current_squad.map_ratio.to_f / 100 ).to_f
+    @planets = Planet.includes(:squad).all
   end
 
   def show
@@ -14,12 +19,17 @@ class PlanetsController < ApplicationController
     @setting = Setting.getInstance
     @round = Round.getInstance
     @squad = current_squad
+    @map_ratio = ( @squad.map_ratio.to_f / 100 ).to_f
     redirect_to :controller => 'results', :action => 'index', :planet_id => @planet.id if @round.attack? && @planet.under_attack?
 
 
     @routes = @planet.routes
     @routes.each do |route|
       @sensor = route if route.generic_fleets.any? { |fleet| (fleet.type?(Sensor) && fleet.squad == current_squad) || (fleet.is_a_sensor? && fleet.squad == current_squad) }
+    end
+    respond_to do |format|
+     format.js
+      format.yaml  
     end
   end
 

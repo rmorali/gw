@@ -1,6 +1,8 @@
 Rpg::Application.routes.draw do
 
    devise_for :users
+   
+   get 'planets/index'
 
    resources :squads do
      member do
