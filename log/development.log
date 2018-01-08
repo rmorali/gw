@@ -3288,3 +3288,1031 @@ DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3
   [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
   [1m[35mAREL (0.2ms)[0m  UPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:27:02' WHERE `generic_units`.`type` = 'Trooper' AND `generic_units`.`id` = 79
   [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (10.7ms)[0m  CREATE TABLE `admin_notes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `resource_id` varchar(255) NOT NULL, `resource_type` varchar(255) NOT NULL, `admin_user_id` int(11), `admin_user_type` varchar(255), `body` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW KEYS FROM `admin_notes`[0m
+  [1m[35mSQL (13.5ms)[0m  CREATE INDEX `index_admin_notes_on_admin_user_type_and_admin_user_id` ON `admin_notes` (`admin_user_type`, `admin_user_id`)
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW KEYS FROM `admin_notes`[0m
+  [1m[35mSQL (15.3ms)[0m  CREATE INDEX `index_admin_notes_on_resource_type_and_resource_id` ON `admin_notes` (`resource_type`, `resource_id`)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (4.3ms)[0m  CREATE TABLE `generic_fleets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `squad_id` int(11), `planet_id` int(11), `quantity` int(11), `created_at` datetime, `updated_at` datetime, `generic_unit_id` int(11), `moving` tinyint(1), `destination_id` int(11), `type` varchar(255), `balance` int(11), `producing_unit_id` int(11), `fleet_name` varchar(255), `sabotaged` tinyint(1), `level` int(11), `producing_unit2_id` int(11), `carried_by_id` int(11), `weapon1_id` int(11), `weapon2_id` int(11), `leader` tinyint(1), `skill_id` int(11), `round` int(11), `captured` tinyint(1)) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (3.2ms)[0m  CREATE TABLE `generic_units` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `price` int(11), `created_at` datetime, `updated_at` datetime, `type` varchar(255), `faction_mask` int(11), `hyperdrive` tinyint(1), `description` varchar(255), `subtype_id` int(11), `heavy_loading_capacity` int(11), `light_loading_capacity` int(11), `acronym` varchar(255)) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (3.4ms)[0m  CREATE TABLE `generic_units_squads` (`generic_unit_id` int(11), `squad_id` int(11)) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (3.8ms)[0m  CREATE TABLE `goals` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `description` text, `used` tinyint(1)) ENGINE=InnoDB
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (3.6ms)[0m  CREATE TABLE `planets` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime, `squad_id` int(11), `credits` int(11), `ground_squad_id` int(11), `wormhole` tinyint(1), `tradeport` tinyint(1), `last_player_id` int(11), `description` varchar(255), `first_player_id` int(11), `sector` int(11), `special` tinyint(1), `distance` int(11), `x` int(11), `y` int(11), `balance` int(11)) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (3.9ms)[0m  CREATE TABLE `rails_admin_histories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `message` varchar(255), `username` varchar(255), `item` int(11), `table` varchar(255), `month` smallint, `year` bigint, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW KEYS FROM `rails_admin_histories`[0m
+  [1m[35mSQL (10.5ms)[0m  CREATE INDEX `index_histories_on_item_and_table_and_month_and_year` ON `rails_admin_histories` (`item`, `table`, `month`, `year`)
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (4.1ms)[0m  CREATE TABLE `results` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `generic_unit_id` int(11), `quantity` int(11), `planet_id` int(11), `generic_fleet_id` int(11), `blasted` int(11), `captured` int(11), `fled` int(11), `squad_id` int(11), `created_at` datetime, `updated_at` datetime, `round_id` int(11), `captor_id` int(11), `sabotaged` tinyint(1), `final_quantity` int(11), `producing_unit_id` int(11), `producing_unit2_id` int(11), `fleet_name` varchar(255), `weapon1_id` int(11), `weapon2_id` int(11), `leader` tinyint(1), `automatic` tinyint(1), `skill_id` int(11), `description` varchar(255), `not_landed` int(11), `moving` tinyint(1)) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (3.3ms)[0m  CREATE TABLE `rounds` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `number` int(11), `move` tinyint(1), `attack` tinyint(1), `done` tinyint(1), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (4.2ms)[0m  CREATE TABLE `routes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `vector_a` int(11), `vector_b` int(11), `distance` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (4.5ms)[0m  CREATE TABLE `settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `net_planet_income` int(11), `bonus_planet_income` int(11), `facility_divisor_rate` int(11), `facility_upgrade_cost` int(11), `capital_ship_upgrade_cost` int(11), `maximum_warrior_life` int(11), `upgradable_capital_ships` tinyint(1), `editable_automatic_results` tinyint(1), `ground_income_rate` int(11), `initial_factories` int(11), `maximum_fleet_size` int(11), `initial_planets` int(11), `initial_fighters` int(11), `initial_capital_ships` int(11), `initial_transports` int(11), `initial_troopers` int(11), `initial_credits` int(11), `tradeports` tinyint(1), `maximum_facilities` int(11), `facility_primary_production_rate` int(11), `facility_secondary_production_rate` int(11), `facility_upgrade_rate` int(11), `air_domination_unit` varchar(255), `ground_domination_unit` varchar(255), `builder_unit` varchar(255), `minimum_quantity` int(11)) ENGINE=InnoDB
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (3.2ms)[0m  CREATE TABLE `squads` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `credits` int(11), `created_at` datetime, `updated_at` datetime, `user_id` int(11), `ready` tinyint(1), `color` varchar(255), `faction` int(11), `goal_id` int(11), `home_planet_id` int(11), `url` varchar(255), `map_ratio` int(11), `map_background` tinyint(1)) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (2.9ms)[0m  CREATE TABLE `subtypes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` varchar(255)) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (3.2ms)[0m  CREATE TABLE `tradeports` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `generic_unit_id` int(11), `quantity` int(11), `negotiation_rate` int(11), `created_at` datetime, `updated_at` datetime, `squad_id` int(11), `planet_id` int(11)) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (3.8ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(128) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `remember_token` varchar(255), `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (12.5ms)[0m  CREATE UNIQUE INDEX `index_users_on_email` ON `users` (`email`)
+  [1m[36mSQL (0.3ms)[0m  [1mSHOW KEYS FROM `users`[0m
+  [1m[35mSQL (12.3ms)[0m  CREATE UNIQUE INDEX `index_users_on_reset_password_token` ON `users` (`reset_password_token`)
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (4.4ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW KEYS FROM `schema_migrations`[0m
+  [1m[35mSQL (14.6ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161211211240')[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20101024194137')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110226233232')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140726021907')
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110401123450')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110401123449')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20101009182343')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140726191925')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20101008042231')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110306052850')
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20151013150227')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140724153539')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130626113448')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110405035612')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140909160455')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110428135702')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140727000039')[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20101009182953')
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20101009184029')[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140729212049')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110226234539')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20141029114412')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140909202813')[0m
+  [1m[35mSQL (2.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20130408085131')
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110522203126')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20130423054941')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130419144302')[0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110305175049')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110306053111')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110405035656')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20101008043912')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110512104140')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140526210131')[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20101009180425')
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130405175823')[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110305165135')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130707194206')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140909161111')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130412124156')[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110226233616')
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20101009182125')[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161208202708')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20141212165657')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110512105248')
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130414105238')[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161129175829')
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140725162228')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20130618003554')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130408133437')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20160310153414')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20151013145951')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110226232126')
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130412094411')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20130607164005')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140726192741')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110226233834')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110306063636')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20101009195325')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140909160507')[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20101009201355')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20101008042115')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20130419131348')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140724212543')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140909161012')
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140726233510')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110512112353')
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140724213305')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140728211109')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20121229221824')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20151013150005')
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130405074648')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20130527191357')
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130405123001')[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20101026012337')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20101008042543')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20161128192248')
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161129223926')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20130415150813')
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161128191751')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20130108112456')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20161209133720')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20130519014943')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110305180702')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110612042651')
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20121230051758')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20130413143513')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130615121816')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20101026015432')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140726011539')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20151013173737')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130408133553')[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110305174425')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140721214320')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20101024193052')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130626164602')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20151013173748')
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130512001221')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20151013180808')
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110226231012')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140724213249')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20141218193100')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110405080220')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110306053112')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140726192926')
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140521074548')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140909212704')
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140909160443')[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140521104324')
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110306062840')[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20130408135606')
+  [1m[36mSQL (1.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20121230051130')[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20121230074322')
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130408030044')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20141029125454')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20110305182848')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20101009183521')
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20101116015952')[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20110405080221')
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20130707194207')[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140724213107')
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140521072610')[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (2.0ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations`
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  describe `planets`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Bespin', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Bespin Cloud City', NULL, 1, NULL, NULL, 363, 475, NULL)[0m
+  [1m[35mSQL (1.7ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Bonadan', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Bonadan', NULL, 3, NULL, NULL, 1488, 475, NULL)
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Concord Dawn', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Raxus Prime', NULL, 2, NULL, NULL, 925, 250, NULL)[0m
+  [1m[35mSQL (1.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Corellia', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Corellia', NULL, 2, NULL, NULL, 813, 475, NULL)
+  [1m[36mSQL (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Coruscant', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Coruscant', NULL, 2, NULL, NULL, 475, 250, NULL)[0m
+  [1m[35mSQL (1.5ms)[0m  COMMIT
+  [1m[36mSQL (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Dagobah', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Dagobah', NULL, 4, NULL, NULL, 475, 1150, NULL)
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Death Star', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Deathstar', NULL, 2, NULL, NULL, 700, 250, NULL)[0m
+  [1m[35mSQL (1.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Endor', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Kashyyyk', NULL, 1, NULL, NULL, 250, 700, NULL)
+  [1m[36mSQL (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Felucia', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Felucia', NULL, 3, NULL, NULL, 1150, 250, NULL)[0m
+  [1m[35mSQL (1.4ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Geonosis', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Geonosis/R. Prime', NULL, 4, NULL, NULL, 813, 925, NULL)
+  [1m[36mSQL (22.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Haruun Kal', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Haruun Kal', NULL, 4, NULL, NULL, 700, 700, NULL)[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Hoth', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Hoth/RhenVar Harbor', NULL, 1, NULL, NULL, 475, 700, NULL)
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Ilum', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Ilum', NULL, 1, NULL, NULL, 250, 250, NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Kamino', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Kamino', NULL, 3, NULL, NULL, 1375, 700, NULL)
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Kashyyyk', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Kashyyyk', NULL, 3, NULL, NULL, 1263, 475, NULL)[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Kessel Asteroids', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Polis Massa', NULL, 3, NULL, NULL, 1038, 475, NULL)
+  [1m[36mSQL (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Kuat', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Ord Ibanna', NULL, 4, NULL, NULL, 925, 700, NULL)[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Mandalore', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Yavin Arena', NULL, 2, NULL, NULL, 588, 475, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Mon Calamari', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Kamino Tipoca City', NULL, 3, NULL, NULL, 1375, 250, NULL)[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Mustafar', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Mustafar', NULL, 1, NULL, NULL, 138, 925, NULL)
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Mygeeto', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Mygeeto', NULL, 2, NULL, NULL, 588, 25, NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Naboo', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Naboo', NULL, 4, NULL, NULL, 588, 925, NULL)
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Nal Hutta', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Jabba Palace', NULL, 3, NULL, NULL, 1150, 700, NULL)[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Ord Ibanna', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Ord Ibanna', NULL, 1, NULL, NULL, 363, 925, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Polis Massa', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Polis Massa', NULL, 1, NULL, NULL, 25, 700, NULL)[0m
+  [1m[35mSQL (1.6ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Rattatak', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Rattatak', NULL, 1, NULL, NULL, 138, 475, NULL)
+  [1m[36mSQL (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Rhen Var', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Rhen Var Citadel', NULL, 3, NULL, NULL, 1038, 25, NULL)[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Ryloth', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Ryloth', NULL, 4, NULL, NULL, 925, 1150, NULL)
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Tatooine', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Mos Eisley', NULL, 4, NULL, NULL, 1038, 925, NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Utapau', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Utapau', NULL, 4, NULL, NULL, 700, 1150, NULL)
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `planets` (`name`, `created_at`, `updated_at`, `squad_id`, `credits`, `ground_squad_id`, `wormhole`, `tradeport`, `last_player_id`, `description`, `first_player_id`, `sector`, `special`, `distance`, `x`, `y`, `balance`) VALUES ('Yavin', '2018-01-08 15:30:35', '2018-01-08 15:30:35', NULL, NULL, NULL, NULL, NULL, NULL, 'Yavin 4', NULL, 2, NULL, NULL, 813, 25, NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  describe `routes`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (21, 31, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (21, 7, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (21, 5, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (31, 27, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (31, 7, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (31, 3, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (27, 9, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (27, 3, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (7, 5, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.7ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (5, 18, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (5, 1, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (4, 3, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (4, 17, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (18, 4, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (18, 7, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (3, 9, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (3, 16, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (3, 7, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (9, 19, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (9, 15, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (9, 16, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (19, 2, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (19, 15, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.7ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (8, 1, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (8, 12, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (8, 26, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (8, 24, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (8, 25, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (26, 25, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (1, 26, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (1, 18, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (1, 12, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (4, 7, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (4, 11, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (17, 16, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (16, 15, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (16, 23, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (16, 4, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (15, 2, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (15, 14, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (15, 23, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (13, 26, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (13, 5, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (13, 1, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (12, 11, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.7ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (12, 24, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (12, 18, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (12, 22, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (11, 22, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (11, 18, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (11, 10, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (11, 17, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (17, 23, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (17, 29, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (17, 10, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (23, 14, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (23, 29, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (2, 14, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (20, 8, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (20, 25, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (20, 24, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (1.8ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (24, 22, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (24, 6, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (22, 10, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (22, 30, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (22, 6, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (10, 29, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (10, 28, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (10, 30, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.6ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (6, 30, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (30, 28, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `routes` (`vector_a`, `vector_b`, `distance`, `created_at`, `updated_at`) VALUES (28, 29, 1, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `goals`[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `goals` (`description`, `used`) VALUES ('Dominar o Quadrante Norte e o planeta Dagobah', NULL)
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `goals` (`description`, `used`) VALUES ('Dominar o Quadrante Norte e o planeta Kamino', NULL)[0m
+  [1m[35mSQL (1.0ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `goals` (`description`, `used`) VALUES ('Dominar o Quadrante Sul e o planeta Mygeeto', NULL)
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.9ms)[0m  [1mINSERT INTO `goals` (`description`, `used`) VALUES ('Dominar o Quadrante Sul e o planeta Polis Massa', NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `goals` (`description`, `used`) VALUES ('Dominar o Quadrante Oeste e o planeta Nal Hutta', NULL)
+  [1m[36mSQL (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `goals` (`description`, `used`) VALUES ('Dominar o Quadrante Leste e o planeta Hoth', NULL)[0m
+  [1m[35mSQL (2.8ms)[0m  COMMIT
+  [1m[36mSQL (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO `goals` (`description`, `used`) VALUES ('Dominar os 4 planetas com Income Especial e 3 planetas a sua escolha', NULL)
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.1ms)[0m  [1mdescribe `settings`[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO `settings` (`net_planet_income`, `bonus_planet_income`, `facility_divisor_rate`, `facility_upgrade_cost`, `capital_ship_upgrade_cost`, `maximum_warrior_life`, `upgradable_capital_ships`, `editable_automatic_results`, `ground_income_rate`, `initial_factories`, `maximum_fleet_size`, `initial_planets`, `initial_fighters`, `initial_capital_ships`, `initial_transports`, `initial_troopers`, `initial_credits`, `tradeports`, `maximum_facilities`, `facility_primary_production_rate`, `facility_secondary_production_rate`, `facility_upgrade_rate`, `air_domination_unit`, `ground_domination_unit`, `builder_unit`, `minimum_quantity`) VALUES (500, 1000, 4, 1000, 1000, 10, 1, 0, 50, 2400, 1000, 2, 0, 300, 500, 200, 0, 0, 4, 50, 10, 500, 'Facility', 'Miner', 'Trooper', 1)
+  [1m[36mSetting Load (0.4ms)[0m  [1mSELECT `settings`.* FROM `settings` ORDER BY settings.id DESC LIMIT 1[0m
+  [1m[35mPlanet Load (0.7ms)[0m  SELECT `planets`.* FROM `planets` WHERE `planets`.`tradeport` IS NULL ORDER BY name ASC
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 1[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 2
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 3[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 4
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 5[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 6
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 7[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 8
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 9[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 10
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 11[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 12
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 13[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 14
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 15[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 16
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 17[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 18
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 19[0m
+  [1m[35mAREL (1.3ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 20
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 21[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 22
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 23[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 24
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 25[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 26
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 27[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 28
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 29[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 30
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `planets` SET `credits` = 500, `updated_at` = '2018-01-08 15:30:35' WHERE `planets`.`id` = 31[0m
+  [1m[35mSQL (2.8ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT 1 FROM `users` WHERE (LOWER(`users`.`email`) = LOWER('setup@xws.com')) LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1mdescribe `users`[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `users` (`email`, `encrypted_password`, `reset_password_token`, `remember_token`, `remember_created_at`, `sign_in_count`, `current_sign_in_at`, `last_sign_in_at`, `current_sign_in_ip`, `last_sign_in_ip`, `created_at`, `updated_at`) VALUES ('setup@xws.com', '$2a$10$C6jOn1tvk1TKHzBWq8K7Ou7BZeR89vOngDGhRgpZQmG5WQTIjSnOq', NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, '2018-01-08 15:30:35', '2018-01-08 15:30:35')
+  [1m[36mSQL (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `generic_units`[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Ind.Complex', 1200, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'Facility', NULL, NULL, 'Comboio(6 Bulk Freighter)', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (2.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 6, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'Facility' AND `generic_units`.`id` = 1[0m
+  [1m[35mSQL (1.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Space Colony', 1200, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'Facility', NULL, NULL, 'Comboio(6 Cargo Ferry)', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 24, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'Facility' AND `generic_units`.`id` = 2[0m
+  [1m[35mSQL (1.8ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Cargo Facility II', 1800, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'Facility', NULL, NULL, 'Comboio(6 Mod.Conveyor)', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 24, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'Facility' AND `generic_units`.`id` = 3[0m
+  [1m[35mSQL (0.6ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Platforms', 1800, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'Facility', NULL, NULL, 'Comboio(6 Mod.Action Transp)', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'Facility' AND `generic_units`.`id` = 4[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('DeepSpace Facility', 1800, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'Facility', NULL, NULL, 'Comboio(6 Mod.Action Transp)', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'Facility' AND `generic_units`.`id` = 5[0m
+  [1m[35mSQL (1.7ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Asteroid Hangar', 2400, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'Facility', NULL, NULL, 'Comboio(6 Xyitiar Transp)', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'Facility' AND `generic_units`.`id` = 6[0m
+  [1m[35mSQL (0.6ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Rebel Platform', 2400, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'Facility', NULL, NULL, 'Comboio(6 Reb Med Transp)', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 2, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'Facility' AND `generic_units`.`id` = 7[0m
+  [1m[35mSQL (1.7ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Golan I', 2400, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'Facility', NULL, NULL, 'Comboio(6 Mod Action Transp)', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'Facility' AND `generic_units`.`id` = 8[0m
+  [1m[35mSQL (0.7ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Golan II', 3000, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'Facility', NULL, NULL, 'Comboio(6 Container Transp)', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'Facility' AND `generic_units`.`id` = 9[0m
+  [1m[35mSQL (1.8ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Imp Research Ship', 3000, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'Facility', NULL, NULL, 'Comboio(6 Star Galleon)', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (2.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'Facility' AND `generic_units`.`id` = 10[0m
+  [1m[35mSQL (1.7ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Pirate S.Yard', 3000, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'Facility', NULL, NULL, 'Comboio(6 Xyitiar Transp)', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 24, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'Facility' AND `generic_units`.`id` = 11[0m
+  [1m[35mSQL (1.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Golan III', 3600, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'Facility', NULL, NULL, 'Comboio(6 Xyitiar Transp)', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'Facility' AND `generic_units`.`id` = 12[0m
+  [1m[35mSQL (0.7ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Shipyard', 3600, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'Facility', NULL, NULL, 'Comboio(6 Xyitiar Transp)', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'Facility' AND `generic_units`.`id` = 13[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  describe `generic_units`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('__________Capital Ships__________', NULL, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'Unit', NULL, NULL, NULL, NULL, NULL, NULL, NULL)[0m
+  [1m[35mSQL (1.6ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`id` = 14 AND (((((((((((`generic_units`.`type` = 'Unit' OR `generic_units`.`type` = 'Fighter') OR `generic_units`.`type` = 'LightTransport') OR `generic_units`.`type` = 'CapitalShip') OR `generic_units`.`type` = 'Armament') OR `generic_units`.`type` = 'Trooper') OR `generic_units`.`type` = 'Warrior') OR `generic_units`.`type` = 'Commander') OR `generic_units`.`type` = 'Sensor') OR `generic_units`.`type` = 'Skill') OR `generic_units`.`type` = 'Miner'))
+  [1m[36mSQL (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mdescribe `generic_units`[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Corellian Gunship', 300, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +1 nave simultanea no XWA', NULL, 20, 200, NULL)
+  [1m[36mSQL (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 15[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Corellian Corvette', 300, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +1 nave simultanea no XWA', NULL, 20, 200, NULL)
+  [1m[36mSQL (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 16[0m
+  [1m[35mSQL (1.3ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Mod Corvette', 300, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +1 nave simultanea no XWA', NULL, 20, 200, NULL)
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 24, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 17[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Nebulon B Frigate', 350, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +1 nave simultanea no XWA', NULL, 20, 200, NULL)
+  [1m[36mSQL (2.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 18[0m
+  [1m[35mSQL (1.9ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Mod Nebulon Frigate', 400, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +1 nave simultanea no XWA', NULL, 20, 200, NULL)
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 19[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Carrack Cruiser', 350, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +1 nave simultanea no XWA', NULL, 20, 200, NULL)
+  [1m[36mSQL (1.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 20[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Lancer Frigate', 400, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +1 nave simultanea no XWA', NULL, 20, 200, NULL)
+  [1m[36mSQL (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 21[0m
+  [1m[35mSQL (1.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Marauder Corvette', 500, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +1 nave simultanea no XWA', NULL, 20, 200, NULL)
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 24, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 22[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Dreadnaught', 900, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +2 naves simultaneas no XWA', NULL, 40, 400, NULL)
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 24, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 23[0m
+  [1m[35mSQL (0.6ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Escort Carrier', 650, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +2 naves simultaneas no XWA', NULL, 40, 400, NULL)
+  [1m[36mSQL (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 24[0m
+  [1m[35mSQL (1.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('MC40A Light Cruiser', 650, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +2 naves simultaneas no XWA', NULL, 40, 400, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 2, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 25[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Bulk Cruiser', 750, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +2 naves simultaneas no XWA', NULL, 40, 400, NULL)
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 24, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 26[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Mod Strike Cruiser', 1150, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +3 naves simultaneas no XWA', NULL, 60, 600, NULL)
+  [1m[36mSQL (26.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (1.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 24, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 27[0m
+  [1m[35mSQL (1.9ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Strike Cruiser', 800, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +2 naves simultaneas no XWA', NULL, 40, 400, NULL)
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 6, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 28[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Assault Frigate', 1150, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +2 naves simultaneas no XWA', NULL, 40, 400, NULL)
+  [1m[36mSQL (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 2, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 29[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('MC80A Chatnoir Cruiser', 1250, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +3 naves simultaneas no XWA', NULL, 60, 600, NULL)
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 24, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 30[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('MC80 Reefhome Cruiser', 1500, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +3 naves simultaneas no XWA', NULL, 60, 600, NULL)
+  [1m[36mSQL (2.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 2, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 31[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Victory SD', 1250, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +3 naves simultaneas no XWA', NULL, 60, 600, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 32[0m
+  [1m[35mSQL (1.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('MC80 Liberty Cruiser', 1500, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +3 naves simultaneas no XWA', NULL, 60, 600, NULL)
+  [1m[36mSQL (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 2, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 33[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Victory SD II', 1500, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +3 naves simultaneas no XWA', NULL, 60, 600, NULL)
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 34[0m
+  [1m[35mSQL (1.6ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Interdictor', 2000, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +3 naves simultaneas no XWA', NULL, 60, 600, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:35' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 35[0m
+  [1m[35mSQL (1.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Imperial SD', 1800, '2018-01-08 15:30:35', '2018-01-08 15:30:35', 'CapitalShip', NULL, NULL, 'Bonus +3 naves simultaneas no XWA', NULL, 60, 600, NULL)
+  [1m[36mSQL (1.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 36[0m
+  [1m[35mSQL (1.6ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Imperial SD II', 2000, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'CapitalShip', NULL, NULL, 'Bonus +3 naves simultaneas no XWA', NULL, 60, 600, NULL)
+  [1m[36mSQL (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'CapitalShip' AND `generic_units`.`id` = 37[0m
+  [1m[35mSQL (11.8ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('__________Light Transports_______', NULL, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Unit', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`id` = 38 AND (((((((((((`generic_units`.`type` = 'Unit' OR `generic_units`.`type` = 'Fighter') OR `generic_units`.`type` = 'LightTransport') OR `generic_units`.`type` = 'CapitalShip') OR `generic_units`.`type` = 'Armament') OR `generic_units`.`type` = 'Trooper') OR `generic_units`.`type` = 'Warrior') OR `generic_units`.`type` = 'Commander') OR `generic_units`.`type` = 'Sensor') OR `generic_units`.`type` = 'Skill') OR `generic_units`.`type` = 'Miner'))[0m
+  [1m[35mSQL (1.3ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  describe `generic_units`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('YT-1300', 100, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'LightTransport', NULL, NULL, NULL, NULL, 8, 200, NULL)[0m
+  [1m[35mSQL (1.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE `generic_units` SET `faction_mask` = 8, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'LightTransport' AND `generic_units`.`id` = 39
+  [1m[36mSQL (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('YT-2000', 200, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'LightTransport', NULL, NULL, NULL, NULL, 8, 200, NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE `generic_units` SET `faction_mask` = 8, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'LightTransport' AND `generic_units`.`id` = 40
+  [1m[36mSQL (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('YT-2400', 150, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'LightTransport', NULL, NULL, NULL, NULL, 8, 200, NULL)[0m
+  [1m[35mSQL (1.4ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE `generic_units` SET `faction_mask` = 16, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'LightTransport' AND `generic_units`.`id` = 41
+  [1m[36mSQL (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Millenium Falcon', 180, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'LightTransport', NULL, NULL, NULL, NULL, 8, 200, NULL)[0m
+  [1m[35mSQL (1.6ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE `generic_units` SET `faction_mask` = 10, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'LightTransport' AND `generic_units`.`id` = 42
+  [1m[36mSQL (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Assault Transport', 125, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'LightTransport', NULL, NULL, NULL, NULL, 8, 200, NULL)[0m
+  [1m[35mSQL (1.8ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'LightTransport' AND `generic_units`.`id` = 43
+  [1m[36mSQL (1.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Escort Transport', 125, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'LightTransport', NULL, NULL, NULL, NULL, 8, 200, NULL)[0m
+  [1m[35mSQL (1.3ms)[0m  COMMIT
+  [1m[36mSQL (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.4ms)[0m  UPDATE `generic_units` SET `faction_mask` = 2, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'LightTransport' AND `generic_units`.`id` = 44
+  [1m[36mSQL (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Assault Shuttle', 125, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'LightTransport', NULL, NULL, NULL, NULL, 8, 200, NULL)[0m
+  [1m[35mSQL (1.6ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'LightTransport' AND `generic_units`.`id` = 45
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('System Pat Craft', 180, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'LightTransport', NULL, NULL, NULL, NULL, 8, 200, NULL)[0m
+  [1m[35mSQL (1.7ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'LightTransport' AND `generic_units`.`id` = 46
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('__________Fighters_______________', NULL, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Unit', NULL, NULL, NULL, NULL, NULL, NULL, NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  UPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`id` = 47 AND (((((((((((`generic_units`.`type` = 'Unit' OR `generic_units`.`type` = 'Fighter') OR `generic_units`.`type` = 'LightTransport') OR `generic_units`.`type` = 'CapitalShip') OR `generic_units`.`type` = 'Armament') OR `generic_units`.`type` = 'Trooper') OR `generic_units`.`type` = 'Warrior') OR `generic_units`.`type` = 'Commander') OR `generic_units`.`type` = 'Sensor') OR `generic_units`.`type` = 'Skill') OR `generic_units`.`type` = 'Miner'))
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `generic_units`[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Z-95', 35, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 10, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 48[0m
+  [1m[35mSQL (0.8ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Y-Wing', 70, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 2, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 49[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('X-Wing', 80, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 2, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 50[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('A-Wing', 120, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 2, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 51[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('B-Wing', 145, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 2, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 52[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Pinook Fighter', 35, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 8, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 53[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Clockshape Fighter', 55, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 8, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 54[0m
+  [1m[35mSQL (1.0ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Planetary Fighter', 55, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 8, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 55[0m
+  [1m[35mSQL (1.3ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('R-41 Starchaser', 65, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 8, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 56[0m
+  [1m[35mSQL (0.9ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Razor Fighter', 70, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 8, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 57[0m
+  [1m[35mSQL (1.6ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Skipray Blastboat', 105, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 8, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 58[0m
+  [1m[35mSQL (2.1ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('T-Wing', 35, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 16, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 59[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Preybird Fighter', 50, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.7ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 16, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 60[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Supa Fighter', 70, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.3ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 16, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 61[0m
+  [1m[35mSQL (1.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Pursuer', 80, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 16, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 62[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Firespray', 95, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 16, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 63[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Tie Fighter*', 20, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, 0, 'Sem Hyperdrive/Warheads', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 64[0m
+  [1m[35mSQL (1.8ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Tie Bomber*', 25, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, 0, 'Sem Hyperdrive', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 65[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Tie Interceptor*', 30, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, 0, 'Sem Hyperdrive/Warheads', NULL, NULL, NULL, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 66[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Tie Avenger', 110, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 67[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Assault Gunboat', 120, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 68[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Missile Boat', 200, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 69[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Tie Defender', 300, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Fighter', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 4, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Fighter' AND `generic_units`.`id` = 70[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('_________Armamentos______________', NULL, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Unit', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`id` = 71 AND (((((((((((`generic_units`.`type` = 'Unit' OR `generic_units`.`type` = 'Fighter') OR `generic_units`.`type` = 'LightTransport') OR `generic_units`.`type` = 'CapitalShip') OR `generic_units`.`type` = 'Armament') OR `generic_units`.`type` = 'Trooper') OR `generic_units`.`type` = 'Warrior') OR `generic_units`.`type` = 'Commander') OR `generic_units`.`type` = 'Sensor') OR `generic_units`.`type` = 'Skill') OR `generic_units`.`type` = 'Miner'))[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  describe `generic_units`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Missile', 5, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Armament', NULL, 0, NULL, NULL, NULL, NULL, 'M')[0m
+  [1m[35mSQL (1.6ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Armament' AND `generic_units`.`id` = 72
+  [1m[36mSQL (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Proton Torpedo', 5, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Armament', NULL, 0, NULL, NULL, NULL, NULL, 'PT')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Armament' AND `generic_units`.`id` = 73
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Chaff', 2, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Armament', NULL, 0, NULL, NULL, NULL, NULL, 'Chaff')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Armament' AND `generic_units`.`id` = 74
+  [1m[36mSQL (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Flare', 10, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Armament', NULL, 0, NULL, NULL, NULL, NULL, 'Flare')[0m
+  [1m[35mSQL (0.6ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Armament' AND `generic_units`.`id` = 75
+  [1m[36mSQL (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('______Capital Ship Upgrades______', NULL, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Unit', NULL, NULL, NULL, NULL, NULL, NULL, NULL)[0m
+  [1m[35mSQL (1.1ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`id` = 76 AND (((((((((((`generic_units`.`type` = 'Unit' OR `generic_units`.`type` = 'Fighter') OR `generic_units`.`type` = 'LightTransport') OR `generic_units`.`type` = 'CapitalShip') OR `generic_units`.`type` = 'Armament') OR `generic_units`.`type` = 'Trooper') OR `generic_units`.`type` = 'Warrior') OR `generic_units`.`type` = 'Commander') OR `generic_units`.`type` = 'Sensor') OR `generic_units`.`type` = 'Skill') OR `generic_units`.`type` = 'Miner'))
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mdescribe `generic_units`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Radar', 150, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Skill', NULL, 0, 'Detecta Inimigos proximos', NULL, NULL, NULL, 'SAR')
+  [1m[36mSQL (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Skill' AND `generic_units`.`id` = 77[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('_____________Troopers____________', NULL, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Unit', NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+  [1m[36mSQL (1.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`id` = 78 AND (((((((((((`generic_units`.`type` = 'Unit' OR `generic_units`.`type` = 'Fighter') OR `generic_units`.`type` = 'LightTransport') OR `generic_units`.`type` = 'CapitalShip') OR `generic_units`.`type` = 'Armament') OR `generic_units`.`type` = 'Trooper') OR `generic_units`.`type` = 'Warrior') OR `generic_units`.`type` = 'Commander') OR `generic_units`.`type` = 'Sensor') OR `generic_units`.`type` = 'Skill') OR `generic_units`.`type` = 'Miner'))[0m
+  [1m[35mSQL (0.7ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  describe `generic_units`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `generic_units` (`name`, `price`, `created_at`, `updated_at`, `type`, `faction_mask`, `hyperdrive`, `description`, `subtype_id`, `heavy_loading_capacity`, `light_loading_capacity`, `acronym`) VALUES ('Troopers', 1, '2018-01-08 15:30:36', '2018-01-08 15:30:36', 'Trooper', NULL, 0, 'Soldados construtores', NULL, NULL, NULL, NULL)[0m
+  [1m[35mSQL (1.4ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `generic_units` SET `faction_mask` = 30, `updated_at` = '2018-01-08 15:30:36' WHERE `generic_units`.`type` = 'Trooper' AND `generic_units`.`id` = 79
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m

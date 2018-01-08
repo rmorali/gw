@@ -174,7 +174,7 @@ CapitalShip.create(:name => 'Carrack Cruiser', :price => 350, :description => 'B
 CapitalShip.create(:name => 'Lancer Frigate', :price => 400, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 20, :light_loading_capacity => 200 ).factions = imp
 CapitalShip.create(:name => 'Marauder Corvette', :price => 500, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 20, :light_loading_capacity => 200 ).factions = mand_merc
 CapitalShip.create(:name => 'Dreadnaught', :price => 900, :description => 'Bonus +2 naves simultaneas no XWA', :heavy_loading_capacity => 40, :light_loading_capacity => 400 ).factions = mand_merc
-CapitalShip.create(:name => 'Escort Carrier', :price => 650, :description => 'Bonus +2 naves simultaneas no XWA', :heavy_loading_capacity => 40, :light_loading_capacity => 400 ).factions = imp
+CapitalShip.create(:name => 'Escort Carrier', :price => 500, :description => 'Bonus +2 naves simultaneas no XWA', :heavy_loading_capacity => 40, :light_loading_capacity => 400 ).factions = imp
 CapitalShip.create(:name => 'MC40A Light Cruiser', :price => 650, :description => 'Bonus +2 naves simultaneas no XWA', :heavy_loading_capacity => 40, :light_loading_capacity => 400 ).factions = reb
 CapitalShip.create(:name => 'Bulk Cruiser', :price => 750, :description => 'Bonus +2 naves simultaneas no XWA', :heavy_loading_capacity => 40, :light_loading_capacity => 400 ).factions = mand_merc
 CapitalShip.create(:name => 'Mod Strike Cruiser', :price => 1150, :description => 'Bonus +3 naves simultaneas no XWA', :heavy_loading_capacity => 60, :light_loading_capacity => 600 ).factions = mand_merc
