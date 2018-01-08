@@ -30,127 +30,6 @@ describe Planet do
       planets = Planet.seen_by(@squad)
       planets.should == planets.uniq
     end
-    it 'should show ownership in the map' do
-      planet.owner_visible_to?(@squad).should be_true
-    end
-    it 'should show ground ownership in the map' do
-      planet.ground_owner_visible_to?(@squad).should be_true
-    end
-    it 'should show its ownerships if a sensor is located nearby' do
-      @fleet.destroy
-      nearby_planet = Factory :planet
-      sar = Factory :skill, :acronym => 'SAR'
-      Route.create(:vector_a => planet, :vector_b => nearby_planet, :distance => 1)
-      sensor = Factory :generic_fleet, :generic_unit => Factory(:capital_ship), :planet => nearby_planet, :squad => @squad, :skill => sar
-      planet.owner_visible_to?(@squad).should be_true
-      planet.ground_owner_visible_to?(@squad).should be_true
-    end
-  end
-
-  it 'should output its full profits if the squad has air and ground ownership and doesnt have an enemy on planet' do
-    planet.credits = 1000
-    planet.credits_per_turn.should be 0
-
-    squad = Factory :squad
-    facility = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:facility)
-    capital_ship = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:capital_ship)
-    trooper = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:trooper)
-    enemy_unit = Factory :generic_fleet, :squad => Factory(:squad), :generic_unit => Factory(:unit)
-
-    planet.generic_fleets << facility
-    planet.generic_fleets << capital_ship
-    planet.generic_fleets << trooper
-    planet.set_ownership
-    planet.set_ground_ownership
-    planet.credits_per_turn.should be 1000
-
-    planet.generic_fleets << enemy_unit
-    planet.set_ownership
-    planet.set_ground_ownership
-    planet.credits_per_turn.should be 0
-  end
-
-  it 'should output a % profits if the squad has air ownership and doesnt have an enemy on planet' do
-    planet.credits = 1000
-    planet.credits_per_turn.should be 0
-
-    squad = Factory :squad
-    capital_ship = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:capital_ship)
-    enemy_trooper = Factory :generic_fleet, :squad => Factory(:squad), :generic_unit => Factory(:trooper)
-    
-    planet.generic_fleets << capital_ship
-    planet.set_ownership
-    planet.set_ground_ownership
-    planet.credits_per_turn.should be planet.credits * (100 - Setting.getInstance.ground_income_rate) / 100
-   
-    planet.generic_fleets << enemy_trooper
-    planet.set_ownership
-    planet.set_ground_ownership
-    planet.credits_per_turn.should be 0
-  end
-
-  it 'should output a % profits if the squad has ground ownership and doesnt have an enemy on planet' do
-    planet.credits = 1000
-    planet.credits_per_turn.should be 0
-
-    squad = Factory :squad
-    trooper = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:trooper)
-    enemy_unit = Factory :generic_fleet, :squad => Factory(:squad), :generic_unit => Factory(:unit)
-    
-    planet.generic_fleets << trooper
-    planet.set_ownership
-    planet.set_ground_ownership
-    planet.credits_per_turn.should be (planet.credits * Setting.getInstance.ground_income_rate) / 100
-   
-    planet.generic_fleets << enemy_unit
-    planet.set_ownership
-    planet.set_ground_ownership
-    planet.credits_per_turn.should be 0
-  end
-
-  context 'regarding partial and full ownerships' do
-    before(:each) do
-      @squad = Factory :squad
-      planet.squad = @squad
-    end
-    it 'should remove its ownership if it doesnt have a capital ship on it' do
-      planet.set_ownership
-      planet.squad.should be_nil
-    end
-    it 'should remove its ground ownership if it doesnt have a trooper on it' do
-      planet.set_ground_ownership
-      planet.ground_squad.should be_nil
-    end
-    context 'air ownership' do
-      let(:capital_ship) {Factory :generic_fleet, :squad => @squad, :generic_unit => Factory(:capital_ship)}
-
-      it 'should change its ownership if it has a specific unit on it' do
-        @settings = Setting.getInstance
-        @settings.air_domination_unit = 'CapitalShip'
-        @settings.save
-        planet.generic_fleets << capital_ship
-        planet.set_ownership
-        planet.squad.should be @squad
-      end
-    end
-
-    context 'ground ownership' do
-      let(:trooper) {Factory :generic_fleet, :squad => @squad, :generic_unit => Factory(:trooper)}
-
-      it 'should change its owner if planet has a specific unit on it' do
-        @settings = Setting.getInstance
-        @settings.ground_domination_unit = 'Trooper'
-        @settings.save
-        planet.generic_fleets << trooper
-        planet.set_ground_ownership
-        planet.ground_squad.should be @squad
-      end
-    end
-  end
-
-  it 'should get a random planet' do
-    3.times {Factory :planet}
-    Planet.randomize.should be_an_instance_of Planet
   end
 
   context 'regarding routing system' do
@@ -177,17 +56,6 @@ describe Planet do
       3.times { Factory :planet, :sector => 1 }
       @fleet.generic_unit = Factory :capital_ship
       @fleet.save
-      planet.routes(@fleet).count.should == 3
-    end
-    it 'should find all planets in a sector if ENG skill is installed' do
-      planet.sector = 1
-      planet.save
-      3.times { Factory :planet, :sector => 1 }
-      @fleet.generic_unit = Factory :capital_ship
-      @fleet.save
-      eng = Factory :skill, :acronym => 'ENG'
-      @engine_skill = Factory :generic_fleet, :generic_unit => eng
-      @fleet.install @engine_skill
       planet.routes(@fleet).count.should == 3
     end
     it 'should not find routes for troopers sensors armaments' do
@@ -217,28 +85,7 @@ describe Planet do
   end
 
   it 'should verify if a squad can construct on planet' do
-    squad = Factory :squad
-    trooper = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:trooper)
-    capital_ship = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:capital_ship)
-    planet.generic_fleets << trooper
-    planet.able_to_construct?(squad).should be_true
-    facility = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:facility)
-    planet.generic_fleets << facility
-    planet.able_to_construct?(squad).should be_true
-    another_facility = Factory :generic_fleet, :squad => squad, :generic_unit => Factory(:facility)
-    planet.generic_fleets << another_facility
-    planet.able_to_construct?(squad).should_not be_true
-  end
-
-  it 'should verify if planet has a specific enemy type' do
-    squad = Factory :squad
-    trooper = Factory :generic_fleet, :generic_unit => Factory(:trooper)
-    capital_ship = Factory :generic_fleet, :generic_unit => Factory(:capital_ship)
-    planet.generic_fleets << capital_ship
-    planet.generic_fleets << trooper
-    planet.has_an_enemy?(Fighter, squad).should be_false
-    planet.has_an_enemy?(CapitalShip, squad).should be_true
-    planet.has_an_enemy?(Trooper, squad).should be_true
+   #TODO verificar se pode construir se o apoio no planeta for maior que x%
   end
 
   it 'should set 4 random planets as special ' do
@@ -302,33 +149,6 @@ describe Planet do
     end
   end
 
-  context 'calculating fleet size' do
-    before do
-      @planet = Factory :planet
-      @round = Round.getInstance
-      @setting = Factory :setting
-      @fighter = Factory(:generic_fleet, :generic_unit => Factory(:fighter), :squad => Factory(:squad), :planet => @planet)
-      @light_transport = Factory(:generic_fleet, :generic_unit => Factory(:light_transport), :squad => Factory(:squad), :planet => @planet)
-      @armament = Factory(:generic_fleet, :generic_unit => Factory(:armament), :squad => Factory(:squad), :planet => @planet)
-      Result.create_all
-    end
-
-    it 'should calculate the size of each squad fleets' do
-      count_fleets = @fighter.quantity * @fighter.generic_unit.price + @light_transport.quantity * @light_transport.generic_unit.price + @armament.quantity * @armament.generic_unit.price
-      fleet_total = 0
-      @planet.count_fleets.each do |count|
-        fleet_total += count[1]
-      end  
-      fleet_total.should == count_fleets
-    end
-
-    it 'should inform how many player in a combat according its fleets size' do
-      @planet.players_quantity.should == '1 x 1'
-      #TODO
-      #@planet.players_quantity.should == '2 x 2'
-    end
-  end
-  
   context 'calculate domination' do
     it 'retrieves serialized domination data' do
       planet.domination = { 1 => 40, 2 => 60 }

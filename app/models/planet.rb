@@ -201,25 +201,13 @@ class Planet < ActiveRecord::Base
   end
 
   def able_to_construct?(squad)
-    if generic_fleets.any?{|fleet| fleet.squad != squad} or self.tradeport? or !self.has_a?(Setting.getInstance.builder_unit.constantize)
-      permission = nil
-    else
-      permission = true
-    end
+  #TODO testar se apoio do planeta maior que X%
     permission = nil if self.count_facilities_of(squad) > Setting.getInstance.maximum_facilities
     permission
   end
 
   def count_facilities_of(squad)
     self.generic_fleets.select { |fleet| fleet.type?(Facility) && fleet.squad == squad }.count  
-  end
-
-  def owner_visible_to?(squad)
-    true if ( self.squad && self.generic_fleets.any? { |fleet| fleet.squad == squad } ) || ( self.squad && self.routes.any? { |planet| planet.generic_fleets.any? { |fleet| fleet.squad == squad && fleet.is_a_sensor? } } ) && Round.getInstance.move?
-  end
-
-  def ground_owner_visible_to?(squad)
-    true if ( self.ground_squad && self.generic_fleets.any? { |fleet| fleet.squad == squad } ) || ( self.ground_squad && self.routes.any? { |planet| planet.generic_fleets.any? { |fleet| fleet.squad == squad && fleet.is_a_sensor? } } ) && Round.getInstance.move?
   end
 
   def count_fleets
@@ -232,26 +220,6 @@ class Planet < ActiveRecord::Base
       fleet << [squad.name, fleet_price]   
     end
     fleet
-  end
-
-  def players_quantity
-      limit = nil
-      self.count_fleets.each do |count|
-        limit = true if count[1] < Setting.getInstance.maximum_fleet_size
-      end 
-    if limit == true
-      "1 x 1"
-    else
-      "2 x 2"
-    end   
-  end
-
-  def calculate_fleet_size_for(squad)
-    fleet_price = 0
-      self.results.where(:round => Round.getInstance, :squad => squad).each do |result|
-        fleet_price += result.quantity * result.generic_unit.price
-      end
-    fleet_price
   end
 
   def constructive_capacity
