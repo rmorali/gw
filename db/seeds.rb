@@ -168,9 +168,9 @@ Unit.create(:name => '__________Capital Ships__________').factions = all
 CapitalShip.create(:name => 'Corellian Gunship', :price => 300, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 20, :light_loading_capacity => 200 ).factions = all
 CapitalShip.create(:name => 'Corellian Corvette', :price => 300, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 20, :light_loading_capacity => 200 ).factions = all
 CapitalShip.create(:name => 'Mod Corvette', :price => 300, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 20, :light_loading_capacity => 200 ).factions = mand_merc
-CapitalShip.create(:name => 'Nebulon B Frigate', :price => 400, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 20, :light_loading_capacity => 200 ).factions = all
-CapitalShip.create(:name => 'Mod Nebulon Frigate', :price => 500, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 20, :light_loading_capacity => 200 ).factions = all
-CapitalShip.create(:name => 'Carrack Cruiser', :price => 400, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 20, :light_loading_capacity => 200 ).factions = imp
+CapitalShip.create(:name => 'Nebulon B Frigate', :price => 350, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 20, :light_loading_capacity => 200 ).factions = all
+CapitalShip.create(:name => 'Mod Nebulon Frigate', :price => 400, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 20, :light_loading_capacity => 200 ).factions = all
+CapitalShip.create(:name => 'Carrack Cruiser', :price => 350, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 20, :light_loading_capacity => 200 ).factions = imp
 CapitalShip.create(:name => 'Lancer Frigate', :price => 400, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 20, :light_loading_capacity => 200 ).factions = imp
 CapitalShip.create(:name => 'Marauder Corvette', :price => 500, :description => 'Bonus +1 nave simultanea no XWA', :heavy_loading_capacity => 20, :light_loading_capacity => 200 ).factions = mand_merc
 CapitalShip.create(:name => 'Dreadnaught', :price => 900, :description => 'Bonus +2 naves simultaneas no XWA', :heavy_loading_capacity => 40, :light_loading_capacity => 400 ).factions = mand_merc
