@@ -184,12 +184,12 @@ CapitalShip.create(:name => 'MC80A Chatnoir Cruiser', :price => 1250, :descripti
 CapitalShip.create(:name => 'MC80 Reefhome Cruiser', :price => 1500, :description => 'Bonus +3 naves simultaneas no XWA', :heavy_loading_capacity => 60, :light_loading_capacity => 600 ).factions = reb
 CapitalShip.create(:name => 'Victory SD', :price => 1250, :description => 'Bonus +3 naves simultaneas no XWA', :heavy_loading_capacity => 60, :light_loading_capacity => 600 ).factions = imp
 CapitalShip.create(:name => 'MC80 Liberty Cruiser', :price => 1500, :description => 'Bonus +3 naves simultaneas no XWA', :heavy_loading_capacity => 60, :light_loading_capacity => 600 ).factions = reb
-CapitalShip.create(:name => 'MC85A Home One Cruiser', :price => 4500, :description => 'Bonus +3 naves simultaneas no XWA', :heavy_loading_capacity => 60, :light_loading_capacity => 600 ).factions = reb
+#CapitalShip.create(:name => 'MC85A Home One Cruiser', :price => 4500, :description => 'Bonus +3 naves simultaneas no XWA', :heavy_loading_capacity => 60, :light_loading_capacity => 600 ).factions = reb
 CapitalShip.create(:name => 'Victory SD II', :price => 1500, :description => 'Bonus +3 naves simultaneas no XWA', :heavy_loading_capacity => 60, :light_loading_capacity => 600 ).factions = imp
 CapitalShip.create(:name => 'Interdictor', :price => 2000, :description => 'Bonus +3 naves simultaneas no XWA', :heavy_loading_capacity => 60, :light_loading_capacity => 600 ).factions = imp
 CapitalShip.create(:name => 'Imperial SD', :price => 1800, :description => 'Bonus +3 naves simultaneas no XWA', :heavy_loading_capacity => 60, :light_loading_capacity => 600 ).factions = imp
 CapitalShip.create(:name => 'Imperial SD II', :price => 2000, :description => 'Bonus +3 naves simultaneas no XWA', :heavy_loading_capacity => 60, :light_loading_capacity => 600 ).factions = imp
-CapitalShip.create(:name => 'Super Star Destroyer', :price => 6000, :description => 'Bonus +3 naves simultaneas no XWA', :heavy_loading_capacity => 60, :light_loading_capacity => 600 ).factions = imp
+#CapitalShip.create(:name => 'Super Star Destroyer', :price => 6000, :description => 'Bonus +3 naves simultaneas no XWA', :heavy_loading_capacity => 60, :light_loading_capacity => 600 ).factions = imp
 
 Unit.create(:name => '__________Light Transports_______').factions = all
 LightTransport.create(:name => 'YT-1300', :price => 100, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = merc
@@ -231,12 +231,12 @@ Fighter.create(:name => 'Tie Defender', :price => 300 ).factions = imp
 Unit.create(:name => '_________Armamentos______________').factions = all
 Armament.create(:name => 'Missile', :acronym => 'M', :price => 5, :hyperdrive => false ).factions = all
 Armament.create(:name => 'Proton Torpedo', :acronym => 'PT', :price => 5, :hyperdrive => false ).factions = all
-Armament.create(:name => 'Ion Pulse Torp', :acronym => 'IonPT', :price => 5, :hyperdrive => false ).factions = reb
-Armament.create(:name => 'Adv Missile', :acronym => 'AdvM', :price => 10, :hyperdrive => false ).factions = all
-Armament.create(:name => 'Adv Torpedo', :acronym => 'AdvT', :price => 10, :hyperdrive => false ).factions = all
-Armament.create(:name => 'Mag Pulse Torp', :acronym => 'MagPT', :price => 20, :hyperdrive => false ).factions = all
-Armament.create(:name => 'Heavy Rocket', :acronym => 'HR', :price => 15, :hyperdrive => false ).factions = all
-Armament.create(:name => 'Space Bomb', :acronym => 'SB', :price => 20, :hyperdrive => false ).factions = all
+#Armament.create(:name => 'Ion Pulse Torp', :acronym => 'IonPT', :price => 5, :hyperdrive => false ).factions = reb
+#Armament.create(:name => 'Adv Missile', :acronym => 'AdvM', :price => 10, :hyperdrive => false ).factions = all
+#Armament.create(:name => 'Adv Torpedo', :acronym => 'AdvT', :price => 10, :hyperdrive => false ).factions = all
+#Armament.create(:name => 'Mag Pulse Torp', :acronym => 'MagPT', :price => 20, :hyperdrive => false ).factions = all
+#Armament.create(:name => 'Heavy Rocket', :acronym => 'HR', :price => 15, :hyperdrive => false ).factions = all
+#Armament.create(:name => 'Space Bomb', :acronym => 'SB', :price => 20, :hyperdrive => false ).factions = all
 Armament.create(:name => 'Chaff', :acronym => 'Chaff', :price => 2, :hyperdrive => false ).factions = all
 Armament.create(:name => 'Flare', :acronym => 'Flare', :price => 10, :hyperdrive => false ).factions = all
 
@@ -244,13 +244,13 @@ Unit.create(:name => '______Capital Ship Upgrades______').factions = all
 Skill.create(:name => 'Radar', :acronym => 'SAR', :price => 150, :hyperdrive => false, :description => 'Detecta Inimigos proximos'  ).factions = all
 #Skill.create(:name => 'Anti-Trooper Bombs', :acronym => 'ATB', :price => 150, :hyperdrive => false, :description => 'Bombardeia Exercitos'  ).factions = all
 #Skill.create(:name => 'Enhanced Engine', :acronym => 'ENG', :price => 300, :hyperdrive => false, :description => 'Permite Hyperspace em todo o Setor'  ).factions = all
-Skill.create(:name => 'Gravity Interdictor', :acronym => 'INT', :price => 600, :hyperdrive => false, :description => 'Bloqueia Fugas do adversario'  ).factions = all
+#Skill.create(:name => 'Gravity Interdictor', :acronym => 'INT', :price => 600, :hyperdrive => false, :description => 'Bloqueia Fugas do adversario'  ).factions = all
 
-Unit.create(:name => '___________Mineradoras___________').factions = all
-Miner.create(:name => 'Astrd Mining Unit', :price => 200, :hyperdrive => false,:description => 'Produz creditos no planeta' ).factions = all
+#Unit.create(:name => '___________Mineradoras___________').factions = all
+#Miner.create(:name => 'Astrd Mining Unit', :price => 200, :hyperdrive => false, :description => 'Produz creditos no planeta' ).factions = all
 
 Unit.create(:name => '_____________Troopers____________').factions = all
-Trooper.create(:name => 'Tropas Construtoras', :price => 100, :hyperdrive => false,:description => 'Soldados construtores' ).factions = all
+Trooper.create(:name => 'Troopers', :price => 1, :hyperdrive => false,:description => 'Soldados construtores' ).factions = all
 
 #Unit.create(:name => '__________Guerreiros_____________').factions = all
 #Warrior.create(:name => 'Mestre Yoda', :price => 30, :description => 'Jedi' ).factions = reb
