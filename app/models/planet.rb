@@ -10,6 +10,7 @@ class Planet < ActiveRecord::Base
   belongs_to :first_player, :class_name => "Squad"
   belongs_to :last_player, :class_name => "Squad"
   @@disable_routes = false
+  serialize :domination, Hash
 
   def set_map
     set_ownership

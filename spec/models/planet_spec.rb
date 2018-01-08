@@ -328,5 +328,17 @@ describe Planet do
       #@planet.players_quantity.should == '2 x 2'
     end
   end
+  
+  context 'calculate domination' do
+    it 'retrieves serialized domination data' do
+      planet.domination = { 1 => 40, 2 => 60 }
+      planet.save
+      expect(planet.domination).to include { '2 => 60' }
+      first_squad_presence = planet.domination[1]
+      expect(first_squad_presence).to eq(40)
+      second_squad_presence = planet.domination[2]
+      expect(second_squad_presence).to_not eq(40)
+    end
+  end
 
 end

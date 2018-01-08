@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180108175943) do
+ActiveRecord::Schema.define(:version => 20180108181415) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20180108175943) do
     t.integer  "x"
     t.integer  "y"
     t.integer  "balance"
+    t.string   "domination"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
