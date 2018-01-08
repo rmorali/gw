@@ -123,7 +123,7 @@ describe Fleet do
       it 'should group fleets on the destination planet after moving has finished' do
         GroupFleet.new(planet).group!
         planet.generic_fleets.where(:generic_unit => unit.generic_unit).should have(1).fleet
-        @moving_fleet.quantity.should == (@merging_fleet.quantity + @moving_quantity)
+        @moving_fleet.reload.quantity.should == (@merging_fleet.quantity + @moving_quantity)
       end
     end
   end
