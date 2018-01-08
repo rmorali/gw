@@ -136,7 +136,9 @@ Setting.create(:initial_factories => 2400,
                :air_domination_unit => 'Facility',
                :ground_domination_unit => 'Miner',
                :minimum_quantity => 1,
-               :builder_unit => 'Trooper')
+               :builder_unit => 'Trooper',
+               :presence_to_influence => 1000,
+               :rounds_to_dominate => 3)
 
 User.create(:email => 'setup@xws.com', :password => '123456')
 

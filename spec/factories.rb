@@ -153,5 +153,7 @@ Factory.define :setting do |f|
   f.ground_domination_unit 'Trooper'
   f.minimum_quantity 1
   f.builder_unit 'Trooper'
+  f.presence_to_influence 1000
+  f.rounds_to_dominate 3
 end
 

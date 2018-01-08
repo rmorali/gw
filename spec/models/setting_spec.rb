@@ -16,6 +16,8 @@ describe Setting do
   it {should validate_numericality_of :capital_ship_upgrade_cost}
   it {should validate_numericality_of :maximum_warrior_life}
   it {should validate_numericality_of :maximum_fleet_size}
+  it {should validate_numericality_of :presence_to_influence}
+  it {should validate_numericality_of :rounds_to_dominate}
 
   context 'setting up a game' do
     before do

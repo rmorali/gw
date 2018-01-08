@@ -13,7 +13,9 @@ validates_numericality_of :initial_factories,
                           :facility_upgrade_cost,
                           :capital_ship_upgrade_cost,
                           :maximum_warrior_life,
-                          :maximum_fleet_size
+                          :maximum_fleet_size,
+                          :presence_to_influence,
+                          :rounds_to_dominate
 
   after_save :apply_changes
 

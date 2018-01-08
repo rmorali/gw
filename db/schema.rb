@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161211211240) do
+ActiveRecord::Schema.define(:version => 20180108175943) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -181,6 +181,8 @@ ActiveRecord::Schema.define(:version => 20161211211240) do
     t.string  "ground_domination_unit"
     t.string  "builder_unit"
     t.integer "minimum_quantity"
+    t.integer "presence_to_influence"
+    t.integer "rounds_to_dominate"
   end
 
   create_table "squads", :force => true do |t|
