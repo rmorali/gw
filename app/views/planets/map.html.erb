@@ -1,3 +1,5 @@
+<script>
+</script>
 
 <div class="painel1">
   <span style="color:#<%= @current_squad.color %>;font-size: 23px;font-weight: bold">
@@ -78,12 +80,8 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
       <% @sensor = route if route.generic_fleets.any? { |fleet| fleet.is_a_sensor? && fleet.squad == @current_squad } %>
     <% end %>
 
-  <div id='conteudo'>
-
-  </div>
-
   <div id="gifs" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio %>px;z-index: 10;">
-  <b href="/planets/<%= planet.id %>" >
+  <b href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=600, height=220')">
   <img src="/images/planets/<%= planet.name.gsub(" ","").downcase %>.png">
   </b>
   </div>
@@ -122,7 +120,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   </div>
 
   <% if planet.generic_fleets.any? { |unit| unit.squad == @current_squad && unit.type == 'FacilityFleet' } %>
-    <div id="capacidade_construtiva" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio + 70 %>px; white-space: nowrap">
+    <div id="capacidade_construtiva" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio + 60 %>px; white-space: nowrap">
     <% if @round.move && !@current_squad.ready? && planet.constructive_capacity > 0 %>
       <b href = "" onclick="window.open('/facility_fleets/<%= planet.generic_fleets.select { |unit| unit.squad == @current_squad && unit.type == 'FacilityFleet' }.first.id  %>/edit', 'Facility', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=550, height=360')">
     <% end %>
@@ -144,7 +142,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   <% end %>
 
   <% if planet.able_to_construct?(@current_squad) && planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
-    <div id="construcao" style="position:absolute; left:<%= planet.x * @map_ratio + 45 %>px; top:<%= planet.y * @map_ratio + 70 %>px;z-index: 10; white-space: nowrap">
+    <div id="construcao" style="position:absolute; left:<%= planet.x * @map_ratio + 45 %>px; top:<%= planet.y * @map_ratio + 60 %>px;z-index: 10; white-space: nowrap">
      <% if @round.move && !planet.tradeport? && !@current_squad.ready? && planet.able_to_construct?(@current_squad) %>
        <b href = "" onclick="window.open('/planets/<%= planet.id %>/facility_fleets/new', 'Construir <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=220')">
      <% end %>
@@ -167,7 +165,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
     </div>
   <% end %>
 
-  <div id="frotas" class="map" style="position:absolute; left:<%= planet.x * @map_ratio + 70 %>px; top:<%= planet.y * @map_ratio + 10 %>px; white-space: nowrap">
+  <div id="frotas" class="map" style="position:absolute; left:<%= planet.x * @map_ratio + 60 %>px; top:<%= planet.y * @map_ratio + 10 %>px; white-space: nowrap">
 
   <% if planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
         <% planet.generic_fleets.each_with_index do |fleet, index| %>

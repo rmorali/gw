@@ -202,6 +202,7 @@ class Planet < ActiveRecord::Base
 
   def able_to_construct?(squad)
   #TODO testar se apoio do planeta maior que X%
+    permission = true
     permission = nil if self.count_facilities_of(squad) > Setting.getInstance.maximum_facilities
     permission
   end

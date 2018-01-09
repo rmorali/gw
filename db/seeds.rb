@@ -248,8 +248,8 @@ Skill.create(:name => 'Radar', :acronym => 'SAR', :price => 150, :hyperdrive => 
 #Skill.create(:name => 'Enhanced Engine', :acronym => 'ENG', :price => 300, :hyperdrive => false, :description => 'Permite Hyperspace em todo o Setor'  ).factions = all
 #Skill.create(:name => 'Gravity Interdictor', :acronym => 'INT', :price => 600, :hyperdrive => false, :description => 'Bloqueia Fugas do adversario'  ).factions = all
 
-#Unit.create(:name => '___________Mineradoras___________').factions = all
-#Miner.create(:name => 'Astrd Mining Unit', :price => 200, :hyperdrive => false, :description => 'Produz creditos no planeta' ).factions = all
+Unit.create(:name => '___________Mineradoras___________').factions = all
+Miner.create(:name => 'Astrd Mining Unit', :price => 200, :hyperdrive => false, :description => 'Produz creditos no planeta' ).factions = all
 
 Unit.create(:name => '_____________Troopers____________').factions = all
 Trooper.create(:name => 'Troopers', :price => 1, :hyperdrive => false,:description => 'Soldados construtores' ).factions = all

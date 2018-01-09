@@ -27,10 +27,6 @@ class PlanetsController < ApplicationController
     @routes.each do |route|
       @sensor = route if route.generic_fleets.any? { |fleet| (fleet.type?(Sensor) && fleet.squad == current_squad) || (fleet.is_a_sensor? && fleet.squad == current_squad) }
     end
-    respond_to do |format|
-     format.js
-      format.yaml  
-    end
   end
 
   def move
@@ -40,7 +36,8 @@ class PlanetsController < ApplicationController
     @facilities = @planet.generic_fleets.where(:squad => current_squad, :type => 'FacilityFleet')
     @routes = @planet.routes
     redirect_to :close_popup if @fleets.empty? and @facilities.empty?
-    move_planet_path(@planet)
+    #move_planet_path(@planet)
+    redirect_to :back
   end
 
 
