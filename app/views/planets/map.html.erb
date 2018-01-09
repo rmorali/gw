@@ -1,6 +1,8 @@
 <script>
 </script>
 
+<%= render :partial => 'sectors' %>
+
 <div class="painel1">
   <span style="color:#<%= @current_squad.color %>;font-size: 23px;font-weight: bold">
   <%= @current_squad.name %></span><br>
@@ -81,9 +83,9 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
     <% end %>
 
   <div id="gifs" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio %>px;z-index: 10;">
-  <b href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=600, height=220')">
-  <img src="/images/planets/<%= planet.name.gsub(" ","").downcase %>.png">
-  </b>
+    <b href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=320')">
+      <img src="/images/planets/<%= planet.name.gsub(" ","").downcase %>.png">
+    </b>
   </div>
 
   <div id="nomes" style="position:absolute; left:<%= planet.x * @map_ratio + 15 %>px; top:<%= planet.y * @map_ratio - 15 %>px;z-index: 10; white-space: nowrap">
