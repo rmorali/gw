@@ -4,10 +4,10 @@
         <info class="tooltip">
         <tip><%= raw fleet.description %></tip>
         <% unless fleet.final_quantity <= 0 %>
-          <span style="<%= raw fleet.span_style %>">
+          <span style="<%= raw fleet.span_style %>; opacity: 0.3">
           <% @round_number = fleet.round.number %>
           <% case fleet.generic_unit.type %>
-          <% when 'Warrior' %> 
+          <% when 'Warrior' %>
             <%= fleet.generic_unit.name %> (<%= fleet.final_quantity %> vidas)
           <% when 'Commander' %>
             <%= fleet.generic_unit.name %>
@@ -17,10 +17,10 @@
             <%= fleet.show %>
           <% when 'Trooper' %>
             <%= fleet.final_quantity %>
-            <%= fleet.generic_unit.name %> 
+            <%= fleet.generic_unit.name %>
           <% else %>
             <%= fleet.final_quantity %>
-            <%= fleet.generic_unit.name %>  
+            <%= fleet.generic_unit.name %>
           <% end %>
           </span>
           <br>

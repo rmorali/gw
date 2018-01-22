@@ -10,7 +10,7 @@
     font-weight: bold">
   Turno: <%= @round.number %> - <%= @round_phase %><br>
 </div>
-<div class="painel2">  
+<div class="painel2">
 <span style="color:yellow;font-size: 16px;font-weight: bold">
   Créditos: <%= @current_squad.credits %><br>
 </span>
@@ -160,121 +160,74 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
 
   <div id="frotas" class="map" style="position:absolute; left:<%= planet.x * @map_ratio + 60 %>px; top:<%= planet.y * @map_ratio + 10 %>px; white-space: nowrap">
 
-  <% if planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
-        <% planet.generic_fleets.each_with_index do |fleet, index| %>
-          <% unless fleet.moving && fleet.squad == @current_squad %>
-            <% if @round.move && fleet.squad != @current_squad %>
-               <% if fleet.round < @round.number %>
-                 <span style="<%= raw fleet.span_style %>">
-                 <%= fleet.name %>
-                 </span>
-               <% end %>
-            <% else %>
-             <info class="tooltip">
-              <tip><%= raw fleet.description %></tip>
-              <span style="<%= raw fleet.span_style %>">
-              <%= fleet.show %>
-              </span>
-              </info>
-            <% end %>
+  <% if @round.move %>
+    <% your_fleets = planet.generic_fleets.where(:squad => @current_squad) %>
+      <% unless your_fleets.empty? %>
+        <% your_fleets.each_with_index do |fleet, index| %>
+          <% unless fleet.moving %>
+            <info class="tooltip">
+            <tip><%= raw fleet.description %></tip>
+            <span style="<%= raw fleet.span_style %>">
+            <%= fleet.show %>
+            </span>
+            </info>
           <% else %>
-            <span style="color: #00FFFF" %>            
+            <span style="color: #00FFFF" %>
             <%= fleet.show + ' -> ' + fleet.destination.name %>
           <% end %>
-        <% if @round.attack %>
-          <span style=color:#40E0D0> 
-          <%= fleet.show_results %>
-          </span>
-        <% end %>
           <br>
         <% end %>
-        
 
-  <% elsif @sensor != nil && @round.move %>
-    <% unless planet.generic_fleets.select { |units| units.squad != @current_squad && units.round < @round.number && (units.generic_unit.type == 'CapitalShip' || units.generic_unit.type == 'Facility' || units.generic_unit.type == 'Sensor' || units.generic_unit.type == 'Trooper') }.empty? %>
-      <% planet.generic_fleets.select { |units| units.squad != @current_squad && units.round < @round.number && (units.generic_unit.type == 'CapitalShip' || units.generic_unit.type == 'Facility' || units.generic_unit.type == 'Sensor' || units.generic_unit.type == 'Trooper') }.sort_by { |fleet| -fleet.generic_unit.price }.each do |fleet| %>
-        <span style="<%= raw fleet.span_style %>">
-        <%= fleet.generic_unit.name %>
-        </span>
-        <br>
-      <% end %>
-    <% else %>
-
-    <% end %>  
-    
-    <% resultados = planet.results.reject {|a| a.generic_unit.type == 'CapitalShip' || a.generic_unit.type == 'Facility' || a.generic_unit.type == 'Sensor' || a.generic_unit.type == 'Trooper'} %>
-    <% if resultados %>
-      <% resultados.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
-      <% if fleet.round.number >= planet.results.maximum("round_id") and fleet.squad != @current_squad and planet.results.any? { |result| result.squad == @current_squad && result.round == fleet.round } %>
-        <info class="tooltip">
-        <tip><%= raw fleet.description %></tip>
-        <% unless fleet.final_quantity <= 0 || fleet.squad == @current_squad %>
-          <span style="<%= raw fleet.span_style %>; opacity: 0.3">
-          <% @round_number = fleet.round.number %>
-          <% case fleet.generic_unit.type %>
-          <% when 'Warrior' %> 
-            <%= fleet.generic_unit.name %> (<%= fleet.final_quantity %> vidas)
-          <% when 'Commander' %>
-            <%= fleet.generic_unit.name %>
-          <% when 'Facility' %>
-            <%= fleet.generic_unit.name %>
-          <% when 'CapitalShip' %>
-            <%= fleet.show %>
-          <% when 'Trooper' %>
-            <%= fleet.final_quantity %>
-            <%= fleet.generic_unit.name %> 
-          <% else %>
-            <%= fleet.final_quantity %>
-            <%= fleet.generic_unit.name %>  
+        <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
+          <% if fleet.round.number == @round.number - 1 && fleet.squad != @current_squad && planet.results.any? { |result| result.squad == @current_squad && result.round == fleet.round } %>
+            <info class="tooltip">
+            <tip><%= raw fleet.description %></tip>
+            <% unless fleet.final_quantity <= 0 || fleet.squad == @current_squad %>
+              <span style="<%= raw fleet.span_style %>; opacity: 0.3">
+              <%= fleet.show %>
+              </span>
+              <br>
+            <% end %>
+            </info>
           <% end %>
-          </span>
-          <br>
         <% end %>
-        </info>
+
+      <% else %>
+
+        <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
+          <% if fleet.round.number >= planet.results.maximum("round_id") && fleet.squad != @current_squad && planet.results.any? { |result| result.squad == @current_squad && result.round == fleet.round } %>
+            <info class="tooltip">
+            <tip><%= raw fleet.description %></tip>
+            <% unless fleet.final_quantity <= 0 %>
+              <span style="<%= raw fleet.span_style %>; opacity: 0.3">
+              <%= fleet.show %>
+              </span>
+              <br>
+            <% end %>
+            </info>
+          <% end %>
+        <% end %>
+
       <% end %>
-    <% end %>
-    <% end %>
 
-    <% if @round_number %>
-
-    <% end %>   
 
   <% else %>
 
-    <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
-      <% if fleet.round.number >= planet.results.maximum("round_id") and fleet.squad != @current_squad and planet.results.any? { |result| result.squad == @current_squad && result.round == fleet.round } %>
-        <info class="tooltip">
-        <tip><%= raw fleet.description %></tip>
-        <% unless fleet.final_quantity <= 0 || fleet.squad == @current_squad %>
-          <span style="<%= raw fleet.span_style %>; opacity: 0.3">
-          <% @round_number = fleet.round.number %>
-          <% case fleet.generic_unit.type %>
-          <% when 'Warrior' %> 
-            <%= fleet.generic_unit.name %> (<%= fleet.final_quantity %> vidas)
-          <% when 'Commander' %>
-            <%= fleet.generic_unit.name %>
-          <% when 'Facility' %>
-            <%= fleet.generic_unit.name %>
-          <% when 'CapitalShip' %>
-            <%= fleet.show %>
-          <% when 'Trooper' %>
-            <%= fleet.final_quantity %>
-            <%= fleet.generic_unit.name %> 
-          <% else %>
-            <%= fleet.final_quantity %>
-            <%= fleet.generic_unit.name %>  
-          <% end %>
-          </span>
-          <br>
-        <% end %>
-        </info>
-      <% end %>
-    <% end %>
-    <% if @round_number %>
 
-    <% end %>  
+    <% if planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
+      <info class="tooltip">
+      <tip><%= raw fleet.description %></tip>
+      <span style="<%= raw fleet.span_style %>">
+      <%= fleet.show %>
+      </span>
+      <span style=color:#40E0D0>
+      <%= fleet.show_results %>
+      </span>
+      </info>
+    <% end %>
+
 
   <% end %>
+
   </div>
 <% end %>
-

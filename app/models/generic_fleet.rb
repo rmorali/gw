@@ -168,11 +168,11 @@ class GenericFleet < ActiveRecord::Base
     when 'Skill'
       style << "border-radius:20%; border:solid 1px; padding:1px"
     when 'CapitalShip'
-      style << "font-weight:bolder; font-size:10px"
+      style << "font-weight:bolder; font-size:11px"
     when 'Facility'
-      style << "font-weight:bolder; font-size:10px; background-color:#000040"
+      style << "font-weight:bolder; font-size:12px; background-color:#000040"
     when 'LightTransport'
-      style << "font-weight:bolder; font-size:9px"
+      style << "font-weight:bolder; font-size:10px"
     when 'Warrior'
       style << "border-radius:20%; border:dotted 1px; padding:2px; background-color:#331100"
     when 'Sensor'

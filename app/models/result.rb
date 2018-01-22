@@ -15,11 +15,11 @@ class Result < ActiveRecord::Base
   belongs_to :skill
 
 
-  validates_presence_of :round, :generic_fleet, :generic_unit, :squad, :planet, :quantity 
+  validates_presence_of :round, :generic_fleet, :generic_unit, :squad, :planet, :quantity
   validates_numericality_of :blasted, :fled, :captured, :not_landed, :allow_nil => true
   validate :captor_if_captured
   validate :posted_results
-  #validate :automatic_results  
+  #validate :automatic_results
 
   def self.create_all
     GenericFleet.all.each do |fleet|
@@ -78,18 +78,18 @@ class Result < ActiveRecord::Base
   end
 
   def automatic_results
-    if self.automatic? 
+    if self.automatic?
       errors.add :blasted, 'automatic result cannot be changed' if self.automatic?
     else
       true
-    end     
+    end
   end
 
   def editable?(result)
     edit = true
     case result
       when 'Blasted'
-        edit = false if self.automatic? && Setting.getInstance.editable_automatic_results != true 
+        edit = false if self.automatic? && Setting.getInstance.editable_automatic_results != true
       when 'Fled'
         edit = false if (self.type?(Facility) && !self.generic_fleet.moving?) || self.type?(Sensor) || ( self.automatic? && Setting.getInstance.editable_automatic_results != true )
       when 'Captured'
@@ -153,17 +153,17 @@ class Result < ActiveRecord::Base
     style << "font-size:11px;font-weight:normal;color:##{self.squad.color};"
     case self.generic_unit.type
     when 'Armament'
-      style << "border-radius:20%; border:solid 1px; padding:1px; font-size:11px"
+      style << "border-radius:20%; border:solid 1px; padding:1px; font-size:9px"
     when 'Fighter'
 
     when 'Skill'
       style << "border-radius:20%; border:solid 1px; padding:1px"
     when 'CapitalShip'
-      style << "font-weight:bolder; font-size:13px"
+      style << "font-weight:bolder; font-size:11px"
     when 'Facility'
-      style << "font-weight:bolder; font-size:13px; background-color:#000040"
+      style << "font-weight:bolder; font-size:12px; background-color:#000040"
     when 'LightTransport'
-      style << "font-weight:bolder; font-size:12px"
+      style << "font-weight:bolder; font-size:10px"
     when 'Warrior'
       style << "border-radius:20%; border:dotted 1px; padding:2px; background-color:#331100"
     when 'Sensor'
@@ -175,7 +175,7 @@ class Result < ActiveRecord::Base
     else
 
     end
-    style.join(' ')    
+    style.join(' ')
   end
 
 end
