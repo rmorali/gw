@@ -82,41 +82,32 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
       <% @sensor = route if route.generic_fleets.any? { |fleet| fleet.is_a_sensor? && fleet.squad == @current_squad } %>
     <% end %>
 
-  <div id="gifs" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio %>px;z-index: 10;">
+  <div id="gifs" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio %>px;z-index: 5;">
     <b href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=320')">
       <img src="/images/planets/<%= planet.name.gsub(" ","").downcase %>.png">
     </b>
   </div>
 
-  <div id="nomes" style="position:absolute; left:<%= planet.x * @map_ratio + 15 %>px; top:<%= planet.y * @map_ratio - 15 %>px;z-index: 10; white-space: nowrap">
+  <div id="nomes" style="position:absolute; left:<%= planet.x * @map_ratio + 15 %>px; top:<%= planet.y * @map_ratio - 15 %>px;z-index: 15; white-space: nowrap">
 <span style="color:white;font-size: 14px;font-weight: bold">
   <%= planet.name %>
 </font>
   </div>
 
-  <div id="income planetario" style="position:absolute; left:<%= planet.x * @map_ratio + 60 %>px; top:<%= planet.y * @map_ratio + 5 %>px;z-index: 10; white-space: nowrap">
-<span style="color:grey;font-size: 10px;font-weight: bold">
+  <div id="income planetario" style="position:absolute; left:<%= planet.x * @map_ratio + 60 %>px; top:<%= planet.y * @map_ratio + 5 %>px;z-index: 15; white-space: nowrap">
+<span style="color:gray; font-size: 10px; font-weight: bold">
       <info class="tooltip">
       <tip>Income planetário <%= planet.credits %></tip>
-  <%= planet.credits %> <%= "- Tradeport" if planet.tradeport? %>
+      <%= planet.credits %>
       </info>
 </font>
   </div>
 
-  <div id="Controle espacial" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio + 5 %>px;z-index: 10; white-space: nowrap">
+  <div id="Controle espacial" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio + 5 %>px;z-index: 15; white-space: nowrap">
 <span style="color:yellow;font-size: 10px;font-weight: bold">
       <info class="tooltip">
       <tip>Income espacial</tip>
   <%= "#{planet.air_credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && !planet.under_attack? && !planet.tradeport? && planet.squad == @current_squad %>
-      </info>
-</font>
-  </div>
-  
-  <div id="Controle terrestre" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio + 45 %>px;z-index: 10; white-space: nowrap">
-<span style="color:yellow;font-size: 10px;font-weight: bold">
-      <info class="tooltip">
-      <tip>Income Terrestre</tip>
-  <%= "#{planet.ground_credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && !planet.under_attack? && !planet.tradeport?  && planet.ground_squad == @current_squad %>
       </info>
 </font>
   </div>
@@ -134,9 +125,9 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
     </div>
     <div id="planet balance" style="position:absolute; left:<%= planet.x * @map_ratio + 5 %>px; top:<%= planet.y * @map_ratio + 98 %>px;z-index: 15; white-space: nowrap">
     <% if planet.balance > 0 %>
-      <span style="color:white;font-size: 12px;font-weight: bold;text-decoration: blink">
+      <span style="color:white;font-size: 11px;font-weight: bold;text-decoration: blink">
     <% else %>
-      <span style="color:white;font-size: 12px;font-weight: bold">
+      <span style="color:white;font-size: 11px;font-weight: bold">
     <% end %>
     <%= planet.balance if @round.move %>
     </span>
@@ -144,7 +135,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   <% end %>
 
   <% if planet.able_to_construct?(@current_squad) && planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
-    <div id="construcao" style="position:absolute; left:<%= planet.x * @map_ratio + 45 %>px; top:<%= planet.y * @map_ratio + 60 %>px;z-index: 10; white-space: nowrap">
+    <div id="construcao" style="position:absolute; left:<%= planet.x * @map_ratio + 45 %>px; top:<%= planet.y * @map_ratio + 60 %>px;z-index: 15; white-space: nowrap">
      <% if @round.move && !planet.tradeport? && !@current_squad.ready? && planet.able_to_construct?(@current_squad) %>
        <b href = "" onclick="window.open('/planets/<%= planet.id %>/facility_fleets/new', 'Construir <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=220')">
      <% end %>

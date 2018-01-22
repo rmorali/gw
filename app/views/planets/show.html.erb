@@ -53,10 +53,6 @@ document.title = "<%= @planet.name %>"
               <%= render :partial => 'fleets', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
           <% end %>
 
-          <% if @round.move && !@planet.tradeport? && !@squad.ready? && @planet.able_to_construct?(@squad) && fleet.is_a_builder? && fleet.carried_by == nil %>
-  <a href = "" onclick="window.open('/planets/<%= @planet.id %>/facility_fleets/new', 'Construir <%= @planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=220')">construir</a> 
-          <% end %>
-
    <% if @round.move && @planet.tradeport? && !@squad.ready? && !@planet.under_attack? && @setting.tradeports? && fleet.carried_by == nil %>
      <a href = "" onclick="window.open('/tradeports/<%= @planet.id %>', 'Tradeport <%= @planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=290')">Tradeport</a> 
    <% end %>
