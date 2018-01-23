@@ -86,9 +86,6 @@ class PlanetsController < ApplicationController
       @troopers += fleet.quantity if fleet.type?(Trooper)
       @transports += fleet.quantity if fleet.type?(LightTransport)
       @warriors += 1 if fleet.type?(Warrior)
-      @commanders += 1 if fleet.type?(Commander)
-      @miners += 1 if fleet.type?(Miner)
-      @sensors += 1 if fleet.is_a_sensor?
     end
     #@active = FacilityFleet.select { |facility| facility.squad == @current_squad && facility.balance > 0 }.count
     #@comment1 = "#{@inactive} fabricas sem produzir!" unless @active == 0

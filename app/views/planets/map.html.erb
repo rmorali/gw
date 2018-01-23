@@ -3,51 +3,55 @@
 
 <%= render :partial => 'sectors' %>
 
-<div class="painel1">
+<div class="painel_turno">
   <span style="color:#<%= @current_squad.color %>;font-size: 23px;font-weight: bold">
-  <%= @current_squad.name %></span><br>
-  <span style="font-size: 16px;
-    font-weight: bold">
-  Turno: <%= @round.number %> - <%= @round_phase %><br>
+    <%= @current_squad.name %>
+  </span>
+  <br>
+  <span style="font-size: 16px; font-weight: bold">
+    Turno: <%= @round.number %> - <%= @round_phase %><br>
+  </span>
 </div>
-<div class="painel2">
-<span style="color:yellow;font-size: 16px;font-weight: bold">
-  Créditos: <%= @current_squad.credits %><br>
-</span>
-<span style="color:green;font-size: 16px;font-weight: bold">
-  + <%= ( @setting.air_domination_unit.constantize ).to_s.pluralize %>: <%= @air_income %><br>
-  + <%= ( @setting.ground_domination_unit.constantize ).to_s.pluralize %>: <%= @ground_income %><br>
-</span>
-<span style="color:red;font-size: 16px;font-weight: bold">
-  - fugas: <%= @flee_tax %><br>
-</span>
-<span style="color:cyan;font-size: 16px;font-weight: bold">
-  Próx.turno: <%= @provided %><br>
-</span>
+<div class="painel_credits">
+  <table style="width: 1%; white-space:nowrap;">
+    <tr>
+      <td style="vertical-align:top"><img src="/images/coin_stack.png" height="42" width="42"></td>
+      <td>
+        <span style="color:yellow;font-size: 16px;font-weight: bold">
+          <%= @current_squad.credits %><br>
+        </span>
+        <span style="color:green;font-size: 12px;font-weight: bold">
+          + <%= @air_income %><br>
+          + <%= @ground_income %><br>
+        </span>
+        <span style="color:red;font-size: 12px;font-weight: bold">
+          - <%= @flee_tax %>
+        </span>
+      </td>
+    </tr>
+  </table>
 </div>
-<div class="painel3">
-<span style="color:white;font-size: 14px;font-weight: bold">
-  Facilities: <%= @facilities %><br>
-  CapitalShips: <%= @capital_ships %><br>
-  MiningUnits: <%= @miners %><br>
-  Fighters: <%= @fighters %><br>
-  Transports: <%= @transports %><br>
-  Radares: <%= @sensors %><br>
-  Jedi/Sith: <%= @warriors %><br>
-  Troopers: <%= @troopers %><br>
-</span>
+<div class="painel_unitys">
+  <span style="color:white;font-size: 14px;font-weight: bold">
+    Facilities: <%= @facilities %><br>
+    CapitalShips: <%= @capital_ships %><br>
+    Fighters: <%= @fighters %><br>
+    Transports: <%= @transports %><br>
+    Jedi/Sith: <%= @warriors %><br>
+    Troopers: <%= @troopers %><br>
+  </span>
 </div>
-<div class="painel4" style="width:200px">
+<div class="painel_goals">
 <span style="font-size: 10px;color:#<%= @current_squad.color %>">** Seu objetivo ** ( <%= @current_squad.name %> )
 <br>
 Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></span>
 </div>
-<div class="painel5" style="width:200px">
+<div class="painel_comments" style="width:200px">
   <span style="color:white;font-size: 14px;font-weight: bold;text-decoration: blink">
   <%= raw @comment1 if @comment1 %><br>
   <%= raw @comment2 if @comment2 %>
 </div>
-<div class="painel6">
+<div class="painel_links">
   <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/goal', 'Objetivos', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=500')">
   Objetivos
   </a><br><br>
