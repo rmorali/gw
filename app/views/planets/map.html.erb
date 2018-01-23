@@ -52,7 +52,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   <%= raw @comment2 if @comment2 %>
 </div>
 <div class="painel_links">
-  <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/goal', 'Objetivos', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=500')">
+  <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/goal', 'Objetivos', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=450, height=500')">
   Objetivos
   </a><br><br>
   <a href = "" onclick="window.open('/results/<%= @current_squad.id %>/show_results', 'Combates', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=500')">
@@ -87,7 +87,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
     <% end %>
 
   <div id="gifs" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio %>px;z-index: 5;">
-    <b href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=320')">
+    <b href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=600, height=350')">
       <img src="/images/planets/<%= planet.name.gsub(" ","").downcase %>.png">
     </b>
   </div>
@@ -219,17 +219,19 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
 
 
     <% if planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
-      <info class="tooltip">
-      <tip><%= raw fleet.description %></tip>
-      <span style="<%= raw fleet.span_style %>">
-      <%= fleet.show %>
-      </span>
-      <span style=color:#40E0D0>
-      <%= fleet.show_results %>
-      </span>
-      </info>
+      <% planet.generic_fleets.each_with_index do |fleet, index| %>
+        <info class="tooltip">
+        <tip><%= raw fleet.description %></tip>
+        <span style="<%= raw fleet.span_style %>">
+          <%= fleet.show %>
+        </span>
+        <span style=color:#40E0D0>
+          <%= fleet.show_results %>
+        </span>
+        </info>
+        <br>
+      <% end %>
     <% end %>
-
 
   <% end %>
 
