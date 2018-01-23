@@ -5,7 +5,7 @@
   </script>
 <% end %>
 <% if @results.first.planet.generic_fleets.any? { |unit| unit.squad == @squad } %>
-<div class="fleet">
+<div class="fleet_new">
 <h2><%= @results.first.planet.name %> <%= " (wormhole p/ #{@results.first.planet.routes.last}) " if @results.first.planet.wormhole? %></h2>
 <%= form_tag "results" do %>
   <table>
