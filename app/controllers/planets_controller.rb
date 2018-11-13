@@ -56,8 +56,8 @@ class PlanetsController < ApplicationController
     @flee_tax = (@current_squad.flee_tax @round).to_i
     @ground_income = 0
     @air_income = 0
-    Planet.where(:squad => @current_squad).each do |planet|
-      @air_income += (planet.air_credits if planet.air_credits.present?).to_i
+    Planet.includes(:squad).each do |planet|
+      @air_income += (planet.air_credits(@current_squad) if planet.air_credits(@current_squad).present?).to_i
     end
     Planet.where(:ground_squad => @current_squad).each do |planet|
       @ground_income += (planet.ground_credits if planet.ground_credits.present?).to_i

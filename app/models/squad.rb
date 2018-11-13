@@ -34,8 +34,8 @@ class Squad < ActiveRecord::Base
 
   def generate_profits!
     income = 0
-    Planet.where(:squad => self).each do |planet|
-      income += planet.air_credits if planet.air_credits.present?
+    Planet.includes(:squad).each do |planet|
+      income += planet.air_credits(self) if planet.air_credits(self).present?
     end
     Planet.where(:ground_squad => self).each do |planet|
       income += planet.ground_credits if planet.ground_credits.present?

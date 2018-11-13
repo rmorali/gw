@@ -1,10 +1,10 @@
 <% content_for :for_head do %>
   <script>
-  document.title = " Setup do XWS "
-  </script>  
+  document.title = " Setup do GW "
+  </script>
 <% end %>
 <div class="fleet">
-<h2> Setup do XWS </h2>
+<h2> Setup do GW </h2>
 </div>
 
 <%= simple_form_for @settings do |f| %>
@@ -14,8 +14,7 @@
 <h3>Planetas</h3>
 <%= f.input :net_planet_income, :label => 'Income normal:', :collection => (200..1000).step(100) %>
 <%= f.input :bonus_planet_income, :label => 'Income especial:', :collection => (400..2000).step(100) %>
-<%= f.input :presence_to_influence, :label => 'Presenca para influenciar:', :collection => (1000..5000).step(100) %>
-<%= f.input :rounds_to_dominate, :label => 'Rounds para dominar:', :collection => (1..5).step(1) %>
+<%= f.input :presence_to_influence, :label => 'Presenca para dominio:', :collection => (1000..5000).step(100) %>
 </div>
 </td>
 <td width=100>
@@ -59,4 +58,3 @@ Produtividade: <%= 1200 / 100 * @settings.facility_primary_production_rate %><br
 <%= link_to 'Clique aqui', :controller => 'rounds', :action => 'index' %><br><br>
 <a href = "/users/sign_out">Logout</a><br>
 </div>
-

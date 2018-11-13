@@ -61,7 +61,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   <a href = "" onclick="window.open('https://docs.google.com/spreadsheets/d/1MmlpHv6qHDJqGnv7AmeU0MPzUQeslwk7rGmBln9-2ls/edit?authkey=CL_F9boP&hl=pt_BR#gid=1177609294', 'Specs Naves', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">
   Specs Naves
   </a><br><br>
-  <a href = "" onclick="window.open('https://wgbrnavies.wordpress.com/', 'Blog do XWSG', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">
+  <a href = "" onclick="window.open('https://wgbrnavies.wordpress.com/', 'Blog do GW', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">
   Blog do XWSG
   </a><br><br>
   <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/edit', 'Config Squad', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=350, height=280')">
@@ -111,7 +111,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
 <span style="color:yellow;font-size: 10px;font-weight: bold">
       <info class="tooltip">
       <tip>Income espacial</tip>
-  <%= "#{planet.air_credits}" if planet.credits_per_turn.present? && planet.credits_per_turn > 0 && !planet.under_attack? && !planet.tradeport? && planet.squad == @current_squad %>
+  <%= "#{planet.air_credits(@current_squad)}" if planet.credits_per_turn(@current_squad).present? && planet.credits_per_turn(@current_squad) > 0 && !planet.tradeport? %>
       </info>
 </font>
   </div>

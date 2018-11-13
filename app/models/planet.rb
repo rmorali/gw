@@ -17,13 +17,14 @@ class Planet < ActiveRecord::Base
     set_ground_ownership
   end
 
-  def credits_per_turn
-    (self.air_credits + self.ground_credits).to_i
+  def credits_per_turn(*squad)
+    (self.air_credits(squad.first) + self.ground_credits).to_i
   end
 
-  def air_credits
-   return (self.credits * (100 - Setting.getInstance.ground_income_rate) / 100).to_i unless self.squad == nil or generic_fleets.any?{|fleet| fleet.squad != self.squad}
-   0
+  def air_credits(*squad)
+   #return (self.credits * (100 - Setting.getInstance.ground_income_rate) / 100).to_i unless self.squad == nil or generic_fleets.any?{|fleet| fleet.squad != self.squad}
+   #0
+   CalculateInfluence.new(self,squad.first).current
   end
 
   def ground_credits
@@ -177,13 +178,13 @@ class Planet < ActiveRecord::Base
     flee_routes = routes.select { |planet| planet.squad == nil && planet.ground_squad == nil} if flee_routes.empty?
     flee_routes = routes if flee_routes.empty?
     flee_routes.first
-      
+
   end
 
   def squads
     squads = []
     generic_fleets.each do |fleet|
-      squads << fleet.squad 
+      squads << fleet.squad
     end
     squads.uniq
   end
@@ -208,7 +209,7 @@ class Planet < ActiveRecord::Base
   end
 
   def count_facilities_of(squad)
-    self.generic_fleets.select { |fleet| fleet.type?(Facility) && fleet.squad == squad }.count  
+    self.generic_fleets.select { |fleet| fleet.type?(Facility) && fleet.squad == squad }.count
   end
 
   def count_fleets
@@ -218,9 +219,21 @@ class Planet < ActiveRecord::Base
       self.results.where(:round => Round.getInstance, :squad => squad).each do |result|
         fleet_price += result.quantity * result.generic_unit.price if result.generic_fleet.type?(Fighter) || result.generic_fleet.type?(LightTransport) || result.generic_fleet.type?(Armament)
       end
-      fleet << [squad.name, fleet_price]   
+      fleet << [squad.name, fleet_price]
     end
     fleet
+  end
+
+  def count_fleet(*squad)
+    fleet_price = 0
+      self.generic_fleets.each do |fleet|
+        if squad == []
+          fleet_price += fleet.quantity * fleet.generic_unit.price
+        else
+          fleet_price += fleet.quantity * fleet.generic_unit.price if fleet.squad == squad.first
+        end
+      end
+    fleet_price
   end
 
   def constructive_capacity
@@ -237,4 +250,3 @@ class Planet < ActiveRecord::Base
   end
 
 end
-
