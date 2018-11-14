@@ -4,8 +4,8 @@ source 'http://rubygems.org'
 #precisa atualizar as gems pois perderam suporte
 
 gem 'rails', '3.0.20'
-gem 'mysql'
-gem 'mysql2', '0.2.1'
+#gem 'mysql'
+#gem 'mysql2', '0.2.1'
 gem 'sqlite3'
 gem 'simple_form'
 gem 'devise'
