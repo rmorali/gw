@@ -228,9 +228,15 @@ class Planet < ActiveRecord::Base
     fleet_price = 0
       self.generic_fleets.each do |fleet|
         if squad == []
-          fleet_price += fleet.quantity * fleet.generic_unit.price
+          units_price = fleet.quantity * fleet.generic_unit.price
+          units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(CapitalShip) || fleet.type?(Facility)
+          fleet_price += units_price
         else
-          fleet_price += fleet.quantity * fleet.generic_unit.price if fleet.squad == squad.first
+          if fleet.squad == squad.first
+            units_price = fleet.quantity * fleet.generic_unit.price
+          units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(CapitalShip) || fleet.type?(Facility)
+          fleet_price += units_price
+          end
         end
       end
     fleet_price

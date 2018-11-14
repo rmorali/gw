@@ -65,7 +65,7 @@ class Round < ActiveRecord::Base
       fleet.reassembly unless fleet.planet.has_an_enemy?(Facility, fleet.squad) || fleet.planet.has_an_enemy?(CapitalShip, fleet.squad) || fleet.planet.has_an_enemy?(Fighter, fleet.squad) || fleet.planet.has_an_enemy?(LightTransport, fleet.squad)
     end
     Round.create(:number => self.number + 1, :move => true)
-    Tradeport.start
+    #Tradeport.start
     set_map
     set_planet_balance
   end
