@@ -1,5 +1,5 @@
-<% unless @current_squad.map_background == true %>
-  <body onunload="location.reload()" style="background-image:url(<%= @current_squad.url %>)">
+<% unless @squad.map_background == true %>
+  <body onunload="location.reload()" style="background-image:url(<%= @squad.url %>)">
 <% end %>
 
 <svg width="<%= 1700 * @map_ratio %>" height="<%= 1300 * @map_ratio %>">

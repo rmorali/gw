@@ -49,19 +49,19 @@ class PlanetsController < ApplicationController
   def map
     @round = Round.getInstance
     @setting = Setting.getInstance
-    @current_squad = current_squad
-    @map_ratio = ( @current_squad.map_ratio.to_f / 100 ).to_f
+    @squad = current_squad
+    @map_ratio = ( @squad.map_ratio.to_f / 100 ).to_f
     @planets = Planet.includes(:squad).all
     @all_squads = Squad.all
-    @flee_tax = (@current_squad.flee_tax @round).to_i
+    @flee_tax = (@squad.flee_tax @round).to_i
     @ground_income = 0
     @air_income = 0
     Planet.includes(:squad).each do |planet|
-      @air_income += (planet.air_credits(@current_squad) if planet.air_credits(@current_squad).present?).to_i
+      @air_income += (planet.air_credits(@squad) if planet.air_credits(@squad).present?).to_i
     end
-    Planet.where(:ground_squad => @current_squad).each do |planet|
-      @ground_income += (planet.ground_credits if planet.ground_credits.present?).to_i
-    end
+    #Planet.where(:ground_squad => @current_squad).each do |planet|
+      #@ground_income += (planet.ground_credits if planet.ground_credits.present?).to_i
+    #end
     @provided = (current_squad.credits + @air_income + @ground_income - @flee_tax).to_i
     if @round.move?
       @round_phase = 'Estrategia'
@@ -79,7 +79,7 @@ class PlanetsController < ApplicationController
     @commanders = 0
     @sensors = 0
     @miners = 0
-    GenericFleet.where(:squad => @current_squad).each do |fleet|
+    GenericFleet.where(:squad => @squad).each do |fleet|
       @capital_ships += fleet.quantity if fleet.type?(CapitalShip)
       @facilities += fleet.quantity if fleet.type?(Facility)
       @fighters += fleet.quantity if fleet.type?(Fighter)

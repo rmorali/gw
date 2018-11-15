@@ -4,8 +4,8 @@
 <%= render :partial => 'sectors' %>
 
 <div class="painel_turno">
-  <span style="color:#<%= @current_squad.color %>;font-size: 23px;font-weight: bold">
-    <%= @current_squad.name %>
+  <span style="color:#<%= @squad.color %>;font-size: 23px;font-weight: bold">
+    <%= @squad.name %>
   </span>
   <br>
   <span style="font-size: 16px; font-weight: bold">
@@ -17,12 +17,11 @@
     <tr>
       <td style="vertical-align:top"><img src="/images/coin_stack.png" height="42" width="42"></td>
       <td>
-        <span style="color:yellow;font-size: 16px;font-weight: bold">
-          <%= @current_squad.credits %><br>
+        <span style="color:green;font-size: 18px;font-weight: bold">
+          <%= @squad.credits %><br>
         </span>
-        <span style="color:green;font-size: 12px;font-weight: bold">
+        <span style="color:yellow;font-size: 12px;font-weight: bold">
           + <%= @air_income %><br>
-          + <%= @ground_income %><br>
         </span>
         <span style="color:red;font-size: 12px;font-weight: bold">
           - <%= @flee_tax %>
@@ -42,9 +41,9 @@
   </span>
 </div>
 <div class="painel_goals">
-<span style="font-size: 10px;color:#<%= @current_squad.color %>">** Seu objetivo ** ( <%= @current_squad.name %> )
+<span style="font-size: 10px;color:#<%= @squad.color %>">** Seu objetivo ** ( <%= @squad.name %> )
 <br>
-Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></span>
+Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
 </div>
 <div class="painel_comments" style="width:200px">
   <span style="color:white;font-size: 14px;font-weight: bold;text-decoration: blink">
@@ -52,10 +51,10 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   <%= raw @comment2 if @comment2 %>
 </div>
 <div class="painel_links">
-  <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/goal', 'Objetivos', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=450, height=500')">
+  <a href = "" onclick="window.open('/squads/<%= @squad.id %>/goal', 'Objetivos', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=450, height=500')">
   Objetivos
   </a><br><br>
-  <a href = "" onclick="window.open('/results/<%= @current_squad.id %>/show_results', 'Combates', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=500')">
+  <a href = "" onclick="window.open('/results/<%= @squad.id %>/show_results', 'Combates', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=500')">
   Combates
   </a><br><br>
   <a href = "" onclick="window.open('https://docs.google.com/spreadsheets/d/1MmlpHv6qHDJqGnv7AmeU0MPzUQeslwk7rGmBln9-2ls/edit?authkey=CL_F9boP&hl=pt_BR#gid=1177609294', 'Specs Naves', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">
@@ -64,10 +63,10 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   <a href = "" onclick="window.open('https://wgbrnavies.wordpress.com/', 'Blog do GW', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">
   Blog do XWSG
   </a><br><br>
-  <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/edit', 'Config Squad', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=350, height=280')">
+  <a href = "" onclick="window.open('/squads/<%= @squad.id %>/edit', 'Config Squad', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=350, height=280')">
   Config Squad
   </a><br><br>
-  <a href = "" onclick="window.open('/squads/<%= @current_squad.id %>/transfer', 'Transferir $', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=200')">
+  <a href = "" onclick="window.open('/squads/<%= @squad.id %>/transfer', 'Transferir $', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=200')">
   Transferir $
   </a><br><br>
   <a href = "" onclick="window.open('/ready', 'Passar Turno', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=150')">
@@ -83,7 +82,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   <% @sensor = nil %>
   <% @routes = planet.routes %>
     <% @routes.each do |route| %>
-      <% @sensor = route if route.generic_fleets.any? { |fleet| fleet.is_a_sensor? && fleet.squad == @current_squad } %>
+      <% @sensor = route if route.generic_fleets.any? { |fleet| fleet.is_a_sensor? && fleet.squad == @squad } %>
     <% end %>
 
   <div id="gifs" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio %>px;z-index: 5;">
@@ -111,15 +110,15 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
 <span style="color:yellow;font-size: 10px;font-weight: bold">
       <info class="tooltip">
       <tip>Income espacial</tip>
-  <%= "#{planet.air_credits(@current_squad)}" if planet.credits_per_turn(@current_squad).present? && planet.credits_per_turn(@current_squad) > 0 && !planet.tradeport? %>
+  <%= "+#{planet.credits_per_turn(@squad)}" if planet.credits_per_turn(@squad) > 0 && planet.squads.include?(@squad) && !planet.tradeport? %>
       </info>
 </font>
   </div>
 
-  <% if planet.generic_fleets.any? { |unit| unit.squad == @current_squad && unit.type == 'FacilityFleet' } %>
+  <% if planet.generic_fleets.any? { |unit| unit.squad == @squad && unit.type == 'FacilityFleet' } %>
     <div id="capacidade_construtiva" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio + 60 %>px; white-space: nowrap">
-    <% if @round.move && !@current_squad.ready? && planet.constructive_capacity > 0 %>
-      <b href = "" onclick="window.open('/facility_fleets/<%= planet.generic_fleets.select { |unit| unit.squad == @current_squad && unit.type == 'FacilityFleet' }.first.id  %>/edit', 'Facility', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=550, height=360')">
+    <% if @round.move && !@squad.ready? && planet.constructive_capacity > 0 %>
+      <b href = "" onclick="window.open('/facility_fleets/<%= planet.generic_fleets.select { |unit| unit.squad == @squad && unit.type == 'FacilityFleet' }.first.id  %>/edit', 'Facility', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=550, height=360')">
     <% end %>
       <info class="tooltip" style="cursor:pointer">
       <tip>Produzir Unidades</tip>
@@ -138,9 +137,9 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
     </div>
   <% end %>
 
-  <% if planet.able_to_construct?(@current_squad) && planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
+  <% if planet.able_to_construct?(@squad) && planet.generic_fleets.any? { |unit| unit.squad == @squad } %>
     <div id="construcao" style="position:absolute; left:<%= planet.x * @map_ratio + 45 %>px; top:<%= planet.y * @map_ratio + 60 %>px;z-index: 15; white-space: nowrap">
-     <% if @round.move && !planet.tradeport? && !@current_squad.ready? && planet.able_to_construct?(@current_squad) %>
+     <% if @round.move && !planet.tradeport? && !@squad.ready? && planet.able_to_construct?(@squad) %>
        <b href = "" onclick="window.open('/planets/<%= planet.id %>/facility_fleets/new', 'Construir <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=220')">
      <% end %>
     <% if @round.move %>
@@ -153,7 +152,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
     </div>
   <% end %>
 
-  <% if planet.wormhole? && planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
+  <% if planet.wormhole? && planet.generic_fleets.any? { |unit| unit.squad == @squad } %>
     <div id="wormhole" style="position:absolute; left:<%= planet.x * @map_ratio + 40 %>px; top:<%= planet.y * @map_ratio - 30 %>px; white-space: nowrap">
         <info class="tooltip">
         <tip>Wormhole para <%=  planet.routes.last %></tip>
@@ -165,7 +164,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   <div id="frotas" class="map" style="position:absolute; left:<%= planet.x * @map_ratio + 60 %>px; top:<%= planet.y * @map_ratio + 10 %>px; white-space: nowrap">
 
   <% if @round.move %>
-    <% your_fleets = planet.generic_fleets.where(:squad => @current_squad) %>
+    <% your_fleets = planet.generic_fleets.where(:squad => @squad) %>
       <% unless your_fleets.empty? %>
         <% your_fleets.each_with_index do |fleet, index| %>
           <% unless fleet.moving %>
@@ -183,10 +182,10 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
         <% end %>
 
         <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
-          <% if fleet.round.number == @round.number - 1 && fleet.squad != @current_squad && planet.results.any? { |result| result.squad == @current_squad && result.round == fleet.round } %>
+          <% if fleet.round.number == @round.number - 1 && fleet.squad != @squad && planet.results.any? { |result| result.squad == @squad && result.round == fleet.round } %>
             <info class="tooltip">
             <tip><%= raw fleet.description %></tip>
-            <% unless fleet.final_quantity <= 0 || fleet.squad == @current_squad %>
+            <% unless fleet.final_quantity <= 0 || fleet.squad == @squad %>
               <span style="<%= raw fleet.span_style %>; opacity: 0.3">
               <%= fleet.show %>
               </span>
@@ -199,7 +198,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
       <% else %>
 
         <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
-          <% if fleet.round.number >= planet.results.maximum("round_id") && fleet.squad != @current_squad && planet.results.any? { |result| result.squad == @current_squad && result.round == fleet.round } %>
+          <% if fleet.round.number >= planet.results.maximum("round_id") && fleet.squad != @squad && planet.results.any? { |result| result.squad == @squad && result.round == fleet.round } %>
             <info class="tooltip">
             <tip><%= raw fleet.description %></tip>
             <% unless fleet.final_quantity <= 0 %>
@@ -218,7 +217,7 @@ Objetivo <%= @current_squad.goal.id %>: <%= @current_squad.goal.description %></
   <% else %>
 
 
-    <% if planet.generic_fleets.any? { |unit| unit.squad == @current_squad } %>
+    <% if planet.generic_fleets.any? { |unit| unit.squad == @squad } %>
       <% planet.generic_fleets.each_with_index do |fleet, index| %>
         <info class="tooltip">
         <tip><%= raw fleet.description %></tip>

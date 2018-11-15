@@ -18,7 +18,7 @@ class Planet < ActiveRecord::Base
   end
 
   def credits_per_turn(*squad)
-    (self.air_credits(squad.first) + self.ground_credits).to_i
+    self.air_credits(squad.first) # + self.ground_credits).to_i
   end
 
   def air_credits(*squad)
@@ -203,7 +203,8 @@ class Planet < ActiveRecord::Base
 
   def able_to_construct?(squad)
   #TODO testar se apoio do planeta maior que X%
-    permission = true
+    permission = nil
+    permission = true if self.credits_per_turn(squad) == self.credits && self.has_a?(Setting.getInstance.builder_unit.constantize, Setting.getInstance.minimum_quantity)
     permission = nil if self.count_facilities_of(squad) > Setting.getInstance.maximum_facilities
     permission
   end
@@ -225,20 +226,23 @@ class Planet < ActiveRecord::Base
   end
 
   def count_fleet(*squad)
-    fleet_price = 0
+    if squad == []
+      fleet_price = 0
       self.generic_fleets.each do |fleet|
-        if squad == []
-          units_price = fleet.quantity * fleet.generic_unit.price
-          units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(CapitalShip) || fleet.type?(Facility)
-          fleet_price += units_price
-        else
-          if fleet.squad == squad.first
-            units_price = fleet.quantity * fleet.generic_unit.price
-          units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(CapitalShip) || fleet.type?(Facility)
-          fleet_price += units_price
-          end
-        end
+        units_price = fleet.quantity * fleet.generic_unit.price
+        units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(CapitalShip)
+        units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(Facility)
+        fleet_price += units_price
       end
+    else
+      fleet_price = 0 
+      self.generic_fleets.where(:squad => squad.first).each do |fleet|
+          units_price = fleet.quantity * fleet.generic_unit.price
+          units_price = fleet.quantity * fleet.generic_unit.price * 3 if fleet.type?(CapitalShip)
+          units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(Facility)
+          fleet_price += units_price
+      end
+    end
     fleet_price
   end
 
