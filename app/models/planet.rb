@@ -202,7 +202,6 @@ class Planet < ActiveRecord::Base
   end
 
   def able_to_construct?(squad)
-  #TODO testar se apoio do planeta maior que X%
     permission = nil
     permission = true if self.credits_per_turn(squad) == self.credits && self.has_a?(Setting.getInstance.builder_unit.constantize, Setting.getInstance.minimum_quantity)
     permission = nil if self.count_facilities_of(squad) > Setting.getInstance.maximum_facilities
