@@ -229,20 +229,24 @@ class Planet < ActiveRecord::Base
     if squad == []
       fleet_price = 0
       self.generic_fleets.each do |fleet|
-        units_price = fleet.quantity * fleet.generic_unit.price
-        units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(CapitalShip)
-        units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(Facility)
-        units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(Trooper)
-        fleet_price += units_price
+        unless fleet.moving?
+          units_price = fleet.quantity * fleet.generic_unit.price
+          units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(CapitalShip)
+          units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(Facility)
+          units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(Trooper)
+          fleet_price += units_price
+        end
       end
     else
       fleet_price = 0 
       self.generic_fleets.where(:squad => squad.first).each do |fleet|
+        unless fleet.moving?
           units_price = fleet.quantity * fleet.generic_unit.price
           units_price = fleet.quantity * fleet.generic_unit.price * 3 if fleet.type?(CapitalShip)
           units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(Facility)
           units_price = fleet.quantity * fleet.generic_unit.price * 10 if fleet.type?(Trooper)
           fleet_price += units_price
+        end
       end
     end
     fleet_price
