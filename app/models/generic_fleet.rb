@@ -119,7 +119,7 @@ class GenericFleet < ActiveRecord::Base
       info << "<br>- Nome: <b>#{fleet_name}</b>"
       info << "<br>- Ataques de Longa Distancia"
       info << "<br>- Abordagem / Captura de Fabricas"
-      info << "<br>- Transporte de Unidades"
+      info << "<br>- Transporta: #{self.generic_unit.heavy_loading_capacity} naves / #{self.generic_unit.light_loading_capacity} troopers"
       info << "<br>- Skill: #{skill.name}" if skill
 
     when 'Facility'
@@ -133,7 +133,7 @@ class GenericFleet < ActiveRecord::Base
     when 'LightTransport'
       info << "<br>- Abordagem/Captura de Fabricas"
       #info << "<br>- Raid Missions Longa Distancia"
-      info << "<br>- Transporte de Unidades"
+      info << "<br>- Transporta: #{self.generic_unit.heavy_loading_capacity * self.quantity} naves / #{self.generic_unit.light_loading_capacity * self.quantity} troopers"
     when 'Warrior'
       info << "<br>- Espionagem"
       info << "<br>- Bloqueio de Construcao"
