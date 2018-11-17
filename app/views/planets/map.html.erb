@@ -218,7 +218,7 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
               
         <% if @sensor %>
           <% planet.generic_fleets.where('squad_id != ?', @squad.id).each do |fleet| %>
-            <% if fleet.type?(CapitalShip) || fleet.type?(Facility) || fleet.type?(Trooper) %>
+            <% if ( fleet.type?(CapitalShip) || fleet.type?(Facility) || fleet.type?(Trooper) ) && fleet.round < @round.number %>
               <span style="<%= raw fleet.span_style %>">
                 <%= fleet.generic_unit.name %>
               </span>
