@@ -25,9 +25,15 @@ document.title = "<%= @planet.name %>"
       <% form_tag "/generic_fleets/move" do %>
 
         <% your_fleets = @planet.generic_fleets.select { |fleet| fleet.squad == @squad } %>
+        <% last_fleet_type = [] %>
+        
         <% if your_fleets %>
           <% your_fleets.each do |fleet| %>
+            <% if last_fleet_type != fleet.generic_unit.type && last_fleet_type != [] %>
+              <% #caso queiramos pular linhas em cada tipo de nave diferente %>
+            <% end %>
             <tr><td>
+
             <% case fleet.generic_unit.type %>
               <% when 'Facility' %>
                 <%= render :partial => 'facilities', :locals => { :fleet => fleet } %>
@@ -72,6 +78,7 @@ document.title = "<%= @planet.name %>"
             <% end %>
 
             </tr>
+          <% last_fleet_type = fleet.generic_unit.type %>  
           <% end %>
 
           </table>

@@ -121,7 +121,7 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
 <span style="color:#<%= @squad.color %>;font-size: 9px;font-weight: bold">
       <info class="tooltip">
       <tip>Influência: <%= "#{@influence}" %> / <%= "#{@setting.presence_to_influence}" %></tip>
-  <%= "#{@influence}" if @credits_per_turn > 0 && planet.squads.include?(@squad) && !planet.tradeport? %> </span>  
+  <%= "#{@influence}" if @influence > 0 && planet.squads.include?(@squad) && !planet.tradeport? %> </span>  
       </info>
 </font>
   </div>
@@ -178,8 +178,13 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
 
   <% if @round.move %>
     <% your_fleets = planet.generic_fleets.where(:squad => @squad) %>
+    <% last_fleet_type = [] %>
       <% unless your_fleets.empty? %>
         <% your_fleets.each_with_index do |fleet, index| %>
+          <% if last_fleet_type != fleet.generic_unit.type && last_fleet_type != [] %>
+            <% #caso queiramos pular linhas em cada tipo de nave diferente %>
+          <% end %>
+        
           <% unless fleet.moving %>
             <info class="tooltip">
             <tip><%= raw fleet.description %></tip>
@@ -191,7 +196,8 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
             <span style="color: #00FFFF" %>
             <%= fleet.show + ' -> ' + fleet.destination.name %>
           <% end %>
-          <br>
+          <% last_fleet_type = fleet.generic_unit.type %>
+          <br> 
         <% end %>
 
         <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
