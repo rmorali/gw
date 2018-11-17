@@ -84,6 +84,8 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
     <% @routes.each do |route| %>
       <% @sensor = route if route.generic_fleets.any? { |fleet| fleet.is_a_sensor? && fleet.squad == @squad } %>
     <% end %>
+  <% @influence = planet.count_fleet(@squad) %>
+  <% @credits_per_turn = planet.credits_per_turn(@squad) %>
 
   <div id="gifs" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio %>px;z-index: 5;">
     <b href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=600, height=350')">
@@ -100,7 +102,7 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
   <div id="income planetario" style="position:absolute; left:<%= planet.x * @map_ratio + 60 %>px; top:<%= planet.y * @map_ratio + 5 %>px;z-index: 15; white-space: nowrap">
 <span style="color:gray; font-size: 10px; font-weight: bold">
       <info class="tooltip">
-      <tip>Income planetário <%= planet.credits %></tip>
+      <tip>Income planetário máximo</tip>
       <%= planet.credits %>
       </info>
 </font>
@@ -110,16 +112,16 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
 <span style="color:yellow;font-size: 10px;font-weight: bold">
       <info class="tooltip">
       <tip>Income do squad</tip>
-  <%= "+#{planet.credits_per_turn(@squad)}" if planet.credits_per_turn(@squad) > 0 && planet.squads.include?(@squad) && !planet.tradeport? %>
+  <%= "+#{@credits_per_turn}" if @credits_per_turn > 0 && planet.squads.include?(@squad) && !planet.tradeport? %>
       </info>
 </font>
   </div>
   
     <div id="Presenca" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio + 50 %>px;z-index: 15; white-space: nowrap">
-<span style="color:#<%= @squad.color %>;font-size: 8px;font-weight: bold">
+<span style="color:#<%= @squad.color %>;font-size: 9px;font-weight: bold">
       <info class="tooltip">
-      <tip>Presença militar</tip>
-  <%= "#{planet.count_fleet(@squad)}" if planet.credits_per_turn(@squad) > 0 && planet.squads.include?(@squad) && !planet.tradeport? %>
+      <tip>Influência: <%= "#{@influence}" %> / <%= "#{@setting.presence_to_influence}" %></tip>
+  <%= "#{@influence}" if @credits_per_turn > 0 && planet.squads.include?(@squad) && !planet.tradeport? %> </span>  
       </info>
 </font>
   </div>
