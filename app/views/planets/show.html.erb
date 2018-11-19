@@ -89,9 +89,9 @@ document.title = "<%= @planet.name %>"
           <% if fleet.round.number == @round.number - 1 && fleet.squad != @squad && @planet.results.any? { |result| result.squad == @squad && result.round == fleet.round } %>
             <info class="tooltip">
             <tip><%= raw fleet.description %></tip>
-            <% unless fleet.final_quantity <= 0 || fleet.squad == @current_squad %>
+            <% unless fleet.final_quantity <= 0 || !fleet.captor.nil?  %>
               <span style="<%= raw fleet.span_style %>; opacity: 0.3">
-              <%= fleet.show %>
+              <%= fleet.show_fog %>
               </span>
               <br>
             <% end %>

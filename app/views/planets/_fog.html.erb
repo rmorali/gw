@@ -3,7 +3,7 @@
       <% if fleet.round.number >= planet.results.maximum("round_id") and fleet.squad != @squad and planet.results.any? { |result| result.squad == @squad && result.round == fleet.round } %>
         <info class="tooltip">
         <tip><%= raw fleet.description %></tip>
-        <% unless fleet.final_quantity <= 0 %>
+        <% unless fleet.final_quantity <= 0 || !fleet.captor.nil? %>
           <span style="<%= raw fleet.span_style %>; opacity: 0.3">
           <% @round_number = fleet.round.number %>
           <% case fleet.generic_unit.type %>

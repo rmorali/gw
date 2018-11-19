@@ -58,6 +58,13 @@ class Result < ActiveRecord::Base
 
   def sabotage!
     self.generic_fleet.sabotage! if sabotaged?
+    self.final_quantity -= self.quantity
+    save
+  end
+
+  def nothing!
+    self.final_quantity -= self.quantity
+    save
   end
 
   def captor_if_captured
@@ -142,6 +149,33 @@ class Result < ActiveRecord::Base
     else
       info = ""
       info << "#{quantity} #{generic_unit.name}"
+      info << " + #{weapon1.acronym}" if weapon1_id
+      info << " + #{weapon2.acronym}" if weapon2_id
+      info
+    end
+  end
+
+def show_fog
+    case generic_unit.type
+    when 'CapitalShip'
+      unless skill_id
+        "#{generic_unit.name}"
+      else
+        "#{generic_unit.name} + #{skill.acronym}"
+      end
+    when 'Warrior'
+      "#{generic_unit.name} (#{quantity} vidas)"
+    when 'Commander'
+      "#{name}"
+    when 'Facility'
+      unless moving?
+        "#{generic_unit.name}"
+      else
+        "#{generic_unit.description}"
+      end
+    else
+      info = ""
+      info << "#{final_quantity} #{generic_unit.name}"
       info << " + #{weapon1.acronym}" if weapon1_id
       info << " + #{weapon2.acronym}" if weapon2_id
       info
