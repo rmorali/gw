@@ -88,7 +88,7 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
   <% @credits_per_turn = planet.credits_per_turn(@squad) %>
 
   <div id="gifs" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio %>px;z-index: 5;">
-    <b href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=600, height=350')">
+    <b href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=500, height=380')">
       <img src="/images/planets/<%= planet.name.gsub(" ","").downcase %>.png">
     </b>
   </div>
@@ -96,7 +96,7 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
   <div id="nomes" style="position:absolute; left:<%= planet.x * @map_ratio + 15 %>px; top:<%= planet.y * @map_ratio - 15 %>px;z-index: 15; white-space: nowrap">
 <span style="color:white;font-size: 14px;font-weight: bold">
   <%= planet.name %>
-</font>
+</span>
   </div>
 
   <div id="income planetario" style="position:absolute; left:<%= planet.x * @map_ratio + 60 %>px; top:<%= planet.y * @map_ratio + 5 %>px;z-index: 15; white-space: nowrap">
@@ -105,25 +105,17 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
       <tip>Income planetário máximo</tip>
       <%= planet.credits %>
       </info>
-</font>
+</span>
   </div>
 
   <div id="Controle espacial" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio + 5 %>px;z-index: 15; white-space: nowrap">
 <span style="color:yellow;font-size: 10px;font-weight: bold">
       <info class="tooltip">
-      <tip>Income do squad</tip>
+      <tip>Income do squad<br>
+      Influência: <%= "#{@influence}" %> / <%= "#{@setting.presence_to_influence}" %></tip>
   <%= "+#{@credits_per_turn}" if @credits_per_turn > 0 && planet.squads.include?(@squad) && !planet.tradeport? %>
       </info>
-</font>
-  </div>
-  
-    <div id="Presenca" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio + 50 %>px;z-index: 15; white-space: nowrap">
-<span style="color:#<%= @squad.color %>;font-size: 9px;font-weight: bold">
-      <info class="tooltip">
-      <tip>Influência: <%= "#{@influence}" %> / <%= "#{@setting.presence_to_influence}" %></tip>
-  <%= "#{@influence}" if @influence > 0 && planet.squads.include?(@squad) && !planet.tradeport? %> </span>  
-      </info>
-</font>
+</span>
   </div>
 
   <% if planet.generic_fleets.any? { |unit| unit.squad == @squad && unit.type == 'FacilityFleet' } %>
@@ -139,13 +131,16 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
     <% end %>
       </b>
     </div>
-    <div id="planet balance" style="position:absolute; left:<%= planet.x * @map_ratio + 5 %>px; top:<%= planet.y * @map_ratio + 98 %>px;z-index: 15; white-space: nowrap">
+    <div id="planet balance" style="position:absolute; left:<%= planet.x * @map_ratio + 5 %>px; top:<%= planet.y * @map_ratio + 92 %>px;z-index: 15; white-space: nowrap">
     <% if planet.balance > 0 %>
       <span style="color:white;font-size: 11px;font-weight: bold;text-decoration: blink">
     <% else %>
       <span style="color:white;font-size: 11px;font-weight: bold">
     <% end %>
+    <info class="tooltip" style="cursor:pointer">
+    <tip>Capacidade produtiva: <%= planet.balance %></tip>
     <%= planet.balance if @round.move %>
+    </info>
     </span>
     </div>
   <% end %>
@@ -184,7 +179,7 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
           <% if last_fleet_type != fleet.generic_unit.type && last_fleet_type != [] %>
             <% #caso queiramos pular linhas em cada tipo de nave diferente %>
           <% end %>
-        
+
           <% unless fleet.moving %>
             <info class="tooltip">
             <tip><%= raw fleet.description %></tip>
@@ -197,7 +192,7 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
             <%= fleet.show + ' -> ' + fleet.destination.name %>
           <% end %>
           <% last_fleet_type = fleet.generic_unit.type %>
-          <br> 
+          <br>
         <% end %>
 
         <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>
@@ -231,8 +226,8 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
         <% end %>
 
       <% end %>
-      
-              
+
+
         <% if @sensor %>
           <% planet.generic_fleets.where('squad_id != ?', @squad.id).each do |fleet| %>
             <% if ( fleet.type?(CapitalShip) || fleet.type?(Facility) || fleet.type?(Trooper) ) && fleet.round < @round.number %>
@@ -241,10 +236,10 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
               </span>
               <br>
             <% end %>
-          <% end %>  
+          <% end %>
         <% end %>
-        
-        
+
+
 
 
   <% else %>

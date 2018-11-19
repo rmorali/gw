@@ -26,7 +26,7 @@ document.title = "<%= @planet.name %>"
 
         <% your_fleets = @planet.generic_fleets.select { |fleet| fleet.squad == @squad } %>
         <% last_fleet_type = [] %>
-        
+
         <% if your_fleets %>
           <% your_fleets.each do |fleet| %>
             <% if last_fleet_type != fleet.generic_unit.type && last_fleet_type != [] %>
@@ -78,7 +78,7 @@ document.title = "<%= @planet.name %>"
             <% end %>
 
             </tr>
-          <% last_fleet_type = fleet.generic_unit.type %>  
+          <% last_fleet_type = fleet.generic_unit.type %>
           <% end %>
 
           </table>
@@ -133,7 +133,6 @@ document.title = "<%= @planet.name %>"
         <% end %></span>
         <br>
      <% end %>
-
    <% end %>
 
 </div>
