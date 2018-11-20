@@ -217,7 +217,7 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
             <tip><%= raw fleet.description %></tip>
             <% unless fleet.final_quantity <= 0 && fleet.captor == nil %>
               <span style="<%= raw fleet.span_style %>; opacity: 0.3">
-              <%= fleet.show %>
+              <%= fleet.show_fog %>
               </span>
               <br>
             <% end %>
