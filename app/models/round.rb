@@ -103,7 +103,7 @@ class Round < ActiveRecord::Base
       result.blast! unless result.blasted == nil || result.blasted <= 0
       result.flee! unless result.fled == nil || result.fled <= 0
       result.capture! unless result.captured == nil || result.captured <= 0
-      result.nothing! if result.blasted == nil && result.fled == nil && captured == nil
+      result.nothing! if result.blasted == nil && result.fled == nil && result.captured == nil
     end
   end
   

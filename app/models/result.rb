@@ -49,9 +49,10 @@ class Result < ActiveRecord::Base
   end
 
   def capture!
-    clonado = self.clone
-    clonado.squad = self.captor
-    clonado.save
+    #clonado = self.clone
+    #clonado.squad = self.captor
+    #clonado.save
+    self.squad = self.captor
     self.generic_fleet.capture! self.captured, self.captor
     save
   end
@@ -63,7 +64,7 @@ class Result < ActiveRecord::Base
   end
 
   def nothing!
-    self.final_quantity -= self.quantity
+    self.final_quantity = self.quantity
     save
   end
 
