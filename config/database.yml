@@ -2,22 +2,30 @@
 #   gem install sqlite3-ruby (not necessary on OS X Leopard)
 
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: gw_deveĺopment
   pool: 5
-  timeout: 5000
-
-
+  username: root
+  password: pass
+  shost: localhost
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: gw_test
   pool: 5
-  timeout: 5000
-
-
+  username: root
+  password: pass
+  shost: localhost
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: gw_production
   pool: 5
-  timeout: 5000
+  username: root
+  password: pass
+  shost: localhost
 
