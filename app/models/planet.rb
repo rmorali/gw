@@ -194,7 +194,7 @@ class Planet < ActiveRecord::Base
   end
 
   def under_attack?
-    if GenericFleet.where(:planet => self).count(:all, :group => :squad).count > 1
+    if self.generic_fleets.count('squad_id', :distinct => true) > 1
       true
     else
       false
