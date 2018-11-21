@@ -112,14 +112,14 @@ Goal.create(:description => 'Dominar o Quadrante Leste e o planeta Hoth')
 Goal.create(:description => 'Dominar os 4 planetas com Income Especial e 3 planetas a sua escolha')
 
 Setting.create(:initial_factories => 2400,
-               :initial_fighters => 0,
-               :initial_capital_ships => 300,
+               :initial_fighters => 500,
+               :initial_capital_ships => 1000,
                :initial_transports => 500,
-               :initial_troopers => 200,
+               :initial_troopers => 1000,
                :initial_planets => 2,
                :initial_credits => 0,
-               :net_planet_income => 300,
-               :bonus_planet_income => 600,
+               :net_planet_income => 200,
+               :bonus_planet_income => 400,
                :ground_income_rate => 50,
                :facility_divisor_rate => 4,
                :facility_primary_production_rate => 50,
@@ -244,12 +244,12 @@ Armament.create(:name => 'Flare', :acronym => 'Flare', :price => 10, :hyperdrive
 
 Unit.create(:name => '______Capital Ship Upgrades______').factions = all
 Skill.create(:name => 'Radar', :acronym => 'SAR', :price => 150, :hyperdrive => false, :description => 'Detecta Inimigos proximos'  ).factions = all
-#Skill.create(:name => 'Anti-Trooper Bombs', :acronym => 'ATB', :price => 150, :hyperdrive => false, :description => 'Bombardeia Exercitos'  ).factions = all
+Skill.create(:name => 'Anti-Trooper Bombs', :acronym => 'ATB', :price => 150, :hyperdrive => false, :description => 'Bombardeia Exercitos'  ).factions = all
 #Skill.create(:name => 'Enhanced Engine', :acronym => 'ENG', :price => 300, :hyperdrive => false, :description => 'Permite Hyperspace em todo o Setor'  ).factions = all
 #Skill.create(:name => 'Gravity Interdictor', :acronym => 'INT', :price => 600, :hyperdrive => false, :description => 'Bloqueia Fugas do adversario'  ).factions = all
 
-Unit.create(:name => '___________Mineradoras___________').factions = all
-Miner.create(:name => 'Astrd Mining Unit', :price => 200, :hyperdrive => false, :description => 'Produz creditos no planeta' ).factions = all
+#Unit.create(:name => '___________Mineradoras___________').factions = all
+#Miner.create(:name => 'Astrd Mining Unit', :price => 200, :hyperdrive => false, :description => 'Produz creditos no planeta' ).factions = all
 
 Unit.create(:name => '_____________Troopers____________').factions = all
 Trooper.create(:name => 'Troopers', :price => 1, :hyperdrive => false,:description => 'Soldados construtores' ).factions = all
