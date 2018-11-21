@@ -51,7 +51,7 @@ describe Squad do
          squad.generic_fleets.first.balance.should_not be nil
          squad.generic_fleets.first.level.should_not be nil
       end
-      it 'should but a facility that has round of construction' do
+      it 'should buy a facility that has round of construction' do
          @round = Round.getInstance
          squad.buy facility, 1, planet
          squad.generic_fleets.first.round.should_not be nil
