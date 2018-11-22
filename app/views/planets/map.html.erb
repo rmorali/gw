@@ -5,7 +5,8 @@
 
 <div class="painel_turno">
   <span style="color:#<%= @squad.color %>;font-size: 23px;font-weight: bold">
-    <%= @squad.name %>
+    <b href = "" onclick="window.open('/squads/<%= @squad.id %>/edit', 'Config Squad', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=350, height=280')">
+      <%= @squad.name %></b>
   </span>
   <br>
   <span style="font-size: 16px; font-weight: bold">
@@ -15,7 +16,11 @@
 <div class="painel_credits">
   <table style="width: 1%; white-space:nowrap;">
     <tr>
-      <td style="vertical-align:top"><img src="/images/coin_stack.png" height="42" width="42"></td>
+      <td style="vertical-align:top">
+        <b href = "" onclick="window.open('/squads/<%= @squad.id %>/transfer', 'Transferir $', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=200')">
+  <img src="/images/coin_stack.png" height="42" width="42"></b>
+
+      </td>
       <td>
         <span style="color:yellow;font-size: 18px;font-weight: bold">
           <%= @squad.credits %><br>
@@ -41,9 +46,10 @@
   </span>
 </div>
 <div class="painel_goals">
-<span style="font-size: 10px;color:#<%= @squad.color %>">** Seu objetivo ** ( <%= @squad.name %> )
-<br>
-Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
+<span style="font-size: 10px;color:#<%= @squad.color %>">
+<b href = "" onclick="window.open('/squads/<%= @squad.id %>/goal', 'Objetivos', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=450, height=500')">
+  ** Seu objetivo ** ( <%= @squad.name %> )<br>
+  Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span></b>
 </div>
 <div class="painel_comments" style="width:200px">
   <span style="color:white;font-size: 14px;font-weight: bold;text-decoration: blink">
@@ -51,9 +57,6 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
   <%= raw @comment2 if @comment2 %>
 </div>
 <div class="painel_links">
-  <a href = "" onclick="window.open('/squads/<%= @squad.id %>/goal', 'Objetivos', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=450, height=500')">
-  Objetivos
-  </a><br><br>
   <a href = "" onclick="window.open('/results/<%= @squad.id %>/show_results', 'Combates', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=500')">
   Combates
   </a><br><br>
@@ -62,12 +65,6 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
   </a><br><br>
   <a href = "" onclick="window.open('https://wgbrnavies.wordpress.com/', 'Blog do GW', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">
   Blog do XWSG
-  </a><br><br>
-  <a href = "" onclick="window.open('/squads/<%= @squad.id %>/edit', 'Config Squad', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=350, height=280')">
-  Config Squad
-  </a><br><br>
-  <a href = "" onclick="window.open('/squads/<%= @squad.id %>/transfer', 'Transferir $', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=200')">
-  Transferir $
   </a><br><br>
   <a href = "" onclick="window.open('/ready', 'Passar Turno', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=150')">
   Passar Turno
@@ -181,12 +178,30 @@ Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span>
           <% end %>
 
           <% unless fleet.moving %>
-            <info class="tooltip">
-            <tip><%= raw fleet.description %></tip>
-            <span style="<%= raw fleet.span_style %>">
-            <%= fleet.show %>
-            </span>
-            </info>
+            <% case fleet.generic_unit.type %>
+              <% when 'Facility' %>
+                <%= render :partial => 'facilities', :locals => { :fleet => fleet } %>
+              <% when 'CapitalShip' %>
+                <%= render :partial => 'capital_ships', :locals => { :fleet => fleet } %>
+              <% when 'Warrior' %>
+                <%= render :partial => 'warriors', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
+              <% when 'Commander' %>
+                <%= render :partial => 'commanders', :locals => { :fleet => fleet } if fleet.carried_by == nil  %>
+              <% when 'Trooper' %>
+                <%= render :partial => 'troopers', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
+              <% when 'Armament' %>
+                <%= render :partial => 'armaments', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
+              <% when 'Skill' %>
+                <%= render :partial => 'skills', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
+              <% when 'LightTransport' %>
+                <%= render :partial => 'light_transports', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
+              <% when 'Fighter' %>
+                <%= render :partial => 'fighters', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
+              <% when 'Sensor' %>
+                <%= render :partial => 'sensors', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
+              <% else %>
+                <%= render :partial => 'fleets', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
+            <% end %>
           <% else %>
             <span style="color: #00FFFF" %>
             <%= fleet.show + ' -> ' + fleet.destination.name %>
