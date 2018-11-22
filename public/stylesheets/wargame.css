@@ -207,7 +207,7 @@ div.fleet {
     border: 0 outset gray;
     border-radius: 6px;
     box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
-    margin: 10px 5px 10px;
+    margin: 10px 10px 10px;
     padding: 5px 5px 5px 8px;
     width: auto;
     height: auto;
@@ -226,7 +226,7 @@ div.fleet_new {
     border: 0 outset gray;
     border-radius: 6px;
     box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
-    margin: 10px 5px 10px;
+    margin: 10px 10px 10px;
     padding: 5px 5px 5px 8px;
     width: auto;
     height: 90vh;
@@ -323,7 +323,7 @@ div.mainpage
   transition: all ease-in-out 0.3s;
   top: 0%;
   left: 380px;
-    display:inline;
+  display:inline;
 }
 
 div.mainpage:hover {
@@ -334,19 +334,19 @@ div.mainpage:hover {
 info.tooltip{
   position:relative;
   cursor:help;
-  }
+}
 
-  info.tooltip:hover{
+info.tooltip:hover{
   background:transparent;
   color:white;
   z-index:250;
-  }
+}
 
-  info.tooltip tip{
+info.tooltip tip{
   display: none
-  }
+}
 
-  info.tooltip:hover tip{
+info.tooltip:hover tip{
   clear:both;
   display:block;
   position:absolute;
@@ -360,7 +360,7 @@ info.tooltip{
   background-color: white;
   color:black;
   text-shadow: none;
-  }
+}
 
 .input{
   width:auto;

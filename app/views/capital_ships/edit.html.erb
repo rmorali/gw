@@ -20,8 +20,7 @@ document.title = " <%= @capital_ship.generic_unit.name %> '<%= @capital_ship.fle
 </div>
 
 <div class="fleet">
-Unidades carregadas:
-<p>
+Unidades embarcadas:
 <table>
 <% @carried_fleets.each do |fleet| %>
   <tr>
@@ -42,7 +41,7 @@ Unidades carregadas:
 </table>
 </div>
 <div class="fleet">
-Carregar Unidades:
+Embarcar Unidades:
 <p>
 <table>
 <% @carriable_fleets.each do |fleet| %>
@@ -62,7 +61,7 @@ Carregar Unidades:
   </tr>
 <% end %>
 </table>
-Carga permitida (Grande / Pequena): <%= @capital_ship.heavy_loading_capacity %> / <%= @capital_ship.light_loading_capacity %> 
+Transporta: <%= @capital_ship.heavy_loading_capacity %> caças / <%= @capital_ship.light_loading_capacity %> troopers
 </div>
 <div class="fleet">
   <%= simple_form_for @capital_ship, :url => url_for(:controller => 'capital_ships', :action => 'install_skill') do |f| %>

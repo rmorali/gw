@@ -47,7 +47,7 @@
 </div>
 <div class="painel_goals">
 <span style="font-size: 10px;color:#<%= @squad.color %>">
-<b href = "" onclick="window.open('/squads/<%= @squad.id %>/goal', 'Objetivos', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=450, height=500')">
+<b href = "" onclick="window.open('/squads/<%= @squad.id %>/goal', 'Objetivos', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=500, height=450')">
   ** Seu objetivo ** ( <%= @squad.name %> )<br>
   Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span></b>
 </div>
@@ -64,9 +64,9 @@
   Specs Naves
   </a><br><br>
   <a href = "" onclick="window.open('https://wgbrnavies.wordpress.com/', 'Blog do GW', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">
-  Blog do XWSG
+  Blog do GW
   </a><br><br>
-  <a href = "" onclick="window.open('/ready', 'Passar Turno', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=150')">
+  <a href = "" onclick="window.open('/ready', 'Passar Turno', 'toolbar=no, location=no, scrollbars=no, resizable=no, width=500, height=220')">
   Passar Turno
   </a><br><br>
   <a href = "/users/sign_out">Logout</a><br>
@@ -85,7 +85,7 @@
   <% @credits_per_turn = planet.credits_per_turn(@squad) %>
 
   <div id="gifs" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio %>px;z-index: 5;">
-    <b href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=500, height=380')">
+    <b href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=560, height=400')">
       <img src="/images/planets/<%= planet.name.gsub(" ","").downcase %>.png">
     </b>
   </div>
@@ -117,16 +117,16 @@
 
   <% if planet.generic_fleets.any? { |unit| unit.squad == @squad && unit.type == 'FacilityFleet' } %>
     <div id="capacidade_construtiva" style="position:absolute; left:<%= planet.x * @map_ratio %>px; top:<%= planet.y * @map_ratio + 60 %>px; white-space: nowrap">
+      <info class="tooltip" style="cursor:pointer">
+      <tip>Produzir Unidades</tip>
     <% if @round.move && !@squad.ready? && planet.constructive_capacity > 0 %>
       <b href = "" onclick="window.open('/facility_fleets/<%= planet.generic_fleets.select { |unit| unit.squad == @squad && unit.type == 'FacilityFleet' }.first.id  %>/edit', 'Facility', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=550, height=360')">
     <% end %>
     <% if @round.move %>
-      <info class="tooltip" style="cursor:pointer">
-      <tip>Produzir Unidades</tip>
-    <img src="/images/planets/shipyard.gif" height="30" width="40">
-       </info>
+      <img src="/images/planets/shipyard.gif" height="30" width="40">
     <% end %>
       </b>
+      </info>
     </div>
     <div id="planet balance" style="position:absolute; left:<%= planet.x * @map_ratio + 5 %>px; top:<%= planet.y * @map_ratio + 92 %>px;z-index: 15; white-space: nowrap">
     <% if planet.balance > 0 %>
@@ -144,16 +144,16 @@
 
   <% if planet.able_to_construct?(@squad) && planet.generic_fleets.any? { |unit| unit.squad == @squad } %>
     <div id="construcao" style="position:absolute; left:<%= planet.x * @map_ratio + 45 %>px; top:<%= planet.y * @map_ratio + 60 %>px;z-index: 15; white-space: nowrap">
+      <info class="tooltip" style="cursor:pointer">
+      <tip>Construir fábrica</tip>
      <% if @round.move && !planet.tradeport? && !@squad.ready? && planet.able_to_construct?(@squad) %>
        <b href = "" onclick="window.open('/planets/<%= planet.id %>/facility_fleets/new', 'Construir <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=220')">
      <% end %>
     <% if @round.move %>
-      <info class="tooltip" style="cursor:pointer">
-      <tip>Construir fábrica</tip>
-    <img src="/images/planets/construcao.jpg" height="22" width="22">
-       </info>
+      <img src="/images/planets/construcao.jpg" height="22" width="22">
     <% end %>
-    </b>
+      </b>
+      </info>
     </div>
   <% end %>
 

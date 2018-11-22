@@ -1,9 +1,24 @@
 <script>
   refreshParent();
   document.title = " Passar Turno "
- </script>  
+</script>
+
+<script type="text/javascript">
+ function closeWindow() {
+    setTimeout(function() {
+    window.close();
+    }, 10000);
+    }
+
+    window.onload = closeWindow();
+</script>  
 <div class="fleet_new">
-<span style=color:#<%= @squad.color %>;text-decoration:blink;font-size:14px> Esquadrão <%= @squad.name %> <%= @status %>. </span>
-<br><br>
-Feche este pop-up.
+<span style=color:#<%= @squad.color %>;text-decoration:blink;font-size:14px> Esquadrão <%= @squad.name %> <%= @status %>.</span>
+<br>
+<br>
+Aguarde a atualização do tabuleiro...
+<br>
+<br>
+Este alerta sumirá em 10 segundos...
+<br>
 </div>
