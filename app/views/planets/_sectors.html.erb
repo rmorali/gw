@@ -2,18 +2,18 @@
   <body onunload="location.reload()" style="background-image:url(<%= @squad.url %>)">
 <% end %>
 
-<svg width="<%= 1700 * @map_ratio %>" height="<%= 1300 * @map_ratio %>">
-  <polyline points="<%= 250 * @map_ratio %>,<%= 0 * @map_ratio %>
-     <%= 665 * @map_ratio %>,<%= 650 * @map_ratio %>
-     <%= 1020 * @map_ratio %>,<%= 650 * @map_ratio %>
-     <%= 1020 * @map_ratio %>,<%= 450 * @map_ratio %>
-     <%= 1130 * @map_ratio %>,<%= 350 * @map_ratio %>
-     <%= 950 * @map_ratio %>,<%= 0 * @map_ratio %>"
+<svg width="<%= (@map_x_adjust + 1700) * @map_ratio %>" height="<%= 1300 * @map_ratio %>">
+  <polyline points="<%= (@map_x_adjust + 250) * @map_ratio %>,<%= (@map_y_adjust + 0) * @map_ratio %>
+     <%= (@map_x_adjust + 665) * @map_ratio %>,<%= (@map_y_adjust + 650) * @map_ratio %>
+     <%= (@map_x_adjust + 1020) * @map_ratio %>,<%= (@map_y_adjust + 650) * @map_ratio %>
+     <%= (@map_x_adjust + 1020) * @map_ratio %>,<%= (@map_y_adjust + 450) * @map_ratio %>
+     <%= (@map_x_adjust + 1130) * @map_ratio %>,<%= (@map_y_adjust + 350) * @map_ratio %>
+     <%= (@map_x_adjust + 950) * @map_ratio %>,<%= (@map_y_adjust + 0) * @map_ratio %>"
      style="fill:none;stroke:white;stroke-width:1;stroke-dasharray:1,2" />
-  <polyline points="<%= 665 * @map_ratio %>,<%= 650 * @map_ratio %>
-     <%= 370 * @map_ratio %>,<%= 1300 * @map_ratio %>"
+  <polyline points="<%= (@map_x_adjust + 665) * @map_ratio %>,<%= (@map_y_adjust + 650) * @map_ratio %>
+     <%= (@map_x_adjust + 370) * @map_ratio %>,<%= (@map_y_adjust + 1300) * @map_ratio %>"
      style="fill:none;stroke:white;stroke-width:1;stroke-dasharray:1,2" />
-  <polyline points="<%= 1020 * @map_ratio %>,<%= 650 * @map_ratio %>
-     <%= 1450 * @map_ratio %>,<%= 1300 * @map_ratio %>"
+  <polyline points="<%= (@map_x_adjust + 1020) * @map_ratio %>,<%= (@map_y_adjust + 650) * @map_ratio %>
+     <%= (@map_x_adjust + 1450) * @map_ratio %>,<%= (@map_y_adjust + 1300) * @map_ratio %>"
      style="fill:none;stroke:white;stroke-width:1;stroke-dasharray:1,2" />
 <svg>

@@ -51,6 +51,8 @@ class PlanetsController < ApplicationController
     @setting = Setting.getInstance
     @squad = current_squad
     @map_ratio = ( @squad.map_ratio.to_f / 100 ).to_f
+    @map_x_adjust = 0
+    @map_y_adjust = 60
     @planets = Planet.includes(:squad).all
     @all_squads = Squad.all
     @flee_tax = (@squad.flee_tax @round).to_i
