@@ -73,133 +73,48 @@ b:hover {
     filter: brightness(1.65);
 }
 
-div.painel_turno {
+div.new_menu {
     white-space: nowrap;
     border: 0 outset gray;
     border-radius: 6px;
     box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
-    margin: 10px 5px 10px;
-    padding: 5px 5px 8px 8px;
-    width: 225px;
-    height: auto;
-    position: absolute;
-    left: 5px;
-    top: 5px;
-    background-color: rgba(0,0,0,0.7);
-    transition: all ease-in-out 0.36s;
-    z-index: 15;
-}
-div.painel_turno:hover {
-    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
-    background-color: rgba(0,0,0,0.7);
-    z-index: 15;
-}
-
-div.painel_goals {
-    border: 0 outset gray;
-    border-radius: 6px;
-    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
-    margin: 10px 5px 10px;
-    padding: 5px 5px 8px 8px;
-    width: 225px;
-    height: auto;
-    position: absolute;
-    left: 5px;
-    top: 55px;
-    background-color: rgba(0,0,0,0.7);
-    transition: all ease-in-out 0.36s;
-    z-index: 15;
-}
-div.painel_goals:hover {
-    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
-    background-color: rgba(0,0,0,0.7);
-    z-index: 15;
-}
-
-
-div.painel_credits {
-    white-space: nowrap;
-    border: 0 outset gray;
-    border-radius: 6px;
-    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
-    margin: 10px 5px 10px;
-    padding: 5px 5px 8px 8px;
-    width: 150px;
+    margin: 2px 5px 5px;
+    padding: 2px 5px 2px 5px;
+    width: auto;
     height: 55px;
-    position: absolute;
+    position: fixed;
     left: 5px;
-    top: 115px;
-    background-color: rgba(0,0,0,0.7);
+    top: 2px;
+    background-color: rgba(0,0,25,0.85);
     transition: all ease-in-out 0.36s;
-    z-index: 15;
+    z-index: 50;
 }
-div.painel_credits:hover {
-    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
-    background-color: rgba(0,0,0,0.7);
-    z-index: 15;
+div.new_menu:hover {
+    box-shadow: 0 0 1px 1px rgba(160,90,90,0.60) inset, 0 0 4px rgba(160,60,60,0.60);
+    background-color: rgba(0,0,25,0.95);
+    z-index: 50;
 }
-div.painel_comments {
-    border: 0 outset gray;
-    border-radius: 6px;
-    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
-    margin: 10px 5px 10px;
-    padding: 5px 5px 8px 8px;
-    width: 225px;
-    height: auto;
-    position: absolute;
-    left: 175px;
-    top: 115px;
-    background-color: rgba(0,0,0,0.7);
-    transition: all ease-in-out 0.36s;
-    z-index: 15;
-}
-div.painel_comments:hover {
-    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
-    background-color: rgba(0,0,0,0.7);
-    z-index: 15;
-}
-div.painel_unitys {
+
+div.painel_units {
     white-space: nowrap;
     border: 0 outset gray;
     border-radius: 6px;
     box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
-    margin: 10px 5px 10px;
+    margin: 7px 5px 10px;
     padding: 5px 5px 8px 8px;
     width: 130px;
     height: auto;
-    position: absolute;
-    left: 250px;
-    top: 5px;
-    background-color: rgba(0,0,0,0.7);
-    transition: all ease-in-out 0.36s;
-    z-index: 15;
-}
-div.painel_unitys:hover {
-    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
-    background-color: rgba(0,0,0,0.7);
-    z-index: 15;
-}
-
-div.painel_links {
-    white-space: nowrap;
-    border: 0 outset gray;
-    border-radius: 6px;
-    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
-    margin: 10px 5px 10px;
-    padding: 10px 5px 10px 8px;
-    width: auto;
-    height: auto;
-    position: absolute;
+    position: fixed;
     left: 5px;
-    top: 188px;
-    background-color: rgba(0,0,0,0.7);
+    top: 60px;
+    background-color: rgba(0,0,25,0.85);
     transition: all ease-in-out 0.36s;
-    z-index: 15;
+    z-index: 50;
 }
-div.painel_links:hover {
+div.painel_units:hover {
     box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
-    background-color: rgba(0,0,0,0.7);
-    z-index: 15;
+    background-color: rgba(0,0,25,0.95);
+    z-index: 50;
 }
 
 div.fleet {

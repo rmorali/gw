@@ -52,7 +52,7 @@ class PlanetsController < ApplicationController
     @squad = current_squad
     @map_ratio = ( @squad.map_ratio.to_f / 100 ).to_f
     @map_x_adjust = 0
-    @map_y_adjust = 60
+    @map_y_adjust = 65
     @planets = Planet.includes(:squad).all
     @all_squads = Squad.all
     @flee_tax = (@squad.flee_tax @round).to_i
@@ -90,11 +90,11 @@ class PlanetsController < ApplicationController
       @warriors += 1 if fleet.type?(Warrior)
     end
     #@active = FacilityFleet.select { |facility| facility.squad == @current_squad && facility.balance > 0 }.count
-    #@comment1 = "#{@inactive} fabricas sem produzir!" unless @active == 0
-    @comment1 = ""
+    #@comment2 = "#{@inactive} fabricas sem produzir!" unless @active == 0
     @comment2 = ""
+    @comment1 = ""
     @all_squads.each do |squad|
-      @comment2 << "<span style=color:##{squad.color}>" + squad.name + " pronto!<span><br>" if squad.ready?
+      @comment1 << "<span style=color:##{squad.color}>" + squad.name + " pronto!<span><br>" if squad.ready?
     end
 
     respond_with @planets
