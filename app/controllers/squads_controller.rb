@@ -67,6 +67,7 @@ class SquadsController < ApplicationController
     @squad.ready!
     @squad.reload
     @round = Round.getInstance
+    redirect_to :back
     if @squad.ready == true
       @status = "preparado e aguardando"
     else

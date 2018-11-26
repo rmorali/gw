@@ -6,12 +6,16 @@
 <div class="new_menu">
   <table>
     <tr>
-      <td style="vertical-align:middle">
-        <img src="/images/<%= @squad.faction %>.png" height="40" width="40">
+      <td style="vertical-align:top">
+        <info class="tooltip">
+        <tip>Config do Sistema</tip>
+        <b href = "" onclick="window.open('/squads/<%= @squad.id %>/edit', 'Config Squad', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=350, height=280')">
+        <img src="/images/<%= @squad.faction %>.png" height="50" width="50"></b>
+        </info>
       </td>
       <td style="vertical-align:middle">
         <span style="color:#<%= @squad.color %>;font-size: 24px;font-weight: bold">
-          <b href = "" onclick="window.open('/squads/<%= @squad.id %>/edit', 'Config Squad', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=350, height=280')"><%= @squad.name %></b>
+          <%= @squad.name %>
         </span>
       </td>
       <td style="vertical-align:middle">
@@ -28,10 +32,13 @@
           <% end %>
         </span>
       </td>      
-      <td style="vertical-align:middle">
+      <td style="vertical-align:top">
+        <info class="tooltip">
+        <tip>Transferir Créditos</tip>
         <b href = "" onclick="window.open('/squads/<%= @squad.id %>/transfer', 'Transferir $', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=200')"><img src="/images/coin_stack.png" height="42" width="42"></b>
+        </info>
       </td>
-      <td style="vertical-align:middle">
+      <td style="vertical-align:top">
         <span style="color:yellow;font-size: 15px;font-weight: bold">
           <%= @squad.credits %><br>
         </span>
@@ -42,17 +49,23 @@
           - <%= @flee_tax %>
         </span>
       </td>
-      <td style="vertical-align:middle">
-        <a href = "" onclick="window.open('https://docs.google.com/spreadsheets/d/1MmlpHv6qHDJqGnv7AmeU0MPzUQeslwk7rGmBln9-2ls/edit?authkey=CL_F9boP&hl=pt_BR#gid=1177609294', 'Specs Naves', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">Specs Naves</a>
+      <td style="vertical-align:top">
+        <info class="tooltip">
+        <tip>Specs das Naves</tip>
+        <b href = "" onclick="window.open('https://docs.google.com/spreadsheets/d/1MmlpHv6qHDJqGnv7AmeU0MPzUQeslwk7rGmBln9-2ls/edit?authkey=CL_F9boP&hl=pt_BR#gid=1177609294', 'Specs Naves', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')"><img src="/images/specs.png" height="55" width="55"></b>
+        </info>
       </td>
       <td style="vertical-align:middle">
         <a href = "" onclick="window.open('https://wgbrnavies.wordpress.com/', 'Blog do GW', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">Blog do GW</a>
       </td>
-      <td style="vertical-align:middle">
+      <td style="vertical-align:top">
+        <info class="tooltip">
+        <tip>Combates</tip>
         <b href = "" onclick="window.open('/results/<%= @squad.id %>/show_results', 'Combates', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=350, height=500')"><img src="/images/xvt.png" height="55" width="65"></b>
+        </info>
       </td>
       <td style="vertical-align:middle">
-        <a href = "" onclick="window.open('/ready', 'Passar Turno', 'toolbar=no, location=no, scrollbars=no, resizable=no, width=500, height=220')">Passar Turno</a>
+        <%= link_to "Passar Turno","/ready" %>
       </td>
       <td style="vertical-align:middle">
         <span style="font-size: 10px;font-weight: bold;word-wrap: break-word;color:#<%= @squad.color %>">
@@ -60,7 +73,7 @@
   Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span></b>
       </td>
       <td style="vertical-align:middle">
-        <a href = "/users/sign_out">Logout</a>
+        <a href="/users/sign_out">Logout</a>
       </td>
     </tr>
   </table>
