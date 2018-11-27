@@ -1,0 +1,69 @@
+<% content_for :for_head do %>
+  <script>
+  document.title = "X-Wing Galactic Wars"
+  </script>
+<% end %>
+<h2>Acesso ao Tabuleiro</h2>
+<br>
+<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div class="inputs">
+    <%= f.input :email, :required => false, :autofocus => true, :input_html => {:style => 'width: 200px'} %>
+    <%= f.input :password, :required => false, :input_html => {:style => 'width: 200px'} %>
+    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit, "Login" %>
+  </div>
+<% end %>
+<br>
+<a href="http://wgbrnavies.wordpress.com" target=_blank> Blog do GW (regras)</a> / 
+<%= render :partial => "devise/shared/links" %>
+<br>
+<h3> Changelog 17/11/2018 </h3>
+<span style=line-height:22px; word-wrap: normal>
+<ul>
+<li> Novo sistema de domínio de planetas com income proporcional. Necessário 20000 pontos de presença militar para domínio total.</li>
+<li> Capital Ships, Fábricas e Troopers exercem presença 10x maior que as demais unidades.</li>
+<li> Construção de novas fábricas somente em planetas 100% dominados e com 200 unidades construtoras: Troopers.</li>
+<li> Tabuleiro atualizado com novas informações (Passe o mouse sobre eles para detalhes).</li>
+</ul>
+<h3> Changelog 12/08/2017 </h3>
+<span style=line-height:22px; word-wrap: normal>
+<ul>
+<li>Nova versão X-Wing Alliance - XWS 1.4 disponível. Bugs corrigidos e todas as unidades do GW são pilotáveis. Ligeiro aumento da manobrabilidade das Capital Ships. Todas as Specs das naves podem ser vistas <a href = "https://docs.google.com/spreadsheets/d/1MmlpHv6qHDJqGnv7AmeU0MPzUQeslwk7rGmBln9-2ls/edit#gid=1177609294" target=_blank>neste link.</a>
+</ul>
+<h3> Changelog 08/12/2016 </h3>
+<span style=line-height:22px; word-wrap: normal>
+<ul>
+<li>Permite armar e desarmar transportes diretamente, como é feito com os caças e bombers.</li>
+<li>Alteração na regra: caças e bombers sem ogivas de destruição (torpedos, adv torpedos, rockets ou space bombs) só podem cercar as fábricas (siege, marcar como sabotada/bloqueada) onde elas perdem 50% de produção. </li>
+<li>Correção de alguns bugs gráficos.</li>
+</ul>
+</span>
+<h3> Instruções Básicas do Sistema </h3>
+<span style=line-height:22px; word-wrap: normal>
+<ul>
+<li>SISTEMA DE TURNOS: 1a FASE - Produção/Construção e ordens de movimento, 2a FASE - combates e registro de resultados.</li>
+<li>ATACANTE x DEFENSOR. O sistema randomiza quem toma a iniciativa de ataque. O atacante é o guest e configura sua frota primeiro no XWA, o defensor é o host e configura em segundo.</li>
+<li>PRODUÇÃO DE UNIDADES: As Fábricas possuem "pontos de produção". Para produzir clique no ícone de fábrica no planeta desejado. A produção é efetivada na hora. Para unidades maiores construa mais fábricas ou deixe acumular pontos.</li>
+<li>NAVES PILOTÁVEIS: Todas as unidades da versão 1.4 para o GW são pilotáveis. Inclusive as Capital Ships.</li>
+<li>CAPTURAS: Ocorre quando o esquadrão perde todos os pilotos humanos e sua Capital Ship é desabilitada antes da fuga. </li>
+<li>FUGAS: O esquadrão é obrigado a fugir do combate se todos seus pilotos humanos forem abatidos. O líder pode decidir o tempo de fuga entre 2 e 10 minutos. A fuga consome 20% do valor de sua frota em créditos. A fuga também pode ser a critério do esquadrão em qualquer momento, respeitando os tempos. </li>
+<li>OBJETIVOS: Vence quem atingir o objetivo antes dos demais, como no WAR.</li>
+</ul>
+
+<h3> Dicas para um bom jogo </h3>
+<span style=line-height:22px; word-wrap: normal>
+<ul>
+<li>EVITE OVERFLEET: Ocorre quando há mais tipos de naves do que os 8 slots do XWA permitem. Para evitá-lo procure não deixar muitas unidades diferentes no mesmo planeta. </li>
+<li>JOGOS COM LAG: Apesar de a Internet ter melhorado muito, sempre pode ocorrer. É interessante fazer um melee antes pra testar.</li>
+<li>DISCUSSÃO DE REGRAS: As regras foram discutidas e jogadas por mais de 8 anos e quase todas as situações estão previstas. Se houver alguma situação extremamente inesperada, ela somente pode ser alterada por UNANIMIDADE e começa a valer no turno seguinte.</li>
+<li>LENTIDÃO NO SISTEMA: Eventualmente o server pode fica lento. Não clique várias vezes nas funções. Espere o sistema efetuar as operações ou na dúvida reinicie o browser.</li>
+<li>DÚVIDAS SOBRE UNIDADES: Passe o mouse sobre a unidade para informações.</li>
+<br>
+Para quaisquer outras dúvidas acesse o Blog do GW (link no topo da página).<br>
+BOM JOGO!
+</ul>
+</span>
+</section>
