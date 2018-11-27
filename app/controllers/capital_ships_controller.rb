@@ -19,6 +19,7 @@ class CapitalShipsController < ApplicationController
     @fleet = GenericFleet.find(params[:fleet][:id])
     @capital_ship = GenericFleet.find(params[:id])
     @fleet.load_in @capital_ship, params[:fleet][:quantity].to_i if params[:fleet][:quantity] && @fleet.squad.ready != true
+    GroupFleet.new(@fleet.planet).group!
     redirect_to :back
   end
 
@@ -26,6 +27,7 @@ class CapitalShipsController < ApplicationController
     @fleet = GenericFleet.find(params[:fleet][:id])
     @capital_ship = GenericFleet.find(params[:id])
     @fleet.unload_from @capital_ship, params[:fleet][:quantity].to_i if params[:fleet][:quantity] && @fleet.squad.ready != true
+    GroupFleet.new(@fleet.planet).group!
     redirect_to :back
   end
 

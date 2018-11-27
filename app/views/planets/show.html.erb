@@ -72,7 +72,8 @@ document.title = "<%= @planet.name %>"
             <% if fleet.carried_by == nil %>
               <td>
               <span style=color:#40E0D0><%= fleet.show_results %></span>
-              <span style=color:#40E0D0><%= "--> #{fleet.destination.name} " if fleet.moving? && fleet.squad == @squad && @round.move %></span></td>
+              <span style=color:#40E0D0><%= "--> #{fleet.destination.name} " if fleet.moving? && fleet.squad == @squad && @round.move %></span>
+              </td>
             <% else %>
               <td></td>
             <% end %>

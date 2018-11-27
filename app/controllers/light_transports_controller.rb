@@ -13,6 +13,7 @@ class LightTransportsController < ApplicationController
     @fleet = GenericFleet.find(params[:fleet][:id])
     @light_transport = GenericFleet.find(params[:id])
     @fleet.load_in @light_transport, params[:fleet][:quantity].to_i if params[:fleet][:quantity]
+    GroupFleet.new(@fleet.planet).group!
     redirect_to :back
   end
 
@@ -20,6 +21,7 @@ class LightTransportsController < ApplicationController
     @fleet = GenericFleet.find(params[:fleet][:id])
     @light_transport = GenericFleet.find(params[:id])
     @fleet.unload_from @light_transport, params[:fleet][:quantity].to_i if params[:fleet][:quantity]
+    GroupFleet.new(@fleet.planet).group!
     redirect_to :back
   end
 

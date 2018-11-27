@@ -253,7 +253,7 @@ class GenericFleet < ActiveRecord::Base
       self.moving = carrier.moving
       self.destination = carrier.destination
       self.save
-      GroupFleet.new(self.planet)
+      #GroupFleet.new(self.planet)
     end
   end
 
