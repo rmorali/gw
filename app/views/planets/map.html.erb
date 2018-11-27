@@ -225,7 +225,10 @@
             <%= fleet.show + ' -> ' + fleet.destination.name %>
           <% end %>
           <% last_fleet_type = fleet.generic_unit.type %>
-          <br>
+          <% if fleet.carried_by == nil %>
+            <br>
+          <% end %>
+          
         <% end %>
 
         <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>

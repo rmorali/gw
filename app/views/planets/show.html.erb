@@ -32,7 +32,10 @@ document.title = "<%= @planet.name %>"
             <% if last_fleet_type != fleet.generic_unit.type && last_fleet_type != [] %>
               <% #caso queiramos pular linhas em cada tipo de nave diferente %>
             <% end %>
-            <tr><td>
+
+            <% if fleet.carried_by == nil %>
+              <tr><td>
+            <% end %>
 
             <% case fleet.generic_unit.type %>
               <% when 'Facility' %>
@@ -59,7 +62,9 @@ document.title = "<%= @planet.name %>"
                 <%= render :partial => 'fleets', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
             <% end %>
 
-            </td>
+            <% if fleet.carried_by == nil %>
+              </td>
+            <% end %>
 
             <%= simple_fields_for "fleets[]", fleet do |fleet_form| %>
                 <% if fleet_form.object.type?(Commander) || fleet_form.object.type?(Warrior) %>
@@ -78,7 +83,11 @@ document.title = "<%= @planet.name %>"
               <td></td>
             <% end %>
 
-            </tr>
+            <% if fleet.carried_by == nil %>
+              </tr>
+            <% else %>
+
+            <% end %>
           <% last_fleet_type = fleet.generic_unit.type %>
           <% end %>
 
