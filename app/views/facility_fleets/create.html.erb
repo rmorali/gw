@@ -2,15 +2,25 @@
  refreshParent();
 document.title = "Construir em <%= @planet.name %>"
 </script>
+<script type="text/javascript">
+ function closeWindow() {
+    setTimeout(function() {
+    window.close();
+    }, 10000);
+    }
+
+    window.onload = closeWindow();
+</script> 
 <div class = "fleet">
 <h2> <%= @planet.name %> </h2>
 <span style=color:#<%= @squad.color %>>
-<% if @sucess == true %>
-  <%= @facility.name %> construída com sucesso!<br><br>
-  Custo da construção: <%= @facility.price %><br>
-  Atenção: Feche essa janela e aguarde o refresh no mapa.
+<% if @success == true %>
+  <%= @quantity %> <%= @facility.name %> construída / comprada com sucesso!<br><br>
+  Custo da operação: <%= @facility.price * @quantity %><br>
+  Este alerta sumirá em 10 segundos...
 <% else %>
-  Não há créditos suficientes para construir uma <%= @facility.name %>
+  Não há créditos suficientes para construir <%= @quantity %> <%= @facility.name %><br>
+  Este alerta sumirá em 10 segundos...
 <% end %>
 </span>
 </div>

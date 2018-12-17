@@ -163,7 +163,7 @@
   <% if planet.able_to_construct?(@squad) && planet.generic_fleets.any? { |unit| unit.squad == @squad } %>
     <div id="construcao" style="position:absolute; left:<%= ( planet.x + @map_x_adjust ) * @map_ratio + 45 %>px; top:<%= ( planet.y + @map_y_adjust ) * @map_ratio + 60 %>px;z-index: 15; white-space: nowrap">
       <info class="tooltip" style="cursor:pointer">
-      <tip>Construir fábrica</tip>
+      <tip>Construir fábrica/unidades</tip>
      <% if @round.move && !planet.tradeport? && !@squad.ready? && planet.able_to_construct?(@squad) %>
        <b href = "" onclick="window.open('/planets/<%= planet.id %>/facility_fleets/new', 'Construir <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=220')">
      <% end %>

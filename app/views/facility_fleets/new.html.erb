@@ -1,15 +1,22 @@
 <script>
-document.title = "Construir em <%= @planet.name %>"
+document.title = "Construir ou Comprar em <%= @planet.name %>"
 </script>
 <div class="fleet">
 <h2> <%= @planet.name %> </h2>
-<h3> Construir Fábrica: </h3>
+<h3> Construir Fábrica / Comprar Unidades: </h3>
+<table>
+<tr><td>Qtde:</td><td>Tipo:</td></tr>
+<tr>
 <%= simple_form_for [@planet, @facility_fleet]  do |f| %>
-  <%= f.association :facility, :collection => @facilities, :label => 'Tipo: ' %>
-  <br>
-  <%= f.submit 'Construir' %>
+  <td><%= f.input :quantity, :collection => 1..1000, :default => 1, :label => false %></td>
+  <td><%= f.association :facility, :collection => @facilities, :label => false %></td>
+</tr>
+<tr>
+<td colspan="2"><%= f.submit 'Construir / Comprar' %></td>
 <% end %>
-<p>
+</tr>
+</table>	
+<p>	
 <center><a href = "https://docs.google.com/spreadsheet/ccc?key=0ArH0MNBRFM6hdFVDZkctYWZ5Q1FBbXJ2TGl5WGg2bmc&authkey=CL_F9boP&hl=pt_BR#gid=6" width="1070" height="760" scrolling="auto" frameborder="0" align="center" target=_blank>Tabela de naves</a></center>
 <p>
 </div>

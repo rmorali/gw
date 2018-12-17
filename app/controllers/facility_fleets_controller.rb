@@ -11,11 +11,13 @@ class FacilityFleetsController < ApplicationController
   def create
     @squad = current_squad
     @facility = GenericUnit.find(params[:facility_fleet][:generic_unit_id])
-    @sucess = nil
-    if current_squad.credits >= @facility.price
-      current_squad.buy @facility, 1, @planet
-      @sucess = true
+    @quantity = params[:facility_fleet][:quantity].to_i
+    @success = nil
+    if current_squad.credits >= @facility.price * @quantity
+      current_squad.buy @facility, @quantity, @planet
+      @success = true
     end
+    GroupFleet.new(@planet).group!
   end
 
 
@@ -51,7 +53,7 @@ class FacilityFleetsController < ApplicationController
   private
   def find_resources
     @planet = Planet.find params[:planet_id]
-    @facilities = Facility.allowed_for(current_squad.faction)
+    @facilities = GenericUnit.allowed_for(current_squad.faction)
   end
 
 end

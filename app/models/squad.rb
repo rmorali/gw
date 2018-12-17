@@ -22,11 +22,16 @@ class Squad < ActiveRecord::Base
   end
 
   def buy unit, quantity, planet
-    unless (unit.belongs? faction) and (unit.is_a? Facility) and (credits >= unit.price)
+    unless (unit.belongs? faction) and (credits >= unit.price)
       return false
     end
-    debit unit.price
-    new_fleet = FacilityFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet, :balance => 0, :level => 0, :fleet_name => ' ', :round => Round.getInstance.number)
+    if unit.is_a?(Facility)
+      quantity = 1
+      new_fleet = FacilityFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet, :balance => 0, :level => 0, :fleet_name => ' ', :round => Round.getInstance.number)
+    else
+      new_fleet = GenericFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet, :balance => 0, :level => 0, :fleet_name => ' ', :round => Round.getInstance.number)      
+    end
+    debit unit.price * quantity
     generic_fleets << new_fleet
     save
     planet.set_map
