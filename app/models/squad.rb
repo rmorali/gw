@@ -27,9 +27,9 @@ class Squad < ActiveRecord::Base
     end
     if unit.is_a?(Facility)
       quantity = 1
-      new_fleet = FacilityFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet, :balance => 0, :level => 0, :fleet_name => ' ', :round => Round.getInstance.number)
+      new_fleet = FacilityFleet.create(:generic_unit_id => unit.id, :quantity => quantity, :planet => planet, :balance => 0, :level => 0, :fleet_name => ' ', :round => Round.getInstance.number)
     else
-      new_fleet = GenericFleet.create(:generic_unit => unit, :quantity => quantity, :planet => planet, :balance => 0, :level => 0, :fleet_name => ' ', :round => Round.getInstance.number)      
+      new_fleet = Fleet.create(:generic_unit_id => unit.id, :quantity => quantity, :planet => planet, :balance => 0, :level => 0, :fleet_name => ' ', :round => Round.getInstance.number)      
     end
     debit unit.price * quantity
     generic_fleets << new_fleet

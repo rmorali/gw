@@ -17,7 +17,7 @@ development:
   database: gw_development
   pool: 5
   username: root
-  password: pass
+  password: P@ss1234
   variables:
     sql_mode: TRADITIONAL
 
@@ -32,7 +32,7 @@ test:
   database: gw_test
   pool: 5
   username: root
-  password: pass
+  password: P@ss1234
   variables:
     sql_mode: TRADITIONAL
 
