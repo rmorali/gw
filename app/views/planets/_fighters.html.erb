@@ -1,6 +1,6 @@
 <info class="tooltip">
 <tip><%= raw fleet.description %></tip>
-<span style="<%= raw fleet.span_style %>">
+<span style="<%= raw fleet.span_style %><%= ';color: #00FFFF' if fleet.moving %>">
 	<% if fleet.squad == @squad && !@squad.ready? && !@round.attack? %>
 	  <b href = "" onclick="window.open('/fighters/<%= fleet.id %>/edit', 'Fighter <%= fleet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=395, height=450')"><%= fleet.show %></b>
 	<% else %>
@@ -8,3 +8,9 @@
 	<% end %>
 </span>
 </info>
+
+<% if fleet.moving %>
+  <span style="color: #00FFFF">
+  <%= ' -> ' + fleet.destination.name %>
+  </span>
+<% end %> 

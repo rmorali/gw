@@ -195,7 +195,6 @@
             <% #caso queiramos pular linhas em cada tipo de nave diferente %>
           <% end %>
 
-          <% unless fleet.moving %>
             <% case fleet.generic_unit.type %>
               <% when 'Facility' %>
                 <%= render :partial => 'facilities', :locals => { :fleet => fleet } %>
@@ -219,16 +218,14 @@
                 <%= render :partial => 'sensors', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
               <% else %>
                 <%= render :partial => 'fleets', :locals => { :fleet => fleet } if fleet.carried_by == nil %>
-            <% end %>
-          <% else %>
-            <span style="color: #00FFFF" %>
-            <%= fleet.show + ' -> ' + fleet.destination.name %>
-          <% end %>
+            <% end %>       
+
           <% last_fleet_type = fleet.generic_unit.type %>
-
-            <br>
-
           
+          <% if fleet.carried_by == nil%>
+            <br>
+          <% end %>
+            
         <% end %>
 
         <% planet.results.sort_by{|a| [a.round.number, a.squad.name, a.generic_unit.id, a.quantity]}.each do |fleet| %>

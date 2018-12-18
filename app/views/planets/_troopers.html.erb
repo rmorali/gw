@@ -1,7 +1,13 @@
 <info class="tooltip">
 <tip><%= raw fleet.description %></tip>
-<span style="<%= raw fleet.span_style %>">
+<span style="<%= raw fleet.span_style %><%= ';color: #00FFFF' if fleet.moving %>">
 <%= fleet.show %> 
 </span>
 </info>
 
+
+<% if fleet.moving %>
+  <span style="color: #00FFFF">
+  <%= ' -> ' + fleet.destination.name %>
+  </span>
+<% end %> 
