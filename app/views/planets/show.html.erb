@@ -21,7 +21,7 @@ document.title = "<%= @planet.name %>"
 <p>
     <table border=0>
     <% if @round.move %>
-      <tr bgcolor=#223333><td width=120>Unidade:</td><td align=right width=40>Qtde:</td><td width=50>Destino:</td><td>Indo para:</td></tr>
+      <tr bgcolor=#223333><td width=120>Unidade:</td><td align=right width=40>Qtde:</td><td width=50>Destino:</td></tr>
       <% form_tag "/generic_fleets/move" do %>
 
         <% your_fleets = @planet.generic_fleets.select { |fleet| fleet.squad == @squad } %>
@@ -74,14 +74,7 @@ document.title = "<%= @planet.name %>"
                 <% end %>
                  <td><div class="minimal"><%= fleet_form.association :destination, :collection => @planet.routes(fleet_form.object), :disabled => false, :label => false if fleet_form.object.is_movable? && fleet_form.object.squad == @squad %></div></td>
             <% end %>
-            <% if fleet.carried_by == nil %>
-              <td>
-              <span style=color:#40E0D0><%= fleet.show_results %></span>
-              <span style=color:#40E0D0><%= "--> #{fleet.destination.name} " if fleet.moving? && fleet.squad == @squad && @round.move %></span>
-              </td>
-            <% else %>
-              <td></td>
-            <% end %>
+
 
             <% if fleet.carried_by == nil %>
               </tr>
