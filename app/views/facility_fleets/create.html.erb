@@ -2,25 +2,19 @@
  refreshParent();
 document.title = "Construir em <%= @planet.name %>"
 </script>
-<script type="text/javascript">
- function closeWindow() {
-    setTimeout(function() {
-    window.close();
-    }, 10000);
-    }
-
-    window.onload = closeWindow();
-</script> 
+<script>
+setTimeout("location.href = '/planets/<%= @planet.id %>/facility_fleets/new';",7000);
+</script>
 <div class = "fleet">
 <h2> <%= @planet.name %> </h2>
 <span style=color:#<%= @squad.color %>>
 <% if @success == true %>
   <%= @quantity %> <%= @facility.name %> construída / comprada com sucesso!<br><br>
   Custo da operação: <%= @facility.price * @quantity %><br>
-  Este alerta sumirá em 10 segundos...
+  Aguarde a atualização do mapa...
 <% else %>
   Não há créditos suficientes para construir <%= @quantity %> <%= @facility.name %><br>
-  Este alerta sumirá em 10 segundos...
+  Aguarde a atualização do mapa...
 <% end %>
 </span>
 </div>
