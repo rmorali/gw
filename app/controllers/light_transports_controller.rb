@@ -31,6 +31,7 @@ class LightTransportsController < ApplicationController
       @armament = GenericFleet.find(params[:fleet][:weapon1_id])
       @light_transport.arm_with @armament, 1
     end
+    GroupFleet.new(@light_transport.planet).group!
     redirect_to :back
   end
 
@@ -40,18 +41,21 @@ class LightTransportsController < ApplicationController
       @armament = GenericFleet.find(params[:fleet][:weapon2_id])
       @light_transport.arm_with @armament, 2
     end
+    GroupFleet.new(@light_transport.planet).group!
     redirect_to :back
   end
 
   def disarm_1
     @light_transport = GenericFleet.find(params[:fleet][:id])
     @light_transport.disarm 1 unless @light_transport.weapon1_id == nil
+    GroupFleet.new(@light_transport.planet).group!
     redirect_to :back
   end
 
   def disarm_2
     @light_transport = GenericFleet.find(params[:fleet][:id])
     @light_transport.disarm 2 unless @light_transport.weapon2_id == nil
+    GroupFleet.new(@light_transport.planet).group!
     redirect_to :back
   end
 

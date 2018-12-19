@@ -37,12 +37,14 @@ class CapitalShipsController < ApplicationController
       @skill = GenericFleet.find(params[:fleet][:skill_id])
       @capital_ship.install @skill
     end
+    GroupFleet.new(@capital_ship.planet).group!
     redirect_to :back
   end
 
   def uninstall_skill
     @capital_ship = GenericFleet.find(params[:fleet][:id])
     @capital_ship.uninstall_skill unless @capital_ship.skill_id == nil
+    GroupFleet.new(@capital_ship.planet).group!
     redirect_to :back
   end
 

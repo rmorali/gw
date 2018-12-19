@@ -12,6 +12,7 @@ class FightersController < ApplicationController
       @armament = GenericFleet.find(params[:fleet][:weapon1_id]) 
       @fighter.arm_with @armament, 1
     end
+    GroupFleet.new(@fighter.planet).group!
     redirect_to :back
   end
 
@@ -21,18 +22,21 @@ class FightersController < ApplicationController
       @armament = GenericFleet.find(params[:fleet][:weapon2_id]) 
       @fighter.arm_with @armament, 2
     end
+    GroupFleet.new(@fighter.planet).group!
     redirect_to :back
   end
 
   def disarm_1
     @fighter = GenericFleet.find(params[:fleet][:id])
     @fighter.disarm 1 unless @fighter.weapon1_id == nil
+    GroupFleet.new(@fighter.planet).group!
     redirect_to :back
   end
 
   def disarm_2
     @fighter = GenericFleet.find(params[:fleet][:id])
     @fighter.disarm 2 unless @fighter.weapon2_id == nil
+    GroupFleet.new(@fighter.planet).group!
     redirect_to :back
   end
 
