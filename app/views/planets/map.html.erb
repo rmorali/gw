@@ -103,7 +103,7 @@
   <% @credits_per_turn = planet.credits_per_turn(@squad) %>
 
   <div id="gifs" style="position:absolute; left:<%= ( planet.x + @map_x_adjust ) * @map_ratio %>px; top:<%= ( planet.y + @map_y_adjust ) * @map_ratio %>px;z-index: 5;">
-    <b href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=560, height=400')">
+    <b href = "" onclick="window.open('/planets/<%= planet.id %>', '<%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=650, height=400')">
       <img src="/images/planets/<%= planet.name.gsub(" ","").downcase %>.png">
     </b>
   </div>
@@ -138,7 +138,7 @@
       <info class="tooltip" style="cursor:pointer">
       <tip>Produzir Unidades</tip>
     <% if @round.move && !@squad.ready? && planet.constructive_capacity > 0 %>
-      <b href = "" onclick="window.open('/facility_fleets/<%= planet.generic_fleets.select { |unit| unit.squad == @squad && unit.type == 'FacilityFleet' }.first.id  %>/edit', 'Facility', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=550, height=360')">
+      <b href = "" onclick="window.open('/facility_fleets/<%= planet.generic_fleets.select { |unit| unit.squad == @squad && unit.type == 'FacilityFleet' }.first.id  %>/edit', 'Facility', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=500, height=360')">
     <% end %>
     <% if @round.move %>
       <img src="/images/planets/shipyard.gif" height="30" width="40">
@@ -153,7 +153,8 @@
       <span style="color:white;font-size: 11px;font-weight: bold">
     <% end %>
     <info class="tooltip" style="cursor:pointer">
-    <tip>Capacidade produtiva: <%= planet.balance %></tip>
+    <tip>Produção Disponível: <%= planet.balance %><br>
+         Próximo Turno: +<%= planet.next_turn_constructive_capacity %> = <%= planet.next_turn_constructive_capacity + planet.balance %> </tip>
     <%= planet.balance if @round.move %>
     </info>
     </span>

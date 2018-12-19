@@ -255,6 +255,15 @@ class Planet < ActiveRecord::Base
     facilities = generic_fleets.where(:type => 'FacilityFleet').sum(:balance)
   end
 
+  def next_turn_constructive_capacity
+    next_turn_capacity = 0
+    facilities = generic_fleets.where(:type => 'FacilityFleet')
+    facilities.each do |f|
+      next_turn_capacity += f.default_capacity
+    end
+    next_turn_capacity
+  end
+
   def update_balance
     if constructive_capacity > 0
       self.balance += constructive_capacity

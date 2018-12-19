@@ -7,29 +7,29 @@ document.title = "<%= @facility %> <%= @planet %>"
 <table>
 <tr>
 <td width=50%>
-  <h3><%= @facility %></h3>
+  <h3><%= @facility %> (+<%= @facility.default_capacity %>)</h3>
   <span style=font-weight:bold;font-size:16px;color:yellow>
   Produção Disponível: <%= @facility.planet.balance.to_i %><br>
   </span>
-  <span style=font-weight:bold;font-size:13px;color:#00FF00>
-  Upgrades: <%= @facility.level %><br>
+  <span style=font-weight:bold;font-size:12px;color:cyan>
+  Próximo Turno: +<%= @facility.planet.next_turn_constructive_capacity %> = <%= @facility.planet.next_turn_constructive_capacity.to_i + @facility.planet.balance.to_i %><br>
   </span>
-  <span style=font-weight:bold;font-size:13px;color:cyan>
-  Próx. Turno: <%= @facility.capacity %> (+<%= @facility.current_upgrade_ratio %>) = <%= @facility.capacity + @facility.current_upgrade_ratio + @facility.planet.balance.to_i %> <br>
+  
+  <span style=font-weight:bold;font-size:13px;color:#00FF00>
+  Upgrades: <%= @facility.level %> (+<%= @facility.current_upgrade_ratio %>)<br>
   </span>
 
   <span style=font-weight:bold;font-size:13px;color:#FF0000>
   <% if @facility.sabotaged? %>
-    <br>
-    Sabotada: Perdeu <%= @facility.capacity / 2 %> (-50%) de Produção<br>
+    Sabotada/Bloqueada: -50% penalty<br>
   <% end %>
   <% if @facility.captured? %>
-    <br>
-    Capturada: Perdeu <%= @facility.capacity %> (-100%) de Produção<br>
+    Capturada: -100% penalty<br>
   <% end %>
   </span>
 
-  <p>
+  <br>
+
   <div align = left><a href = "https://docs.google.com/spreadsheets/d/1MmlpHv6qHDJqGnv7AmeU0MPzUQeslwk7rGmBln9-2ls/edit?authkey=CL_F9boP&hl=pt_BR&authkey=CL_F9boP&hl=pt_BR#gid=1177609294" width="1070" height="760" scrolling="auto" frameborder="0" align="right" target=_blank>Specs das Naves</a></div>
 </div>
 </td>

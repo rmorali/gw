@@ -32,6 +32,7 @@ class Fleet < GenericFleet
 
   def move!
     update_attributes(:planet => destination, :destination => nil, :moving => nil)
+    GroupFleet.new(self.planet).group!
   end
 
   def reassembly
