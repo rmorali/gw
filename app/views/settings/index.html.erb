@@ -18,7 +18,7 @@
 <%= f.input :facility_upgrade_rate, :label => 'Upgrade de Produção:', :collection => (100..600).step(100) %>
 <%= f.input :maximum_facilities, :label => 'Qtde máxima por planeta:', :collection => (1..4) %>
 <%= f.input :builder_unit, :label => 'Unidade construtora:', :collection => @units %>
-<%= f.input :minimum_quantity, :label => 'Qtde minima p/ construir:', :collection => (100..500).step(50) %>
+<%= f.input :minimum_quantity, :label => 'Qtde minima p/ construir:', :collection => (1..500).step(50) %>
 
 <br>
 Exemplos:<br>
@@ -44,7 +44,7 @@ Produtividade: <%= 1200 / 100 * @settings.facility_primary_production_rate %><br
 <h3>Planetas</h3>
 <%= f.input :net_planet_income, :label => 'Income normal:', :collection => (200..1000).step(100) %>
 <%= f.input :bonus_planet_income, :label => 'Income especial:', :collection => (400..2000).step(100) %>
-<%= f.input :presence_to_influence, :label => 'Presenca para dominio:', :collection => (5000..20000).step(100) %>
+<%= f.input :presence_to_influence, :label => 'Frota para dominio total:', :collection => (5000..20000).step(100) %>
 </div>
 </td>
 <td width=100>

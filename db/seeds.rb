@@ -134,7 +134,7 @@ Setting.create(:initial_factories => 2400,
                :tradeports => false,
                :maximum_facilities => 4,
                :air_domination_unit => 'Facility',
-               :ground_domination_unit => 'Miner',
+               :ground_domination_unit => 'Trooper',
                :minimum_quantity => 200,
                :builder_unit => 'Trooper',
                :presence_to_influence => 20000,
@@ -193,16 +193,6 @@ CapitalShip.create(:name => 'Imperial SD', :price => 1800, :description => 'Bonu
 CapitalShip.create(:name => 'Imperial SD II', :price => 2000, :description => 'Bonus +3 naves simultaneas no XWA', :heavy_loading_capacity => 60, :light_loading_capacity => 600 ).factions = imp
 #CapitalShip.create(:name => 'Super Star Destroyer', :price => 6000, :description => 'Bonus +3 naves simultaneas no XWA', :heavy_loading_capacity => 60, :light_loading_capacity => 600 ).factions = imp
 
-Unit.create(:name => '__________Light Transports_______').factions = all
-LightTransport.create(:name => 'YT-1300', :price => 100, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = merc
-LightTransport.create(:name => 'YT-2000', :price => 200, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = merc
-LightTransport.create(:name => 'YT-2400', :price => 150, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = mand
-LightTransport.create(:name => 'Millenium Falcon', :price => 180, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = merc_reb
-LightTransport.create(:name => 'Assault Transport', :price => 125, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = all
-LightTransport.create(:name => 'Escort Transport', :price => 125, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = reb
-LightTransport.create(:name => 'Assault Shuttle', :price => 125, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = imp
-LightTransport.create(:name => 'System Pat Craft', :price => 180, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = imp
-
 Unit.create(:name => '__________Fighters_______________').factions = all
 Fighter.create(:name => 'Z-95', :price => 35 ).factions = merc_reb
 Fighter.create(:name => 'Y-Wing', :price => 70 ).factions = reb
@@ -229,6 +219,21 @@ Fighter.create(:name => 'Tie Avenger', :price => 110 ).factions = imp
 Fighter.create(:name => 'Assault Gunboat', :price => 120 ).factions = imp
 Fighter.create(:name => 'Missile Boat', :price => 200 ).factions = imp
 Fighter.create(:name => 'Tie Defender', :price => 300 ).factions = imp
+
+Unit.create(:name => '____Transports e Freighters______').factions = all
+LightTransport.create(:name => 'YT-1300', :price => 100, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = merc
+LightTransport.create(:name => 'YT-2000', :price => 200, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = merc
+LightTransport.create(:name => 'YT-2400', :price => 150, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = mand
+LightTransport.create(:name => 'Millenium Falcon', :price => 180, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = merc_reb
+LightTransport.create(:name => 'Assault Transport', :price => 125, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = all
+LightTransport.create(:name => 'Escort Transport', :price => 125, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = reb
+LightTransport.create(:name => 'Assault Shuttle', :price => 125, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = imp
+LightTransport.create(:name => 'System Pat Craft', :price => 180, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = imp
+LightTransport.create(:name => 'Container Transport', :price => 100, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = all
+LightTransport.create(:name => 'Modular Conveyor', :price => 100, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = all
+LightTransport.create(:name => 'Star Galleon', :price => 150, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = imp
+LightTransport.create(:name => 'Xyitiar Transport', :price => 100, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = mand_merc
+LightTransport.create(:name => 'Freighter', :price => 100, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = all
 
 Unit.create(:name => '_________Armamentos______________').factions = all
 Armament.create(:name => 'Missile', :acronym => 'M', :price => 5, :hyperdrive => false ).factions = all
