@@ -103,13 +103,13 @@ Route.create(:vector_a => dagobah, :vector_b => utapau, :distance => 1)
 Route.create(:vector_a => utapau, :vector_b => ryloth, :distance => 1)
 Route.create(:vector_a => ryloth, :vector_b => tatooine, :distance => 1)
 
-Goal.create(:description => 'Dominar o Quadrante Norte e o planeta Dagobah')
-Goal.create(:description => 'Dominar o Quadrante Norte e o planeta Kamino')
-Goal.create(:description => 'Dominar o Quadrante Sul e o planeta Mygeeto')
-Goal.create(:description => 'Dominar o Quadrante Sul e o planeta Polis Massa')
-Goal.create(:description => 'Dominar o Quadrante Oeste e o planeta Nal Hutta')
-Goal.create(:description => 'Dominar o Quadrante Leste e o planeta Hoth')
-Goal.create(:description => 'Dominar os 4 planetas com Income Especial e 3 planetas a sua escolha')
+Goal.create(:description => 'Cumprir as missoes selecionadas')
+#Goal.create(:description => 'Dominar o Quadrante Norte e o planeta Kamino')
+#Goal.create(:description => 'Dominar o Quadrante Sul e o planeta Mygeeto')
+#Goal.create(:description => 'Dominar o Quadrante Sul e o planeta Polis Massa')
+#Goal.create(:description => 'Dominar o Quadrante Oeste e o planeta Nal Hutta')
+#Goal.create(:description => 'Dominar o Quadrante Leste e o planeta Hoth')
+#Goal.create(:description => 'Dominar os 4 planetas com Income Especial e 3 planetas a sua escolha')
 
 Setting.create(:initial_factories => 2400,
                :initial_fighters => 500,

@@ -18,7 +18,7 @@
 <%= f.input :facility_upgrade_rate, :label => 'Upgrade de Produção:', :collection => (100..600).step(100) %>
 <%= f.input :maximum_facilities, :label => 'Qtde máxima por planeta:', :collection => (1..4) %>
 <%= f.input :builder_unit, :label => 'Unidade construtora:', :collection => @units %>
-<%= f.input :minimum_quantity, :label => 'Qtde minima p/ construir:', :collection => (1..500).step(50) %>
+<%= f.input :minimum_quantity, :label => 'Qtde minima p/ construir:', :collection => (1..500) %>
 
 <br>
 Exemplos:<br>
