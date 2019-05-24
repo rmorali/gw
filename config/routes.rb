@@ -54,6 +54,15 @@ Rpg::Application.routes.draw do
        get :sensor
      end
    end
+   
+resources :fleets do
+     member do
+       put :move_one_fleet
+       put :arm
+       put :disarm
+     end
+   end
+
 
    resources :capital_ships do
      member do
@@ -69,19 +78,11 @@ Rpg::Application.routes.draw do
      member do
        put :load_in
        put :unload_from
-       put :arm_1
-       put :arm_2
-       put :disarm_1
-       put :disarm_2
      end
    end
 
    resources :fighters do
      member do
-       put :arm_1
-       put :arm_2
-       put :disarm_1
-       put :disarm_2
      end
    end
 

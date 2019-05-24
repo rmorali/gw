@@ -30,6 +30,7 @@ class PlanetsController < ApplicationController
   end
 
   def move
+   #raise params.inspect
     @planet = Planet.find(params[:id])
     GroupFleet.new(@planet).group!
     @fleets = @planet.generic_fleets.where(:squad => current_squad, :type => 'Fleet')

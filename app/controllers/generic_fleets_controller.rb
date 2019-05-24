@@ -50,8 +50,4 @@ class GenericFleetsController < ApplicationController
     redirect_to :back
   end
 
-  def back_to_main
-    redirect_to :fleets
-  end
-
 end

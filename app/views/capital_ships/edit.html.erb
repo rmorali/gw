@@ -1,23 +1,34 @@
+<% @unit = @capital_ship %>
 <script>
 refreshParent();
-document.title = " <%= @capital_ship.generic_unit.name %> '<%= @capital_ship.fleet_name %>'"
+document.title = " <%= @unit.show %> '<%= @unit.fleet_name %>'"
 </script>
 <div class="fleet">
   <h2><%= @planet %></h2>
-  <h3><%= @capital_ship.show %> '<%= @capital_ship.fleet_name %>'</h3>
-
-<% unless @capital_ship.fleet_name? %>
-  <%= simple_form_for @capital_ship, :url => url_for(:controller => 'capital_ships', :action => 'update') do |f| %>
-    <table>
-    <tr>
-    <td><%= f.input :fleet_name, :label => false, :input_html => { :size => 10 } %></td>
-    <td><%= f.submit 'Batizar' %></td>
-    </tr> 
-    </table>
-  <% end %>
-<% end %>
-
+  <h3><%= @unit.show %> '<%= @unit.fleet_name %>'
+     <% if @unit.moving %>
+       <span style="color: #00FFFF">
+          <%= ' --> ' + @unit.destination.name %>
+       </span>
+     <% end %>
+  </h3>
 </div>
+<div class="fleet">
+   Mover:<br><br>
+   <table valign=center>
+   <tr>
+   <td><%= simple_form_for @unit, :url => url_for(:controller => 'fleets', :action => 'move_one_fleet') do |f|%>
+     <%= f.input :quantity, :collection => 1..@unit.quantity, :label => false if @unit.is_movable? && @unit.squad == @squad  %></td>
+   <td><%= f.input :destination, :collection => @planet.routes(@unit), :disabled => false, :label => false if @unit.is_movable? && @unit.squad == @squad %></td>
+   <td>
+     <% unless @squad.ready? %>
+       <%= submit_tag 'Mover' %>
+     <% end %>
+   </td>
+   <td> </td>
+   </tr></table>
+   <% end %>
+</div>  
 
 <div class="fleet">
 Unidades embarcadas:
@@ -91,3 +102,15 @@ Transporta: <%= @capital_ship.heavy_loading_capacity %> caças / <%= @capital_sh
     </table>
 </div>
 
+<div class="fleet">
+<% unless @capital_ship.fleet_name? %>
+  <%= simple_form_for @capital_ship, :url => url_for(:controller => 'capital_ships', :action => 'update') do |f| %>
+    <table>
+    <tr>
+    <td><%= f.input :fleet_name, :label => false, :input_html => { :size => 10 } %></td>
+    <td><%= f.submit 'Batizar' %></td>
+    </tr> 
+    </table>
+  <% end %>
+<% end %>
+</div>

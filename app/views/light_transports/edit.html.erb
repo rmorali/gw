@@ -1,11 +1,34 @@
+<% @unit = @light_transport %>
 <script>
 refreshParent();
-document.title = " <%= @light_transport.show %>"
+document.title = " <%= @unit.show %> "
 </script>
 <div class="fleet">
   <h2><%= @planet %></h2>
-  <h3><%= @light_transport.show %></h3>
+  <h3><%= @unit.show %>
+     <% if @unit.moving %>
+       <span style="color: #00FFFF">
+          <%= ' --> ' + @unit.destination.name %>
+       </span>
+     <% end %>
+  </h3>
 </div>
+<div class="fleet">
+   Mover:<br><br>
+   <table valign=center>
+   <tr>
+   <td><%= simple_form_for @unit, :url => url_for(:controller => 'fleets', :action => 'move_one_fleet') do |f|%>
+     <%= f.input :quantity, :collection => 1..@unit.quantity, :label => false if @unit.is_movable? && @unit.squad == @squad  %></td>
+   <td><%= f.input :destination, :collection => @planet.routes(@unit), :disabled => false, :label => false if @unit.is_movable? && @unit.squad == @squad %></td>
+   <td>
+     <% unless @squad.ready? %>
+       <%= submit_tag 'Mover' %>
+     <% end %>
+   </td>
+   <td> </td>
+   </tr></table>
+   <% end %>
+</div>  
 <div class="fleet">
 Unidades embarcadas (ou agrupadas para Raid Mission):
 <table>
@@ -50,11 +73,11 @@ Embarcar unidades:
 Transporta: <%= @light_transport.heavy_loading_capacity %> caças / <%= @light_transport.light_loading_capacity %> troopers 
 </div>
 <div class="fleet">
-    <table>
-    <tr><td><b>Warheads:</b></td><td><b>Counters:</b></td><tr>
+    Warheads/Counters:<br><br>
+    <table valign=center>
     <tr>
     <td>
-    <%= simple_form_for @light_transport, :url => url_for(:controller => 'light_transports', :action => 'arm_1') do |f| %>
+    <%= simple_form_for @unit, :url => url_for(:controller => 'fleets', :action => 'arm') do |f| %>
     <%= f.hidden_field :id %>
     <%= f.input :weapon1_id,
     :collection => @armaments,
@@ -62,39 +85,21 @@ Transporta: <%= @light_transport.heavy_loading_capacity %> caças / <%= @light_t
     :value_method => :id,
     :as => :radio,
     :label => false %>
-    <p><br><br><%= f.submit 'Armar' %>
-    <% end %>
-    <br>
-    <b><%= "+ #{@light_transport.quantity} #{@light_transport.weapon1.name}" if @light_transport.weapon1 %></b><br>
-    <%= simple_form_for @light_transport, :url => url_for(:controller => 'light_transports', :action => 'disarm_1') do |f| %>
-      <%= f.hidden_field :id %>
-      <p><br><%= f.submit 'Desarmar' %>
+    </td>
+    <td></td>
+    </tr>
+    <tr>
+    <td><%= f.submit 'Armar' %>
     <% end %>
     </td>
-    <td>
-    <%= simple_form_for @light_transport, :url => url_for(:controller => 'light_transports', :action => 'arm_2') do |f| %>
-    <%= f.hidden_field :id %>
-    <%= f.input :weapon2_id,
-    :collection => @armaments,
-    :label_method => :show,
-    :value_method => :id,
-    :as => :radio,
-    :label => false %>
-    <p><br><br><%= f.submit 'Armar' %>
-    <% end %>
-    <br>
-    <b><%= "+ #{@light_transport.quantity} #{@light_transport.weapon2.name}" if @light_transport.weapon2 %></b><br>
-    <%= simple_form_for @light_transport, :url => url_for(:controller => 'light_transports', :action => 'disarm_2') do |f| %>
+    <td align=left>
+    <%= simple_form_for @unit, :url => url_for(:controller => 'fleets', :action => 'disarm') do |f| %>
       <%= f.hidden_field :id %>
-      <p><br><%= f.submit 'Desarmar' %>
+      <%= f.submit 'Desarmar' %>
     <% end %>
     </td>
     </tr>
-
     </table>
-</div>
-<div class="fleet">
-Instruções:<br>
 Armar: carrega o grupo com o armamento selecionado<br>
 Desarmar: descarrega o armamento do grupo<br>
 </div>

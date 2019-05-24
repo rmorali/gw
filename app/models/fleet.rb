@@ -7,7 +7,11 @@ class Fleet < GenericFleet
     elsif self.generic_unit.hyperdrive == false || self.type?(Commander) || self.type?(Trooper) || self.type?(Armament)
       self
     else
-      moving_fleet = Fleet.new self.attributes
+      if self.quantity == 1 || quantity == self.quantity
+        moving_fleet = self
+      else
+        moving_fleet = Fleet.new self.attributes
+      end
       moving_fleet.destination = planet
       moving_fleet.quantity = quantity
       moving_fleet.moving = true
@@ -24,7 +28,7 @@ class Fleet < GenericFleet
           self.unload_all
         end
       end
-      self.quantity -= quantity
+      self.quantity -= quantity unless moving_fleet == self
       save
       moving_fleet
     end

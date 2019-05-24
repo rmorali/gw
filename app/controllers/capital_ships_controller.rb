@@ -7,6 +7,7 @@ class CapitalShipsController < ApplicationController
     @carriable_fleets = Fleet.select { |fleet| fleet.is_transportable? && fleet.planet == @capital_ship.planet && fleet.squad == @capital_ship.squad }
     @carried_fleets = GenericFleet.where(:carried_by => @capital_ship)
     @skills = Fleet.select{ |unit| unit.planet == @capital_ship.planet && unit.squad == @capital_ship.squad && unit.type?(Skill) && !unit.moving? }
+    @squad = current_squad
   end
 
   def update
