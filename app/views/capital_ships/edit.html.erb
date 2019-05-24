@@ -17,7 +17,7 @@ document.title = " <%= @unit.show %> '<%= @unit.fleet_name %>'"
    Mover:<br><br>
    <table valign=center>
    <tr>
-   <td><%= simple_form_for @unit, :url => url_for(:controller => 'fleets', :action => 'move_one_fleet') do |f|%>
+   <td><%= simple_form_for @unit, :url => url_for(:controller => 'generic_fleets', :action => 'move_one_fleet') do |f|%>
      <%= f.input :quantity, :collection => 1..@unit.quantity, :label => false if @unit.is_movable? && @unit.squad == @squad  %></td>
    <td><%= f.input :destination, :collection => @planet.routes(@unit), :disabled => false, :label => false if @unit.is_movable? && @unit.squad == @squad %></td>
    <td>

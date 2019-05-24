@@ -237,7 +237,11 @@ LightTransport.create(:name => 'Freighter', :price => 100, :heavy_loading_capaci
 
 Unit.create(:name => '_________Armamentos______________').factions = all
 Armament.create(:name => 'Missile', :acronym => 'M', :price => 5, :hyperdrive => false ).factions = all
+Armament.create(:name => 'Missile + Chaff', :acronym => 'M + Chaff', :price => 7, :hyperdrive => false ).factions = all
+Armament.create(:name => 'Missile + Flare', :acronym => 'M + Flare', :price => 15, :hyperdrive => false ).factions = all
 Armament.create(:name => 'Proton Torpedo', :acronym => 'PT', :price => 5, :hyperdrive => false ).factions = all
+Armament.create(:name => 'Proton Torpedo + Chaff', :acronym => 'PT + Chaff', :price => 7, :hyperdrive => false ).factions = all
+Armament.create(:name => 'Proton Torpedo + Flare', :acronym => 'PT + Flare', :price => 15, :hyperdrive => false ).factions = all
 #Armament.create(:name => 'Ion Pulse Torp', :acronym => 'IonPT', :price => 5, :hyperdrive => false ).factions = reb
 #Armament.create(:name => 'Adv Missile', :acronym => 'AdvM', :price => 10, :hyperdrive => false ).factions = all
 #Armament.create(:name => 'Adv Torpedo', :acronym => 'AdvT', :price => 10, :hyperdrive => false ).factions = all

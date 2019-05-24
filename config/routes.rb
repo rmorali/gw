@@ -52,17 +52,11 @@ Rpg::Application.routes.draw do
        put :move
        put :move_facility
        get :sensor
-     end
-   end
-   
-resources :fleets do
-     member do
        put :move_one_fleet
        put :arm
        put :disarm
      end
    end
-
 
    resources :capital_ships do
      member do
