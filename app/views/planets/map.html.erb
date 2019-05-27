@@ -123,7 +123,7 @@
 </span>
   </div>
 
-  <div id="Controle espacial" style="position:absolute; left:<%= ( planet.x + @map_x_adjust ) * @map_ratio %>px; top:<%= ( planet.y + @map_y_adjust ) * @map_ratio + 5 %>px;z-index: 15; white-space: nowrap">
+  <div id="Controle espacial" style="position:absolute; left:<%= ( planet.x + @map_x_adjust ) * @map_ratio %>px; top:<%= ( planet.y + @map_y_adjust ) * @map_ratio + 5 %>px;z-index: 16; white-space: nowrap">
 <span style="color:yellow;font-size: 10px;font-weight: bold">
       <info class="tooltip">
       <tip>Income p/ o squad<br>
@@ -163,7 +163,7 @@
   <% end %>
 
   <% if planet.able_to_construct?(@squad) && planet.generic_fleets.any? { |unit| unit.squad == @squad } %>
-    <div id="construcao" style="position:absolute; left:<%= ( planet.x + @map_x_adjust ) * @map_ratio + 45 %>px; top:<%= ( planet.y + @map_y_adjust ) * @map_ratio + 60 %>px;z-index: 14; white-space: nowrap">
+    <div id="construcao" style="position:absolute; left:<%= ( planet.x + @map_x_adjust ) * @map_ratio + 45 %>px; top:<%= ( planet.y + @map_y_adjust ) * @map_ratio + 60 %>px;z-index: 15; white-space: nowrap">
       <info class="tooltip" style="cursor:pointer">
       <tip>Construir fábrica/unidades</tip>
      <% if @round.move && !planet.tradeport? && !@squad.ready? && planet.able_to_construct?(@squad) %>
