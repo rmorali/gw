@@ -22,7 +22,7 @@ document.title = " <%= @unit.show %> "
    <td><%= f.input :destination, :collection => @planet.routes(@unit), :disabled => false, :label => false if @unit.is_movable? && @unit.squad == @squad %></td>
    <td>
      <% unless @squad.ready? %>
-       <%= submit_tag 'Mover' %>
+       <%= submit_tag 'Mover' if @unit.is_movable? && @unit.squad == @squad%>
      <% end %>
    </td>
    <td> </td>
