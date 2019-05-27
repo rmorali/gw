@@ -1,0 +1,263 @@
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+  [1m[36mSQL (0.0ms)[0m  [1mSET sql_mode = ''[0m
+  [1m[35mSQL (0.0ms)[0m  SET sql_mode = ''
+  [1m[36mSCHEMA (0.2ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mSetting Load (0.1ms)[0m  SELECT `settings`.* FROM `settings` LIMIT 1
+  [1m[36mSetting Load (0.1ms)[0m  [1mSELECT `settings`.* FROM `settings` LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSCHEMA (0.2ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `settings` SET `minimum_quantity` = 1 WHERE `settings`.`id` = 1
+  [1m[36mSetting Load (0.2ms)[0m  [1mSELECT `settings`.* FROM `settings` ORDER BY settings.id DESC LIMIT 1[0m
+  [1m[35mPlanet Load (0.1ms)[0m  SELECT `planets`.* FROM `planets` WHERE `planets`.`tradeport` IS NULL ORDER BY name ASC
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 1[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 2
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 3[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 4
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 5[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 6
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 7[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 8
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 9[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 10
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 11[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 12
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 13[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 14
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 15[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 16
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 17[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 18
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 19[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 20
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 21[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 22
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 23[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 24
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 25[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 26
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 27[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 28
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 29[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 30
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 31[0m
+  [1m[35mSQL (1.6ms)[0m  COMMIT
+  [1m[36mSCHEMA (0.2ms)[0m  [1mSHOW TABLES [0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+  [1m[36mSQL (0.0ms)[0m  [1mSET sql_mode = ''[0m
+  [1m[35mSQL (0.0ms)[0m  SET sql_mode = ''
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+  [1m[36mSQL (0.0ms)[0m  [1mSET sql_mode = ''[0m
+  [1m[35mSQL (0.0ms)[0m  SET sql_mode = ''
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+  [1m[36mSQL (0.0ms)[0m  [1mSET sql_mode = ''[0m
+  [1m[35mSQL (0.0ms)[0m  SET sql_mode = ''
+  [1m[36mSCHEMA (0.3ms)[0m  [1mSHOW TABLES [0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+  [1m[36mSQL (0.0ms)[0m  [1mSET sql_mode = ''[0m
+  [1m[35mSQL (0.0ms)[0m  SET sql_mode = ''
+  [1m[36mSCHEMA (0.2ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mSCHEMA (0.2ms)[0m  SHOW TABLES 
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreatePlanets (20101008042115)
+Migrating to CreateSquads (20101008042231)
+Migrating to AddSquadIdToPlanet (20101008042543)
+Migrating to CreateOwnedShips (20101008043912)
+Migrating to AddShipIdToOwnedShip (20101009180425)
+Migrating to DeviseCreateUsers (20101009182125)
+Migrating to AddUserIdToSquad (20101009182343)
+Migrating to CreateShips (20101009182953)
+Migrating to CreateShipsSquads (20101009183521)
+Migrating to RemovePrimaryIdToShipsSquads (20101009184029)
+Migrating to RenamePrecoOnShip (20101009195325)
+Migrating to RenameShipsSquadsIds (20101009201355)
+Migrating to AddMovingToOwnedShip (20101024193052)
+Migrating to AddDestinationIdToOwnedShip (20101024194137)
+Migrating to CreateRounds (20101026012337)
+Migrating to AddMoveRoundToSquad (20101026015432)
+Migrating to AddCreditsToPlanet (20101116015952)
+Migrating to RenameOwnedShipsToFleets (20110226231012)
+Migrating to RenameShipsToUnits (20110226232126)
+Migrating to RenameShipsSquadsToUnitsSquads (20110226233232)
+Migrating to RenameColumnShipIdonUnitsSquads (20110226233616)
+Migrating to RenameUnitsSquadsToSquadsUnits (20110226233834)
+Migrating to RenameColumnShipIdOnFleets (20110226234539)
+Migrating to AddTypeToUnit (20110305165135)
+Migrating to AddTypeToFleets (20110305174425)
+Migrating to RenameUnitToGenericUnit (20110305175049)
+Migrating to RenameFleetToGenericFleet (20110305180702)
+Migrating to RenameUnitIdToGenericUnitId (20110305182848)
+Migrating to RenameSquadUnitsToGenericUnitsSquads (20110306052850)
+Migrating to RenameUnitIdToGenericUnitIdToGenericUnitsSquads (20110306053111)
+Migrating to CreateRoutes (20110306053112)
+Migrating to AddBalanceToGenericFleets (20110306062840)
+Migrating to AddProducingUnitIdToGenericFleet (20110306063636)
+Migrating to AddColorToSquad (20110401123449)
+Migrating to AddGroundSquadIdToPlanet (20110401123450)
+Migrating to AddFactionMaskToGenericUnit (20110405035612)
+Migrating to AddFactionToSquad (20110405035656)
+Migrating to CreateHistoriesTable (20110405080220)
+Migrating to RenameHistoriesToRailsAdminHistories (20110405080221)
+Migrating to AddHyperdriveToGenericUnit (20110428135702)
+Migrating to CreateResults (20110512104140)
+Migrating to AddRoundToResult (20110512105248)
+Migrating to RenameDestroyedToBlastedToResult (20110512112353)
+Migrating to AddCaptorIdToResults (20110522203126)
+Migrating to RenameMoveToReadyToSquad (20110612042651)
+Migrating to AddFleetNameToGenericFleets (20121229221824)
+Migrating to AddSabotagedToGenericFleets (20121230051130)
+Migrating to AddSabotagedToResults (20121230051758)
+Migrating to AddLevelToGenericFleets (20121230074322)
+Migrating to AddWormholeToPlanets (20130108112456)
+Migrating to AddProducingUnit2IdToGenericFleets (20130405074648)
+Migrating to CreateTradeports (20130405123001)
+Migrating to AddTradeportToPlanets (20130405175823)
+Migrating to RemovePlanetToTradeports (20130408030044)
+Migrating to AddSquadIdToTradeports (20130408085131)
+Migrating to CreateGoals (20130408133437)
+Migrating to AddGoalIdToSquads (20130408133553)
+Migrating to AddUsedToGoals (20130408135606)
+Migrating to ChangeColumnPriceOnGenericUnit (20130412094411)
+Migrating to ChangeColumnBalanceOnGenericFleet (20130412124156)
+Migrating to AddLastPlayerIdToPlanets (20130413143513)
+Migrating to AddDescriptionToGenericUnits (20130414105238)
+Migrating to AddFinalQuantityToResults (20130415150813)
+Migrating to AddHomePlanetIdToSquads (20130419131348)
+Migrating to AddDescriptionToPlanets (20130419144302)
+Migrating to AddFirstPlayerIdToPlanets (20130423054941)
+Migrating to AddUrlToSquads (20130512001221)
+Migrating to AddSectorToPlanets (20130519014943)
+Migrating to ChangeColumnPriceOnGenericUnits (20130527191357)
+Migrating to AddProducingUnitIdToResults (20130607164005)
+Migrating to AddFleetNameToResults (20130615121816)
+Migrating to AddCarriedByIdToGenericFleets (20130618003554)
+Migrating to AddWeapon1IdAndWeapon2IdToGenericFleets (20130626113448)
+Migrating to AddWeapon1IdAndWeapon2IdToResults (20130626164602)
+Migrating to CreateAdminNotes (20130707194206)
+Migrating to MoveAdminNotesToComments (20130707194207)
+Migrating to AddLeaderToGenericFleets (20140521072610)
+Migrating to AddLeaderToResults (20140521074548)
+Migrating to AddPlanetIdToTradeport (20140521104324)
+Migrating to AddAutomaticToResults (20140526210131)
+Migrating to CreateSettings (20140721214320)
+Migrating to AddSpecialToPlanets (20140724153539)
+Migrating to CreateSkills (20140724212543)
+Migrating to CreateSubtypes (20140724213107)
+Migrating to AddSkillIdToGenericFleets (20140724213249)
+Migrating to AddSubtypeIdToGenericUnits (20140724213305)
+Migrating to AddHeavyLoadingCapacityAndLightLoadingCapacityToGenericUnits (20140725162228)
+Migrating to AddGroundIncomeRateToSettings (20140726011539)
+Migrating to AddInitialFactoriesToSettings (20140726021907)
+Migrating to AddAcronymToSkills (20140726191925)
+Migrating to DropSkillsTable (20140726192741)
+Migrating to AddAcronymToGenericUnits (20140726192926)
+Migrating to AddSkillIdToResults (20140726233510)
+Migrating to AddDescriptionToResults (20140727000039)
+Migrating to AddMaximumFleetSizeToSettings (20140728211109)
+Migrating to DropActiveAdminCommentsTable (20140729212049)
+Migrating to AddInitialPlanetsToSettings (20140909160443)
+Migrating to AddInitialFightersToSettings (20140909160455)
+Migrating to AddInitialCapitalShipsToSettings (20140909160507)
+Migrating to AddInitialTransportsToSettings (20140909161012)
+Migrating to AddInitialTroopersToSettings (20140909161111)
+Migrating to AddInitialCreditsToSettings (20140909202813)
+Migrating to AddTradeportsToSettings (20140909212704)
+Migrating to AddMaximumFacilitiesToSettings (20141029114412)
+Migrating to AddDistanceToPlanets (20141029125454)
+Migrating to AddNotLandedToResults (20141212165657)
+Migrating to AddRoundToGenericFleets (20141218193100)
+Migrating to AddFacilityPrimaryProductionRateToSettings (20151013145951)
+Migrating to AddFacilitySecondaryProductionRateToSettings (20151013150005)
+Migrating to AddFacilityUpgradeRateToSettings (20151013150227)
+Migrating to AddAirDominationUnitToSettings (20151013173737)
+Migrating to AddGroundDominationUnitToSettings (20151013173748)
+Migrating to AddBuilderUnitToSettings (20151013180808)
+Migrating to AddMovingToResults (20160310153414)
+Migrating to AddXToPlanets (20161128191751)
+Migrating to AddYToPlanets (20161128192248)
+Migrating to AddBalanceToPlanets (20161129175829)
+Migrating to AddCapturedToGenericFleets (20161129223926)
+Migrating to AddMapRatioToSquads (20161208202708)
+Migrating to AddMapBackgroundToSquads (20161209133720)
+Migrating to AddMinimumQuantityToSettings (20161211211240)
+Migrating to AddPresenceToInfluenceToSettings (20180108175928)
+Migrating to AddRoundsToDominateToSettings (20180108175943)
+Migrating to AddDominationToPlanets (20180108181415)
+Migrating to AddMinimumPresenceToConstructToSettings (20190527171814)
+  [1m[35mSQL (32.2ms)[0m  ALTER TABLE `settings` ADD `minimum_presence_to_construct` int(11)
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20190527171814')[0m
+  [1m[35mSQL (0.0ms)[0m  SET sql_mode = ''
+  [1m[36mSCHEMA (0.1ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mSQL (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations`
+  [1m[36mSCHEMA (0.1ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mSQL (0.5ms)[0m  describe `admin_notes`
+  [1m[36mSQL (4.5ms)[0m  [1mSHOW KEYS FROM `admin_notes`[0m
+  [1m[35mSQL (1.2ms)[0m  describe `generic_fleets`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `generic_fleets`[0m
+  [1m[35mSQL (18.0ms)[0m  describe `generic_units`
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW KEYS FROM `generic_units`[0m
+  [1m[35mSQL (0.2ms)[0m  describe `generic_units_squads`
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW KEYS FROM `generic_units_squads`[0m
+  [1m[35mSQL (0.2ms)[0m  describe `goals`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `goals`[0m
+  [1m[35mSQL (0.5ms)[0m  describe `planets`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `planets`[0m
+  [1m[35mSQL (0.3ms)[0m  describe `rails_admin_histories`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `rails_admin_histories`[0m
+  [1m[35mSQL (0.6ms)[0m  describe `results`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `results`[0m
+  [1m[35mSQL (0.3ms)[0m  describe `rounds`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `rounds`[0m
+  [1m[35mSQL (0.3ms)[0m  describe `routes`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `routes`[0m
+  [1m[35mSQL (0.5ms)[0m  describe `settings`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `settings`[0m
+  [1m[35mSQL (0.3ms)[0m  describe `squads`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `squads`[0m
+  [1m[35mSQL (0.2ms)[0m  describe `subtypes`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `subtypes`[0m
+  [1m[35mSQL (0.3ms)[0m  describe `tradeports`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `tradeports`[0m
+  [1m[35mSQL (0.4ms)[0m  describe `users`
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW KEYS FROM `users`[0m
+DEPRECATION WARNING: config.action_view.debug_rjs will be removed in 3.1, from 3.1 onwards you will need to install prototype-rails to continue to use RJS templates . (called from <top (required)> at /home/morali/gw/config/environment.rb:5)
+  [1m[36mSQL (0.0ms)[0m  [1mSET sql_mode = ''[0m
+  [1m[35mSQL (0.0ms)[0m  SET sql_mode = ''
+  [1m[36mSetting Load (0.6ms)[0m  [1mSELECT `settings`.* FROM `settings` LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSCHEMA (0.2ms)[0m  [1mSHOW TABLES [0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `settings` SET `minimum_presence_to_construct` = 50 WHERE `settings`.`id` = 1
+  [1m[36mSetting Load (0.2ms)[0m  [1mSELECT `settings`.* FROM `settings` ORDER BY settings.id DESC LIMIT 1[0m
+  [1m[35mPlanet Load (0.1ms)[0m  SELECT `planets`.* FROM `planets` WHERE `planets`.`tradeport` IS NULL ORDER BY name ASC
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 1[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 2
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 3[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 4
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 5[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 6
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 7[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 8
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 9[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 10
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 11[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 12
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 13[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 14
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 15[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 16
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 17[0m
+  [1m[35mAREL (0.5ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 18
+  [1m[36mAREL (0.2ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 19[0m
+  [1m[35mAREL (0.2ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 20
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 21[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 22
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 23[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 24
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 25[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 26
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 27[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 28
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 29[0m
+  [1m[35mAREL (0.1ms)[0m  UPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 30
+  [1m[36mAREL (0.1ms)[0m  [1mUPDATE `planets` SET `domination` = NULL WHERE `planets`.`id` = 31[0m
+  [1m[35mSQL (19.2ms)[0m  COMMIT

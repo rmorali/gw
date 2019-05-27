@@ -138,9 +138,11 @@ Setting.create(:initial_factories => 2400,
                :minimum_quantity => 200,
                :builder_unit => 'Trooper',
                :presence_to_influence => 20000,
-               :rounds_to_dominate => 3)
+               :rounds_to_dominate => 3,
+               :minimum_presence_to_construct => 50)
 
 User.create(:email => 'setup@xws.com', :password => '123456')
+User.create(:email => 'setup@gw.com', :password => '123456')
 
 imp = ['empire']
 reb = ['rebel']

@@ -203,7 +203,7 @@ class Planet < ActiveRecord::Base
 
   def able_to_construct?(squad)
     permission = nil
-    permission = true if self.credits_per_turn(squad) == self.credits && self.has_a?(Setting.getInstance.builder_unit.constantize, Setting.getInstance.minimum_quantity)
+    permission = true if self.credits_per_turn(squad) >= ( self.credits / 100 *  Setting.getInstance.minimum_presence_to_construct) && self.has_a?(Setting.getInstance.builder_unit.constantize, Setting.getInstance.minimum_quantity)
     permission = nil if self.count_facilities_of(squad) > Setting.getInstance.maximum_facilities
     permission
   end

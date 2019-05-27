@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180108181415) do
+ActiveRecord::Schema.define(:version => 20190527171814) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -184,6 +184,7 @@ ActiveRecord::Schema.define(:version => 20180108181415) do
     t.integer "minimum_quantity"
     t.integer "presence_to_influence"
     t.integer "rounds_to_dominate"
+    t.integer "minimum_presence_to_construct"
   end
 
   create_table "squads", :force => true do |t|

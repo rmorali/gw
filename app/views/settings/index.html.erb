@@ -13,19 +13,20 @@
 <td width=100>
 <div class="fleet">
 <h3>Fábricas</h3>
-<%= f.input :facility_primary_production_rate, :label => 'Produtividade (% do custo):', :collection => (10..50).step(5) %>
+<%= f.input :facility_primary_production_rate, :label => 'Produtividade: %', :collection => (10..100).step(5) %>
 <%= f.input :facility_upgrade_cost, :label => 'Upgrade - Custo:', :collection => (1000..2000).step(200) %>
 <%= f.input :facility_upgrade_rate, :label => 'Upgrade de Produção:', :collection => (100..600).step(100) %>
 <%= f.input :maximum_facilities, :label => 'Qtde máxima por planeta:', :collection => (1..4) %>
 <%= f.input :builder_unit, :label => 'Unidade construtora:', :collection => @units %>
 <%= f.input :minimum_quantity, :label => 'Qtde minima p/ construir:', :collection => (1..500) %>
+<%= f.input :minimum_presence_to_construct, :label => 'Presença minima p/ construir: %', :collection => (10..100).step(10) %>
 
 <br>
 Exemplos:<br>
 <b>Shipyard - Custo 3600</b><br>
-Produtividade: <%= 3600 / 100 * @settings.facility_primary_production_rate %><br>
+Produtividade: <%= 3600 / 100 * @settings.facility_primary_production_rate %> ( %<%= @settings.facility_primary_production_rate %> )<br>
 <b>Industrial Complex - Custo 1200</b><br>
-Produtividade: <%= 1200 / 100 * @settings.facility_primary_production_rate %><br>
+Produtividade: <%= 1200 / 100 * @settings.facility_primary_production_rate %> ( %<%= @settings.facility_primary_production_rate %> )<br>
 </div>
 </td>
 <td width=100>
@@ -42,9 +43,9 @@ Produtividade: <%= 1200 / 100 * @settings.facility_primary_production_rate %><br
 <td width=100>
 <div class="fleet">
 <h3>Planetas</h3>
-<%= f.input :net_planet_income, :label => 'Income normal:', :collection => (200..1000).step(100) %>
-<%= f.input :bonus_planet_income, :label => 'Income especial:', :collection => (400..2000).step(100) %>
-<%= f.input :presence_to_influence, :label => 'Frota para dominio total:', :collection => (5000..20000).step(100) %>
+<%= f.input :net_planet_income, :label => 'Income normal:', :collection => (100..1000).step(100) %>
+<%= f.input :bonus_planet_income, :label => 'Income especial:', :collection => (200..2000).step(100) %>
+<%= f.input :presence_to_influence, :label => 'Frota para presença máxima:', :collection => (1000..30000).step(100) %>
 </div>
 </td>
 <td width=100>
