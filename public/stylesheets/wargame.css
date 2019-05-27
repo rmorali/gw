@@ -286,6 +286,13 @@ info.tooltip:hover tip{
   color:white;
   text-shadow: none;
 }
+input[type=text]{
+  border:1px solid #999;
+  padding:2px;
+  background-color: black;
+  text-align: center;
+  color:white;
+}
 
 .name {
     width: 130px;
@@ -306,6 +313,7 @@ info.tooltip:hover tip{
   width:auto;
   height:auto;
   font-size: 14px;
+  padding:1px;
   border:0px solid #999;
   background-color: black;
   color:white;
