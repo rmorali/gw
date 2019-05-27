@@ -21,11 +21,23 @@
 <a href="http://wgbrnavies.wordpress.com" target=_blank> Blog do GW (regras)</a> / 
 <%= render :partial => "devise/shared/links" %>
 <br>
+<h3> Changelog 25/05/2019 </h3>
+<span style=line-height:22px; word-wrap: normal>
+<ul>
+<li> Nova partida com o <a href="https://mega.nz/#!lxRjhAqS!UbFOjEztwTKH-oJwf446f79BDWfdn66fIVyQtb_vP0c">Mod XWA UCP1.6</a> do <a href="http://www.darksaber.xwaupgrade.com/ do DarkSaber's X-Wing Station"> Dark Saber's X-Wing Station</a> </li>
+<li> Game Settings: </li>
+<% @settings = Setting.getInstance %>
+Income planetário máximo: <%= @settings.net_planet_income %> <br>
+Presença militar para influência máxima: <%= @settings.presence_to_influence %> <br>
+Influência mínima p/ construir: <%= @settings.minimum_presence_to_construct %>% <br>
+Unidade construtora: <%= @settings.builder_unit %><br>
+Qtde minima p/ construir: <%= @settings.minimum_quantity %><br>
+</ul>
 <h3> Changelog 17/12/2018 </h3>
 <span style=line-height:22px; word-wrap: normal>
 <ul>
 <li> Nova funcionalidade: Além da construção de fábricas, é possível comprar unidades diretamente em planetas 100% dominados (Ícone amarelo).</li>
-<li> Upgrade no mapa: Agora é possivel executar funções das unidades diretamente no mapa (armamentos, carregar unidades etc).</li>
+<li> Upgrade no mapa: Agora é possivel executar funções das unidades diretamente no mapa (armamentos, carregar unidades, movimentar etc).</li>
 </ul>
 <h3> Changelog 17/11/2018 </h3>
 <span style=line-height:22px; word-wrap: normal>
