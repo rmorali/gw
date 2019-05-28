@@ -3,6 +3,9 @@ class MessagesController < ApplicationController
   # GET /messages.xml
   def index
     @messages = Message.all
+    @message = Message.new
+    @squads = Squad.all
+    @current_squad = current_squad    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +17,6 @@ class MessagesController < ApplicationController
   # GET /messages/1.xml
   def show
     @message = Message.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @message }
@@ -40,11 +42,13 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.xml
   def create
-    @message = Message.new(params[:message])
-
+    
+    @message = Message.new(params[:message]) 
+    
     respond_to do |format|
       if @message.save
-        format.html { redirect_to(@message, :notice => 'Message was successfully created.') }
+        #format.html { redirect_to(@message, :notice => 'Message was successfully created.') }
+        format.html { redirect_to :back }
         format.xml  { render :xml => @message, :status => :created, :location => @message }
       else
         format.html { render :action => "new" }
@@ -60,7 +64,8 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.update_attributes(params[:message])
-        format.html { redirect_to(@message, :notice => 'Message was successfully updated.') }
+        @format.html { redirect_to(@message, :notice => 'Message was successfully updated.') }
+        format.html { redirect_to :back }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -71,7 +76,9 @@ class MessagesController < ApplicationController
 
   # DELETE /messages/1
   # DELETE /messages/1.xml
-  def destroy
+  def deleta
+
+
     @message = Message.find(params[:id])
     @message.destroy
 

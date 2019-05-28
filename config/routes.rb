@@ -1,6 +1,11 @@
 Rpg::Application.routes.draw do
 
-  resources :messages
+  resources :messages do
+    member do
+       get :deleta
+    end
+  end
+
 
    devise_for :users
    

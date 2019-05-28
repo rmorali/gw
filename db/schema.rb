@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(:version => 20190528201629) do
   end
 
   create_table "messages", :force => true do |t|
-    t.integer  "sender"
-    t.integer  "receiver"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
     t.string   "title"
     t.text     "body"
     t.datetime "created_at"

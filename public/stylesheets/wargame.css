@@ -287,6 +287,17 @@ info.tooltip:hover tip{
   text-shadow: none;
 }
 
+textarea{
+  border:1px solid #999;
+  padding:2px;
+  background-color: black;
+  text-align: left;
+  color:white;
+  width: auto;
+  height: 100px;
+}
+
+
 input[type=text]{
   border:1px solid #999;
   padding:2px;

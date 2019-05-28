@@ -6,6 +6,7 @@ class Squad < ActiveRecord::Base
   has_many :generic_fleets
   has_many :facility_fleets
   has_many :fleets
+  has_many :messages
   belongs_to :user
   belongs_to :goal
   belongs_to :home_planet, :class_name => "Planet"

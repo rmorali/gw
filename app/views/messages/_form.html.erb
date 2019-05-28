@@ -2,10 +2,9 @@
   <%= f.error_notification %>
 
   <div class="inputs">
-    <%= f.input :sender %>
-    <%= f.input :receiver %>
-    <%= f.input :title %>
-    <%= f.input :body %>
+    <%= f.hidden_field :sender_id, :value => @current_squad.id %>
+    <%= f.association :receiver, :collection => @squads, :include_blank => "Todos", :label => 'Para:' %>
+    <%= f.input :body, :label => false %>
   </div>
 
   <div class="actions">
