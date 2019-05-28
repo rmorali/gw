@@ -235,7 +235,7 @@ LightTransport.create(:name => 'Container Transport', :price => 100, :heavy_load
 LightTransport.create(:name => 'Modular Conveyor', :price => 100, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = all
 LightTransport.create(:name => 'Star Galleon', :price => 150, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = imp
 LightTransport.create(:name => 'Xyitiar Transport', :price => 100, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = mand_merc
-LightTransport.create(:name => 'Freighter', :price => 100, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = all
+LightTransport.create(:name => 'Freighter', :price => 75, :heavy_loading_capacity => 8, :light_loading_capacity => 200 ).factions = all
 
 Unit.create(:name => '_________Armamentos______________').factions = all
 Armament.create(:name => 'Missile', :acronym => 'M', :price => 5, :hyperdrive => false ).factions = all
