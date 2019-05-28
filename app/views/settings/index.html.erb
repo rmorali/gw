@@ -19,8 +19,6 @@
 <%= f.input :maximum_facilities, :label => 'Qtde máxima por planeta:', :collection => (1..4) %>
 <%= f.input :builder_unit, :label => 'Unidade construtora:', :collection => @units %>
 <%= f.input :minimum_quantity, :label => 'Qtde minima p/ construir:', :collection => (1..500) %>
-<%= f.input :minimum_presence_to_construct, :label => 'Presença minima p/ construir: %', :collection => (10..100).step(10) %>
-
 <br>
 Exemplos:<br>
 <b>Shipyard - Custo 3600</b><br>
@@ -31,7 +29,7 @@ Produtividade: <%= 1200 / 100 * @settings.facility_primary_production_rate %> ( 
 </td>
 <td width=100>
 <div class="fleet">
-<h3>Random Inicial - Quantidades</h3>
+<h3>Configurações Iniciais</h3>
 <%= f.input :initial_credits, :label => 'Créditos: ', :collection => (0..2000).step(200) %>
 <%= f.input :initial_planets, :label => 'Planetas (além do Home Planet): ', :collection => (0..5) %>
 <%= f.input :initial_factories, :label => 'Fábricas ($): ', :collection => (1200..3601).step(600) %>
@@ -46,6 +44,7 @@ Produtividade: <%= 1200 / 100 * @settings.facility_primary_production_rate %> ( 
 <%= f.input :net_planet_income, :label => 'Income normal:', :collection => (100..1000).step(100) %>
 <%= f.input :bonus_planet_income, :label => 'Income especial:', :collection => (200..2000).step(100) %>
 <%= f.input :presence_to_influence, :label => 'Frota para presença máxima:', :collection => (1000..30000).step(100) %>
+<%= f.input :minimum_presence_to_construct, :label => 'Presença minima p/ construir: %', :collection => (10..100).step(5) %>
 </div>
 </td>
 <td width=100>
