@@ -286,11 +286,28 @@ info.tooltip:hover tip{
   color:white;
   text-shadow: none;
 }
+
 input[type=text]{
   border:1px solid #999;
   padding:2px;
   background-color: black;
   text-align: center;
+  color:white;
+}
+
+input[type=number]{
+  border:1px solid #999;
+  padding:2px;
+  background-color: black;
+  text-align: center;
+  color:white;
+  font-weight: bold;
+}
+input[type=url]{
+  border:1px solid #999;
+  padding:2px;
+  background-color: black;
+  text-align: left;
   color:white;
 }
 
