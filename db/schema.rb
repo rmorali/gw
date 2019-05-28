@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20190527171814) do
+ActiveRecord::Schema.define(:version => 20190528201629) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -74,6 +74,15 @@ ActiveRecord::Schema.define(:version => 20190527171814) do
   create_table "goals", :force => true do |t|
     t.text    "description"
     t.boolean "used"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "sender"
+    t.integer  "receiver"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "planets", :force => true do |t|

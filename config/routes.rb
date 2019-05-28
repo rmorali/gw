@@ -1,5 +1,7 @@
 Rpg::Application.routes.draw do
 
+  resources :messages
+
    devise_for :users
    
    get 'planets/index'
