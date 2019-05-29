@@ -16,9 +16,17 @@ class Mailer < ActionMailer::Base
   def turn_alert(user)
     @user = user
     @users = User.all.reject! { |u| u.email == "setup@xws.com" || u.email == "setup@gw.com" }
-    #attachments["rails.png"] = File.read("#{Rails.root}/public/images/rails.png")
     @users.each do |f|
-      mail(:to => "#{f.email}", :subject => "X-Wing Galactic Wars: alerta de turno")
+      mail(:to => "#{f.email}", :subject => "X-Wing Galactic Wars: alteracao de status")
+    end
+  end
+
+  def new_turn(status)
+    @users = User.all.reject! { |u| u.email == "setup@xws.com" || u.email == "setup@gw.com" }
+    @status = 'Prepare sua estrategia...' if status == 'estrategia'
+    @status = 'Realize seus combates...' if status == 'combates'
+    @users.each do |f|
+      mail(:to => "#{f.email}", :subject => "X-Wing Galactic Wars: virada de turno")
     end
   end
 
