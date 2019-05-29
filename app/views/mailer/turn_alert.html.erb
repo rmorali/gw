@@ -15,9 +15,12 @@ Situação dos Esquadrões:
 <br>
 <br>
 <% @users.each do |f| %>
-  <span style="color:#<%= f.squad.color %>;font-weight: bold">
+  <span style="color:#<%= f.squad.color %>;font-size: 18px;font-weight: bold">
   <%= f.squad.name %>
-  </span> : <%= 'Ready' if f.squad.ready? %>
+  </span> : 
+  <span style="font-size: 18px;font-weight: bold">
+    <%= 'Ready' if f.squad.ready? %>
+  </span>
   <br><br>
 <% end %>
 <br>

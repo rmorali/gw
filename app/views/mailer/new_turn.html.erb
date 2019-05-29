@@ -4,11 +4,18 @@ X-Wing Galactic Wars
 <br>
 http://gw.servegame.com:4000
 <br><br>
-Turno virou galera!!!
+Atenção esquadrões:
+<br>
+<br>
+<% @users.each do |f| %>
+  <span style="color:#<%= f.squad.color %>;font-size: 18px;font-weight: bold">
+  <%= f.squad.name %>
+  </span>
+  <br><br>
+<% end %>
 <br><br>
-<%= @status %>
+Turno virou!!! <%= @status %>
 <br>
 <br>
 Esta mensagem é automática, não precisa responder. 
-
 
