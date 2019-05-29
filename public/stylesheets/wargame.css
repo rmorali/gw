@@ -366,3 +366,8 @@ input[type=url]{
   text-shadow: none;
 }
 
+div.email {
+    font-size: 14px;
+    font-family: 'Open Sans',sans-serif;
+    font-weight: bold;
+}
