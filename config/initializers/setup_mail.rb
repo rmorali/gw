@@ -8,9 +8,9 @@ ActionMailer::Base.smtp_settings = {
   :domain               => "sendgrid.net",
   :user_name            => "ny5BIP8rTcauwzqGJOvc2A",
   :password             => "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",
-  :authentication       => "plain",
+  :authentication       => :plain,
   :enable_starttls_auto => true
 }
 
 ActionMailer::Base.default_url_options[:host] = "localhost:3000"
-Mail.register_interceptor(DevelopmentMailInterceptor) if Rails.env.development?
+#Mail.register_interceptor(DevelopmentMailInterceptor) if Rails.env.development?

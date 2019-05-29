@@ -9,8 +9,8 @@ class Mailer < ActionMailer::Base
 
   def test(user)
     @user = user
-    attachments["rails.png"] = File.read("#{Rails.root}/public/images/rails.png")
-    mail(:to => "#{user.email} <#{user.email}>", :subject => "Teste enviado")
+    #attachments["rails.png"] = File.read("#{Rails.root}/public/images/rails.png")
+    mail(:to => "#{user.email}", :subject => "Teste enviado")
   end
 
 end
