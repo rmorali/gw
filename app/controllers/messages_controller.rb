@@ -2,10 +2,11 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.xml
   def index
+    @current_squad = current_squad 
     @messages = Message.all
     @message = Message.new
-    @squads = Squad.all
-    @current_squad = current_squad    
+    @squads = Squad.all.reject! { |squad| squad == @current_squad }
+   
 
     respond_to do |format|
       format.html # index.html.erb
