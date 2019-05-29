@@ -1,4 +1,5 @@
 <script>
+  window.onload = window.open('/messages', 'Message Board', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1000, height=700')
 </script>
 
 <%= render :partial => 'sectors' %>
@@ -51,12 +52,6 @@
       </td>
       <td style="vertical-align:top">
         <info class="tooltip">
-        <tip>Message Board</tip>
-        <b href = "" onclick="window.open('/messages', 'Message Board', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=700, height=800')"><img src="/images/chat1.png" height="50" width="50"></b>
-        </info>
-      </td>
-      <td style="vertical-align:top">
-        <info class="tooltip">
         <tip>Specs das Naves</tip>
         <b href = "" onclick="window.open('https://docs.google.com/spreadsheets/d/1MmlpHv6qHDJqGnv7AmeU0MPzUQeslwk7rGmBln9-2ls/edit?authkey=CL_F9boP&hl=pt_BR#gid=1177609294', 'Specs Naves', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')"><img src="/images/specs.png" height="55" width="55"></b>
         </info>
@@ -77,6 +72,12 @@
         <span style="font-size: 10px;font-weight: bold;word-wrap: break-word;color:#<%= @squad.color %>">
 <b href = "" onclick="window.open('/squads/<%= @squad.id %>/goal', 'Objetivos', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=500, height=450')">
   Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span></b>
+        <td style="vertical-align:top">
+        <info class="tooltip">
+        <tip>Message Board</tip>
+        <b href = "" onclick="window.open('/messages', 'Message Board', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1000, height=700')"><img src="/images/chat1.png" height="45" width="45"></b>
+        </info>
+      </td>
       </td>
       <td style="vertical-align:middle">
         <a href="/users/sign_out">Logout</a>

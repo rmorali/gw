@@ -154,6 +154,24 @@ div.fleet_new:hover {
     background-color: rgba(0,0,0,0.9);
     z-index:-10;
 }
+div.message_board {
+    white-space: normal;
+    border: 0 outset gray;
+    border-radius: 6px;
+    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
+    margin: 10px 10px 10px;
+    padding: 5px 5px 5px 8px;
+    width: auto;
+    height: auto;
+    background-color: rgba(0,0,0,0.5);
+    transition: all ease-in-out 0.36s;
+    z-index: -10;
+}
+div.message_board:hover {
+    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
+    background-color: rgba(0,0,0,0.9);
+    z-index:-10;
+}
 
 div.alert {
     white-space: nowrap;
