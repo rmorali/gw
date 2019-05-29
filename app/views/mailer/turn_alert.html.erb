@@ -1,13 +1,26 @@
+<div class="email">
+<span style="font-size: 24px;font-weight: bold">
 X-Wing Galactic Wars
 
 <br><br>
-<%= @user.squad.name + " alterou seu status " %>  
+<span style="color:#<%= @user.squad.color %>;font-weight: bold">
+<%= @user.squad.name %>
+</span>
+ alterou seu status para:
+<%= "ready" if @user.squad.ready? %>
 <br>
 <br>
 Situação dos Esquadrões:
 <br>
 <br>
 <% @users.each do |f| %>
+  <span style="color:#<%= f.squad.color %>;font-weight: bold">
   <%= f.squad.name %> : <%= 'Ready' if f.squad.ready? %>
-  <br>
+  <br><br>
 <% end %>
+<br>
+Aguardando os movimentos...
+<br>
+<br>
+Esta mensagem é automática, não precisa responder. 
+</div>
