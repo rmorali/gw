@@ -188,6 +188,7 @@ DEPENDENCIES
   escape_utils
   factory_girl_rails (~> 1.0)
   forgery (= 0.3.10)
+  mail
   meta_where
   mini_portile2
   mysql

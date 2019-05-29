@@ -17,6 +17,7 @@ gem 'nokogiri', '1.5.10'
 gem 'thin'
 #gem 'unicorn'
 #gem 'sass'
+gem 'mail'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
