@@ -1,0 +1,13 @@
+X-Wing Galactic Wars
+
+<br><br>
+<%= @user.squad.name + " alterou seu status " %>  
+<br>
+<br>
+Situação dos Esquadrões:
+<br>
+<br>
+<% @users.each do |f| %>
+  <%= f.squad.name %> : <%= 'Ready' if f.squad.ready? %>
+  <br>
+<% end %>

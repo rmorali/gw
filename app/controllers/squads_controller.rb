@@ -74,6 +74,8 @@ class SquadsController < ApplicationController
       @status = "em fase de estrategia" if @round.move == true
       @status = "em fase de combates" if @round.attack == true
     end
+    @user = current_user
+    Mailer.turn_alert(@user).deliver
   end
 
   def transfer

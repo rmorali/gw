@@ -4,10 +4,10 @@ ActionMailer::Base.raise_delivery_errors = true
 ActionMailer::Base.default :charset => "utf-8"
 ActionMailer::Base.smtp_settings = {
   :address              => "smtp.gmail.com",
-  :port                 => 465,
+  :port                 => 587,
   :domain               => "gmail.com",
-  :user_name            => " ",
-  :password             => " ",
+  :user_name            => ENV['GMAIL_USERNAME'],
+  :password             => ENV['GMAIL_PASSWORD'],
   :authentication       => :plain,
   :enable_starttls_auto => true
 }
