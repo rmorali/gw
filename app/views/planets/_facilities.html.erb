@@ -2,7 +2,7 @@
 <tip><%= raw fleet.description %></tip>
 <span style="<%= raw fleet.span_style %><%= ';color: #00FFFF' if fleet.moving %>">
 	<% if @round.move && fleet.squad == @squad && !fleet.squad.ready? && !fleet.moving %>
-	  <b href = "" onclick="window.open('/facility_fleets/<%= fleet.id %>/edit', 'Facility <%= fleet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=520, height=300')"><%= fleet.show %></b>
+	  <b href = "" onclick="window.open('/facility_fleets/<%= fleet.id %>/edit', 'Facility <%= fleet.id %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=550, height=360')"><%= fleet.show %></b>
 	<% else %>
 		  <%= fleet.show %>
 	<% end %>
