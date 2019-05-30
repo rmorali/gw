@@ -9,7 +9,7 @@ class SendMail
     
     if @type == :status_change
       @users.each do |u|
-        Mailer.status_change(u).deliver
+        Mailer.status_change(u, @user).deliver
       end   
     end
 

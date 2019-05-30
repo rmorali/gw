@@ -6,12 +6,11 @@ X-Wing Galactic Wars
 <br>
 http://gw.servegame.com:4000
 <br><br>
-<span style="color:#<%= @user.squad.color %>;font-weight: bold">
-<%= @user.squad.name %>
+<span style="color:#<%= @user_changed.squad.color %>;font-weight: bold">
+<%= @user_changed.squad.name %>
 </span>
  alterou seu status para:
-<%= "Ready" if @user.squad.ready? %>
-<br>
+<%= "Ready" if @user_changed.squad.ready? %>
 <br>
 Status dos Esquadrões:
 <br>

@@ -13,8 +13,9 @@ class Mailer < ActionMailer::Base
     mail(:to => "#{user.email}", :subject => "Teste enviado")
   end
 
-  def status_change(user)
+  def status_change(user,user_changed)
     @user = user
+    @user_changed = user_changed
     @users = User.all.reject! { |u| u.email == "setup@xws.com" || u.email == "setup@gw.com" }
     mail(:to => "#{@user.email}", :subject => "X-Wing Galactic Wars: atualizacao de status")
   end

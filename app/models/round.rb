@@ -44,7 +44,7 @@ class Round < ActiveRecord::Base
     self.update_attributes(:move => nil, :attack => true)
     Result.create_all
     set_map
-    Mail.new(nil, :turn_change).send!
+    SendMail.new(nil, :turn_change).send!
   end
 
   def end_round!
