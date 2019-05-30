@@ -153,7 +153,7 @@
       <info class="tooltip" style="cursor:pointer">
       <tip>Produzir Unidades</tip>
     <% if @round.move && !@squad.ready? && planet.constructive_capacity > 0 %>
-      <b href = "" onclick="window.open('/facility_fleets/<%= planet.generic_fleets.select { |unit| unit.squad == @squad && unit.type == 'FacilityFleet' }.first.id  %>/edit', 'Facility', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=550, height=360')">
+      <b href = "" onclick="window.open('/facility_fleets/<%= planet.generic_fleets.select { |unit| unit.squad == @squad && unit.type == 'FacilityFleet' }.first.id  %>/edit', 'Facility', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=550, height=320')">
     <% end %>
     <% if @round.move %>
       <img src="/images/planets/shipyard.gif" height="30" width="40">
