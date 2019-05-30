@@ -1,5 +1,5 @@
 <script>
-  window.onload = window.open('/messages', 'Message Board', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1000, height=700')
+
 </script>
 
 <%= render :partial => 'sectors' %>
@@ -22,15 +22,6 @@
       <td style="vertical-align:middle">
         <span style="font-size: 16px; font-weight: bold">
           Turno: <%= @round.number %><br><%= @round_phase %><br>
-        </span>
-        <span style="color:white;font-size: 12px;font-weight: bold;text-decoration: blink">
-          <% if @comment1 %>
-            <%= raw @comment1 %>
-          <% end %>
-          <% if @comment2 %>
-            <br>
-            <%= raw @comment2 %>
-          <% end %>
         </span>
       </td>      
       <td style="vertical-align:top">
@@ -57,7 +48,7 @@
         </info>
       </td>
       <td style="vertical-align:middle">
-        <a href = "" onclick="window.open('https://wgbrnavies.wordpress.com/', 'Blog do GW', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">Blog do GW</a>
+        <a href = "" onclick="window.open('https://wgbrnavies.wordpress.com/', 'Blog do GW', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1600, height=800')">Regras</a>
       </td>
       <td style="vertical-align:top">
         <info class="tooltip">
@@ -68,17 +59,20 @@
       <td style="vertical-align:middle">
         <%= link_to "Passar Turno","/ready" %>
       </td>
+
+      <td style="vertical-align:top">
+        <info class="tooltip">
+        <tip>Message Board</tip>
+        <b href = "" onclick="window.open('/messages', 'Message Board', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1000, height=700')"><img src="/images/chat1.png" height="52" width="56"></b>
+        </info>
+      </td>
+
       <td style="vertical-align:middle">
         <span style="font-size: 10px;font-weight: bold;word-wrap: break-word;color:#<%= @squad.color %>">
 <b href = "" onclick="window.open('/squads/<%= @squad.id %>/goal', 'Objetivos', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=500, height=450')">
   Objetivo <%= @squad.goal.id %>: <%= @squad.goal.description %></span></b>
-        <td style="vertical-align:top">
-        <info class="tooltip">
-        <tip>Message Board</tip>
-        <b href = "" onclick="window.open('/messages', 'Message Board', 'toolbar=no, location=no, scrollbars=yes, resizable=yes, width=1000, height=700')"><img src="/images/chat1.png" height="45" width="45"></b>
-        </info>
       </td>
-      </td>
+
       <td style="vertical-align:middle">
         <a href="/users/sign_out">Logout</a>
       </td>
@@ -96,6 +90,19 @@
     Jedi/Sith: <%= @warriors %><br>
     Troopers: <%= @troopers %><br>
   </span>
+</div>
+
+<div class="painel_status">
+  <span style="color:white;font-size: 12px;font-weight: bold;text-decoration: blink">
+    <% if @comment1 %>
+      <%= raw @comment1 %>
+    <% end %>
+    <% if @comment2 %>
+      <br>
+      <%= raw @comment2 %>
+    <% end %>
+  </span>
+  
 </div>
 
 <% @planets.each do |planet| %>
@@ -174,7 +181,7 @@
       <info class="tooltip" style="cursor:pointer">
       <tip>Construir fábrica/unidades</tip>
      <% if @round.move && !planet.tradeport? && !@squad.ready? && planet.able_to_construct?(@squad) %>
-       <b href = "" onclick="window.open('/planets/<%= planet.id %>/facility_fleets/new', 'Construir <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=220')">
+       <b href = "" onclick="window.open('/planets/<%= planet.id %>/facility_fleets/new', 'Construir <%= planet.name %>', 'toolbar=no, location=no, scrollbars=yes, resizable=no, width=400, height=250')">
      <% end %>
     <% if @round.move %>
       <img src="/images/planets/construcao.jpg" height="22" width="22">

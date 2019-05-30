@@ -12,7 +12,7 @@ body {
     background-color: black;
     background-repeat: repeat-y;
     color: white;
-    font-size: 11px;
+    font-size: 12px;
     height: 30px;
     line-height: 14px;
     font-family: 'Open Sans',sans-serif;
@@ -79,9 +79,9 @@ div.new_menu {
     border-radius: 6px;
     box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
     margin: 2px 5px 5px;
-    padding: 2px 5px 2px 5px;
+    padding: 1px 5px 1px 5px;
     width: auto;
-    height: 55px;
+    height: 60px;
     position: fixed;
     left: 5px;
     top: 2px;
@@ -106,12 +106,35 @@ div.painel_units {
     height: auto;
     position: fixed;
     left: 5px;
-    top: 60px;
+    top: 65px;
     background-color: rgba(0,0,25,0.85);
     transition: all ease-in-out 0.36s;
     z-index: 45;
 }
 div.painel_units:hover {
+    box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
+    background-color: rgba(0,0,25,0.95);
+    z-index: 50;
+}
+
+div.painel_status {
+    white-space: nowrap;
+    border: 0 outset gray;
+    border-radius: 6px;
+    box-shadow: 0 0 1px 1px rgba(120,130,180,0.60) inset;
+    margin: 7px 5px 10px;
+    padding: 5px 5px 8px 8px;
+    width: 130px;
+    height: auto;
+    position: fixed;
+    left: 5px;
+    top: 172px;
+    background-color: rgba(0,0,25,0.85);
+    transition: all ease-in-out 0.36s;
+    z-index: 45;
+}
+
+div.painel_status:hover {
     box-shadow: 0 0 1px 1px rgba(160,90,90,0.80) inset, 0 0 4px rgba(160,60,60,0.60);
     background-color: rgba(0,0,25,0.95);
     z-index: 50;
