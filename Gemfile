@@ -18,6 +18,7 @@ gem 'thin'
 #gem 'unicorn'
 #gem 'sass'
 gem 'mail'
+gem 'figaro'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
