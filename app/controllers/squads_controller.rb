@@ -67,6 +67,8 @@ class SquadsController < ApplicationController
     @squad.ready!
     @squad.reload
     @round = Round.getInstance
+    @user = current_user
+    SendMail.new(@user, :status_change)
     redirect_to :back
     if @squad.ready == true
       @status = "preparado e aguardando"
@@ -74,8 +76,7 @@ class SquadsController < ApplicationController
       @status = "em fase de estrategia" if @round.move == true
       @status = "em fase de combates" if @round.attack == true
     end
-    @user = current_user
-    Mailer.turn_alert(@user).deliver
+
   end
 
   def transfer

@@ -1,0 +1,35 @@
+<span style="font-size: 14px">
+
+<span style="font-size: 22px;font-weight: bold">
+X-Wing Galactic Wars
+</span>
+<br>
+http://gw.servegame.com:4000
+<br><br>
+<span style="color:#<%= @user.squad.color %>;font-weight: bold">
+<%= @user.squad.name %>
+</span>
+ alterou seu status para:
+<%= "Ready" if @user.squad.ready? %>
+<br>
+<br>
+Status dos Esquadrões:
+<br>
+<br>
+<% @users.each do |f| %>
+  <span style="color:#<%= f.squad.color %>;font-weight: bold">
+  <%= f.squad.name %>
+  </span> : 
+  <span style="font-weight: bold">
+    <%= 'Ready' if f.squad.ready? %>
+  </span>
+  <br><br>
+<% end %>
+Não esqueçam de fazer seus movimentos...
+<br>
+<br>
+Esta mensagem é automática, não precisa responder. 
+
+</span>
+
+</div>

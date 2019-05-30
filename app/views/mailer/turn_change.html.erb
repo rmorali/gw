@@ -1,0 +1,23 @@
+<span style="font-size: 14px">
+
+<span style="font-size: 22px;font-weight: bold">
+X-Wing Galactic Wars
+</span>
+<br>
+http://gw.servegame.com:4000
+<br><br>
+Atenção esquadrões:
+<br>
+<br>
+<% @users.each do |f| %>
+  <span style="color:#<%= f.squad.color %>;font-weight: bold">
+  <%= f.squad.name %>
+  </span>
+  <br><br>
+<% end %>
+O turno virou!!! <%= @status %>
+<br>
+<br>
+Esta mensagem é automática, não precisa responder. 
+
+</span>

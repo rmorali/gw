@@ -13,21 +13,21 @@ class Mailer < ActionMailer::Base
     mail(:to => "#{user.email}", :subject => "Teste enviado")
   end
 
-  def turn_alert(user)
+  def status_change(user)
     @user = user
     @users = User.all.reject! { |u| u.email == "setup@xws.com" || u.email == "setup@gw.com" }
-    @users.each do |f|
-      mail(:to => "#{f.email}", :subject => "X-Wing Galactic Wars: alteracao de status")
-    end
+    mail(:to => "#{@user.email}", :subject => "X-Wing Galactic Wars: atualizacao de status")
   end
 
-  def new_turn(status)
+  def turn_change(user)
+    @user = user
     @users = User.all.reject! { |u| u.email == "setup@xws.com" || u.email == "setup@gw.com" }
-    @status = 'Prepare sua estrategia...' if status == 'estrategia'
-    @status = 'Realize seus combates...' if status == 'combates'
-    @users.each do |f|
-      mail(:to => "#{f.email}", :subject => "X-Wing Galactic Wars: virada de turno")
+    if Round.getInstance.move?
+      @status = 'Prepare sua estrategia...' 
+    else
+      @status = 'Realize seus combates...'
     end
+    mail(:to => "#{@user.email}", :subject => "X-Wing Galactic Wars: virada de turno")
   end
 
 end
