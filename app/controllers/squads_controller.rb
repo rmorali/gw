@@ -68,7 +68,7 @@ class SquadsController < ApplicationController
     @squad.reload
     @round = Round.getInstance
     @user = current_user
-    SendMail.new(@user, :status_change)
+    #SendMail.new(@user, :status_change)
     redirect_to :back
     if @squad.ready == true
       @status = "preparado e aguardando"

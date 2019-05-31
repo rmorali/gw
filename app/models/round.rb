@@ -44,7 +44,7 @@ class Round < ActiveRecord::Base
     self.update_attributes(:move => nil, :attack => true)
     Result.create_all
     set_map
-    SendMail.new(nil, :turn_change).send!
+    #SendMail.new(nil, :turn_change).send!
   end
 
   def end_round!
@@ -69,7 +69,7 @@ class Round < ActiveRecord::Base
     #Tradeport.start
     set_map
     set_planet_balance
-    SendMail.new(nil, :turn_change).send!
+    #SendMail.new(nil, :turn_change).send!
   end
  # VERIFICAR AQUI NAO PODE ATUALIZAR BALANCE DO PLANETA SE A FACILITY FOR CAPTURADA
  # UMA FORMA PARECE SER MARCAR COMO SABOTADA NO CASO DE CAPTURAR
