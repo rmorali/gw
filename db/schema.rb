@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20190528201629) do
+ActiveRecord::Schema.define(:version => 20190601012708) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -210,6 +210,7 @@ ActiveRecord::Schema.define(:version => 20190528201629) do
     t.string   "url"
     t.integer  "map_ratio"
     t.boolean  "map_background"
+    t.boolean  "ai"
   end
 
   create_table "subtypes", :force => true do |t|

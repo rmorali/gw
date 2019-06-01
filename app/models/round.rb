@@ -13,6 +13,8 @@ class Round < ActiveRecord::Base
 
   def new_game!
     settings = Setting.getInstance
+    bot_squads = AiSquad.new
+    bot_squads.create!
     Squad.all.each do |squad|
       home_planet = squad.home_planet
       squad.planets << home_planet
@@ -34,6 +36,11 @@ class Round < ActiveRecord::Base
     set_planet_balance
     GenericFleet.update_all(:level => 0)
     #Tradeport.start
+    ai_squads = Squad.where(:ai => true)
+    ai_squads.each do |s|
+      ai_squad = AiSquad.new(s)
+      ai_squad.act!    
+    end
     set_map
   end
 
@@ -43,6 +50,10 @@ class Round < ActiveRecord::Base
     self.move_fleets
     self.update_attributes(:move => nil, :attack => true)
     Result.create_all
+    ai_squads = Squad.where(:ai => true)
+    ai_squads.each do |s|
+      s.ready!
+    end
     set_map
     #SendMail.new(nil, :turn_change).send!
   end
@@ -70,6 +81,11 @@ class Round < ActiveRecord::Base
     set_map
     set_planet_balance
     #SendMail.new(nil, :turn_change).send!
+    ai_squads = Squad.where(:ai => true)
+    ai_squads.each do |s|
+      ai_squad = AiSquad.new(s)
+      ai_squad.act!    
+    end
   end
  # VERIFICAR AQUI NAO PODE ATUALIZAR BALANCE DO PLANETA SE A FACILITY FOR CAPTURADA
  # UMA FORMA PARECE SER MARCAR COMO SABOTADA NO CASO DE CAPTURAR
