@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20190601012708) do
+ActiveRecord::Schema.define(:version => 20190601185705) do
 
   create_table "admin_notes", :force => true do |t|
     t.string   "resource_id",     :null => false
@@ -194,6 +194,8 @@ ActiveRecord::Schema.define(:version => 20190601012708) do
     t.integer "presence_to_influence"
     t.integer "rounds_to_dominate"
     t.integer "minimum_presence_to_construct"
+    t.integer "ai_level"
+    t.boolean "ai"
   end
 
   create_table "squads", :force => true do |t|
@@ -211,6 +213,7 @@ ActiveRecord::Schema.define(:version => 20190601012708) do
     t.integer  "map_ratio"
     t.boolean  "map_background"
     t.boolean  "ai"
+    t.integer  "ai_level"
   end
 
   create_table "subtypes", :force => true do |t|

@@ -117,7 +117,7 @@ Setting.create(:initial_factories => 2400,
                :initial_transports => 500,
                :initial_troopers => 1000,
                :initial_planets => 2,
-               :initial_credits => 0,
+               :initial_credits => 1000,
                :net_planet_income => 200,
                :bonus_planet_income => 400,
                :ground_income_rate => 50,
@@ -139,9 +139,10 @@ Setting.create(:initial_factories => 2400,
                :builder_unit => 'Trooper',
                :presence_to_influence => 20000,
                :rounds_to_dominate => 3,
-               :minimum_presence_to_construct => 50)
+               :minimum_presence_to_construct => 50,
+               :ai => true,
+               :ai_level => 3)
 
-User.create(:email => 'setup@xws.com', :password => '123456')
 User.create(:email => 'setup@gw.com', :password => '123456')
 
 imp = ['empire']

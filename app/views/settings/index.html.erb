@@ -49,9 +49,11 @@ Produtividade: <%= 1200 / 100 * @settings.facility_primary_production_rate %> ( 
 </td>
 <td width=100>
 <div class="fleet">
-<h3>Geral</h3>
+<h3>AI Settings</h3>
 <%= f.input :editable_automatic_results, :label => 'Resultados automáticos alteráveis?', as: :radio %>
 <%= f.input :maximum_warrior_life, :label => 'Jedi/Sith - Vidas máximas:', :collection => (5..20).step(5)  %>
+<%= f.input :ai, :label => ' Squad AI?', as: :boolean %>
+<%= f.input :ai_level, :collection => 1..6, :label => 'AI Level:' %> 
 </div>
 
 </td></tr>

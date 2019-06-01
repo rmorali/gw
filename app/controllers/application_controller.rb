@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     unless current_user.squad
-      unless current_user.email == 'setup@xws.com'
+      unless current_user.email == 'setup@gw.com'
         new_squad_path # You can put whatever path you want here
       else
         settings_path

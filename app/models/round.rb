@@ -13,8 +13,10 @@ class Round < ActiveRecord::Base
 
   def new_game!
     settings = Setting.getInstance
-    bot_squads = AiSquad.new
-    bot_squads.create!
+    if settings.ai?
+      bot_squads = AiSquad.new
+      bot_squads.create!
+    end
     Squad.all.each do |squad|
       home_planet = squad.home_planet
       squad.planets << home_planet
@@ -135,11 +137,10 @@ class Round < ActiveRecord::Base
     ActiveRecord::Base.connection.execute("TRUNCATE squads")
     ActiveRecord::Base.connection.execute("TRUNCATE tradeports")
     ActiveRecord::Base.connection.execute("TRUNCATE rounds")
-    User.create(:email => 'setup@xws.com', :password => '123456')
+    User.create(:email => 'setup@gw.com', :password => '123456')
   end
 
   def create_test_squads quantity
-    User.create(:email => 'setup@xws.com', :password => '123456')
     rebel_user = User.create(:email => 'rebel@rebel.com', :password => '123456')
     rebel_squad = Squad.create(:name => 'Rebel', :color => 'FF0000', :user => rebel_user, :faction => 'rebel', :home_planet => Planet.find(5), :credits => 1000, :goal => Goal.get_goal, :map_ratio => 100, :map_background => true)
     empire_user = User.create(:email => 'empire@empire.com', :password => '123456')

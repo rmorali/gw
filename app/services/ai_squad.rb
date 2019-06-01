@@ -1,13 +1,14 @@
 class AiSquad
   def initialize(*squad)
     @squad = squad.first
+    @settings = Setting.getInstance
   end
 
   def create!
     color = ([*('A'..'F'),*('0'..'9')]-%w(0 1 I O)).sample(4).join
     planets = Planet.select { |p| p.generic_fleets.empty? }
     planet = planets[rand(planets.count)]
-    Squad.create(:name => 'Bot Squadron', :color => "FF#{color}", :user => User.first, :faction => 'mercenary', :home_planet => planet, :credits => 1200, :goal => Goal.get_goal, :map_ratio => 100, :map_background => true, :ai => true)
+    Squad.create(:name => 'Bot Squadron', :color => "FF#{color}", :user => User.first, :faction => 'mercenary', :home_planet => planet, :credits => 1200, :goal => Goal.get_goal, :map_ratio => 100, :map_background => true, :ai => true, :ai_level => @settings.ai_level)
   end
 
   def act!
@@ -22,8 +23,9 @@ class AiSquad
 
     facilities.each do |f|
       balance_for_capital_ships = f.planet.balance * 0.40
-      balance_for_fighters = f.planet.balance * 0.40
-      balance_for_light_transports = f.planet.balance * 0.20
+      balance_for_fighters = f.planet.balance * 0.30
+      balance_for_light_transports = f.planet.balance * 0.15
+      balance_for_troopers = f.planet.balance * 0.15
       
       planet = f.planet
       capital_ships = CapitalShip.allowed_for(@squad.faction).where('price <= ?', balance_for_capital_ships)
@@ -40,6 +42,11 @@ class AiSquad
       light_transport = light_transports[rand(light_transports.count)] unless light_transports.empty?
       lt_quantity = (balance_for_light_transports / light_transport.price).to_i unless light_transport.nil?
       f.produce! light_transport, lt_quantity, planet, @squad unless lt_quantity.nil?
+      
+      troopers = Trooper.allowed_for(@squad.faction).where('price <= ?', balance_for_troopers)
+      trooper = troopers[rand(troopers.count)] unless troopers.empty?
+      t_quantity = (balance_for_troopers / trooper.price).to_i unless trooper.nil?
+      f.produce! trooper, t_quantity, planet, @squad unless t_quantity.nil?
     end
   end
 
@@ -47,9 +54,9 @@ class AiSquad
     planets = Planet.select { |p| p.generic_fleets.any? { |f| f.squad == @squad } }
     planets.each do |p|
       p.generic_fleets.each do |f|
-        stay_in_defense = 0
-        stay_in_defense = rand(1..2) if p.generic_fleets.any? { |f| f.squad == @squad && f.type?(Facility) }
-        unless stay_in_defense == 2
+        stay_in_defense = 6
+        stay_in_defense = rand(@squad.ai_level..6) if p.generic_fleets.any? { |f| f.squad == @squad && f.type?(Facility) }
+        unless stay_in_defense != 6
           planet = choose_destination(p.routes)
           f.destination = planet unless f.type?(Facility)
           f.moving = true unless f.type?(Facility)
@@ -60,23 +67,22 @@ class AiSquad
   end
   
   def build
-    unless @squad.credits < 1200
-      planets = Planet.select { |p| p.generic_fleets.any? { |f| f.squad == @squad } }
+    if @squad.credits > 1300
+      planets = Planet.select { |p| p.able_to_construct?(@squad) }
       planet = planets[rand(planets.count)] unless planets.empty?
       facilities = Facility.allowed_for(@squad.faction).where('price <= ?', @squad.credits) unless planet.nil?
-      facility = facilities[rand(facilities.count)] unless facilities.empty?
+      facility = facilities[rand(facilities.count)] unless facilities.nil?
       @squad.buy facility, 1, planet unless facility.nil?
     end
   end
   
   def choose_destination(routes)
     enemy_planets = routes.select { |r| r.generic_fleets.any? { |f| f.squad != @squad } }
-    routes = enemy_planets unless enemy_planets.empty?
+    routes = enemy_planets unless enemy_planets.empty? || @squad.ai_level <= 3 
     destination = routes[rand(routes.count)]
     destination    
   end
-  
-  
+   
 
 end
 
