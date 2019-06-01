@@ -53,7 +53,7 @@ class AiSquad
   def move
     planets = Planet.select { |p| p.generic_fleets.any? { |f| f.squad == @squad } }
     planets.each do |p|
-      p.generic_fleets.each do |f|
+      p.generic_fleets.where(:squad => @squad).each do |f|
         stay_in_defense = 6
         stay_in_defense = rand(@squad.ai_level..6) if p.generic_fleets.any? { |f| f.squad == @squad && f.type?(Facility) }
         unless stay_in_defense != 6
