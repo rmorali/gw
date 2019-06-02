@@ -226,7 +226,7 @@ class Planet < ActiveRecord::Base
 
   def count_fleet(*squad)
     if squad == []
-      fleet_price = 0
+      fleet_price = 1
       self.generic_fleets.each do |fleet|
         unless fleet.moving?
           units_price = fleet.quantity * fleet.generic_unit.price
@@ -237,7 +237,7 @@ class Planet < ActiveRecord::Base
         end
       end
     else
-      fleet_price = 0 
+      fleet_price = 1 
       self.generic_fleets.where(:squad => squad.first).each do |fleet|
         unless fleet.moving?
           units_price = fleet.quantity * fleet.generic_unit.price

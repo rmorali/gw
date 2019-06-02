@@ -11,7 +11,7 @@ class CalculateInfluence
     presence = Setting.getInstance.presence_to_influence
     if @planet.squads.count > 1
       proporcao = @planet.count_fleet(@squad).to_f / @planet.count_fleet.to_f
-      income_squad = @planet.count_fleet(@squad).to_f / presence.to_f * @planet.credits
+      income_squad = @planet.count_fleet(@squad).to_f / presence.to_f * @planet.credits.to_f
       income_squad = @planet.credits if income_squad.to_f > @planet.credits.to_f
       income = income_squad.to_f * proporcao.to_f
     else
